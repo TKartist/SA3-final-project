@@ -2,6 +2,7 @@
 
 <head>
     <link rel="stylesheet" href="./../public/css/login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 
@@ -11,35 +12,42 @@
 
 
 
-<div class="outer">
-  <form class="login-box" action="/actionpage" method="post">
-
+<div class="outer-box">
+  <div class="inner-box">
+ 
     <div class="imgcontainer">
-      <img src="img.png" alt="Avatar" class="avatar">
+      <img src="#####" alt="Avatar" class="avatar">
     </div>
 
     <!-- Login with username and password -->
     <div class="container">
-      <label for="uname"><b>Username</b></label>
-      <input type="text" placeholder="Enter Username" name="uname" required>
+      <form action="/actionpage" method="post">
+        <label for="uname"><b>Username</b></label>
+        <input name="uname" type="text" placeholder="Enter Username" required>
 
-      <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" required>
-        
-      <button type="submit">Login</button>
-        
-      <label>
-        <input type="checkbox" checked="checked" name="remember">Remember me</input>
-      </label>
+        <label for="psw"><b>Password</b></label>
+        <input name="psw" type="password" placeholder="Enter Password" required>
+          
+        <button type="submit"><b>Login</b></button>
+          
+        <label>
+          <input type="checkbox" checked="checked" name="remember">Remember me</input>
+        </label>
+      </form>
     </div>
 
-    <!--  -->
+    <!-- Login with social medias -->
+    <div class="container">
+      <a href="https://www.facebook.com/login" target="_blank" class="facebook btn"><i class="fa fa-facebook fa-fw"></i> Login with Facebook</a>
+      <a href="https://twitter.com/i/flow/login" target="_blank" class="twitter btn"><i class="fa fa-twitter fa-fw"></i> Login with Twitter</a>
+      <a href="#" class="google btn"><i class="fa fa-google fa-fw"></i> Login with Google</a>
+    </div>
+
+    <!-- Create new Account -->
     <div class="container" style="background-color:whitesmoke">
-      <button type="button" class="cancelbtn">Cancel</button> 
+      <button onclick="window.open('./createUser.html', '_self')" type="button">Create Account</button> 
       <span class="psw">Forgot <a href="######">password?</a></span>
     </div>
-
-  </form>
 </div>
 
 
