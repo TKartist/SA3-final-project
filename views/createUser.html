@@ -1,1 +1,54 @@
-<h1>TRY OUt</h1>
+
+
+
+<head>
+    <link rel="stylesheet" href="./../public/css/login.css">
+</head>
+
+
+<body>
+
+
+
+
+<div class="outer-box">
+    <div class="inner-box">
+        <form action="/actionpage" method="post">
+            <div class="container">
+                <h1>Sign Up</h1>
+                <hr>
+
+                <label for="email"><b>Email</b></label>
+                <input name="email" type="text" placeholder="Enter Email" required>
+
+                <label for="username"><b>Username</b></label>
+                <input name="username" type="text" placeholder="Enter Username" required>
+
+                <label for="password"><b>Password</b></label>
+                <input name="password" type="password" placeholder="Enter Password" id="myPassword" required>
+                <input type="button" value="Show Password" onclick="showPassword()"></input>
+
+                <label for="password-repeat"><b>Repeat Password</b></label>
+                <input name="password-repeat" type="password" placeholder="Repeat Password" id="myPassword2" required>
+                <input type="button" value="Show Password" onclick="showPassword()"></input>
+
+                <p>By creating an account you agree to our <a href="#">Terms & Privacy</a></p>
+            </div>
+
+            <div class="container">
+                <button type="submit">Sign Up</button>
+                <button type="button" style="background-color: red;">Cancel</button>
+            </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<script src="./../public/js/login.js"></script>
+
+
+
+
+</body>
+
