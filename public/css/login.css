@@ -1,0 +1,84 @@
+
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+
+
+/* Set a style for all buttons */
+button {
+    background-color: #04AA6D;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+button:hover {
+    opacity: 0.8;
+}
+
+
+
+/* Center the image */
+.imgcontainer {
+    text-align: center; /* Align image to the center */
+    margin: 24px 0 0 0; /* top, right, bottom, left */
+}
+img.avatar {
+    width: 40%; /* Image width */
+    border-radius: 50%; /* Make it round */
+    margin-top: 20px; /**/
+}
+  
+
+
+/* Container for labels and buttons */
+.container {
+    padding: 25px;
+}
+
+
+
+/* Password */
+span.psw {
+    float: right; /* Move it to the rigth */
+}
+
+
+
+/* Outer page (background) */
+.outer {
+    position: fixed; /* Stay in place */
+    left: 0; /**/
+    top: 0; /**/
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+  
+
+/* Login Box */
+.login-box {
+    background-color: white;
+    margin: 5% auto 15% auto; /* 5% top, 15% bottom, auto for centering */
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+
+
+
+
+
+
+@media screen and (max-width: 650px) {
+
+}
