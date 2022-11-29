@@ -4,24 +4,27 @@
 input[type=text], input[type=password], input[type=file], input[type=button] {
     /* display: inline-block; */
     width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
+    padding: 12px 20px; /* top & bottom, left & right */
+    margin: 8px 0; /* top & bottom, left & right */
     border: 1px solid #ccc;
+}
+input[type=text]:focus, input[type=password]:focus {
+    background-color: lightblue;
 }
 
 /* Set a style for all buttons */
 button {
-    background-color: #04AA6D;
-    color: white;
+    background-color: #04AA6D; /* Background color */
+    color: white; /* Text color */
+    border: none; /* Delete the border */
+    border-radius: 4px; /* Round the buttons */
+    cursor: pointer; /* Pointer cursor */
+    width: 100%; /* Button width */
     padding: 14px 20px;
     margin: 8px 0;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    width: 100%;
 }
 button:hover {
-    opacity: 0.8;
+    opacity: 0.8; /* Decrease opacity*/
 }
 
 /* Outer page (background) */
@@ -66,19 +69,18 @@ img.avatar {
 
 /* Social media buttons */
 .socialbutton {
-    width: 97%;
-    padding: 12px;
-    border: none;
-    border-radius: 4px;
-    margin: 5px 0;
-    display: inline-block;
-    cursor: pointer;
-    font-size: 17px;
-    line-height: 20px;
-    text-decoration: none; /* remove underline from anchors */
+    width: 97%; /* Button width */
+    border: none; /* Delete the border */
+    border-radius: 4px; /* Round the buttons */
+    cursor: pointer; /* Pointer cursor */
+    text-decoration: none; /* Technically links so remove underline */
+    padding: 12px; /* top, right, bottom, left */
+    margin: 5px 0; /* top & bottom, left & right */
+    display: inline-block; /* Displey one under the other */
+    font-size: 17px; 
 }
 .socialbutton:hover {
-    opacity: 0.8;
+    opacity: 0.8; /* Decrease opacity*/
 }
   
 /* Social medias */
