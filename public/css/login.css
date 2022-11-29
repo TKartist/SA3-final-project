@@ -3,13 +3,12 @@
 /* -------- LOGIN PAGE -------- */
 
 /* Full-width input fields */
-input[type=text], input[type=password] {
+input[type=text], input[type=password], input[type=file], input[type=button] {
+    /* display: inline-block; */
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
-    display: inline-block;
     border: 1px solid #ccc;
-    box-sizing: border-box;
 }
 
 /* Set a style for all buttons */
@@ -51,7 +50,7 @@ button:hover {
     margin: 24px 0 0 0; /* top, right, bottom, left */
 }
 img.avatar {
-    width: 40%; /* Image width */
+    width: 30%; /* Image width */
     border-radius: 50%; /* Make it round */
     margin-top: 20px; /**/
 }
@@ -94,6 +93,15 @@ span.psw {
 .google {
     background-color: #dd4b39;
     color: white;
+}
+
+/* Show Password */
+.showPassword {
+    display: flex; /* Inline the button with the input */
+}
+#showPasswordbtn {
+    margin-left: 10%; /* Distanciate button from input */
+    width: 20%; /* Button width*/
 }
   
  
