@@ -1,0 +1,278 @@
+/*
+ * HTML5 and CSS1
+ *
+ * CSS Styles
+ *
+ *
+ * Author: Georgy Batyrev
+ *
+ */
+
+/*
+Template v83 21/09/2022, 11:45:55
+*/
+:root {
+
+  /**
+   * colors
+   */
+
+  --blunderGreen: #71a38a ;
+  --blunderBlack: #101820ff;
+  --blunderBiege: #E7E3DA; 
+
+
+}
+
+
+* {
+ font-family: 'Gotham', sans-serif;
+  overscroll-behavior: none;
+  color: var(--blunderBiege);
+
+  transition: 250ms;
+
+  margin: 0;
+}
+/*--The follwing header belongs to the browser page--*/
+.website-header {
+  display: inline-flex;
+  position: relative;
+  align-items: center;
+  justify-content: left;
+
+  height: 10vh;
+ 
+  width: 100%;
+
+  letter-spacing: 5px;
+  background: var(--blunderGreen);
+  border: 1mm ridge var(--blunderBiege);
+  box-shadow: 0 0 20px 20px var(--blunderBiege) ;
+}
+
+.website-header img {
+  width: 220px;
+  height: 220px;
+}
+
+.website-header h1 {
+  font-size: 30px;
+  color: var(--blunderBiege);
+}
+.website-header h2 {
+  font-size: 30px;
+  color: var(--blunderBiege);
+ 
+}
+canvas {
+  width: 80%;
+  height: 100%;
+  background: var(--blunderGreen);
+  resize: both;
+  overflow: auto;
+}
+
+/*-------------------------------------------------------*/
+/*--The follwing main body belongs to the browser page--*/
+
+.website-content {
+/* background-color: var(--blunderBiege); */
+background-image: url(./images/banner.png);
+  flex: 1 1 auto;
+  box-shadow: 0 0 5px 5px var(--blunderBiege) inset;
+  filter: brightness(90%);
+}
+
+.website-container-body {
+  display: flex;
+  margin-top: 10px;
+  border: 1mm ridge var(--blunderBiege);
+  
+}
+.website-container {
+  flex: 1;
+}
+.w-sidebar {
+  flex: 0 0 auto;
+}
+.website-content-text {
+  margin-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+  padding-bottom: 25px;
+}
+/*-------------------------------------------------------*/
+
+/*--The follwing main body belongs to the browser page--*/
+
+.game-preview .game-preview-choose {
+  background: transparent;
+}
+.website-content img {
+  display: block;
+  margin-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
+
+  width: 400px;
+  height: 400px;
+
+}
+
+.game-preview {
+  font-size: 40px;
+
+  padding-top: 30px;
+  line-height: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 50%;
+}
+
+.game-preview .game-preview-choose {
+  background: transparent;
+}
+
+.game-preview .game-preview-choose .contactus {
+  color: #101820ff;
+  border: #fee715ff solid 2px;
+
+  display: flex;
+  padding: 15px 20px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+
+/*-------------------------------------------------------*/
+/*--The follwing header belongs to the browser page--*/
+.start {
+  display: inline-flex;
+  flex: row;
+  padding: 20px 25px;
+
+  margin-top: 50px;
+  letter-spacing: 2px;
+
+  font-size: 15px;
+  text-align: center;
+  background-color: #101820ff;
+
+}
+
+/*-------------------------------------------------------*/
+
+.sidebar-1 {
+  order: -1;
+  background-color: #101820ff;
+
+}
+
+.sidebar-1 {
+  background-color: #101820ff;
+  text-align: center;
+  align-items: center;
+
+  padding-top: 20px;
+  padding-right: 20px;
+  padding-left: 20px;
+}
+
+.sidebar-1 ul {
+  max-width: 100%;
+}
+
+.sidebar-1 li {
+  display: flex;
+  padding: 15px 0;
+
+  counter-increment: index;
+  align-items: center;
+}
+
+.sidebar-1 li::before {
+
+  font-size: 28px;
+  text-align: right;
+
+  min-width: 70px;
+  padding-right: 15px;
+  
+
+  
+}
+
+.sidebar-1 li + li {
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+
+/*-------------------------------------------------------*/
+.sidebar-2 {
+
+  background-color: #101820ff;
+  text-align: center;
+  
+  padding-top: 20px;
+  padding-right: 20px;
+  padding-left: 20px;
+}
+
+.sidebar-2 ul {
+  max-width: 100%;
+}
+
+.sidebar-2 li {
+  display: flex;
+  padding: 15px 0;
+
+  counter-increment: index;
+  align-items: center;
+}
+
+.sidebar-2 li::before {
+  
+
+  font-size: 28px;
+  text-align: right;
+
+  min-width: 70px;
+  padding-right: 15px;
+
+ 
+}
+
+.sidebar-2 li + li {
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+/*-------------------------------------------------------*/
+footer {
+  width: 100%;
+  position: static;
+
+  background-color: var(--blunderGreen);
+  background-size: cover;
+  box-shadow: 0 0 5px 5px var(--blunderBiege) inset;
+}
+
+footer {
+  bottom: 0;
+
+  text-align: center;
+}
+
+footer h4 {
+  padding-top: 15px;
+  padding-bottom: 20px;
+  font-size: 15px;
+}
+
+.icons .fa {
+  padding: 10px;
+
+  color: black;
+  cursor: pointer;
+}
