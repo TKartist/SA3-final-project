@@ -1,0 +1,117 @@
+
+
+/* Full-width input fields */
+input[type=text], input[type=password], input[type=file], input[type=button] {
+    /* display: inline-block; */
+    width: 100%;
+    padding: 12px 20px; /* top & bottom, left & right */
+    margin: 8px 0; /* top & bottom, left & right */
+    border: 1px solid #ccc;
+}
+input[type=text]:focus, input[type=password]:focus {
+    background-color: lightblue;
+}
+
+/* Set a style for all buttons */
+button {
+    background-color: #04AA6D; /* Background color */
+    color: white; /* Text color */
+    border: none; /* Delete the border */
+    border-radius: 4px; /* Round the buttons */
+    cursor: pointer; /* Pointer cursor */
+    width: 100%; /* Button width */
+    padding: 14px 20px;
+    margin: 8px 0;
+}
+button:hover {
+    opacity: 0.8; /* Decrease opacity*/
+}
+
+/* Outer page (background) */
+.outer-box {
+    position: fixed; /* Stay in place */
+    left: 0; /**/
+    top: 0; /**/
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+  
+
+/* Inner box */
+.inner-box {
+    background-color: white; /* Background color */
+    margin: 5% auto 15% auto; /* 5% top, 15% bottom, auto for centering */
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* Avatar image */
+.imgcontainer {
+    text-align: center; /* Align image to the center */
+    margin: 24px 0 0 0; /* top, right, bottom, left */
+}
+img.avatar {
+    width: 30%; /* Image width */
+    border-radius: 50%; /* Make it round */
+    margin-top: 20px; /* Margin from the top */
+}
+
+/* Container for labels and buttons */
+.container {
+    padding: 5px 25px 25px 25px; /* top, right, bottom, left */
+}
+
+/* Forgot Password */
+#forgotPassword {
+    float: right; /* Move it to the rigth */
+}
+
+/* Social media buttons */
+.socialbutton {
+    width: 97%; /* Button width */
+    border: none; /* Delete the border */
+    border-radius: 4px; /* Round the buttons */
+    cursor: pointer; /* Pointer cursor */
+    text-decoration: none; /* Technically links so remove underline */
+    padding: 12px; /* top, right, bottom, left */
+    margin: 5px 0; /* top & bottom, left & right */
+    display: inline-block; /* Displey one under the other */
+    font-size: 17px; 
+}
+.socialbutton:hover {
+    opacity: 0.8; /* Decrease opacity*/
+}
+  
+/* Social medias */
+.facebook {
+    background-color: #3B5998;
+    color: white;
+}
+.twitter {
+    background-color: #55ACEE;
+    color: white;
+}
+.google {
+    background-color: #dd4b39;
+    color: white;
+}
+
+/* Show Password Button */
+.showPassword {
+    display: flex; /* Inline the button with the input */
+}
+#showPasswordbtn {
+    margin-left: 10%; /* Distanciate button from input */
+    width: 20%; /* Button width*/
+}
+  
+ 
+
+
+
+
+
+@media screen and (max-width: 650px) {
+
+}
