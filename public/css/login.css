@@ -97,20 +97,33 @@ img.avatar {
     color: white;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* Show Password Button */
 .showPassword {
     display: flex; /* Inline the button with the input */
 }
+/* ------------------- */
 #showPasswordbtn {
     margin-left: 10%; /* Distanciate button from input */
     width: 20%; /* Button width*/
 }
-  
- 
-
-
-
-
+/* ------------------- */
 
 
 #createUserbtn{

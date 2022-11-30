@@ -54,7 +54,6 @@ function showPassword(pageName) {
 // Move the submit button if the values are incorrect
 var myflag = 0;
 
-
 function mouseOver(){
 
     // Get the inputs from the form
@@ -65,7 +64,7 @@ function mouseOver(){
 
     const emailCheck = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
-    if(username == "" || !email.match(emailCheck) || password1 == "" || password2 == "" || password1 != password2 && myflag === 0) {
+    if((username == "" || !email.match(emailCheck) || password1 == "" || password2 == "" || password1 != password2) && myflag === 0) {
         buttonMoveLeft();
         console.log("moving left");
         myflag = 1;
@@ -73,7 +72,7 @@ function mouseOver(){
         return false;
     }
 
-    else if(username == "" || !email.match(emailCheck) || password1 == "" || password2 == "" || password1 != password2 && myflag === 1) {
+    else if((username == "" || !email.match(emailCheck) || password1 == "" || password2 == "" || password1 != password2) && myflag === 1) {
         buttonMoveRight();
         console.log("moving right");
         myflag = 2;
@@ -81,7 +80,7 @@ function mouseOver(){
         return false;
     }
 
-    else if(username == "" || !email.match(emailCheck) || password1 == "" || password2 == "" || password1 != password2 && myflag === 2) {
+    else if((username == "" || !email.match(emailCheck) || password1 == "" || password2 == "" || password1 != password2) && myflag === 2) {
         buttonMoveLeft();
         console.log("moving left again");
         myflag = 1;
@@ -93,7 +92,6 @@ function mouseOver(){
     }
 
 }
-
 
 function buttonMoveLeft(){
     const button = document.getElementById('createUserbtn');
