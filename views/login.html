@@ -27,8 +27,8 @@
 
         <label for="password"><b>Password</b></label>
         <div class="showPassword">
-          <input name="password" type="password" placeholder="Enter Password" id="myPassword" required>
-          <input type="button" id="showPasswordbtn" value="Show Password" onclick="myFunction()"></input>
+          <input name="password" type="password" placeholder="Enter Password" id="loginPassword" required>
+          <input type="button" id="loginPasswordbtn" value="Show Password" onclick="showPassword('login')"></input>
         </div>
           
         <button type="submit"><b>Login</b></button>
@@ -43,17 +43,19 @@
     <div class="container">
       <a href="https://www.facebook.com/login" target="_blank" class="facebook socialbutton"><i class="fa fa-facebook fa-fw"></i> Login with Facebook</a>
       <a href="https://twitter.com/i/flow/login" target="_blank" class="twitter socialbutton"><i class="fa fa-twitter fa-fw"></i> Login with Twitter</a>
-      <a href="#" class="google socialbutton" target="_blank"><i class="fa fa-google fa-fw"></i> Login with Google</a>
+      <a href="#" target="_blank" class="google socialbutton"><i class="fa fa-google fa-fw"></i> Login with Google</a>
     </div>
 
     <!-- Create new Account -->
     <div class="container" style="background-color:whitesmoke">
       <button onclick="window.open('./createUser.html', '_self')" type="button">Create Account</button> 
-      <span id="forgotPassword">Forgot<a href="######">password?</a></span>
+      <span id="forgotPassword">Forgot <a href="######">password?</a></span>
     </div>
 </div>
 
 
+
+<script src="./../public/js/login.js"></script>
 
 </body>
 

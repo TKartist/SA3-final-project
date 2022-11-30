@@ -112,6 +112,17 @@ img.avatar {
 
 
 
+
+#createUserbtn{
+    width: 20%;
+    margin-left: 50%;
+}
+
+
+
+
+
+
 @media screen and (max-width: 650px) {
 
 }
