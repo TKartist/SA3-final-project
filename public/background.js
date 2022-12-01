@@ -47,7 +47,7 @@ function frame(frameTime) {
       const distX = randomValue * 16;
       const distY = randomValue * 16;
       const phase = randomValue * Math.PI * 2;
-      cx.fillStyle = '#101820ff';
+      cx.fillStyle = '#E7E3DA';
       cx.fillRect(
       x,
       y,
