@@ -115,13 +115,14 @@ img.avatar {
 
 
 /* Show Password Button */
+/* Allign Password input and Password button */
 .showPassword {
     display: flex; /* Inline the button with the input */
 }
 /* ------------------- */
-#showPasswordbtn {
-    margin-left: 10%; /* Distanciate button from input */
-    width: 20%; /* Button width*/
+.showPasswordbtn {
+    margin-left: 10% !important; /* Distanciate button from input */
+    width: 20% !important; /* Button width*/
 }
 /* ------------------- */
 

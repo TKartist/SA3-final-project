@@ -1,5 +1,13 @@
 
 
+/* EVENT LISTENERS */
+// let create = document.getElementById("createPasswordbtn");
+// if (create!= undefined) {
+//     create.addEventListener("click", (e) => {showPassword("create")});
+// }
+// document.getElementById("loginPasswordbtn").addEventListener("click", (e) => {showPassword("login")});
+
+
 // Show or don't show the password 
 function showPassword(pageName) {
 
@@ -51,6 +59,14 @@ function showPassword(pageName) {
 
 
 
+
+
+
+/* EVENT LISTENERS */
+// document.getElementById("createUserbtn").addEventListener("mouseover", (e) => {mouseOver()});
+
+
+
 // Move the submit button if the values are incorrect
 var myflag = 0;
 
@@ -90,7 +106,6 @@ function mouseOver(){
     else {
         console.log("All inputs are correct");
     }
-
 }
 
 function buttonMoveLeft(){
