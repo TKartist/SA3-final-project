@@ -78,7 +78,7 @@ canvas {
 
 .website-content {
 /* background-color: var(--blunderBiege); */
-background-image: url(./images/banner.png);
+background-image: url(/static/CSS/images/banner.png);
   flex: 1 1 auto;
   box-shadow: 0 0 5px 5px var(--blunderBiege) inset;
   filter: brightness(90%);
