@@ -115,7 +115,7 @@ canvas {
 
 .website-content {
   /* background-color: var(--blunderBiege); */
-  background-image: url(./images/banner.jpg);
+  background-image: url(/static/CSS/images/banner.jpg);
   flex: 1 1 auto;
   box-shadow: 0 0 15px 15px var(--blunderBlack) inset;
   filter: brightness(90%);
@@ -171,12 +171,12 @@ h3 {
 }
 
 .programs-k1:hover {
-  background-image: url(images/play.png);
+  background-image: url(/static/CSS/images/play.png);
   border: none;
 }
 
 .programs-k1 {
-  background-image: url(images/play_banner.png);
+  background-image: url(/static/CSS/images/play_banner.png);
   width: 100px;
   height: 300px;
   background-position: center;
@@ -195,13 +195,13 @@ h3 {
 }
 
 .programs-k2:hover {
-  background-image: url(images/puzzle.png);
+  background-image: url(/static/CSS/images/puzzle.png);
   border: none;
 }
 
 
 .programs-k2 {
-  background-image: url(images/puzzle_banner.png);
+  background-image: url(/static/CSS/images/puzzle_banner.png);
   width: 100px;
   height: 300px;
   background-position: center;
@@ -220,12 +220,12 @@ h3 {
 }
 
 .programs-k3:hover {
-  background-image: url(images/learn.png);
+  background-image: url(/static/CSS/images/learn.png);
   border: none;
 }
 
 .programs-k3 {
-  background-image: url(images/learn_banner.png);
+  background-image: url(/static/CSS/images/learn_banner.png);
   width: 100px;
   height: 300px;
   background-position: center;
@@ -397,7 +397,7 @@ ul li a:hover {
 
 /*-------------------------------------------------------*/
 footer {
-  width: 100%;
+  width: 99%;
   position: static;
 
   background-color: var(--blunderBlack);
@@ -405,7 +405,7 @@ footer {
 
 footer {
   bottom: 0;
-
+  border: 1mm ridge var(--blunderBiege);
   text-align: center;
 }
 
