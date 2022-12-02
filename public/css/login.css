@@ -9,7 +9,7 @@ input[type=text], input[type=password], input[type=file], input[type=button] {
     border: 1px solid #ccc;
 }
 input[type=text]:focus, input[type=password]:focus {
-    background-color: lightblue;
+    background-color: rgb(6, 90, 0);
 }
 
 /* Set a style for all buttons */
@@ -26,24 +26,13 @@ button {
 button:hover {
     opacity: 0.8; /* Decrease opacity*/
 }
-
-/* Outer page (background) */
-.outer-box {
-    position: fixed; /* Stay in place */
-    left: 0; /**/
-    top: 0; /**/
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
   
 
 /* Inner box */
 .inner-box {
     background-color: white; /* Background color */
     margin: 5% auto 15% auto; /* 5% top, 15% bottom, auto for centering */
-    width: 80%; /* Could be more or less, depending on screen size */
+    width: 100%; /* Could be more or less, depending on screen size */
 }
 
 /* Avatar image */

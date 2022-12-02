@@ -1,17 +1,6 @@
+<%- include("includes/header") %>
 
-
-
-<head>
-    <link rel="stylesheet" href="/static/css/login.css">
-</head>
-
-
-<body>
-
-
-
-
-<div class="outer-box">
+<main>
     <div class="inner-box">
         <form action="/actionpage" method="post" name="userCreateForm">
             <div class="container">
@@ -30,7 +19,7 @@
                 <label for="password"><b>Password</b></label>
                 <div class="showPassword">
                     <input name="password" type="password" placeholder="Enter Password" id="createPassword" onclick="resetButton()" minlength="8" required>
-                    <input type="button" value="Show Password" id="createPasswordbtn" onclick="showPassword('create')" ></input>
+                    <input type="button" value="Show Password" class="showPasswordbtn" id="createPasswordbtn" onclick="showPassword('create')" ></input>
                 </div>
 
                 <label for="password-repeat"><b>Repeat Password</b></label>
@@ -48,13 +37,12 @@
             </div>
         </form>
     </div>
-</div>
-
-
-<script src="/static/js/login.js"></script>
+</main>
 
 
 
 
-</body>
 
+<%- include("includes/navbar") %>
+<%- include("includes/scoreboard") %>
+<%- include("includes/footer") %>

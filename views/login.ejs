@@ -3,13 +3,10 @@
 <%- include("includes/header") %>
 
 
-
-
-<div class="outer-box">
+<main>
   <div class="inner-box">
- 
     <div class="imgcontainer">
-      <img src="/static/img/avatar.png" alt="Avatar" class="avatar">
+      <img src="./../public/img/avatar.png" alt="Avatar" class="avatar">
     </div>
 
     <!-- Login with username and password -->
@@ -21,7 +18,7 @@
         <label for="password"><b>Password</b></label>
         <div class="showPassword">
           <input name="password" type="password" placeholder="Enter Password" id="loginPassword" required>
-          <input type="button" id="loginPasswordbtn" value="Show Password" onclick="showPassword('login')"></input>
+          <input type="button" class="showPasswordbtn" id="loginPasswordbtn" value="Show Password" onclick="showPassword('login')"></input>
         </div>
           
         <button type="submit"><b>Login</b></button>
@@ -44,13 +41,16 @@
       <button onclick="window.open('./createUser.html', '_self')" type="button">Create Account</button> 
       <span id="forgotPassword">Forgot <a href="######">password?</a></span>
     </div>
-</div>
+  </div>
+</main>
 
 
-<%- include("includes/players") %>
+
+
+
+<%- include("includes/navbar") %>
 <%- include("includes/scoreboard") %>
 <%- include("includes/footer") %>
-
 
 
 
