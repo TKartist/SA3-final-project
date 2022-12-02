@@ -123,3 +123,8 @@ function resetButton(){
     console.log("button resetted")
     button.style.transform = 'translateX(0%)';
 }
+
+
+
+
+// document.getElementById("inner-box").classList.remove("inner-box");

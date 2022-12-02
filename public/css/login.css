@@ -30,9 +30,10 @@ button:hover {
 
 /* Inner box */
 .inner-box {
-    background-color: white; /* Background color */
-    margin: 5% auto 15% auto; /* 5% top, 15% bottom, auto for centering */
+    background-color: rgba(255, 255, 255, 0.5); /* Background color */
+    margin: auto auto auto auto; /* 5% top, 15% bottom, auto for centering */
     width: 100%; /* Could be more or less, depending on screen size */
+    height: 100%;
 }
 
 /* Avatar image */
