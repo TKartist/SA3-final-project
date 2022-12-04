@@ -39,7 +39,7 @@ button:hover {
 /* Avatar image */
 .imgcontainer {
     text-align: center; /* Align image to the center */
-    margin: 24px 0 0 0; /* top, right, bottom, left */
+    margin: -30px 0 0 0; /* top, right, bottom, left */
 }
 img.avatar {
     width: 30%; /* Image width */
