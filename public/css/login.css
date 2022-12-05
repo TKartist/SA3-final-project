@@ -125,6 +125,200 @@ img.avatar {
 
 
 
+/* ------------------------------------------------------------------- */
+
+/* The main */
+.website_content{
+    width: 65%;
+}
+
+
+/* Outer box */
+.scroll_div{
+    width: 97%;
+    /* height: 80%; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 2px solid red;
+}
+
+
+/*  */
+.cover{
+    position: relative;
+    width: 90%;
+    height: 100%;
+}
+/* Fade-out black gradient on the left of the scrollables */
+.cover::before{
+    position: absolute;
+    content: "";
+    left: 0;
+    top: 0;
+    z-index: 99;
+    height: 100%;
+    width: 150px;
+    background-image: linear-gradient(90deg, black, transparent) ;
+}
+/* Fade-out black gradient on the right of the scrollables */
+.cover::after{
+    position: absolute;
+    content: "";
+    right: -10%;
+    top: 0;
+    z-index: 99;
+    height: 100%;
+    width: 150px;
+    background-image: linear-gradient(-90deg, black, transparent) ;
+}
+
+
+
+.scroll_images{
+    width: 108%;
+    padding-top: 10px;
+    height: auto;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    overflow: auto;
+    position: relative;
+    scroll-behavior: smooth;
+}
+/* .scroll_images::-webkit-scrollbar{
+    -webkit-appearance: none;
+} */
+
+
+
+
+
+.child{
+    min-width: 600px;
+    height: 450px;
+    margin: 1px 10px;
+    cursor: pointer;
+    border: 1px solid white;
+    overflow: hidden;
+}
+
+.child_img{
+    width: 100%;
+    height: 100%;
+}
+
+
+
+
+
+
+.try{
+    margin-top: 50px;
+}
+
+
+
+.playing_modes{
+    display: flex;
+}
+
+
+
+
+
+
+
+
+
+/* ----- SCOREBOARD ----- */
+
+/*  */
+.lboard_section{
+	width: 95%;
+	height: 100%;
+	position: relative;
+	border-radius: 5px;
+}
+
+
+
+/* INSIDE WRAP */
+.lboard_wrap{
+	position: absolute;
+	background: #ffd300;
+	width: 95%;
+	height: 100%;
+	border-radius: 5px;
+    padding: 25px;
+}
+.lboard_mem{
+	display: flex;
+	align-items: center;
+	padding: 15px 0;
+	border-bottom: 1px solid #ffe773;
+}
+.lboard_mem:first-child{
+	padding-top: 0;
+}
+.lboard_mem:last-child{
+	padding-bottom: 0;
+	border-bottom: 0;
+}
+.img{
+	width: 50px;
+}
+.lboard_mem img{
+	display: block;
+	width: 100%;
+}
+.name_bar{
+	margin: 0 20px;
+	width: calc(100% - 150px);
+}
+.name_bar p{
+	color: #3a3d51;
+}
+.name_bar p span{
+	margin-right: 5px;
+}
+.points{
+	width: 100px;
+	color: #3a3d51;
+}
+
+
+
+
+/* BAR CONNECTED TO SCORE */
+.bar_wrap{
+	width: 100%;
+	height: 5px;
+	background: #d5b000;
+	margin-top: 5px;
+	border-radius: 5px;
+	position: relative;
+	overflow: hidden;
+}
+.bar_wrap .inner_bar{
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 5px;
+	background: #fff;
+	border-radius: 5px;
+	border-top-right-radius: 0px;
+	border-bottom-right-radius: 0px;
+}
+
+
+
+
+
+
+
+
+
 
 
 @media screen and (max-width: 650px) {
