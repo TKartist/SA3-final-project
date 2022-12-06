@@ -1,0 +1,11 @@
+h1 {
+    text-align: center;
+}
+
+main {
+    display: grid;
+    grid-template-columns: repeat(8, 65px);
+    grid-template-rows: repeat(8, 65px);
+    margin-left: 32%;
+    margin-top: 5%;
+}
