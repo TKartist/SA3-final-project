@@ -1,0 +1,65 @@
+
+
+<%- include("includes/header") %>
+
+
+<main class="website-content">
+  <div class="inner-box">
+    <div class="imgcontainer">
+      <img src="/static/images/avatar.png" alt="Avatar" class="avatar">
+    </div>
+
+    <!-- Login with username and password -->
+    <div class="container">
+      <form action="/actionpage" method="post">
+        <label for="uname"><b>Username</b></label>
+        <input name="uname" type="text" placeholder="Enter Username" required>
+
+        <label for="password"><b>Password</b></label>
+        <div class="showPassword">
+          <input name="password" type="password" placeholder="Enter Password" id="loginPassword" required>
+          <input type="button" class="showPasswordbtn" id="loginPasswordbtn" value="Show Password" onclick="showPassword('login')"></input>
+        </div>
+          
+        <button type="submit"><b>Login</b></button>
+          
+        <label>
+          <input type="checkbox" checked="checked" name="remember">Remember me</input>
+        </label>
+      </form>
+    </div>
+
+    <!-- Login with social medias -->
+    <div class="container">
+      <a href="https://www.facebook.com/login" target="_blank" class="facebook socialbutton"><i class="fa fa-facebook fa-fw"></i> Login with Facebook</a>
+      <a href="https://twitter.com/i/flow/login" target="_blank" class="twitter socialbutton"><i class="fa fa-twitter fa-fw"></i> Login with Twitter</a>
+      <a href="#" target="_blank" class="google socialbutton"><i class="fa fa-google fa-fw"></i> Login with Google</a>
+    </div>
+
+    <!-- Create new Account -->
+    <div class="container" style="background-color:rgba(255, 255, 255, 0.8)">
+      <button onclick="window.open('/users/new', '_self')" type="button">Create Account</button> 
+      <span id="forgotPassword">Forgot <a href="######">password?</a></span>
+    </div>
+  </div>
+</main>
+
+
+
+
+
+<%- include("includes/navbar") %>
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
