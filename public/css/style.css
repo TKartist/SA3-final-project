@@ -36,7 +36,8 @@ Template v83 21/09/2022, 11:45:55
 }
 
 body {
-  background-color: var(--blunderBlack);
+  background-image:linear-gradient(rgba(182, 184, 194, 0.5),
+  rgba(182, 184, 194, 0.5)), url(/static/images/banner.jpg);
 
 }
 
@@ -75,6 +76,33 @@ body {
   color: var(--blunderBiege);
 
 }
+h3 {
+  color: var(--blunderBlack);
+  text-align: center;
+}
+
+u {
+  color: var(--blunderBiege);
+
+}
+
+h4 {
+  color: var(--blunderBiege);
+  text-align: center;
+}
+h5 {
+  color: var(--blunderBlack);
+  font-size: 50px;
+  text-align: center;
+}
+
+h6{
+  color: var(--blunderBlack);
+  font-size: 30px;
+  text-align: center;
+
+
+}
 
 canvas {
   width: 72%;
@@ -89,40 +117,40 @@ canvas {
   display: inline-flex;
   flex: row;
   padding: 10px 10px;
-  margin-right: auto;
-  margin-left: auto;
+margin-left: auto;
+margin-right: auto;
+align-items: center;
   color: var(--blunderBiege);
 
   letter-spacing: 1px;
 
-  font-size: 8px;
+  font-size: 10px;
   text-align: center;
   border: solid var(--blunderBiege);
   background-color: transparent;
 
 }
 
-/* .login:hover {
-  background-color: var(--blunderBiege);
-  color: #101820ff;
+.website-content-text {
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 85%;
 }
-.register:hover {
-  background-color:var(--blunderBiege);
-  color: var(--blunderBlack);
-} */
+
 /*-------------------------------------------------------*/
 /*--The follwing main body belongs to the browser page--*/
 
 .website-content {
   /* background-color: var(--blunderBiege); */
-  background-image: url(/static/CSS/images/banner.jpg);
   flex: 1 1 auto;
-  box-shadow: 0 0 15px 15px var(--blunderBlack) inset;
-  filter: brightness(90%);
+
 }
 
 .website-container-body {
   display: flex;
+  margin-top: 150px;
+margin-bottom: auto;
 
 
 }
@@ -139,10 +167,7 @@ canvas {
   padding-top: 100px;
 }
 
-h5 {
-  color: var(--blunderBlack);
-  font-size: 30px;
-}
+
 
 .row {
   margin-top: 5px;
@@ -150,16 +175,6 @@ h5 {
   justify-content: space-between;
 }
 
-h3 {
-  color: var(--blunderBlack);
-}
-
-.programs-k1,
-.programs-k2,
-.programs-k3 {
-  border: 1mm ridge var(--blunderBiege);
-
-}
 
 .programs-k1 {
   flex-basis: 30%;
@@ -170,13 +185,8 @@ h3 {
   transition: 1s;
 }
 
-.programs-k1:hover {
-  background-image: url(/static/CSS/images/play.png);
-  border: none;
-}
-
 .programs-k1 {
-  background-image: url(/static/CSS/images/play_banner.png);
+  background-image: url(/static/images/play.png);
   width: 100px;
   height: 300px;
   background-position: center;
@@ -194,14 +204,9 @@ h3 {
   transition: 1s;
 }
 
-.programs-k2:hover {
-  background-image: url(/static/CSS/images/puzzle.png);
-  border: none;
-}
-
 
 .programs-k2 {
-  background-image: url(/static/CSS/images/puzzle_banner.png);
+  background-image: url(/static/images/puzzle.png);
   width: 100px;
   height: 300px;
   background-position: center;
@@ -219,13 +224,10 @@ h3 {
   transition: 1s;
 }
 
-.programs-k3:hover {
-  background-image: url(/static/CSS/images/learn.png);
-  border: none;
-}
+
 
 .programs-k3 {
-  background-image: url(/static/CSS/images/learn_banner.png);
+  background-image: url(/static/images/learn.png);
   width: 100px;
   height: 300px;
   background-position: center;
@@ -292,13 +294,6 @@ h3 {
 
 
 /*-------------------------------------------------------*/
-/* .sidebar-2{
-
-  background-image: url(./images/sidebar2.png);
-  
-  background-position: -300px 150px;
-} */
-
 .sidebar-1,
 .sidebar-2 {
   border: 1mm ridge var(--blunderBiege);
@@ -307,6 +302,8 @@ h3 {
 
 .sidebar-1 {
   order: -1;
+  background-color:var(--blunderBlack);
+  height:min-content;
 
 
 }
@@ -327,7 +324,7 @@ ul li a {
   position: relative;
   display: block;
   padding: 2px 20px;
-  font: 30px Raleway, sans-serif;
+  font: 30px;
   margin-top: 20px;
   margin-left: -30px;
   text-decoration: none;
@@ -344,9 +341,14 @@ ul li a:hover {
   background-size: 100%;
 }
 
-
-
-
+.ask{
+  background-color: var(--blunderBlack);
+  border: 1mm ridge var(--blunderBiege);
+  width: 400px;
+margin-left: auto;
+margin-right: auto;
+align-items: center;
+}
 
 /*-------------------------------------------------------*/
 .sidebar-2 img {
@@ -367,34 +369,6 @@ ul li a:hover {
   padding-left: 20px;
 }
 
-.sidebar-2 ul {
-  max-width: 100%;
-}
-
-.sidebar-2 li {
-  display: flex;
-  padding: 15px 0;
-
-  counter-increment: index;
-  align-items: center;
-}
-
-.sidebar-2 li::before {
-
-
-  font-size: 28px;
-  text-align: right;
-
-  min-width: 70px;
-  padding-right: 15px;
-
-
-}
-
-.sidebar-2 li+li {
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
-}
-
 /*-------------------------------------------------------*/
 footer {
   width: 99%;
@@ -405,19 +379,204 @@ footer {
 
 footer {
   bottom: 0;
-  border: 1mm ridge var(--blunderBiege);
   text-align: center;
 }
 
-footer h4 {
-  padding-top: 15px;
-  padding-bottom: 20px;
-  font-size: 15px;
-}
 
 .icons .fa {
-  padding: 10px;
 
+margin-top: 370px;
   color: var(--blunderBiege);
   cursor: pointer;
+}
+
+
+/* ============================================================================= */
+/* ================================ BROWSE PAGE ================================ */
+/* ============================================================================= */
+
+/* ---------- SCROLLABLE CHALLENGES ---------- *
+
+/*  */
+
+
+/*  */
+.cover{
+  position: relative;
+  width: 500px;
+  height:  460px;
+  /* border: 2px solid blueviolet; */
+}
+/* Fade-out black gradient on the left of the scrollables */
+.cover::before{
+  position: absolute;
+  content: "";
+  left: 0;
+  top: 10px;
+  z-index: 99;
+  height: 100%;
+  width: 150px;
+  background-image: linear-gradient(90deg, black, transparent) ;
+}
+/* Fade-out black gradient on the right of the scrollables */
+.cover::after{
+  position: absolute;
+  content: "";
+  right: -10%;
+  top: 10px;
+  z-index: 99;
+  height: 100%;
+  width: 150px;
+  background-image: linear-gradient(-90deg, black, transparent) ;
+}
+
+/*  */
+.scrolling_images{
+  width: 108%;
+  padding-top: 10px;
+  height: auto;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  overflow: auto;
+  position: relative;
+  scroll-behavior: smooth;
+}
+/* .scroll_images::-webkit-scrollbar{
+  -webkit-appearance: none;
+} */
+
+/*  */
+.scrolling_img_div{
+  min-width: 600px;
+  height: 450px;
+  margin: 1px 10px;
+  cursor: pointer;
+  overflow: hidden;
+  border: 2px solid white;
+}
+.scrolling_img{
+  width: 100%;
+  height: 100%;
+}
+
+
+
+
+
+/* ---------- Separate the various parts of the website ---------- */
+.separe {
+  margin-top: 50px;
+}
+
+
+
+
+
+/* ---------- J ---------- */
+.playing_modes {
+  display: flex;
+}
+
+
+
+
+
+/* ----- SCOREBOARD ----- */
+/*  */
+.outer_board_section {
+width: 95%;
+height: 100%;
+position: relative;
+border-radius: 5px;
+}
+
+/*  */
+.inner_board_section {
+position: absolute;
+background: #ffd300;
+width: 95%;
+height: 115%;
+border-radius: 5px;
+  padding: 25px;
+}
+
+/*  */
+.board_content {
+display: flex;
+align-items: center;
+padding: 15px 0;
+border-bottom: 1px solid #ffe773;
+}
+.board_content:first-child {
+padding-top: 0;
+}
+.board_content:last-child {
+padding-bottom: 0;
+border-bottom: 0;
+}
+.board_content img {
+display: block;
+width: 100%;
+}
+.img {
+width: 50px;
+}
+
+/*  */
+.player {
+margin: 0 20px;
+width: calc(100% - 150px);
+}
+.player p {
+color: #3a3d51;
+}
+.player p span {
+margin-right: 5px;
+}
+
+/* BAR CONNECTED TO SCORE */
+.score_bar_wrap {
+width: 100%;
+height: 5px;
+background: #d5b000;
+margin-top: 5px;
+border-radius: 5px;
+position: relative;
+overflow: hidden;
+}
+.score_bar {
+  width: 95%;
+  background: #fff;
+/* position: absolute;
+top: 0;
+left: 0;
+height: 5px;
+background: #fff;
+border-radius: 5px;
+border-top-right-radius: 0px;
+border-bottom-right-radius: 0px; */
+}
+
+/*  */
+.points {
+width: 100px;
+color: #3a3d51;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* ============================================================================= */
+/* ================================ ___________ ================================ */
+/* ============================================================================= */
+@media screen and (max-width: 650px) {
+
 }
