@@ -149,8 +149,6 @@ align-items: center;
 
 .website-container-body {
   display: flex;
-  margin-top: 150px;
-margin-bottom: auto;
 
 
 }
@@ -303,7 +301,6 @@ margin-bottom: auto;
 .sidebar-1 {
   order: -1;
   background-color:var(--blunderBlack);
-  height:min-content;
 
 
 }
@@ -345,9 +342,9 @@ ul li a:hover {
   background-color: var(--blunderBlack);
   border: 1mm ridge var(--blunderBiege);
   width: 400px;
-margin-left: auto;
-margin-right: auto;
-align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
 }
 
 /*-------------------------------------------------------*/
@@ -370,19 +367,36 @@ align-items: center;
 }
 
 /*-------------------------------------------------------*/
-footer {
+/* footer {
+  display: inline-flex;
+  position: relative;
+  align-items: center;
+  justify-content: left;
+
+  height: 10vh;
+
   width: 99%;
-  position: static;
 
-  background-color: var(--blunderBlack);
+  letter-spacing: 3px;
+  background: var(--blunderBlack);
+  border: 1mm ridge var(--blunderBiege);
+} */
+
+.fixed_footer{
+  width: 99%;
+  height: 100px;
+  background: var(--blunderBlack);
+  position: fixed; left: 0; bottom: 0;
+  border: 1mm ridge var(--blunderBiege);
+  z-index: -100;
 }
-
-footer {
-  bottom: 0;
-  text-align: center;
-}
-
-
+   .fixed_footer p{
+    color: #696969;
+    column-count: 2;
+    column-gap: 50px;
+    font-size: 1em;
+    font-weight: 300;
+  }
 .icons .fa {
 
 margin-top: 370px;
