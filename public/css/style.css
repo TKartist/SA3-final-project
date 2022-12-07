@@ -78,6 +78,7 @@ body {
 h3 {
   color: var(--blunderBlack);
   text-align: center;
+  font-size: 20px;
 }
 
 u {
@@ -121,7 +122,7 @@ canvas {
 
   margin-left: auto;
   margin-right: auto;
-
+width: 80%;
 }
 
 /*-------------------------------------------------------*/
@@ -181,7 +182,7 @@ canvas {
 
 /*--The follwing main body belongs to the browser page--*/
 
-.website-content .top {
+.top {
 
   display: block;
   margin-left: auto;
@@ -225,25 +226,56 @@ canvas {
 
 }
 
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #ddd;}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {display: block;}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .start{background-color: #3e8e41;}
 
 /*-------------------------------------------------------*/
 .sidebar-1,
 .sidebar-2 {
-  border: 1mm ridge var(--blunderBiege);
+
   width: 200px;
 
 }
 
 .sidebar-1 {
+  border: 1mm ridge var(--blunderBiege);
   order: -1;
   background-color:var(--blunderBlack);
 
 
 }
-ul li img{
-  width: 80px;
-  height: 80px;
-
+ul{
+  position: fixed;
 }
 ul li {
   background-image:linear-gradient(rgba(160, 164, 176, 0.5),
@@ -290,9 +322,8 @@ a:link {
 /*-------------------------------------------------------*/
 
 .sidebar-2 {
-  background-color:var(--blunderBlack);
+  background-color:transparent;
   text-align: center;
-
 
 }
 .step1{
@@ -323,14 +354,12 @@ a:link {
 /*-------------------------------------------------------*/
 footer {
   display: inline-flex;
-  position: relative;
   align-items: center;
   justify-content: left;
 
-height: fit-content;
 
   width: 99%;
-
+ height: 100px;
   letter-spacing: 3px;
   background: var(--blunderBlack);
   border: 1mm ridge var(--blunderBiege);
@@ -350,22 +379,21 @@ height: fit-content;
 	text-align: center;
 	position: relative;
 	width: 99%;
-	height: 700px;
+	height: 800px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	overflow: hidden;
-	border-radius:10px;
 
 
 }
 #sociallocker-overlay {
-	background-color: var(--blunderBlack);
+  background-image:linear-gradient(rgba(160, 164, 176, 0.5),
+  rgba(160, 164, 176, 0.5)), url(/static/images/website/banner.jpg);
 	font-size: 30px;
 	font-weight: bold;
-	color: var(--blunderBiege);
-	transition: all 0.2s ease;
-  border: 1mm ridge var(--blunderBiege);
+	color: var(--blunderBlack);
+	transition: all 0.1s ease;
 }
 .lock{
   width: 400px;
@@ -374,11 +402,11 @@ height: fit-content;
 }
 #sociallocker:hover #sociallocker-overlay {
 	top: -120%;
-	transition: all 0.2s linear;
+	transition: all 0.1s linear;
 }
 #sociallocker:hover #sociallocker-content {
 	top: 100%;
-	transition: all 0.2s linear;
+	transition: all 0.1s linear;
 }
 
 #sociallocker-overlay,
@@ -397,114 +425,21 @@ height: fit-content;
 }
 
 
-/* ============================================================================= */
-/* ================================ BROWSE PAGE ================================ */
-/* ============================================================================= */
-
-/* ---------- SCROLLABLE CHALLENGES ---------- *
-
-/*  */
-
-
-/*  */
-.cover{
-  position: relative;
-  width: 500px;
-  height:  460px;
-  /* border: 2px solid blueviolet; */
-}
-/* Fade-out black gradient on the left of the scrollables */
-.cover::before{
-  position: absolute;
-  content: "";
-  left: 0;
-  top: 10px;
-  z-index: 99;
-  height: 100%;
-  width: 150px;
-  background-image: linear-gradient(90deg, black, transparent) ;
-}
-/* Fade-out black gradient on the right of the scrollables */
-.cover::after{
-  position: absolute;
-  content: "";
-  right: -10%;
-  top: 10px;
-  z-index: 99;
-  height: 100%;
-  width: 150px;
-  background-image: linear-gradient(-90deg, black, transparent) ;
-}
-
-/*  */
-.scrolling_images{
-  width: 108%;
-  padding-top: 10px;
-  height: auto;
-  display: flex;
-  justify-content: left;
-  align-items: center;
-  overflow: auto;
-  position: relative;
-  scroll-behavior: smooth;
-}
-/* .scroll_images::-webkit-scrollbar{
-  -webkit-appearance: none;
-} */
-
-/*  */
-.scrolling_img_div{
-  min-width: 600px;
-  height: 450px;
-  margin: 1px 10px;
-  cursor: pointer;
-  overflow: hidden;
-  border: 2px solid white;
-}
-.scrolling_img{
-  width: 100%;
-  height: 100%;
-}
-
-
-
-
-
 /* ---------- Separate the various parts of the website ---------- */
-.separe {
-  margin-top: 50px;
-}
-
-
-
-
-
-/* ---------- J ---------- */
-.playing_modes {
-  display: flex;
-}
-
-
-
 
 
 /* ----- SCOREBOARD ----- */
 /*  */
-.outer_board_section {
-width: 95%;
-height: 100%;
-position: relative;
-border-radius: 5px;
-}
+
 
 /*  */
 .inner_board_section {
-position: absolute;
-background: #ffd300;
-width: 95%;
-height: 115%;
-border-radius: 5px;
-  padding: 25px;
+background: transparent;
+margin-left: auto;
+margin-right: auto;
+align-items: center;
+height: auto;
+
 }
 
 /*  */
@@ -512,7 +447,10 @@ border-radius: 5px;
 display: flex;
 align-items: center;
 padding: 15px 0;
-border-bottom: 1px solid #ffe773;
+border-bottom: 1px transparent;
+background-color: transparent;
+backdrop-filter: blur(2px);
+border: 1mm ridge var(--blunderBlack);
 }
 .board_content:first-child {
 padding-top: 0;
@@ -526,7 +464,7 @@ display: block;
 width: 100%;
 }
 .img {
-width: 50px;
+width: 100px;
 }
 
 /*  */
@@ -545,7 +483,7 @@ margin-right: 5px;
 .score_bar_wrap {
 width: 100%;
 height: 5px;
-background: #d5b000;
+background: transparent;
 margin-top: 5px;
 border-radius: 5px;
 position: relative;

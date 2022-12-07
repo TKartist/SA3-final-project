@@ -16,7 +16,12 @@
     <h1>Blunder</h1>
     <a href="./index.html"><img src="static/images/website/logo.png" /></a>
     <h2>.com </h2>
-    <canvas> </canvas>
+    <canvas></canvas>
+
+    <div class=profile>
+      <img class="" src="static/images/website/profile.png" />
+      <!-- <h1></h1>                                                         //add here  -->
+    </div>
   </header>
 
   <section class="website-container-body">
@@ -28,14 +33,14 @@
         <h3> Welcome to the Blunder.com, you have found yourself on the new chess platform which would teach you how to
           blunder in chess. In order to blunder with style, this website offerrs three modes to play. You can learn
           chess from scratch, test yourseklf with challenging chess problems, and blunder against your friends. </h3>
-        <h3> Please login or register before procceding. Good luck and remember to protect the King <h3>
-            </p>
+
+        </p>
       </section>
 
 
       <div id="sociallocker">
         <div id="sociallocker-links">
-          <div class="programs-k">
+          <div class="programs-l">
             <a href="./index.html"><img class="width" src="static/images/website/login.png" /></a>
             <a href=""><button class="start">
                 <h4>Login</h4>
@@ -58,10 +63,17 @@
 
                 <a href="./index.html"><img class="top" src="static/images/website/play.png" /></a>
                 <a href="./index.html"><img class="width" src="static/images/website/play_banner.png" /></a>
-                <button class="start">
-                  <h4><a href="/users/login">Play</a></h4>
-                </button>
 
+                <div class="dropdown">
+                  <button class="start">
+                    <h4>Play</h4>
+                  </button>
+                  <div class="dropdown-content">
+                    <a href="#">Link 1</a>
+                    <a href="#">Link 2</a>
+                    <a href="#">Link 3</a>
+                  </div>
+                </div>
               </div>
               <div class="programs-k">
 
@@ -80,14 +92,20 @@
                 </button>
               </div>
             </div>
+
+
           </section>
+
+
         </div>
 
         <div id="sociallocker-overlay"><img class="lock" src="static/images/website/lock.png" />
-          <h4>Unlock content with Register or Login</h4>
+          Unlock content with Register or Login
         </div>
 
       </div>
+
+      
       <script>
         (function () {
           var sl = document.querySelector("#sociallocker");
@@ -104,7 +122,7 @@
                   slc.innerHTML = old_slc_html;
                   document.querySelector("#sociallocker-links").style.display = "none";
 
-                  document.querySelector(".programs-k").style.display = "none";
+                  document.querySelector(".programs-l").style.display = "none";
 
                   document.querySelector("#sociallocker-overlay").style.display = "none";
                   document.querySelector("#sociallocker-content").style.top = "0";
@@ -115,23 +133,40 @@
           });
         })();
       </script>
-
-      <!-- <h3> Login or Register to play</h3>
-        <form class="game-preview-choose">
-          <button class="start"><h4>Login</h4></button>
-          <button class="start"><h4>Register</h4></button>
-        </form> -->
-
-      <footer>
-
-        <div class="icons">
-          <a href="https://business.facebook.com/OfficialTHENX/"><i class="fa fa-facebook"></i></a>
-          <a href="https://www.instagram.com/thenx/?hl=en"><i class="fa fa-instagram"></i></a>
-          <a href="https://twitter.com/officialthenx?lang=en"><i class="fa fa-twitter"></i></a>
-          <a href="https://www.youtube.com/channel/UCqjwF8rxRsotnojGl4gM0Zw"><i class="fa fa-youtube"></i></a>
-        </div>
-      </footer>
+   
+        <section class="inner_board_section">
+          <h5>  Leaderboard </h5>
+          <% for (let i=0; i < 10; i++) { %>
+            <div class="board_content">
+              <div class="img">
+                <img src="/static/images/website/profile1.png" alt="picture_1">
+              </div>
+              <div class="player">
+                <p><span> <h3></h3></span> <h3>jorgexcc</h3></p>
+                <div class="score_bar_wrap">
+                  <div class="score_bar"></div>
+                </div>
+              </div>
+              <div class="points">
+                <p><span> <h3></h3></span> <h3>300</h3></p>
+              </div>
+            </div>
+            <% } %>
+      
+            <footer>
+              <div class="icons">
+                <a href="https://business.facebook.com/OfficialTHENX/"><i class="fa fa-facebook"></i></a>
+                <a href="https://www.instagram.com/thenx/?hl=en"><i class="fa fa-instagram"></i></a>
+                <a href="https://twitter.com/officialthenx?lang=en"><i class="fa fa-twitter"></i></a>
+                <a href="https://www.youtube.com/channel/UCqjwF8rxRsotnojGl4gM0Zw"><i class="fa fa-youtube"></i></a>
+              </div>
+            </footer>
+        </section>
+        
+    
+      
     </main>
+
 
 
     <sidebar class="sidebar-1 w-sidebar">
@@ -141,23 +176,24 @@
         <li><a href="#">Learn</a></li>
         <li><a href="#">About</a></li>
       </ul>
-
-
     </sidebar>
 
     <sidebar class="sidebar-2 w-sidebar">
 
-    </sidebar>
 
+
+
+  </sidebar>
 
   </section>
-
-
-
-
 
   <script src="/static/js/background.js"></script>
 
 </body>
+
+
+
+
+
 
 </html>
