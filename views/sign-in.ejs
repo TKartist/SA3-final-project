@@ -2,7 +2,7 @@
 
 <main class="website-content">
     <div class="inner-box" id="inner-box">
-        <form action="/actionpage" method="post" name="userCreateForm">
+        <form name="userCreateForm" id="reg-form">
             <div class="container">
                 <h1>Sign Up</h1>
                 <hr>
@@ -11,14 +11,14 @@
                 <input name="filepic" type="file" >
 
                 <label for="email"><b>Email</b></label>
-                <input name="email" type="text" placeholder="Enter Email" onclick="resetButton()" maxlength="30" required>
+                <input name="email" autocomplete="off" type="text" placeholder="Enter Email" id="email" onclick="resetButton()" maxlength="30" required>
 
                 <label for="username"><b>Username</b></label>
-                <input name="username" type="text" placeholder="Enter Username" onclick="resetButton()" required>
+                <input name="username" autocomplete="off" type="text" placeholder="Enter Username" id="username" onclick="resetButton()" required>
 
                 <label for="password"><b>Password</b></label>
                 <div class="showPassword">
-                    <input name="password" type="password" placeholder="Enter Password" id="createPassword" onclick="resetButton()" minlength="8" required>
+                    <input name="password" autocomplete="off" type="password" placeholder="Enter Password" id="createPassword" onclick="resetButton()" minlength="8" required>
                     <input type="button" value="Show Password" class="showPasswordbtn" id="createPasswordbtn" onclick="showPassword('create')" ></input>
                 </div>
 
@@ -39,8 +39,8 @@
     </div>
 </main>
 
-
-
+<script src="/static/js/users_actions/login.js"></script>
+<script src="/static/js/users_actions/signin.js"></script>
 
 
 <%- include("includes/navbar") %>
