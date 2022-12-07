@@ -29,7 +29,6 @@ Template v83 21/09/2022, 11:45:55
   font-family: 'Gotham', sans-serif;
   overscroll-behavior: none;
   color: var(--blunderBiege);
-
   transition: 250ms;
 
   margin: 5px;
@@ -332,6 +331,10 @@ ul li a {
   -webkit-background-clip: text;
   background-clip: text;
   transition: 0.5s linear;
+}
+
+a:link {
+  text-decoration: none;
 }
 
 ul li a:hover {
