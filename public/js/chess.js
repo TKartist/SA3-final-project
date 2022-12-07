@@ -17,8 +17,13 @@ const br = "blackRook";
 const wr = "whiteRook";
 const em = "empty";
 
+//I am raging fire gay - by Cristiano Masutti
+//Burn the niggers and maybe jews I'm neutral and I hate Kanye - by Cristiano Masutti
+
 let atk = "white";
 let opp = "black";
+
+let stage = 0, start, end;
 
 function initBoard() {
     for (let i = 1; i < 9; i++) {
@@ -28,7 +33,7 @@ function initBoard() {
             let tile = document.createElement("button");
             tile.setAttribute('id', tileID);
             if (tileInfo.get(tileID) !== em) {
-                styleAttribute += "background: url(./CSS/chesspieces/" + tileInfo.get(tileID) + ".png); background-repeat: no-repeat; ";
+                styleAttribute += "background: url(./images/chesspieces/" + tileInfo.get(tileID) + ".png); background-repeat: no-repeat; ";
             }
             if ((i + j) % 2 === 1) {
                 styleAttribute += "background-color: #003C00";
@@ -39,7 +44,9 @@ function initBoard() {
             document.querySelector("main").appendChild(tile);
         }
     }
-    enableAtk();
+    document.querySelectorAll("button").forEach(tile => {
+        tile.addEventListener("click", choose);
+    });
 }
 
 function board() {
@@ -49,7 +56,7 @@ function board() {
             let tileID = "" + i + j;
             let tile = document.getElementById(tileID);
             if (tileInfo.get(tileID) !== em) {
-                styleAttribute += "background: url(chesspieces/" + tileInfo.get(tileID) + ".png); background-repeat: no-repeat; ";
+                styleAttribute += "background: url(./images/chesspieces/" + tileInfo.get(tileID) + ".png); background-repeat: no-repeat; ";
             }
             if ((i + j) % 2 === 1) {
                 styleAttribute += "background-color: #003C00";
@@ -59,7 +66,6 @@ function board() {
             tile.setAttribute('style', styleAttribute);
         }
     }
-    enableAtk();
 }
 
 function initPos() {
@@ -98,73 +104,40 @@ function initPos() {
     initBoard();
 }
 
-function enableAtk() {
-    document.querySelectorAll("button").forEach(btn => {
-        let ID = btn.id;
-        let piece = tileInfo.get(ID);
-        if (tileInfo.get(ID).startsWith(atk)) {
-            btn.addEventListener("click", event => {
-                moveTo(ID);
-                if (canMove.length !== 0) {
-                    canMove.forEach(nextID => {
-                        console.log(nextID);
-                        document.getElementById(nextID).addEventListener("click", e => {
-                            tileInfo.set(ID, em);
-                            tileInfo.set(nextID, piece);
-                            switchAtk();
-                            board();
-                        })
-                    })
-                }
-            })
+function choose(event) {
+    let eventID = event.target.id;
+    let selected = tileInfo.get(eventID);
+    if (stage === 0) {
+        if (selected.includes(atk)) {
+            stage = 1;
+            start = eventID;
         }
-    })
-}
-
-function moveTo(ID) {
-    let pos = parseInt(ID);
-    let y = pos % 10;
-    let x = Math.floor(pos / 10);
-    let piece = tileInfo.get(ID);
-    if (piece.includes("Pawn")) {
-        pawnAct(ID, x, y);
-    }
-}
-
-function pawnAct(ID, x, y) {
-    let piece = tileInfo.get(ID);
-    canMove = [];
-    let nextX;
-    if (piece.startsWith("white")) {
-        nextX = x + 1;
-    } else {
-        nextX = x - 1;
-    }
-    for (let i = -1; i <= 1; i++) {
-        let nextY = y + i;
-        if (nextY > 0 && nextY < 9) {
-            let nextID = "" + nextX + nextY;
-            if (i !== 0) {
-                if (tileInfo.get(nextID).startsWith(opp)) {
-                    canMove.push(nextID);
-                }
-            } else {
-                if (tileInfo.get(nextID) === em) {
-                    canMove.push(nextID);
-                }
-            }
+    } else if (stage === 1) {
+        if (selected.includes(atk)) {
+            stage = 1;
+            start = eventID;
+        } else {
+            end = eventID;
+            console.log(start, end);
+            stage = 0;
+            executeMove();
         }
     }
-    console.log(canMove);
 }
 
-function switchAtk() {
-    if (atk === "white") {
-        atk = "black";
-        opp = "white";
-    } else {
-        atk = "white";
-        opp = "black";
+
+function executeMove() {
+    if (true) {
+        tileInfo.set(end, tileInfo.get(start));
+        tileInfo.set(start, em);
+        board();
+        turn();
     }
+}
+
+function turn() {
+    let tmp = atk;
+    atk = opp;
+    opp = tmp;
 }
 

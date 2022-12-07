@@ -3,6 +3,7 @@
 <%- include("includes/header") %>
 
 
+<<<<<<< HEAD
 <main>
   <div class="box">
     <div class="inner-box">
@@ -113,6 +114,30 @@
           <img src="/static/images/website/login_1v1.jpg" class="image img-2" alt="" />
           <img src="/static/images/website/login_1v1.jpg" class="image img-3" alt="" />
         </div>
+=======
+<main class="website-content">
+  <div class="inner-box">
+    <div class="imgcontainer">
+      <img src="/static/images/website/avatar.png" alt="Avatar" class="avatar">
+    </div>
+
+    <!-- Login with username and password -->
+    <div class="container">
+      <form id="login">
+        <label for="uname"><b>Username</b></label>
+        <input name="uname" type="text" placeholder="Enter Username" id="username" required>
+
+        <label for="password"><b>Password</b></label>
+        <div class="showPassword">
+          <input name="password" type="password" placeholder="Enter Password" id="loginPassword" required>
+          <input type="button" class="showPasswordbtn" id="loginPasswordbtn" value="Show Password" onclick="showPassword('login')"></input>
+        </div>
+          
+        <button type="submit"><b>Login</b></button>
+          
+      </form>
+    </div>
+>>>>>>> bc9b691a068b8ee656dab7f434b16b8bbab6aa5e
 
         <div class="text-slider">
           <div class="text-wrap">
@@ -134,7 +159,13 @@
   </div>
 </main>
 
+<<<<<<< HEAD
 <!-- Javascript file -->
+=======
+<script src="/static/js/users_actions/general.js"></script>
+<script src="/static/js/users_actions/login.js"></script>
+
+>>>>>>> bc9b691a068b8ee656dab7f434b16b8bbab6aa5e
 
 <script src="/static/js/login-form.js"></script>
 
