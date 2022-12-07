@@ -48,7 +48,7 @@ router.post('/login', async(req, res)=> {
 })
 
 router.get('/new', function(req, res, next) {
-  res.render('sign-in', {});
+  res.render('sign-up', {});
 })
 
 router.post('/new', async(req, res)=> {
