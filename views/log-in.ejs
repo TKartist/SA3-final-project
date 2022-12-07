@@ -3,52 +3,142 @@
 <%- include("includes/header") %>
 
 
-<main class="website-content">
-  <div class="inner-box">
-    <div class="imgcontainer">
-      <img src="/static/images/website/avatar.png" alt="Avatar" class="avatar">
-    </div>
+<main>
+  <div class="box">
+    <div class="inner-box">
+      <div class="forms-wrap">
+        <form action="index.html" autocomplete="off" class="sign-in-form">
+          <div class="logo">
+            <img src="/static/images/website/logo.png" alt="easyclass" />
+            <h4>WEBSITE BAME</h4>
+          </div>
 
-    <!-- Login with username and password -->
-    <div class="container">
-      <form action="/actionpage" method="post">
-        <label for="uname"><b>Username</b></label>
-        <input name="uname" type="text" placeholder="Enter Username" required>
+          <div class="heading">
+            <h2>Welcome Back</h2>
+            <h6>Not registred yet?</h6>
+            <a href="#" class="toggle">Sign up</a>
+          </div>
 
-        <label for="password"><b>Password</b></label>
-        <div class="showPassword">
-          <input name="password" type="password" placeholder="Enter Password" id="loginPassword" required>
-          <input type="button" class="showPasswordbtn" id="loginPasswordbtn" value="Show Password" onclick="showPassword('login')"></input>
+          <div class="actual-form">
+            <div class="input-wrap">
+              <input
+                type="text"
+                minlength="4"
+                class="input-field"
+                autocomplete="off"
+                required
+              />
+              <label>Name</label>
+            </div>
+
+            <div class="input-wrap">
+              <input
+                type="password"
+                minlength="4"
+                class="input-field"
+                autocomplete="off"
+                required
+              />
+              <label>Password</label>
+            </div>
+
+            <input type="submit" value="Login" class="sign-btn" />
+
+            <p class="text">
+              Forgotten your password or you login datails?
+              <a href="#">Get help</a> signing in
+            </p>
+          </div>
+        </form>
+
+        <form action="index.html" autocomplete="off" class="sign-up-form">
+          <div class="logo">
+            <img src="./img/logo.png" alt="easyclass" />
+            <h4>easyclass</h4>
+          </div>
+
+          <div class="heading">
+            <h2>Get Started</h2>
+            <h6>Already have an account?</h6>
+            <a href="#" class="toggle">Sign in</a>
+          </div>
+
+          <div class="actual-form">
+            <div class="input-wrap">
+              <input
+                type="text"
+                minlength="4"
+                class="input-field"
+                autocomplete="off"
+                required
+              />
+              <label>Name</label>
+            </div>
+
+            <div class="input-wrap">
+              <input
+                type="email"
+                class="input-field"
+                autocomplete="off"
+                required
+              />
+              <label>Email</label>
+            </div>
+
+            <div class="input-wrap">
+              <input
+                type="password"
+                minlength="4"
+                class="input-field"
+                autocomplete="off"
+                required
+              />
+              <label>Password</label>
+            </div>
+
+            <input type="submit" value="Sign Up" class="sign-btn" />
+
+            <p class="text">
+              By signing up, I agree to the
+              <a href="#">Terms of Services</a> and
+              <a href="#">Privacy Policy</a>
+            </p>
+          </div>
+        </form>
+      </div>
+
+      <div class="carousel">
+        <div class="images-wrapper">
+          <img src="/static/images/website/login_1v1.jpg" class="image img-1 show" alt="" />
+          <img src="/static/images/website/login_1v1.jpg" class="image img-2" alt="" />
+          <img src="/static/images/website/login_1v1.jpg" class="image img-3" alt="" />
         </div>
-          
-        <button type="submit"><b>Login</b></button>
-          
-        <label>
-          <input type="checkbox" checked="checked" name="remember">Remember me</input>
-        </label>
-      </form>
-    </div>
 
-    <!-- Login with social medias -->
-    <div class="container">
-      <a href="https://www.facebook.com/login" target="_blank" class="facebook socialbutton"><i class="fa fa-facebook fa-fw"></i> Login with Facebook</a>
-      <a href="https://twitter.com/i/flow/login" target="_blank" class="twitter socialbutton"><i class="fa fa-twitter fa-fw"></i> Login with Twitter</a>
-      <a href="#" target="_blank" class="google socialbutton"><i class="fa fa-google fa-fw"></i> Login with Google</a>
-    </div>
+        <div class="text-slider">
+          <div class="text-wrap">
+            <div class="text-group">
+              <h2>Play 1v1</h2>
+              <h2>Challenge yourself</h2>
+              <h2>Learn how to play</h2>
+            </div>
+          </div>
 
-    <!-- Create new Account -->
-    <div class="container" style="background-color:rgba(255, 255, 255, 0.8)">
-      <button onclick="window.open('/users/new', '_self')" type="button">Create Account</button> 
-      <span id="forgotPassword">Forgot <a href="######">password?</a></span>
+          <div class="bullets">
+            <span class="active" data-value="1"></span>
+            <span data-value="2"></span>
+            <span data-value="3"></span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </main>
 
-<script src="/static/js/users_actions/login.js"></script>
+<!-- Javascript file -->
 
+<script src="/static/js/login-form.js"></script>
 
-
-<%- include("includes/navbar") %>
+<!-- <%- include("includes/navbar") %> -->
 
 
 
