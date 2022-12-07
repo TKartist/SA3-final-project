@@ -49,7 +49,7 @@ function board() {
             let tileID = "" + i + j;
             let tile = document.getElementById(tileID);
             if (tileInfo.get(tileID) !== em) {
-                styleAttribute += "background: url(chesspieces/" + tileInfo.get(tileID) + ".png); background-repeat: no-repeat; ";
+                styleAttribute += "background: url(./CSS/chesspieces/" + tileInfo.get(tileID) + ".png); background-repeat: no-repeat; ";
             }
             if ((i + j) % 2 === 1) {
                 styleAttribute += "background-color: #003C00";
