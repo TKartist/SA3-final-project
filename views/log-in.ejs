@@ -3,12 +3,11 @@
 <%- include("includes/header") %>
 
 
-<<<<<<< HEAD
 <main>
   <div class="box">
     <div class="inner-box">
       <div class="forms-wrap">
-        <form action="index.html" autocomplete="off" class="sign-in-form">
+        <form id="login" action="index.html" autocomplete="off" class="sign-in-form">
           <div class="logo">
             <img src="/static/images/website/logo.png" alt="easyclass" />
             <h4>WEBSITE BAME</h4>
@@ -17,12 +16,13 @@
           <div class="heading">
             <h2>Welcome Back</h2>
             <h6>Not registred yet?</h6>
-            <a href="#" class="toggle">Sign up</a>
+            <a href="/users/new" class="toggle">Sign up</a>
           </div>
 
           <div class="actual-form">
             <div class="input-wrap">
               <input
+              id="username"
                 type="text"
                 minlength="4"
                 class="input-field"
@@ -34,6 +34,7 @@
 
             <div class="input-wrap">
               <input
+              id="loginPassword"
                 type="password"
                 minlength="4"
                 class="input-field"
@@ -52,60 +53,6 @@
           </div>
         </form>
 
-        <form action="index.html" autocomplete="off" class="sign-up-form">
-          <div class="logo">
-            <img src="./img/logo.png" alt="easyclass" />
-            <h4>easyclass</h4>
-          </div>
-
-          <div class="heading">
-            <h2>Get Started</h2>
-            <h6>Already have an account?</h6>
-            <a href="#" class="toggle">Sign in</a>
-          </div>
-
-          <div class="actual-form">
-            <div class="input-wrap">
-              <input
-                type="text"
-                minlength="4"
-                class="input-field"
-                autocomplete="off"
-                required
-              />
-              <label>Name</label>
-            </div>
-
-            <div class="input-wrap">
-              <input
-                type="email"
-                class="input-field"
-                autocomplete="off"
-                required
-              />
-              <label>Email</label>
-            </div>
-
-            <div class="input-wrap">
-              <input
-                type="password"
-                minlength="4"
-                class="input-field"
-                autocomplete="off"
-                required
-              />
-              <label>Password</label>
-            </div>
-
-            <input type="submit" value="Sign Up" class="sign-btn" />
-
-            <p class="text">
-              By signing up, I agree to the
-              <a href="#">Terms of Services</a> and
-              <a href="#">Privacy Policy</a>
-            </p>
-          </div>
-        </form>
       </div>
 
       <div class="carousel">
@@ -114,30 +61,6 @@
           <img src="/static/images/website/login_1v1.jpg" class="image img-2" alt="" />
           <img src="/static/images/website/login_1v1.jpg" class="image img-3" alt="" />
         </div>
-=======
-<main class="website-content">
-  <div class="inner-box">
-    <div class="imgcontainer">
-      <img src="/static/images/website/avatar.png" alt="Avatar" class="avatar">
-    </div>
-
-    <!-- Login with username and password -->
-    <div class="container">
-      <form id="login">
-        <label for="uname"><b>Username</b></label>
-        <input name="uname" type="text" placeholder="Enter Username" id="username" required>
-
-        <label for="password"><b>Password</b></label>
-        <div class="showPassword">
-          <input name="password" type="password" placeholder="Enter Password" id="loginPassword" required>
-          <input type="button" class="showPasswordbtn" id="loginPasswordbtn" value="Show Password" onclick="showPassword('login')"></input>
-        </div>
-          
-        <button type="submit"><b>Login</b></button>
-          
-      </form>
-    </div>
->>>>>>> bc9b691a068b8ee656dab7f434b16b8bbab6aa5e
 
         <div class="text-slider">
           <div class="text-wrap">
@@ -159,13 +82,9 @@
   </div>
 </main>
 
-<<<<<<< HEAD
 <!-- Javascript file -->
-=======
-<script src="/static/js/users_actions/general.js"></script>
 <script src="/static/js/users_actions/login.js"></script>
 
->>>>>>> bc9b691a068b8ee656dab7f434b16b8bbab6aa5e
 
 <script src="/static/js/login-form.js"></script>
 
