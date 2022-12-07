@@ -15,12 +15,8 @@ var model = require ('../models');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+  res.redirect('/');
 });
-
-router.get('/login', function(req, res, next) {
-  res.render('log-in', {});
-})
 
 router.get('/new', function(req, res, next) {
   res.render('sign-in', {});
@@ -30,7 +26,6 @@ router.post('/new', async(req, res)=> {
   console.log(req.body);
 
   //Hashing the password == algorithm bcrypt
-
   const {email, username, password} = req.body;
 
   //check email
@@ -39,13 +34,11 @@ router.post('/new', async(req, res)=> {
   }
  
   //check username
-
   if(!username || typeof username !== 'string'){
     return req.json({status: 'error',  error: 'Invalid Username'})
   }
 
   //check password
-
   if(!password || typeof password !== 'string'){
     return req.json({status: 'error',  error: 'Invalid Password'})
   }
@@ -75,8 +68,8 @@ router.post('/new', async(req, res)=> {
   res.json({status: 'ok'});
 })
 
-router.get('/browse', function(req, res, next) {
-  res.render('browse', {});
+router.get('/login', function(req, res, next) {
+  res.render('log-in', {});
 })
 
 module.exports = router;
