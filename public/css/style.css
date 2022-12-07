@@ -260,14 +260,10 @@ width: 80%;
 .dropdown:hover .start{background-color: #3e8e41;}
 
 /*-------------------------------------------------------*/
-.sidebar-1,
-.sidebar-2 {
 
-  width: 200px;
-
-}
 
 .sidebar-1 {
+  width: 200px;
   border: 1mm ridge var(--blunderBiege);
   order: -1;
   background-color:var(--blunderBlack);
@@ -379,7 +375,7 @@ footer {
 	text-align: center;
 	position: relative;
 	width: 99%;
-	height: 800px;
+	height: 900px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -447,9 +443,8 @@ height: auto;
 display: flex;
 align-items: center;
 padding: 15px 0;
-border-bottom: 1px transparent;
 background-color: transparent;
-backdrop-filter: blur(2px);
+backdrop-filter: blur(1px);
 border: 1mm ridge var(--blunderBlack);
 }
 .board_content:first-child {
@@ -457,7 +452,6 @@ padding-top: 0;
 }
 .board_content:last-child {
 padding-bottom: 0;
-border-bottom: 0;
 }
 .board_content img {
 display: block;
