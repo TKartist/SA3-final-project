@@ -9,11 +9,11 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/login', function(req, res, next) {
-  res.render('login', {});
+  res.render('log-in', {});
 })
 
 router.get('/new', function(req, res, next) {
-  res.render('createUser', {});
+  res.render('sign-in', {});
 })
 
 router.get('/browse', function(req, res, next) {

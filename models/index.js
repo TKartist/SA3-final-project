@@ -7,6 +7,8 @@ const db_name = 'final-project';
 
 const client = new MongoClient(mongodb_uri);
 
+const collection_name = ['data-users', 'moves'];
+
 const model = {};
 
 console.log("Connecting to mongodb server");
@@ -16,7 +18,9 @@ client
   .then(async client => {
     console.log("Connected to mongodb server" + mongodb_uri);
     model.db = client.db(db_name);
-    model.users = model.db.collection('users');
+    collection_name.forEach(c=> {
+      model[c] =  model.db.collection(c);
+    }) 
   })
   .catch(err => console.error(err));
 

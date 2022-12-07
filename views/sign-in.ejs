@@ -1,0 +1,46 @@
+<%- include("includes/header") %>
+
+<main class="website-content">
+    <div class="inner-box" id="inner-box">
+        <form action="/actionpage" method="post" name="userCreateForm">
+            <div class="container">
+                <h1>Sign Up</h1>
+                <hr>
+
+                <label for="filepic"><b>Profile Picture</b></label>
+                <input name="filepic" type="file" >
+
+                <label for="email"><b>Email</b></label>
+                <input name="email" type="text" placeholder="Enter Email" onclick="resetButton()" maxlength="30" required>
+
+                <label for="username"><b>Username</b></label>
+                <input name="username" type="text" placeholder="Enter Username" onclick="resetButton()" required>
+
+                <label for="password"><b>Password</b></label>
+                <div class="showPassword">
+                    <input name="password" type="password" placeholder="Enter Password" id="createPassword" onclick="resetButton()" minlength="8" required>
+                    <input type="button" value="Show Password" class="showPasswordbtn" id="createPasswordbtn" onclick="showPassword('create')" ></input>
+                </div>
+
+                <label for="password-repeat"><b>Repeat Password</b></label>
+                <div class="showPassword">
+                    <input name="password-repeat" type="password" placeholder="Repeat Password" id="createPassword2" onclick="resetButton()" minlength="8" required>
+                </div>
+
+                <p>By creating an account you agree to our <a href="#">Terms & Privacy</a></p>
+            </div>
+
+            <div class="container">
+                <button id="createUserbtn" type="submit" onmouseover="mouseOver()"><b>Sign Up</b></button>
+                <button type="button" style="background-color: red;"><b>Cancel</b></button>
+            </div>
+            </div>
+        </form>
+    </div>
+</main>
+
+
+
+
+
+<%- include("includes/navbar") %>

@@ -3,7 +3,7 @@
     <title>BayrGeo INDEX</title>
     <meta name="author" content="Georgy Batyrev" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/static/css/style.css" />
+    <link rel="stylesheet" href="./static/css/style.css" />
     <link href="https://fonts.cdnfonts.com/css/gotham" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
@@ -13,40 +13,52 @@
       
     
       <h1>Blunder</h1> 
-      <a href="./index.html"><img src="/static/CSS/images/logo.png" /></a>
+      <a href="./index.html"><img src="static/images/website/logo.png" /></a>
       <h2>.com </h2>
       <canvas>  </canvas>
-      <button class="login"><h4>Login</h4></button>
-      <button class="register"><h4>Register</h4></button>
+      <button class="login"><h4><a href="/users/login">Login</a></h4></button>
+      <button class="register"><a href="/users/new">Register</a></button>
     </header>
 
     <section class="website-container-body">
       <main class="website-content">
+        <h5> Game Modes</h5>
+        <section class="website-content-text">
+      
+          <p>
+            <h3> Welcome to the Blunder.com, you have found yourself on the new chess platform which would teach you how to blunder in chess. In order to blunder with style, this website offers its user unique experience to learn how to play chess, test themselves 
+              with challenging chess problems, and enable to blunder against their friends.  </h3>
+              
+              
+          </p>
+        </section>
         <section class="programs">
-          <h5> Game Modes</h5>
-          <h3> Login or Register to play</h3>
+  
                   <div class="row">
                         <div class="programs-k1">
-                         
+
                  
                          </div>
                          <div class="programs-k2">
-                     
+
                              
                          </div>
                           <div class="programs-k3">
-                      
-                        
+                         
+                
                                  
                           </div>
                           </div>
+                          <div class ="ask">   <h4> Please <a href="/users/new">Register</a> or <a href="/users/login">Login</a> to continue </h4>
+                          </div>
+                       
   </section>
 
-
+  <!-- <h3> Login or Register to play</h3>
         <form class="game-preview-choose">
           <button class="start"><h4>Login</h4></button>
           <button class="start"><h4>Register</h4></button>
-        </form>
+        </form> -->
      
       </main>
 
@@ -59,25 +71,29 @@
           <li><a href="#">About</a></li>
         </ul>
 
+
       </sidebar>
 
-      <sidebar class="sidebar-2 w-sidebar">
-        <a href="./index.html"><img src="/static/CSS/images/sidebar5.png" width="30" /></a>
-        <a href="./index.html"><img src="/static/CSS/images/sidebar2.png" /></a>
-      </sidebar>
+      <!-- <sidebar class="sidebar-2 w-sidebar">
+        <a href="./index.html"><img src="./CSS/images/sidebar5.png" width="30" /></a>
+        <a href="./index.html"><img src="./CSS/images/sidebar2.png" /></a>
+      </sidebar> -->
 
       
     </section>
+  
+<footer class="fixed_footer">
 
-    <footer>
-     <div class="icons">
+    <div class="icons">
       <a href= "https://business.facebook.com/OfficialTHENX/" ><i class="fa fa-facebook"></i></a>
       <a href= "https://www.instagram.com/thenx/?hl=en" ><i class="fa fa-instagram"></i></a>
       <a href= "https://twitter.com/officialthenx?lang=en" ><i class="fa fa-twitter"></i></a>
       <a href= "https://www.youtube.com/channel/UCqjwF8rxRsotnojGl4gM0Zw" ><i class="fa fa-youtube"></i></a>
-</div>
-    </footer>
-    <script src="/static/background.js"></script>
+  </div>
+</footer>
+     
+    
+    <script src="/static/js/background.js"></script>
 
   </body>
 </html>
