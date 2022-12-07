@@ -1,13 +1,15 @@
 var express = require('express');
 var mongoose = require('mongoose');
-var User = require('../models/user')
+var User = require('../models/user');
 var bcrypt = require('bcryptjs');
+var jwt = require('jsonwebtoken');
 
 mongoose.connect('mongodb://localhost:27017/login-app-db',{
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
 
+const KEY = 'wn8723yhufbvjeni23>"{+:983u9io19:">0jei(*&^%$dwnefi2981ijdwn';
 
 var router = express.Router();
 
@@ -20,6 +22,29 @@ router.get('/', function(req, res, next) {
 
 router.get('/login', function(req, res, next) {
   res.render('log-in', {});
+})
+
+router.post('/login', async(req, res)=> {
+
+  const { username, password } = req.body;
+
+  const user = await User.findOne({username}).lean(); // only json object 
+
+  if(!user){
+    return res.json({status: 'error', error : 'Invalid username/password'})
+  }
+
+  console.log('password = ' , user);
+
+  if(await bcrypt.compare(password, user.password_crypt)){
+    //username password combination is succeful
+
+    const token = jwt.sign({id : user._id, username: user.username}, KEY)   //visible data
+    
+    return res.json({status: 'ok', data: token})
+  }
+
+  res.json({status: 'error', error : 'Invalid username/password'})
 })
 
 router.get('/new', function(req, res, next) {

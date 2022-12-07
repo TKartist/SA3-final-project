@@ -11,9 +11,9 @@
 
     <!-- Login with username and password -->
     <div class="container">
-      <form action="/actionpage" method="post">
+      <form id="login">
         <label for="uname"><b>Username</b></label>
-        <input name="uname" type="text" placeholder="Enter Username" required>
+        <input name="uname" type="text" placeholder="Enter Username" id="username" required>
 
         <label for="password"><b>Password</b></label>
         <div class="showPassword">
@@ -23,9 +23,6 @@
           
         <button type="submit"><b>Login</b></button>
           
-        <label>
-          <input type="checkbox" checked="checked" name="remember">Remember me</input>
-        </label>
       </form>
     </div>
 
@@ -44,6 +41,7 @@
   </div>
 </main>
 
+<script src="/static/js/users_actions/general.js"></script>
 <script src="/static/js/users_actions/login.js"></script>
 
 
