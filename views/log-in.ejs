@@ -2,27 +2,25 @@
 
 <%- include("includes/header") %>
 
-
 <main>
-  <div class="box">
-    <div class="inner-box">
-      <div class="forms-wrap">
-        <form id="login" action="index.html" autocomplete="off" class="sign-in-form">
-          <div class="logo">
-            <img src="/static/images/website/logo.png" alt="easyclass" />
-            <h4>WEBSITE BAME</h4>
-          </div>
+  <section class="box">
+    <section class="inner-box">
+      <section class="forms-wrap">
+        <form action="index.html" autocomplete="off" class="sign-in-form">
+          <section class="logo">
+            <img src="/static/images/website/logo.png" />
+            <h4>WEBSITE NAME</h4>
+          </section>
 
-          <div class="heading">
+          <section class="heading">
             <h2>Welcome Back</h2>
             <h6>Not registred yet?</h6>
-            <a href="/users/new" class="toggle">Sign up</a>
-          </div>
+            <a href="#" class="toggle">Sign up</a>
+          </section>
 
-          <div class="actual-form">
-            <div class="input-wrap">
+          <section class="actual-form">
+            <section class="input-wrap">
               <input
-              id="username"
                 type="text"
                 minlength="4"
                 class="input-field"
@@ -30,11 +28,10 @@
                 required
               />
               <label>Name</label>
-            </div>
+            </section>
 
-            <div class="input-wrap">
+            <section class="input-wrap">
               <input
-              id="loginPassword"
                 type="password"
                 minlength="4"
                 class="input-field"
@@ -42,46 +39,99 @@
                 required
               />
               <label>Password</label>
-            </div>
+            </section>
 
-            <input type="submit" value="Login" class="sign-btn" />
+            <input type="submit" value="Sign In" class="sign-btn" />
 
             <p class="text">
               Forgotten your password or you login datails?
               <a href="#">Get help</a> signing in
             </p>
-          </div>
+          </section>
         </form>
 
-      </div>
+        <form action="index.html" autocomplete="off" class="sign-up-form">
+          <section class="logo">
+            <img src="/static/images/website/logo.png" alt="easyclass" />
+            <h4>WEBSITE NAME</h4>
+          </section>
 
-      <div class="carousel">
-        <div class="images-wrapper">
-          <img src="/static/images/website/login_1v1.jpg" class="image img-1 show" alt="" />
-          <img src="/static/images/website/login_1v1.jpg" class="image img-2" alt="" />
-          <img src="/static/images/website/login_1v1.jpg" class="image img-3" alt="" />
-        </div>
+          <section class="heading">
+            <h2>Get Started</h2>
+            <h6>Already have an account?</h6>
+            <a href="#" class="toggle">Sign in</a>
+          </section>
 
-        <div class="text-slider">
-          <div class="text-wrap">
-            <div class="text-group">
-              <h2>Play 1v1</h2>
-              <h2>Challenge yourself</h2>
-              <h2>Learn how to play</h2>
-            </div>
-          </div>
+          <section class="actual-form">
+            <section class="input-wrap">
+              <input
+                type="text"
+                minlength="4"
+                class="input-field"
+                autocomplete="off"
+                required
+              />
+              <label>Name</label>
+            </section>
 
-          <div class="bullets">
+            <section class="input-wrap">
+              <input
+                type="email"
+                class="input-field"
+                autocomplete="off"
+                required
+              />
+              <label>Email</label>
+            </section>
+
+            <section class="input-wrap">
+              <input
+                type="password"
+                minlength="4"
+                class="input-field"
+                autocomplete="off"
+                required
+              />
+              <label>Password</label>
+            </section>
+
+            <input type="submit" value="Sign Up" class="sign-btn" />
+
+            <p class="text">
+              By signing up, I agree to the
+              <a href="#">Terms of Services</a> and
+              <a href="#">Privacy Policy</a>
+            </p>
+          </section>
+        </form>
+      </section>
+
+      <section class="carousel">
+        <section class="images-wrapper">
+          <img src="" class="image img-1 show" alt="" />
+          <img src="" class="image img-2" alt="" />
+          <img src="" class="image img-3" alt="" />
+        </section>
+
+        <section class="text-slider">
+          <section class="text-wrap">
+            <section class="text-group">
+              <h2>Create your own courses</h2>
+              <h2>Customize as you like</h2>
+              <h2>Invite students to your class</h2>
+            </section>
+          </section>
+
+          <section class="bullets">
             <span class="active" data-value="1"></span>
             <span data-value="2"></span>
             <span data-value="3"></span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+          </section>
+        </section>
+      </section>
+    </section>
+  </section>
 </main>
-
 <!-- Javascript file -->
 <script src="/static/js/users_actions/login.js"></script>
 

@@ -6,23 +6,24 @@
   box-sizing: border-box;
 }
 
-main,
-input {
-  font-family: "Poppins", sans-serif;
-}
+/* main, */
+/* input { */
+  /* font-family: "Poppins", sans-serif; */
+/* } */
 
 main {
   width: 100%;
   min-height: 100vh;
   overflow: hidden;
-  background-image:linear-gradient(rgba(182, 184, 194, 0.5),
-rgba(182, 184, 194, 0.5)), url(/static/images/website/banner.jpg);
+  background-image:linear-gradient(rgba(160, 164, 176, 0.5),
+  rgba(160, 164, 176, 0.5)), url(/static/images/website/banner.jpg);
   padding: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+/* WHITE BACKGROUND BOX*/
 .box {
   position: relative;
   width: 100%;
@@ -33,6 +34,7 @@ rgba(182, 184, 194, 0.5)), url(/static/images/website/banner.jpg);
   box-shadow: 0 60px 40px -30px rgba(0, 0, 0, 0.27);
 }
 
+/* EVERYTHING THAT IS INSIDE THE WHITE BOX*/
 .inner-box {
   position: absolute;
   width: calc(100% - 4.1rem);
@@ -42,6 +44,7 @@ rgba(182, 184, 194, 0.5)), url(/static/images/website/banner.jpg);
   transform: translate(-50%, -50%);
 }
 
+/*SIGN IN FORM ABOUT*/
 .forms-wrap {
   position: absolute;
   height: 100%;
@@ -51,6 +54,7 @@ rgba(182, 184, 194, 0.5)), url(/static/images/website/banner.jpg);
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
+  /*transition when moving the form from sign in to sign up*/
   transition: 0.8s ease-in-out;
 }
 
@@ -61,13 +65,16 @@ form {
   height: 100%;
   display: flex;
   flex-direction: column;
+  /*space between each sentence*/
   justify-content: space-evenly;
   grid-column: 1 / 2;
   grid-row: 1 / 2;
   transition: opacity 0.02s 0.4s;
 }
 
+/*when in sign in the sign up is not visisble*/
 form.sign-up-form {
+  /*if opacity is 1 there would be an overlap ove sign form*/
   opacity: 0;
   pointer-events: none;
 }
@@ -78,12 +85,13 @@ form.sign-up-form {
 }
 
 .logo img {
-  width: 40%;
+  width: 35%;
   margin-right: 0.3rem;
   background-color: #151111;
   border-radius: 4em 4em 4em 4em;
 }
 
+/* name of the website */
 .logo h4 {
   font-size: 1.1rem;
   margin-top: -9px;
@@ -91,12 +99,14 @@ form.sign-up-form {
   color: #151111;
 }
 
+/* welcome back sentence */
 .heading h2 {
   font-size: 2.1rem;
   font-weight: 600;
   color: #151111;
 }
 
+/* not registered yet sentence */
 .heading h6 {
   color: #bababa;
   font-weight: 400;
@@ -104,6 +114,7 @@ form.sign-up-form {
   display: inline;
 }
 
+/* sign up words when in sign in form - recalled in js file for changing form*/
 .toggle {
   color: #151111;
   text-decoration: none;
@@ -116,6 +127,7 @@ form.sign-up-form {
   color: #8371fd;
 }
 
+/* NAME input in sign in form */
 .input-wrap {
   position: relative;
   height: 37px;
@@ -135,7 +147,7 @@ form.sign-up-form {
   color: #151111;
   transition: 0.4s;
 }
-
+/* NAME word inside the input field */
 label {
   position: absolute;
   left: 0;
@@ -147,6 +159,7 @@ label {
   transition: 0.4s;
 }
 
+/* transition when clicked on it (NAME INPUT FIELD) */
 .input-field.active {
   border-bottom-color: #151111;
 }
@@ -156,6 +169,7 @@ label {
   top: -2px;
 }
 
+/* SIGN IN BUTTON */
 .sign-btn {
   display: inline-block;
   width: 100%;
@@ -203,17 +217,17 @@ main.sign-up-mode .forms-wrap {
 }
 
 main.sign-up-mode .carousel {
-  right: 0%;
+  left: 0%;
 }
 
 .carousel {
   position: absolute;
   height: 100%;
   width: 55%;
-  right: 45%;
+  left: 45%;
   top: 0;
-  background-image:linear-gradient(rgba(182, 184, 194, 0.5),
-  rgba(182, 184, 194, 0.5)), url(/static/images/website/banner.jpg);
+  background-image:linear-gradient(rgba(160, 164, 176, 0.5),
+  rgba(160, 164, 176, 0.5)), url(/static/images/website/banner.jpg);
   border-radius: 2rem;
   display: grid;
   grid-template-rows: auto 1fr;
@@ -238,17 +252,14 @@ main.sign-up-mode .carousel {
 
 .img-1 {
   transform: translate(0, -50px);
-  height: 130%;
 }
 
 .img-2 {
   transform: scale(0.4, 0.5);
-  height: 130%;
 }
 
 .img-3 {
   transform: scale(0.3) rotate(-20deg);
-  height: 130%;
 }
 
 .image.show {
@@ -283,6 +294,7 @@ main.sign-up-mode .carousel {
   font-size: 1.6rem;
 }
 
+/*bullets for sliding the images carousel */
 .bullets {
   display: flex;
   align-items: center;
@@ -307,12 +319,15 @@ main.sign-up-mode .carousel {
 }
 
 @media (max-width: 850px) {
+
+/* WHITE BACKGROUND BOX*/
   .box {
     height: auto;
     max-width: 550px;
     overflow: hidden;
   }
 
+  /* EVERYTHING THAT IS INSIDE THE WHITE BOX*/
   .inner-box {
     position: static;
     transform: none;
@@ -321,6 +336,7 @@ main.sign-up-mode .carousel {
     padding: 2rem;
   }
 
+  /*SIGN IN FORM ABOUT*/
   .forms-wrap {
     position: revert;
     width: 100%;
@@ -350,8 +366,6 @@ main.sign-up-mode .carousel {
   }
 
   .carousel {
-    background-image:linear-gradient(rgba(182, 184, 194, 0.5),
-rgba(182, 184, 194, 0.5)), url(/static/images/website/banner.jpg);
     position: revert;
     height: auto;
     width: 100%;
@@ -373,10 +387,12 @@ rgba(182, 184, 194, 0.5)), url(/static/images/website/banner.jpg);
     padding: 1rem;
   }
 
+/* WHITE BACKGROUND BOX*/
   .box {
     border-radius: 2rem;
   }
 
+  /* EVERYTHING THAT IS INSIDE THE WHITE BOX*/
   .inner-box {
     padding: 1rem;
   }
@@ -384,8 +400,6 @@ rgba(182, 184, 194, 0.5)), url(/static/images/website/banner.jpg);
   .carousel {
     padding: 1.5rem 1rem;
     border-radius: 1.6rem;
-    background-image:linear-gradient(rgba(182, 184, 194, 0.5),
-rgba(182, 184, 194, 0.5)), url(/static/images/website/banner.jpg);
   }
 
   .text-wrap {
