@@ -1,4 +1,4 @@
-
+const verify = require('./../../../routes/verifyToken');
 
 
 (function () {
@@ -11,7 +11,7 @@
       ele.onclick = function (e) {
         var web_window = window.open('/users/login', 'Share Link', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600,top=' + (screen.height / 2 - 300) + ',left=' + (screen.width / 2 - 300));
         var check_window_close = setInterval(function () {
-          
+          console.log(verify);
           if (web_window.closed) {
             clearInterval(check_window_close);
             slc.innerHTML = old_slc_html;

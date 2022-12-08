@@ -9,7 +9,7 @@ mongoose.connect('mongodb://localhost:27017/login-app-db',{
   useUnifiedTopology: true
 })
 
-const KEY = 'wn8723yhufbvjeni23>"{+:983u9io19:">0jei(*&^%$dwnefi2981ijdwn';
+
 
 var router = express.Router();
 
