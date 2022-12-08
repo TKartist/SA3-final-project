@@ -1,54 +1,192 @@
+<html>
+
+<head>
+    <title>BayrGeo INDEX</title>
+    <meta name="author" content="Georgy Batyrev" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./static/css/style.css" />
+    <!-- <link rel="stylesheet" href="./static/css/other-style.css" /> -->
+
+    <link href="https://fonts.cdnfonts.com/css/gotham" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body class="website-container">
+    <header class="website-header">
 
 
-<%- include("includes/header") %>
+        <h1>Blunder</h1>
+        <a href="./index.html"><img src="static/images/website/logo.png" /></a>
+        <h2>.com </h2>
+        <canvas></canvas>
 
-
-<main class="website_content">
-
-    <!-- CHALLENGES SCROLLABLE -->
-    <div>
-        <h2>Challenges</h2>
-    </div>
-    <div class="scrolling_div">
-        <div class="cover">
-            <div class="scrolling_images">
-                <div class="scrolling_img_div"><img class="scrolling_img" src="/static/img/myimg.jpg" alt=""></div>
-                <div class="scrolling_img_div"><img class="scrolling_img" src="/static/img/myimg.jpg" alt=""></div>
-                <div class="scrolling_img_div"><img class="scrolling_img" src="/static/img/myimg.jpg" alt=""></div>
-                <div class="scrolling_img_div"><img class="scrolling_img" src="/static/img/myimg.jpg" alt=""></div>
-                <div class="scrolling_img_div"><img class="scrolling_img" src="/static/img/myimg.jpg" alt=""></div>
-                <div class="scrolling_img_div"><img class="scrolling_img" src="/static/img/myimg.jpg" alt=""></div>
-            </div>
+        <div class=profile>
+            <img class="" src="static/images/website/profile.png" />
+            <!-- <h1></h1>                                                         //add here  -->
         </div>
-    </div>
+    </header>
+
+    <section class="website-container-body">
+        <main class="website-content">
+            <div class="preview">
+                <div class="chessboard">
+                    <!-- 8th -->
+                    <div class="white"><button onclick="myFunction()" class="chess_button_rook"><img
+                                src="/static/images/chesspieces/whiteRook.png"></button></div>
+                    <div class="black"><button class="chess_button_horse"><img
+                                src="/static/images/chesspieces/whiteHorse.png"></button></div>
+                    <div class="white"><button class="chess_button_bishop"><img
+                                src="/static/images/chesspieces/whiteBishop.png"></button></div>
+                    <div class="black"><button class="chess_button_queen"><img
+                                src="/static/images/chesspieces/whiteQueen.png"></button></div>
+                    <div class="white"><button class="chess_button_king"><img
+                                src="/static/images/chesspieces/whiteKing.png"></button></div>
+                    <div class="black"><button class="chess_button_bishop"><img
+                                src="/static/images/chesspieces/whiteBishop.png"></button></div>
+                    <div class="white"><button class="chess_button_horse"><img
+                                src="/static/images/chesspieces/whiteHorse.png"></button></div>
+                    <div class="black"><button onclick="myFunction()" class="chess_button_rook"><img
+                                src="/static/images/chesspieces/whiteRook.png"></button></div>
+
+                    <div class="black"><img class="pawn" src="/static/images/chesspieces/whitePawn.png"></div>
+                    <div class="white"><img class="pawn" src="/static/images/chesspieces/whitePawn.png"></div>
+                    <div class="black"><img class="pawn" src="/static/images/chesspieces/whitePawn.png"></div>
+                    <div class="white"><img class="pawn" src="/static/images/chesspieces/whitePawn.png"></div>
+                    <div class="black"><img class="pawn" src="/static/images/chesspieces/whitePawn.png"></div>
+                    <div class="white"><img class="pawn" src="/static/images/chesspieces/whitePawn.png"></div>
+                    <div class="black"><img class="pawn" src="/static/images/chesspieces/whitePawn.png"></div>
+                    <div class="white"><img class="pawn" src="/static/images/chesspieces/whitePawn.png"></div>
+
+                    <!-- 3th -->
+                    <div class="white"></div>
+                    <div class="black"></div>
+                    <div class="white"></div>
+                    <div class="black"></div>
+                    <div class="white"></div>
+                    <div class="black"></div>
+                    <div class="white"></div>
+                    <div class="black"></div>
+                    <!-- 4st -->
+                    <div class="black"></div>
+                    <div class="white"></div>
+                    <div class="black"></div>
+                    <div class="white"></div>
+                    <div class="black"></div>
+                    <div class="white"></div>
+                    <div class="black"></div>
+                    <div class="white"></div>
+                    <!-- 5th -->
+                    <div class="white"></div>
+                    <div class="black"></div>
+                    <div class="white"></div>
+                    <div class="black"></div>
+                    <div class="white"></div>
+                    <div class="black"></div>
+                    <div class="white"></div>
+                    <div class="black"></div>
+                    <!-- 6th -->
+                    <div class="black"></div>
+                    <div class="white"></div>
+                    <div class="black"></div>
+                    <div class="white"></div>
+                    <div class="black"></div>
+                    <div class="white"></div>
+                    <div class="black"></div>
+                    <div class="white"></div>
+                    <!-- 7th -->
+                    <div class="white"><img src="/static/images/chesspieces/blackPawn.png"></div>
+                    <div class="black"><img src="/static/images/chesspieces/blackPawn.png"></div>
+                    <div class="white"><img src="/static/images/chesspieces/blackPawn.png"></div>
+                    <div class="black"><img src="/static/images/chesspieces/blackPawn.png"></div>
+                    <div class="white"><img src="/static/images/chesspieces/blackPawn.png"></div>
+                    <div class="black"><img src="/static/images/chesspieces/blackPawn.png"></div>
+                    <div class="white"><img src="/static/images/chesspieces/blackPawn.png"></div>
+                    <div class="black"><img src="/static/images/chesspieces/blackPawn.png"></div>
+                    <!-- 8th -->
+                    <div class="black"><img src="/static/images/chesspieces/blackRook.png"></div>
+                    <div class="white"><img src="/static/images/chesspieces/blackHorse.png"></div>
+                    <div class="black"><img src="/static/images/chesspieces/blackBishop.png"></div>
+                    <div class="white"><img src="/static/images/chesspieces/blackQueen.png"></div>
+                    <div class="black"><img src="/static/images/chesspieces/blackKing.png"></div>
+                    <div class="white"><img src="/static/images/chesspieces/blackBishop.png"></div>
+                    <div class="black"><img src="/static/images/chesspieces/blackHorse.png"></div>
+                    <div class="white"><img src="/static/images/chesspieces/blackRook.png"></div>
+                </div>
+
+             
+                    <div id="myDIV">
+                        <img class="window" src="/static/images/chess_learn/rook.gif">
+                        <img class="view" src="/static/images/website/whiteboard.png">
+                    </div>
+                
+            </div>
+        </main>
 
 
-    <!--  -->
-    <div class="separe">
-        <h2>Play</h2>
-    </div>
-    <section class="playing_modes">
-        <img src="/static/img/1vs1.jpg" style="height: 150px; width:250px" alt="">
-        <img src="/static/img/1vs1.jpg" style="height: 150px; width:250px; padding-left: 40px;" alt="">
+        <sidebar class="sidebar-1 w-sidebar">
+            <ul>
+                <li><a href="#">Play</a></li>
+                <li> <a href="#">Puzzles</a></li>
+                <li><a href="#">Learn</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+
+        </sidebar>
+
+        <sidebar class="sidebar-2 w-sidebar">
+
+            <section class="inner_board_section">
+                <h5> Leaderboard </h5>
+                <% for (let i=0; i < 8; i++) { %>
+                    <div class="board_content">
+                        <div class="img">
+                            <img src="/static/images/website/profile1.png" alt="picture_1">
+                        </div>
+                        <div class="player">
+                            <p><span>
+                                    <h3></h3>
+                                </span>
+                            <h3>jorgexcc</h3>
+                            </p>
+                            <div class="score_bar_wrap">
+                                <div class="score_bar"></div>
+                            </div>
+                        </div>
+                        <div class="points">
+                            <p><span>
+                                    <h3></h3>
+                                </span>
+                            <h3>300</h3>
+                            </p>
+                        </div>
+                    </div>
+                    <% } %>
+
+            </section>
+
+
+
+        </sidebar>
+
     </section>
-  
-</main>
 
-<%- include("includes/scoreboard")%>
-<%- include("includes/navbar") %>
+    <footer>
+        <div class="icons">
+            <a href="https://business.facebook.com/OfficialTHENX/"><i class="fa fa-facebook"></i></a>
+            <a href="https://www.instagram.com/thenx/?hl=en"><i class="fa fa-instagram"></i></a>
+            <a href="https://twitter.com/officialthenx?lang=en"><i class="fa fa-twitter"></i></a>
+            <a href="https://www.youtube.com/channel/UCqjwF8rxRsotnojGl4gM0Zw"><i class="fa fa-youtube"></i></a>
+        </div>
+    </footer>
+    <script src="/static/js/learn.js"></script>
+    <script src="/static/js/background.js"></script>
 
 
-
-
-
-
-
-
-
-  
-
+</body>
 
 
 
 
 
+
+</html>

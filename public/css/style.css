@@ -20,8 +20,9 @@ Template v83 21/09/2022, 11:45:55
   --blunderGreen: #0e5b05;
   --blunderBlack: #101820ff;
   --blunderBiege: #E7E3DA;
-
-
+  --blunderBlue:  #18204c;
+  --blunderLightBlue: #6e99c0;
+  --blunderLightLightBlue: #dae9f2;
 }
 
 
@@ -389,7 +390,7 @@ footer {
 	font-size: 30px;
 	font-weight: bold;
 	color: var(--blunderBlack);
-	transition: all 0.1s ease;
+	transition: all 0.2s ease;
 }
 .lock{
   width: 400px;
@@ -398,11 +399,11 @@ footer {
 }
 #sociallocker:hover #sociallocker-overlay {
 	top: -120%;
-	transition: all 0.1s linear;
+	transition: all 0.2s linear;
 }
 #sociallocker:hover #sociallocker-content {
 	top: 100%;
-	transition: all 0.1s linear;
+	transition: all 0.2s linear;
 }
 
 #sociallocker-overlay,
@@ -441,7 +442,7 @@ height: auto;
 /*  */
 .board_content {
 display: flex;
-align-items: center;
+align-items: center; 
 padding: 15px 0;
 background-color: transparent;
 backdrop-filter: blur(1px);
@@ -515,7 +516,68 @@ color: #3a3d51;
 /* ============================================================================= */
 /* ================================ ___________ ================================ */
 /* ============================================================================= */
-@media screen and (max-width: 650px) {
-
+.preview{
+  display: flex;
+  justify-content: space-between;
 }
 
+.chessboard {
+  width: 642px;
+  height: 642px;
+  border: 25px solid var(--blunderBlue);
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+}
+.black {
+  float: left;
+  width: 80px;
+  height: 80px;
+  background-color: var(--blunderLightBlue);
+    font-size:50px;
+  text-align:center;
+  display: table-cell;
+  vertical-align:middle;
+  margin: 0.1px!important;
+}
+.white {
+  float: left;
+  width: 80px;
+  height: 80px;
+  background-color: var(--blunderLightLightBlue);
+  font-size:50px;
+  text-align:center;
+  display: table-cell;
+  vertical-align:middle;
+  margin: 0.1px !important;
+}
+.chess_button_rook, .chess_button_horse, .chess_button_bishop, .chess_button_queen, .chess_button_king{
+  background: transparent;
+  border: none;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+}
+
+#myDIV{
+  width: 640px;
+  height: 640px;
+}
+.view{
+  background-image: url(/static/images/website/whiteboard.png) ;
+ 
+  background-size: cover;
+  overflow: hidden;
+  width: 1300px;
+  height: 1300px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.window{
+  width: 300px;
+  height: 300px;
+
+  border: 25px solid var(--blunderBlue);
+
+}

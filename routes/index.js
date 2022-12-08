@@ -14,4 +14,8 @@ router.get('/browse', function(req, res, next) {
   res.render('browse', {});
 })
 
+router.get('/', function(req, res, next) {
+  res.redirect('/browse');
+});
+
 module.exports = router;

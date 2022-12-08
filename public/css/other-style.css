@@ -1,8 +1,27 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+.chessboard {
+  width: 720px;
+  height: 720px;
+  margin: 20px;
+  border: 25px solid #333;
+  margin: 0 !important;
 }
-
-a {
-  color: #00B7FF;
+.black {
+  float: left;
+  width: 80px;
+  height: 80px;
+  background-color: #999;
+    font-size:50px;
+  text-align:center;
+  display: table-cell;
+  vertical-align:middle;
+}
+.white {
+  float: left;
+  width: 80px;
+  height: 80px;
+  background-color: #fff;
+  font-size:50px;
+  text-align:center;
+  display: table-cell;
+  vertical-align:middle;
 }
