@@ -9,7 +9,7 @@ mongoose.connect('mongodb://localhost:27017/login-app-db',{
   useUnifiedTopology: true
 })
 
-
+const KEY= 'wn8723yhufbvjeni23>"{+:983u9io19:">0jei(*&^%$dwnefi2981ijdw'
 
 var router = express.Router();
 
@@ -104,6 +104,15 @@ router.post('/new', async(req, res)=> {
 router.get('/browse', function(req, res, next) {
   res.render('browse', {});
 })
+
+
+router.get('/logout', function(req, res) {
+  res.clearCookie('token');
+  res.status(200);
+  res.redirect('/index');
+
+});
+
 
 module.exports = router;
 
