@@ -1,7 +1,10 @@
 
 let tileInfo = new Map();
 
-let canMove = [];
+let black = [];
+let white = [];
+let blackKing = "";
+let whiteKing = "";
 
 const bb = "blackBishop";
 const wb = "whiteBishop";
@@ -22,6 +25,7 @@ const em = "empty";
 
 let atk = "white";
 let opp = "black";
+
 
 let stage = 0, start, end;
 
@@ -47,6 +51,7 @@ function initBoard() {
     document.querySelectorAll("button").forEach(tile => {
         tile.addEventListener("click", choose);
     });
+    document.querySelector(".playing span").innerHTML = atk;
 }
 
 function board() {
@@ -64,6 +69,30 @@ function board() {
                 styleAttribute += "background-color: white";
             }
             tile.setAttribute('style', styleAttribute);
+        }
+    }
+    document.querySelector(".playing span").innerHTML = opp;
+    storeInfo();
+}
+
+function storeInfo() {
+    black = [];
+    white = [];
+    for (let i = 1; i < 9; i++) {
+        for (let j = 1; j < 9; j++) {
+            let ID = "" + i + j;
+            let piece = tileInfo.get(ID);
+            if (piece.includes("white")) {
+                if (tileInfo.get(ID).includes("King")) {
+                    whiteKing = ID;
+                }
+                white.push(ID);
+            } else if (piece.includes("black")) {
+                if (tileInfo.get(ID).includes("King")) {
+                    blackKing = ID;
+                }
+                black.push(ID);
+            }
         }
     }
 }
@@ -118,7 +147,6 @@ function choose(event) {
             start = eventID;
         } else {
             end = eventID;
-            console.log(start, end);
             stage = 0;
             executeMove();
         }
@@ -127,17 +155,195 @@ function choose(event) {
 
 
 function executeMove() {
-    if (true) {
+    let tmp = tileInfo;
+    if (validMove()) {
         tileInfo.set(end, tileInfo.get(start));
         tileInfo.set(start, em);
+        if (checked() !== false) {
+            console.log(checked());
+        }
+        if (checked() === atk) {
+            tileInfo = tmp;
+        }
         board();
-        turn();
+        switchTeam();
     }
 }
 
-function turn() {
+function switchTeam() {
     let tmp = atk;
     atk = opp;
     opp = tmp;
 }
 
+function validMove() {
+    let moved = tileInfo.get(start);
+    let target = tileInfo.get(end);
+    if (moved.includes("Pawn")) {
+        return pawnMove(moved, target);
+    } else if (moved.includes("Bishop")) {
+        return bishopMove(target);
+    } else if (moved.includes("Horse")) {
+        return horseMove(target);
+    } else if (moved.includes("Rook")) {
+        return rookMove(target);
+    } else if (moved.includes("Queen")) {
+        return (rookMove(target) || bishopMove(target));
+    } else if (moved.includes("King") && !checked()) {
+        return (kingMove(target));
+    }
+}
+
+function pawnMove(moved, target) {
+    let sp = parseInt(start);
+    let ep = parseInt(end);
+    if (moved.includes("white")) {
+        if ((sp + 10) === ep && target === em) {
+            return true;
+        } else if ((sp + 10) === ep && target !== em) {
+            return false;
+        } else if ((sp + 20) === ep && Math.floor(sp / 10) === 2) {
+            return true;
+        } else if (((sp + 11) === ep || (sp + 9) === ep) && target.includes("black")) {
+            return true;
+        } else {
+            return false;
+        }
+    } else {
+        if ((sp - 10) === ep && target === em) {
+            return true;
+        } else if ((sp - 10) === ep && target !== em) {
+            return false;
+        } else if ((sp - 20) === ep && Math.floor(sp / 10) === 7) {
+            return true;
+        } else if (((sp - 11) === ep || (sp - 9) === ep) && target.includes("white")) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+}
+
+function bishopMove(target) {
+    let sx = parseInt(start[1]), sy = parseInt(start[0]), ex = parseInt(end[1]), ey = parseInt(end[0]);
+    if (Math.abs(sx - ex) === Math.abs(sy - ey) && !(target.includes(atk))) {
+        let x = ex - sx;
+        let y = ey - sy;
+        let xdir = x / Math.abs(x);
+        let ydir = y / Math.abs(y);
+        let pos = "";
+        let count = 1;
+        while (pos != end) {
+            pos = "" + (sy + count * ydir) + (sx + count * xdir);
+            count++;
+            if (tileInfo.get(pos) !== em && pos != end) {
+                return false;
+            }
+        }
+        return true;
+    }
+    return false
+}
+
+function horseMove(target) {
+    let sp = parseInt(start);
+    let ep = parseInt(end);
+    let verMove = Math.floor(sp / 10) - Math.floor(ep / 10);
+    let horMove = sp % 10 - ep % 10;
+    let product = Math.abs(verMove * horMove);
+    if (product === 2 && !(target.includes(atk))) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function rookMove(target) {
+    if ((start[0] === end[0] || start[1] === end[1]) && !(target.includes(atk))) {
+        if (start[0] === end[0]) {
+            let hP = start[0];
+            let sp = parseInt(start[1]);
+            let ep = parseInt(end[1]);
+            if (sp > ep) {
+                let tmp = sp;
+                sp = ep;
+                ep = tmp;
+            }
+            console.log(sp, ep);
+            for (let i = sp + 1; i < ep; i++) {
+                let path = "" + hP + i;
+                if (tileInfo.get(path) !== em) {
+                    return false;
+                }
+            }
+            return true;
+        } else {
+            let vP = start[1];
+            let sp = parseInt(start[0]);
+            let ep = parseInt(end[0]);
+            if (sp > ep) {
+                let tmp = sp;
+                sp = ep;
+                ep = tmp;
+            }
+            console.log(sp, ep);
+            for (let i = sp + 1; i < ep; i++) {
+                let path = "" + i + vP;
+                if (tileInfo.get(path) !== em) {
+                    return false;
+                }
+            }
+            return true;
+        }
+    }
+    return false;
+}
+
+function kingMove(target) {
+    let sx = parseInt(start[1]), sy = parseInt(start[0]), ex = parseInt(end[1]), ey = parseInt(end[0]);
+    return (!(target.includes(atk)) && Math.abs(sx - ex)<2 && Math.abs(sy - ey)<2);
+}
+function checkValid() {
+    let moved = tileInfo.get(start);
+    let target = tileInfo.get(end);
+    if (moved.includes("Pawn")) {
+        return pawnMove(moved, target);
+    } else if (moved.includes("Bishop")) {
+        return bishopMove(target);
+    } else if (moved.includes("Horse")) {
+        return horseMove(target);
+    } else if (moved.includes("Rook")) {
+        return rookMove(target);
+    } else if (moved.includes("Queen")) {
+        return (rookMove(target) || bishopMove(target));
+    } else if (moved.includes("King")) {
+        return (kingMove(target));
+    }
+}
+
+function checked() {
+    let tmpEnd = end;
+    let tmpStart = start;
+    black.forEach(id => {
+        end = whiteKing;
+        start = id;
+        if (checkValid()) {
+            start = tmpStart;
+            end = tmpEnd;
+            return "white";
+        }
+    })
+    end = blackKing;
+    white.forEach(id => {
+        end = whiteKing;
+        start = id;
+        if (checkValid()) {
+            start = tmpStart;
+            end = tmpEnd;
+            return "black";
+        }
+    })
+    start = tmpStart;
+    end = tmpEnd;
+    return false;
+}
