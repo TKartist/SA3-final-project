@@ -20,9 +20,9 @@ async function loginUser(event){
         })
     }).then((res)=> res.json())
 
-
-    if(result.status === 'ok'){
+    if(result.success){
         //everything went fine
+        window.close();
         FLAG = 1;
         console.log('Got token', result.data)
     } else {
@@ -30,6 +30,4 @@ async function loginUser(event){
     }
 
     console.log(result);
-
-
 }

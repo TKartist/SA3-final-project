@@ -25,26 +25,27 @@ router.get('/login', function(req, res, next) {
 })
 
 router.post('/login', async(req, res)=> {
+  try {
+    const { username, password } = req.body;
 
-  const { username, password } = req.body;
+    const user = await User.findOne({username}).lean(); // only json object 
 
-  const user = await User.findOne({username}).lean(); // only json object 
+    if(!user){
+      return res.status(404).json("User not found")
+    }
 
-  if(!user){
-    return res.json({status: 'error', error : 'Invalid username/password'})
+    console.log('password = ' , user);
+
+    if(await bcrypt.compare(password, user.password_crypt)){
+      //username password combination is succeful
+      generateCookie(user, 200, res);
+      res.status('ok');
+    } else {
+      return res.status(400).json("Wrong Password")
+    }
+  } catch(error) {
+    res.status(500).json(error.message);
   }
-
-  console.log('password = ' , user);
-
-  if(await bcrypt.compare(password, user.password_crypt)){
-    //username password combination is succeful
-
-    const token = jwt.sign({id : user._id, username: user.username}, KEY)   //visible data
-    
-    return res.json({status: 'ok', data: token})
-  }
-
-  res.json({status: 'error', error : 'Invalid username/password'})
 })
 
 router.get('/new', function(req, res, next) {
@@ -105,3 +106,17 @@ router.get('/browse', function(req, res, next) {
 })
 
 module.exports = router;
+
+const generateCookie = async (user, statusCode, res) => {
+  const token = jwt.sign({id: user._id, username: user.username}, KEY);
+
+  const options = {
+    httpOnly: true,
+    expires: new Date(Date.now() + 4*60*60*1000)
+  }
+
+  res
+  .status(statusCode)
+  .cookie('token', token, options)
+  .json({success: true, token});
+}

@@ -26,6 +26,17 @@ async function registerUser(event){
 
 
     if(result.status === 'ok'){
+        const result = await fetch('/users/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type' : 'application/json'
+            }, 
+            body: JSON.stringify({
+                username,
+                password
+            })
+        }).then((res)=> res.json())
+        window.close();
         //everything went fine
         FLAG = 1;
     } else {
@@ -33,7 +44,6 @@ async function registerUser(event){
     }
 
     console.log(result);
-
 
 }
 
