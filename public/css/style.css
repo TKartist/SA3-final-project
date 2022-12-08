@@ -58,7 +58,7 @@ body {
 
 }
 
-.website-header img {
+.logo {
   margin-left: -15px;
   width: 90px;
   height: 90px;
@@ -76,6 +76,24 @@ body {
   color: var(--blunderBiege);
 
 }
+
+.profile{
+margin-left: auto;
+margin-right: auto;
+align-items: center;
+}
+.profile-pic {
+width: 80px;
+height: 80px;
+
+
+}
+.profile h1{
+  font-size: 20px;
+  margin-top: auto;
+
+}
+
 h3 {
   color: var(--blunderBlack);
   text-align: center;
@@ -111,7 +129,7 @@ h6{
 }
 
 canvas {
-  width: 100%;
+  width: 80%;
   height: 100%;
   background: var(--blunderBlack);
   resize: both;
@@ -137,6 +155,7 @@ width: 80%;
 
 .website-container-body {
   display: flex;
+
 
 
 }
