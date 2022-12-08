@@ -1,6 +1,4 @@
 
-
-
 (function () {
     var sl = document.querySelector("#sociallocker");
     var slc = document.querySelector("#sociallocker-content");
@@ -11,7 +9,7 @@
       ele.onclick = function (e) {
         var web_window = window.open('/users/login', 'Share Link', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600,top=' + (screen.height / 2 - 300) + ',left=' + (screen.width / 2 - 300));
         var check_window_close = setInterval(function () {     
-          if (web_window.closed) {
+          if (verify && web_window.closed) {
             clearInterval(check_window_close);
             slc.innerHTML = old_slc_html;
             document.querySelector("#sociallocker-links").style.display = "none";
