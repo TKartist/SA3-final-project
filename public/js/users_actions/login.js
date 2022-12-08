@@ -1,11 +1,11 @@
 
 
-const form = document.getElementById('login');
-form.addEventListener('submit', loginUser);
+const form_l = document.getElementById('login');
+form_l.addEventListener('submit', loginUser);
 
 async function loginUser(event){
     event.preventDefault()
-    const username = document.getElementById('username').value;
+    const username = document.getElementById('username_l').value;
     const password = document.getElementById('loginPassword').value;
 
 
@@ -23,6 +23,7 @@ async function loginUser(event){
 
     if(result.status === 'ok'){
         //everything went fine
+        FLAG = 1;
         console.log('Got token', result.data)
     } else {
         alert(result.error);

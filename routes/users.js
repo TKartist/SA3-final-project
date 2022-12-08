@@ -60,19 +60,19 @@ router.post('/new', async(req, res)=> {
 
   //check email
   if(!email || typeof email !== 'string'){
-    return req.json({status: 'error', error: 'Invalid Email'})
+    return res.json({status: 'error', error: 'Invalid Email'})
   }
  
   //check username
 
   if(!username || typeof username !== 'string'){
-    return req.json({status: 'error',  error: 'Invalid Username'})
+    return res.json({status: 'error',  error: 'Invalid Username'})
   }
 
   //check password
 
   if(!password || typeof password !== 'string'){
-    return req.json({status: 'error',  error: 'Invalid Password'})
+    return res.json({status: 'error',  error: 'Invalid Password'})
   }
 
   console.log('password is ' + password);

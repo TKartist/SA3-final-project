@@ -6,7 +6,7 @@
   <section class="box">
     <section class="inner-box">
       <section class="forms-wrap">
-        <form action="index.html" autocomplete="off" class="sign-in-form">
+        <form id="login" action="index.html" autocomplete="off" class="sign-in-form">
           <section class="logo">
             <img src="/static/images/website/logo.png" />
             <h4>WEBSITE NAME</h4>
@@ -21,6 +21,7 @@
           <section class="actual-form">
             <section class="input-wrap">
               <input
+                id="username_l"
                 type="text"
                 minlength="4"
                 class="input-field"
@@ -32,6 +33,7 @@
 
             <section class="input-wrap">
               <input
+                id="loginPassword"
                 type="password"
                 minlength="4"
                 class="input-field"
@@ -43,14 +45,14 @@
 
             <input type="submit" value="Sign In" class="sign-btn" />
 
-            <p class="text">
+            <!-- <p class="text">
               Forgotten your password or you login datails?
               <a href="#">Get help</a> signing in
-            </p>
+            </p> -->
           </section>
         </form>
 
-        <form action="index.html" autocomplete="off" class="sign-up-form">
+        <form id="reg-form" action="/index" autocomplete="off" class="sign-up-form">
           <section class="logo">
             <img src="/static/images/website/logo.png" alt="easyclass" />
             <h4>WEBSITE NAME</h4>
@@ -65,6 +67,7 @@
           <section class="actual-form">
             <section class="input-wrap">
               <input
+                id="username_s"
                 type="text"
                 minlength="4"
                 class="input-field"
@@ -76,6 +79,7 @@
 
             <section class="input-wrap">
               <input
+                id="email"
                 type="email"
                 class="input-field"
                 autocomplete="off"
@@ -86,6 +90,7 @@
 
             <section class="input-wrap">
               <input
+                id="createPassword"
                 type="password"
                 minlength="4"
                 class="input-field"
@@ -135,6 +140,7 @@
 <!-- Javascript file -->
 <script src="/static/js/users_actions/login.js"></script>
 
+<script src="/static/js/users_actions/signin.js"></script>
 
 <script src="/static/js/login-form.js"></script>
 
