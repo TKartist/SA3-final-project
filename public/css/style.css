@@ -271,9 +271,7 @@ width: 80%;
 
 
 }
-ul{
-  position: fixed;
-}
+
 ul li {
   background-image:linear-gradient(rgba(160, 164, 176, 0.5),
   rgba(160, 164, 176, 0.5)), url(/static/images/website/banner.jpg) ;
@@ -459,19 +457,15 @@ display: block;
 width: 100%;
 }
 .img {
-width: 100px;
+width: 50px;
 }
 
 /*  */
 .player {
-margin: 0 20px;
 width: calc(100% - 150px);
 }
 .player p {
-color: #3a3d51;
-}
-.player p span {
-margin-right: 5px;
+color: var(--blunderBlack);
 }
 
 /* BAR CONNECTED TO SCORE */
@@ -516,15 +510,38 @@ color: #3a3d51;
 /* ============================================================================= */
 /* ================================ ___________ ================================ */
 /* ============================================================================= */
+
+.collaboration{
+  display: inline-flex;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+}
+.blundercom{
+  width: 170px;
+  height: 170px;
+
+  }
+
+
 .preview{
-  display: flex;
-  justify-content: space-between;
+
+    width: 100%;
+    margin: auto;
+    text-align: center;
+ 
+  
+  
+  
+
+    display: flex;
+    justify-content: space-between;
 }
 
 .chessboard {
   width: 642px;
   height: 642px;
-  border: 25px solid var(--blunderBlue);
+  border: 20px solid var(--blunderBlack);
   margin-left: auto;
   margin-right: auto;
   align-items: center;
@@ -551,7 +568,7 @@ color: #3a3d51;
   vertical-align:middle;
   margin: 0.1px !important;
 }
-.chess_button_rook, .chess_button_horse, .chess_button_bishop, .chess_button_queen, .chess_button_king{
+.chesspiece{
   background: transparent;
   border: none;
   margin-left: auto;
@@ -562,22 +579,18 @@ color: #3a3d51;
 #myDIV{
   width: 640px;
   height: 640px;
+
 }
-.view{
-  background-image: url(/static/images/website/whiteboard.png) ;
- 
-  background-size: cover;
-  overflow: hidden;
-  width: 1300px;
-  height: 1300px;
-  margin-left: auto;
-  margin-right: auto;
+
+.whiteboard{
+  backdrop-filter: blur(2px);
+  
 }
 
 .window{
-  width: 300px;
-  height: 300px;
+  width: 325px;
+  height: 325px;
 
-  border: 25px solid var(--blunderBlue);
+  
 
 }
