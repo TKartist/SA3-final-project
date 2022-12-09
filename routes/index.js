@@ -20,4 +20,7 @@ router.get('/browse', verify.auth, function(req, res, next) {
 })
 
 
+router.get('/learn', function(req, res, next) {
+  res.render('learn', {});
+})
 module.exports = router;
