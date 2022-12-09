@@ -387,8 +387,6 @@ footer {
   margin-right: auto;
 }
 
-
-@import "https://use.fontawesome.com/releases/v5.0.10/css/all.css";
 #sociallocker {
 	text-align: center;
 	position: relative;
@@ -558,12 +556,16 @@ color: #3a3d51;
 }
 
 .chessboard {
-  width: 642px;
-  height: 642px;
+  width: 640px;
+  height: 640px;
   border: 20px solid var(--blunderBlack);
   margin-left: auto;
   margin-right: auto;
   align-items: center;
+}
+
+.chessboard::hover{
+  background-color: #0e5b05;
 }
 .black {
   float: left;
@@ -574,7 +576,7 @@ color: #3a3d51;
   text-align:center;
   display: table-cell;
   vertical-align:middle;
-  margin: 0.1px!important;
+  margin: 0.001px!important;
 }
 .white {
   float: left;
@@ -585,7 +587,7 @@ color: #3a3d51;
   text-align:center;
   display: table-cell;
   vertical-align:middle;
-  margin: 0.1px !important;
+  margin: 0.001px !important;
 }
 .chesspiece{
   background: transparent;
@@ -595,14 +597,18 @@ color: #3a3d51;
   align-items: center;
 }
 
+
+
 #myDIV{
   width: 640px;
-  height: 640px;
 
 }
 
 .whiteboard{
   backdrop-filter: blur(2px);
+  border: 1mm ridge var(--blunderBlack);
+  width: 670px;
+  height: 670px;
   
 }
 
@@ -611,5 +617,54 @@ color: #3a3d51;
   height: 325px;
 
   
+
+}
+
+#please {
+  margin-top: 220px;
+  justify-content: center;
+  align-items: center;
+  
+
+}
+
+#please1 {
+
+  justify-content: center;
+  align-items: center;
+  
+
+}
+#rules{
+  margin-top: 50px;
+  backdrop-filter: blur(2px);
+  border: 1mm ridge var(--blunderBlack);
+  width: 670px;
+  height: 400px;
+
+}
+
+
+
+
+#rules ol li:before {
+  counter-increment: number;
+  content: counter(number) ". ";
+  float:left;
+}
+#rules ol {
+  list-style: none;
+  counter-reset: number;
+
+}
+
+#rules a{
+  float:left;
+}
+
+
+
+#rules li, a{
+color: var(--blunderBlack);
 
 }
