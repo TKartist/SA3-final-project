@@ -79,12 +79,12 @@ form.sign-up-form {
   pointer-events: none;
 }
 
-.logo {
+.main_logo {
   display: flex;
   align-items: center;
 }
 
-.logo img {
+.main_logo img {
   width: 35%;
   margin-right: 0.3rem;
   background-color: #151111;
@@ -92,7 +92,7 @@ form.sign-up-form {
 }
 
 /* name of the website */
-.logo h4 {
+.main_logo h4 {
   font-size: 1.1rem;
   margin-top: -9px;
   letter-spacing: -0.5px;
