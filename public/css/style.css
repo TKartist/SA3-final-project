@@ -564,9 +564,7 @@ color: #3a3d51;
   align-items: center;
 }
 
-.chessboard::hover{
-  background-color: #0e5b05;
-}
+
 .black {
   float: left;
   width: 80px;

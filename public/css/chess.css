@@ -4,8 +4,8 @@ h1 {
 
 main {
     display: grid;
-    grid-template-columns: repeat(8, 65px);
-    grid-template-rows: repeat(8, 65px);
+    grid-template-columns: repeat(8, 105px);
+    grid-template-rows: repeat(8, 105px);
     margin-left: 32%;
     margin-top: 5%;
 }

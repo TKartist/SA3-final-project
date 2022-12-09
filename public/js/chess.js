@@ -34,7 +34,7 @@ function initBoard() {
             let tile = document.createElement("button");
             tile.setAttribute('id', tileID);
             if (tileInfo.get(tileID) !== em) {
-                styleAttribute += "background: url(./images/chesspieces/" + tileInfo.get(tileID) + ".png); background-repeat: no-repeat; ";
+                styleAttribute += "background: url(static/images/chesspieces/" + tileInfo.get(tileID) + ".png); background-repeat: no-repeat; ";
             }
             if ((i + j) % 2 === 1) {
                 styleAttribute += "background-color: #dae9f2";
@@ -58,7 +58,7 @@ function board() {
             let tileID = "" + i + j;
             let tile = document.getElementById(tileID);
             if (tileInfo.get(tileID) !== em) {
-                styleAttribute += "background: url(./images/chesspieces/" + tileInfo.get(tileID) + ".png); background-repeat: no-repeat; ";
+                styleAttribute += "background: url(static/images/chesspieces/" + tileInfo.get(tileID) + ".png); background-repeat: no-repeat; ";
             }
             if ((i + j) % 2 === 1) {
                 styleAttribute += "background-color: #dae9f2";
