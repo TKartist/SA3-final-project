@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken')
 
 const KEY= 'wn8723yhufbvjeni23>"{+:983u9io19:">0jei(*&^%$dwnefi2981ijdw'
 
-module.exports = function (req, res, next) {
+function auth (req, res, next) {
     const token = req.cookies.token;
     if (!token) return res.status(401).send('Access Denied');
 
@@ -17,7 +17,20 @@ module.exports = function (req, res, next) {
     }
 }
 
+function check (req) {
+    const token = req.cookies.token;
+    if (!token) return false;
 
+    try {
+        const verified = jwt.verify(token, KEY);
+        req.user = verified;
+        req.userId = verified._id;
+        req.userName = verified.username;
+        return true
+    } catch (err) {
+        return false;
+    }
+}
 
-
+module.exports = {auth, check}
 
