@@ -23,4 +23,8 @@ router.get('/browse', verify.auth, function(req, res, next) {
 router.get('/play', function(req, res, next) {
   res.render('play', {});
 })
+
+router.get('/chat', function(req, res, next) {
+  res.render('chat', {});
+})
 module.exports = router;
