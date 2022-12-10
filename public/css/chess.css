@@ -66,13 +66,11 @@ h1 {
 main {
     
     display: grid;
-    grid-template-columns: repeat(8, 105px);
-    grid-template-rows: repeat(8, 105px);
+    grid-template-columns: repeat(8, 90px);
+    grid-template-rows: repeat(8, 90px);
     margin-left: 32%;
     margin-top: 5%;
 }
-
-
 
 
   .sidebar-2{
@@ -80,3 +78,15 @@ main {
     flex: 0 0 auto;
     background-color: var(--blunderBlack);
   }
+
+p {
+  font-weight: bolder;
+  font-size: 30px;
+  color: black;
+}
+
+p span {
+  font-weight: bolder;
+  font-size: 30px;
+  color: black;
+}

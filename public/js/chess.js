@@ -6,6 +6,7 @@ let white = [];
 let blackKing = "";
 let whiteKing = "";
 let pTiles = []; //possible tiles
+let check = "No One";
 
 const bb = "blackBishop";
 const wb = "whiteBishop";
@@ -24,6 +25,8 @@ const em = "empty";
 let atk = "white";
 let opp = "black";
 
+let switched = 0;
+
 let stage = 0, start, end;
 
 function initBoard() {
@@ -34,7 +37,7 @@ function initBoard() {
             let tile = document.createElement("button");
             tile.setAttribute('id', tileID);
             if (tileInfo.get(tileID) !== em) {
-                styleAttribute += "background: url(static/images/chesspieces/" + tileInfo.get(tileID) + ".png); background-repeat: no-repeat; ";
+                styleAttribute += "background: url(static/images/chesspieces/" + tileInfo.get(tileID) + ".png) no-repeat 10px center;";
             }
             if ((i + j) % 2 === 1) {
                 styleAttribute += "background-color: #dae9f2";
@@ -49,6 +52,7 @@ function initBoard() {
         tile.addEventListener("click", choose);
     });
     document.querySelector(".playing span").innerHTML = atk;
+    document.querySelector(".check span").innerHTML = check;
 }
 
 function board() {
@@ -58,7 +62,7 @@ function board() {
             let tileID = "" + i + j;
             let tile = document.getElementById(tileID);
             if (tileInfo.get(tileID) !== em) {
-                styleAttribute += "background: url(static/images/chesspieces/" + tileInfo.get(tileID) + ".png); background-repeat: no-repeat; ";
+                styleAttribute += "background: url(static/images/chesspieces/" + tileInfo.get(tileID) + ".png) no-repeat 10px center;";
             }
             if ((i + j) % 2 === 1) {
                 styleAttribute += "background-color: #dae9f2";
@@ -68,7 +72,8 @@ function board() {
             tile.setAttribute('style', styleAttribute);
         }
     }
-    document.querySelector(".playing span").innerHTML = opp;
+    document.querySelector(".playing span").innerHTML = atk;
+    document.querySelector(".check span").innerHTML = check;
 }
 
 function storeInfo() {
@@ -157,17 +162,24 @@ function executeMove() {
         tileInfo.set(end, tileInfo.get(start));
         tileInfo.set(start, em);
         storeInfo();
-        let c = checked();
-        if (c === atk) {
+        check = checked();
+        if (check === atk) {
             tileInfo = tmp;
             black = tmpblack;
             white = tmpwhite;
             board();
-            switchTeam();
-        } else {
+        } else if (check === opp) {
+            if (switched === 0) {
+                switchTeam();
+                switched++;
+            }
             board();
+        } else {
             switchTeam();
+            board();
+            switched = 0;
         }
+        console.log(atk);
     }
 }
 
@@ -243,21 +255,18 @@ function bishopMove(tmp) {
         oppcolor = "white";
         atkcolor = "black";
     }
-    console.log("id: " + tmp);
     let tmpx, tmpy;
     let t = [];
     for(let i = 1; i < 8; i++) {
         tmpx = sx + i;
         tmpy = sy + i;
         newID = "" + tmpy + tmpx;
-        console.log(newID);
         if (tmpx < 1 || tmpx > 8 || tmpy > 8 || tmpy < 1 || tileInfo.get(newID).includes(atkcolor)) {
             break;
         }
         if (tileInfo.get(newID).includes(oppcolor)) {
             t.push(newID);
             pTiles.push(newID);
-            console.log("newID: " + newID);
             break;
         }
         pTiles.push(newID);
@@ -267,14 +276,12 @@ function bishopMove(tmp) {
         tmpx = sx - i;
         tmpy = sy - i;
         newID = "" + tmpy + tmpx;
-        console.log(newID);
         if (tmpx < 1 || tmpx > 8 || tmpy > 8 || tmpy < 1 || tileInfo.get(newID).includes(atkcolor)) {
             break;
         }
         if (tileInfo.get(newID).includes(oppcolor)) {
             t.push(newID);
             pTiles.push(newID);
-            console.log("newID: " + newID);
             break;
         }
         pTiles.push(newID);
@@ -284,15 +291,12 @@ function bishopMove(tmp) {
         tmpx = sx + i;
         tmpy = sy - i;
         newID = "" + tmpy + tmpx;
-        console.log(newID);
         if (tmpx < 1 || tmpx > 8 || tmpy > 8 || tmpy < 1 || tileInfo.get(newID).includes(atkcolor)) {
             break;
         }
         if (tileInfo.get(newID).includes(oppcolor)) {
             t.push(newID);
             pTiles.push(newID);
-            console.log("newID: " + newID);
-            console.log("fff: " + tileInfo.get(newID));
             break;
         }
         pTiles.push(newID);
@@ -302,20 +306,17 @@ function bishopMove(tmp) {
         tmpx = sx - i;
         tmpy = sy + i;
         newID = "" + tmpy + tmpx;
-        console.log(newID);
         if (tmpx < 1 || tmpx > 8 || tmpy > 8 || tmpy < 1 || tileInfo.get(newID).includes(atkcolor)) {
             break;
         }
         if (tileInfo.get(newID).includes(oppcolor)) {
             t.push(newID);
             pTiles.push(newID);
-            console.log("newID: " + newID);
             break;
         }
         pTiles.push(newID);
         t.push(newID);
     }
-    console.log("-----------------------------------------------------");
 }
 
 function horseMove(tmp) {
@@ -559,5 +560,5 @@ function checked() {
         }
     }
     pTiles = tmp;
-    return "no";
+    return "No One";
 }
