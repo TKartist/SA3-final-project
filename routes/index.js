@@ -26,5 +26,13 @@ router.get('/play', function(req, res, next) {
 
 router.get('/chat', function(req, res, next) {
   res.render('chat', {});
+
+})
+router.get('/learn', function(req, res, next) {
+  res.render('learn', {});
+})
+
+router.get('/room', function(req, res, next) {
+  res.render('room', {});
 })
 module.exports = router;

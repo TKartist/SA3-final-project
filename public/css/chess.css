@@ -2,10 +2,81 @@ h1 {
     text-align: center;
 }
 
+:root {
+
+    /**
+     * colors
+     */
+  
+    --blunderGreen: #0e5b05;
+    --blunderBlack: #101820ff;
+    --blunderBiege: #E7E3DA;
+    --blunderBlue:  #18204c;
+    --blunderLightBlue: #6e99c0;
+    --blunderLightLightBlue: #dae9f2;
+  }
+* {
+    font-family: 'Gotham', sans-serif;
+    overscroll-behavior: none;
+    color: var(--blunderBiege);
+    transition: 250ms;
+  }
+  
+  body {
+    background-image:linear-gradient(rgba(160, 164, 176, 0.5),
+    rgba(160, 164, 176, 0.5)), url(/static/images/website/banner.jpg);
+  
+  }
+  
+  /*--The follwing header belongs to the browser page--*/
+  .website-header {
+    display: inline-flex;
+    position: relative;
+    align-items: center;
+    justify-content: left;
+  
+    height: 10vh;
+  
+    width: 99%;
+  
+    letter-spacing: 3px;
+    background: var(--blunderBlack);
+    border: 1mm ridge var(--blunderBiege);
+  
+  }
+  
+  .logo {
+    margin-left: -15px;
+    width: 90px;
+    height: 90px;
+  }
+  
+  .website-header h1 {
+    margin-left: 10px;
+    font-size: 15px;
+    color: var(--blunderBiege);
+  }
+  
+  .website-header h2 {
+    margin-left: -20px;
+    font-size: 15px;
+    color: var(--blunderBiege);
+  
+  }
 main {
+    
     display: grid;
     grid-template-columns: repeat(8, 105px);
     grid-template-rows: repeat(8, 105px);
     margin-left: 32%;
     margin-top: 5%;
 }
+
+
+
+
+  .sidebar-2{
+    display: flex;
+    flex: 0 0 auto;
+    background-color: var(--blunderBlack);
+  }
