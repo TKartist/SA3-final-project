@@ -151,22 +151,15 @@ function choose(event) {
 
 function executeMove() {
     if (validMove()) {
-        let tmp = tileInfo;
-        let tmpblack = black;
-        let tmpwhite = white;
+        // let tmp = tileInfo;
+        // let tmpblack = black;
+        // let tmpwhite = white;
         tileInfo.set(end, tileInfo.get(start));
         tileInfo.set(start, em);
         console.log(tileInfo);
-        storeInfo();
-        if (checked()) {
-            console.log("checked");
-            tileInfo = tmp;
-            black = tmpblack;
-            white = tmpwhite;
-        } else {
-            board();
-            switchTeam();
-        }
+        board();
+        switchTeam();
+        console.log(atk, opp);
     }
 }
 
@@ -208,38 +201,26 @@ function pawnMove(moved, tmp) {
     let sx = parseInt(tmp[1]);
     let sy = parseInt(tmp[0]);
     let newID = "";
+    let dy = 0;
     if (moved.includes("white")) {
-        if (tileInfo.get("" + (sy + 1) + sx) === em) {
-            newID = "" + (sy + 1) + sx;
-            pTiles.push(newID);
-        }
-        if (tileInfo.get("" + (sy + 2) + sx) === em && sy === 2) {
-            newID = "" + (sy + 2) + sx;
-            pTiles.push(newID);
-        } 
-        if ((sx - 1) > 0 && tileInfo.get("" + (sy + 1) + (sx - 1)).includes("black")) {
-            newID = "" + (sy + 1) + (sx - 1);
-            pTiles.push(newID);
-        } if ((sx + 1) < 9 && tileInfo.get("" + (sy + 1) + (sx + 1)).includes("black")) {
-            newID = "" + (sy + 1) + (sx + 1);
-            pTiles.push(newID);
-        } 
+        dy = 1;
     } else {
-        if (tileInfo.get("" + (sy - 1) + sx) === em) {
-            newID = "" + (sy - 1) + sx;
-            pTiles.push(newID);
-        }
-        if (tileInfo.get("" + (sy - 2) + sx) === em && sy === 7) {
-            newID = "" + (sy - 2) + sx;
-            pTiles.push(newID);
-        }
-        if ((sx - 1) > 0 && tileInfo.get("" + (sy - 1) + (sx - 1)).includes("black")) {
-            newID = "" + (sy - 1) + (sx - 1);
-            pTiles.push(newID);
-        } if ((sx + 1) < 9 && tileInfo.get("" + (sy - 1) + (sx + 1)).includes("black")) {
-            newID = "" + (sy - 1) + (sx + 1);
-            pTiles.push(newID);
-        }  
+        dy = -1;
+    }
+    if (tileInfo.get("" + (sy + dy) + sx) === em) {
+        newID = "" + (sy + dy) + sx;
+        pTiles.push(newID);
+    }
+    if (tileInfo.get("" + (sy + (dy * 2)) + sx) === em && ((sy === 2 && moved.includes("white")) || (sy === 7 && moved.includes("black"))) && tileInfo.get("" + (sy + dy) + sx) === em) {
+        newID = "" + (sy + (dy * 2)) + sx;
+        pTiles.push(newID);
+    }
+    if ((sx - 1) > 0 && tileInfo.get("" + (sy + dy) + (sx - 1)).includes(opp)) {
+        newID = "" + (sy + dy) + (sx - 1);
+        pTiles.push(newID);
+    } if ((sx + 1) < 9 && tileInfo.get("" + (sy + dy) + (sx + 1)).includes(opp)) {
+        newID = "" + (sy + dy) + (sx + 1);
+        pTiles.push(newID);
     }
 }
 
