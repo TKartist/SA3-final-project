@@ -151,21 +151,28 @@ function choose(event) {
 
 function executeMove() {
     if (validMove()) {
-        // let tmp = tileInfo;
-        // let tmpblack = black;
-        // let tmpwhite = white;
+        let tmp = new Map(tileInfo);
+        let tmpblack = Array.from(black);
+        let tmpwhite = Array.from(white);
         tileInfo.set(end, tileInfo.get(start));
         tileInfo.set(start, em);
-        console.log(tileInfo);
-        board();
-        switchTeam();
-        console.log(atk, opp);
+        storeInfo();
+        let c = checked();
+        if (c === atk) {
+            tileInfo = tmp;
+            black = tmpblack;
+            white = tmpwhite;
+            board();
+            switchTeam();
+        } else {
+            board();
+            switchTeam();
+        }
     }
 }
 
 function validMove() {
     let moved = tileInfo.get(start);
-    console.log(start);
     pTiles = [];
     let tmp = start;
     let found = false;
@@ -200,11 +207,13 @@ function switchTeam() {
 function pawnMove(moved, tmp) {
     let sx = parseInt(tmp[1]);
     let sy = parseInt(tmp[0]);
-    let newID = "";
+    let newID = "", oppcolor = "";
     let dy = 0;
     if (moved.includes("white")) {
+        oppcolor = "black";
         dy = 1;
     } else {
+        oppcolor = "white";
         dy = -1;
     }
     if (tileInfo.get("" + (sy + dy) + sx) === em) {
@@ -215,10 +224,10 @@ function pawnMove(moved, tmp) {
         newID = "" + (sy + (dy * 2)) + sx;
         pTiles.push(newID);
     }
-    if ((sx - 1) > 0 && tileInfo.get("" + (sy + dy) + (sx - 1)).includes(opp)) {
+    if ((sx - 1) > 0 && tileInfo.get("" + (sy + dy) + (sx - 1)).includes(oppcolor)) {
         newID = "" + (sy + dy) + (sx - 1);
         pTiles.push(newID);
-    } if ((sx + 1) < 9 && tileInfo.get("" + (sy + dy) + (sx + 1)).includes(opp)) {
+    } if ((sx + 1) < 9 && tileInfo.get("" + (sy + dy) + (sx + 1)).includes(oppcolor)) {
         newID = "" + (sy + dy) + (sx + 1);
         pTiles.push(newID);
     }
@@ -226,80 +235,115 @@ function pawnMove(moved, tmp) {
 
 function bishopMove(tmp) {
     let sx = parseInt(tmp[1]), sy = parseInt(tmp[0]);
+    let oppcolor = "";
+    if (tileInfo.get(tmp).includes("white")) {
+        oppcolor = "black";
+        atkcolor = "white";
+    } else {
+        oppcolor = "white";
+        atkcolor = "black";
+    }
+    console.log("id: " + tmp);
     let tmpx, tmpy;
+    let t = [];
     for(let i = 1; i < 8; i++) {
         tmpx = sx + i;
         tmpy = sy + i;
         newID = "" + tmpy + tmpx;
-        if (tmpx < 1 || tmpx > 8 || tmpy > 8 || tmpy < 1 || tileInfo.get(newID).includes(atk)) {
+        console.log(newID);
+        if (tmpx < 1 || tmpx > 8 || tmpy > 8 || tmpy < 1 || tileInfo.get(newID).includes(atkcolor)) {
             break;
         }
-        if (tileInfo.get(newID).includes(opp)) {
+        if (tileInfo.get(newID).includes(oppcolor)) {
+            t.push(newID);
             pTiles.push(newID);
+            console.log("newID: " + newID);
             break;
         }
         pTiles.push(newID);
+        t.push(newID);
     }
     for (let i = 1; i < 8; i++) {
         tmpx = sx - i;
         tmpy = sy - i;
         newID = "" + tmpy + tmpx;
-        if (tmpx < 1 || tmpx > 8 || tmpy > 8 || tmpy < 1 || tileInfo.get(newID).includes(atk)) {
+        console.log(newID);
+        if (tmpx < 1 || tmpx > 8 || tmpy > 8 || tmpy < 1 || tileInfo.get(newID).includes(atkcolor)) {
             break;
         }
-        if (tileInfo.get(newID).includes(opp)) {
+        if (tileInfo.get(newID).includes(oppcolor)) {
+            t.push(newID);
             pTiles.push(newID);
+            console.log("newID: " + newID);
             break;
         }
         pTiles.push(newID);
+        t.push(newID);
     }
     for (let i = 1; i < 8; i++) {
         tmpx = sx + i;
         tmpy = sy - i;
         newID = "" + tmpy + tmpx;
-        if (tmpx < 1 || tmpx > 8 || tmpy > 8 || tmpy < 1 || tileInfo.get(newID).includes(atk)) {
+        console.log(newID);
+        if (tmpx < 1 || tmpx > 8 || tmpy > 8 || tmpy < 1 || tileInfo.get(newID).includes(atkcolor)) {
             break;
         }
-        if (tileInfo.get(newID).includes(opp)) {
+        if (tileInfo.get(newID).includes(oppcolor)) {
+            t.push(newID);
             pTiles.push(newID);
+            console.log("newID: " + newID);
+            console.log("fff: " + tileInfo.get(newID));
             break;
         }
         pTiles.push(newID);
+        t.push(newID);
     }
     for (let i = 1; i < 8; i++) {
         tmpx = sx - i;
         tmpy = sy + i;
         newID = "" + tmpy + tmpx;
-        if (tmpx < 1 || tmpx > 8 || tmpy > 8 || tmpy < 1 || tileInfo.get(newID).includes(atk)) {
+        console.log(newID);
+        if (tmpx < 1 || tmpx > 8 || tmpy > 8 || tmpy < 1 || tileInfo.get(newID).includes(atkcolor)) {
             break;
         }
-        if (tileInfo.get(newID).includes(opp)) {
+        if (tileInfo.get(newID).includes(oppcolor)) {
+            t.push(newID);
             pTiles.push(newID);
+            console.log("newID: " + newID);
             break;
         }
         pTiles.push(newID);
+        t.push(newID);
     }
+    console.log("-----------------------------------------------------");
 }
 
 function horseMove(tmp) {
     let x = parseInt(tmp[1]);
     let y = parseInt(tmp[0]);
     let tmpx, tmpy;
-    console.log(x, y);
     let twos = [2, -2];
     let ones = [1, -1];
+    let oppcolor = "";
+    if (tileInfo.get(tmp).includes("white")) {
+        oppcolor = "black";
+        atkcolor = "white";
+    } else {
+        oppcolor = "white";
+        atkcolor = "black";
+    }
     twos.forEach(t => {
         ones.forEach(o => {
             tmpx = x + t;
             tmpy = y + o;
             newID = "" + tmpy + tmpx;
-            if (tmpx > 0 && tmpx < 9 && tmpy > 0 && tmpy < 9 && (tileInfo.get(newID) === em || tileInfo.get(newID).includes(opp))) {
+            if (tmpx > 0 && tmpx < 9 && tmpy > 0 && tmpy < 9 && (tileInfo.get(newID) === em || tileInfo.get(newID).includes(oppcolor))) {
                 pTiles.push(newID);
             }
             tmpx = x + o;
             tmpy = y + t;
             newID = "" + tmpy + tmpx;
-            if (tmpx > 0 && tmpx < 9 && tmpy > 0 && tmpy < 9 && (tileInfo.get(newID) === em || tileInfo.get(newID).includes(opp))) {
+            if (tmpx > 0 && tmpx < 9 && tmpy > 0 && tmpy < 9 && (tileInfo.get(newID) === em || tileInfo.get(newID).includes(oppcolor))) {
                 pTiles.push(newID);
             }
         })
@@ -309,13 +353,21 @@ function horseMove(tmp) {
 function rookMove(tmp) {
     let sx = parseInt(tmp[1]);
     let sy = parseInt(tmp[0]);
+    let oppcolor = "";
+    if (tileInfo.get(tmp).includes("white")) {
+        oppcolor = "black";
+        atkcolor = "white";
+    } else {
+        oppcolor = "white";
+        atkcolor = "black";
+    }
     for (let i = 1; i < 8; i++) {
         tmpx = sx + i;
         newID = "" + sy + tmpx;
-        if (tmpx < 1 || tmpx > 8 || tileInfo.get(newID).includes(atk)) {
+        if (tmpx < 1 || tmpx > 8 || tileInfo.get(newID).includes(atkcolor)) {
             break;
         }
-        if (tileInfo.get(newID).includes(opp)) {
+        if (tileInfo.get(newID).includes(oppcolor)) {
             pTiles.push(newID);
             break;
         }
@@ -324,10 +376,10 @@ function rookMove(tmp) {
     for (let i = 1; i < 8; i++) {
         tmpx = sx - i;
         newID = "" + sy + tmpx;
-        if (tmpx < 1 || tmpx > 8 || tileInfo.get(newID).includes(atk)) {
+        if (tmpx < 1 || tmpx > 8 || tileInfo.get(newID).includes(atkcolor)) {
             break;
         }
-        if (tileInfo.get(newID).includes(opp)) {
+        if (tileInfo.get(newID).includes(oppcolor)) {
             pTiles.push(newID);
             break;
         }
@@ -336,10 +388,10 @@ function rookMove(tmp) {
     for (let i = 1; i < 8; i++) {
         tmpy = sy + i;
         newID = "" + tmpy + sx;
-        if (tmpy < 1 || tmpy > 8 || tileInfo.get(newID).includes(atk)) {
+        if (tmpy < 1 || tmpy > 8 || tileInfo.get(newID).includes(atkcolor)) {
             break;
         }
-        if (tileInfo.get(newID).includes(opp)) {
+        if (tileInfo.get(newID).includes(oppcolor)) {
             pTiles.push(newID);
             break;
         }
@@ -348,10 +400,10 @@ function rookMove(tmp) {
     for (let i = 1; i < 8; i++) {
         tmpy = sy - i;
         newID = "" + tmpy + sx;
-        if (tmpy < 1 || tmpy > 8 || tileInfo.get(newID).includes(atk)) {
+        if (tmpy < 1 || tmpy > 8 || tileInfo.get(newID).includes(atkcolor)) {
             break;
         }
-        if (tileInfo.get(newID).includes(opp)) {
+        if (tileInfo.get(newID).includes(oppcolor)) {
             pTiles.push(newID);
             break;
         }
@@ -378,6 +430,12 @@ function kingRange(tmp) {
 
 function kingMove(moved, tmp) {
     let tmpTiles = [];
+    let atkcolor = "";
+    if (tileInfo.get(tmp).includes("white")) {
+        atkcolor = "white";
+    } else {
+        atkcolor = "black";
+    }
     if (moved.includes("white")) {
         black.forEach(tile => {
             let piece = tileInfo.get(tile);
@@ -419,7 +477,6 @@ function kingMove(moved, tmp) {
         tmpTiles = pTiles;
         pTiles = [];
     }
-    console.log(tmpTiles);
     let x = parseInt(tmp[1]);
     let y = parseInt(tmp[0]);
     let found = false;
@@ -433,12 +490,11 @@ function kingMove(moved, tmp) {
                     let size = tmpTiles.length;
                     for (let i = 0; i < size; i++) {
                         if (tmpTiles[i] === newID) {
-                            console.log(newID);
                             found = true;
                             break;
                         }
                     }
-                    if (found === false && !(tileInfo.get(newID).includes(atk))) {
+                    if (found === false && !(tileInfo.get(newID).includes(atkcolor))) {
                         pTiles.push(newID);
                     } else {
                         found = false;
@@ -450,7 +506,7 @@ function kingMove(moved, tmp) {
 }
 
 function checked() {
-    let tmp = pTiles;
+    let tmp = Array.from(pTiles);
     let sizeb = black.length;
     pTiles = [];
     for (let i = 0; i < sizeb; i++) {
@@ -459,7 +515,6 @@ function checked() {
             pawnMove(piece, black[i]);
         } else if (piece.includes("Bishop")) {
             bishopMove(black[i]);
-            console.log("bishop" + black[i]);
         } else if (piece.includes("Rook")) {
             rookMove(black[i]);
         } else if (piece.includes("Horse")) {
@@ -471,12 +526,10 @@ function checked() {
             kingRange(black[i]);
         }
     }
-    console.log(pTiles);
     for (let j = 0; j < pTiles.length; j++) {
         if (pTiles[j] === whiteKing) {
-            console.log("in");
             pTiles = tmp;
-            return true;
+            return "white";
         }
     }
     pTiles = [];
@@ -502,9 +555,9 @@ function checked() {
     for (let j = 0; j < pTiles.length; j++) {
         if (pTiles[j] === blackKing) {
             pTiles = tmp;
-            return true;
+            return "black";
         }
     }
     pTiles = tmp;
-    return false;
+    return "no";
 }
