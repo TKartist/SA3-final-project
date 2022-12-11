@@ -162,7 +162,7 @@ function executeMove() {
         tileInfo.set(end, tileInfo.get(start));
         tileInfo.set(start, em);
         storeInfo();
-        check = checked();
+        check = checked("check");
         if (check === atk) {
             tileInfo = tmp;
             black = tmpblack;
@@ -174,12 +174,14 @@ function executeMove() {
                 switched++;
             }
             board();
+            if (checkmate()) {
+                gameover();
+            }
         } else {
             switchTeam();
             board();
             switched = 0;
         }
-        console.log(atk);
     }
 }
 
@@ -455,7 +457,7 @@ function kingMove(moved, tmp) {
                 kingRange(tile);
             }
         })
-        tmpTiles = pTiles;
+        tmpTiles = Array.from(pTiles);
         pTiles = [];
     } else {
         white.forEach(tile => {
@@ -475,7 +477,7 @@ function kingMove(moved, tmp) {
                 kingRange(tile);
             }
         })
-        tmpTiles = pTiles;
+        tmpTiles = Array.from(pTiles);
         pTiles = [];
     }
     let x = parseInt(tmp[1]);
@@ -506,7 +508,7 @@ function kingMove(moved, tmp) {
     }
 }
 
-function checked() {
+function checked(p) {
     let tmp = Array.from(pTiles);
     let sizeb = black.length;
     pTiles = [];
@@ -533,10 +535,13 @@ function checked() {
             return "white";
         }
     }
+    let s = pTiles.length;
+    if (p === "checkmate" && s === 0) {
+        return "white";
+    }
     pTiles = [];
     let sizew = white.length;
     for (let i = 0; i < sizew; i++) {
-        pTiles = [];
         let piece = tileInfo.get(white[i]);
         if (piece.includes("Pawn")) {
             pawnMove(piece, white[i]);
@@ -559,6 +564,112 @@ function checked() {
             return "black";
         }
     }
+    s = pTiles.length;
     pTiles = tmp;
-    return "No One";
+    if (p === "checkmate" && s === 0) {
+        return "black";
+    } else {
+        return "No One";
+    }
+}
+
+function checkmate() {
+    let tmpblack = Array.from(black);
+    let tmpwhite = Array.from(white);
+    let tmp = new Map(tileInfo);
+    let tmpTile = Array.from(pTiles);
+    if (check === "black") {
+        let size = black.length;
+        for (let i = 0; i < size; i++) {
+            pTiles = [];
+            let curID = black[i];
+            let piece = tileInfo.get(curID);
+            if (piece.includes("Pawn")) {
+                pawnMove(piece, curID);
+            } else if (piece.includes("Bishop")) {
+                bishopMove(curID);
+            } else if (piece.includes("Rook")) {
+                rookMove(curID);
+            } else if (piece.includes("Horse")) {
+                horseMove(curID);
+            } else if (piece.includes("Queen")) {
+                rookMove(curID);
+                bishopMove(curID);
+            } else if (piece.includes("King")) {
+                kingMove(piece, curID);
+            }
+            let tmp2 = Array.from(pTiles);
+            let sizep = pTiles.length;
+            for (let j = 0; j < sizep; j++) {
+                tileInfo.set(pTiles[j], piece);
+                tileInfo.set(curID, em);
+                storeInfo();
+                let c = checked("checkmate");
+                if (c !== "black") {
+                    pTiles = tmpTile;
+                    white = tmpwhite;
+                    black = tmpblack;
+                    tileInfo = new Map(tmp);
+                    return false;
+                }
+                pTiles = tmp2;
+                white = tmpwhite;
+                black = tmpblack;
+                tileInfo = new Map(tmp);
+            }
+        }
+    } else if (check === "white") {
+        let size = white.length;
+        for (let i = 0; i < size; i++) {
+            pTiles = [];
+            let curID = white[i];
+            let piece = tileInfo.get(curID);
+            if (piece.includes("Pawn")) {
+                pawnMove(piece, curID);
+            } else if (piece.includes("Bishop")) {
+                bishopMove(curID);
+            } else if (piece.includes("Rook")) {
+                rookMove(curID);
+            } else if (piece.includes("Horse")) {
+                horseMove(curID);
+            } else if (piece.includes("Queen")) {
+                rookMove(curID);
+                bishopMove(curID);
+            } else if (piece.includes("King")) {
+                kingMove(piece, curID);
+            }
+            let tmp2 = Array.from(pTiles);
+            let sizep = pTiles.length;
+            for (let j = 0; j < sizep; j++) {
+                tileInfo.set(pTiles[j], piece);
+                tileInfo.set(curID, em);
+                storeInfo();
+                let c = checked("checkmate");
+                if (c !== "white") {
+                    pTiles = tmpTile;
+                    white = tmpwhite;
+                    black = tmpblack;
+                    tileInfo = new Map(tmp);
+                    return false;
+                }
+                pTiles = tmp2;
+                white = tmpwhite;
+                black = tmpblack;
+                tileInfo = new Map(tmp);
+            }
+        }
+    }
+    pTiles = tmpTile;
+    white = tmpwhite;
+    black = tmpblack;
+    tileInfo = new Map(tmp);
+    return true;
+}
+
+function gameover() {
+    let main = document.querySelector("main");
+    main.querySelectorAll("button").forEach(e => {
+        e.disabled = true;
+    })
+    document.querySelector(".check").innerHTML = atk + " is checkmated.";
 }
