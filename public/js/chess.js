@@ -98,6 +98,25 @@ function storeInfo() {
     }
 }
 
+
+async function storeDatabase(){
+    var obj = Object.fromEntries(tileInfo);
+    var map = JSON.stringify(obj);
+    console.log(map);
+    
+    const result = await fetch('/play', {
+        method: 'POST',
+        headers: {
+            'Content-Type' : 'application/json'
+        }, 
+        body: JSON.stringify({
+            map,
+            atk
+        })
+    }).then((res)=> res.json())
+    console.log(result);
+}
+
 function initPos() {
     for (let i = 1; i < 9; i++) {
         for (let j = 1; j < 9; j++) {
@@ -170,6 +189,7 @@ function executeMove() {
             board();
         } else if (check === opp) {
             if (switched === 0) {
+                storeDatabase();
                 switchTeam();
                 switched++;
             }
@@ -178,6 +198,7 @@ function executeMove() {
                 gameover();
             }
         } else {
+            storeDatabase();
             switchTeam();
             board();
             switched = 0;

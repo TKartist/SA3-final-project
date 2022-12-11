@@ -1,4 +1,5 @@
 
+var User = require('../models/moves');
 var express = require('express');
 var router = express.Router();
 const verify = require('./verifyToken');
@@ -26,6 +27,23 @@ router.get('/browse', verify.auth, function(req, res, next) {
 
 router.get('/play',verify.auth ,function(req, res, next) {
   res.render('play', {});
+})
+
+router.post('/play', async(req, res)=> {
+  const { map, atk } = req.body;
+  
+try {
+
+  const response = await User.create({
+    map,
+    atk,
+  })
+  console.log('created moves', response);
+
+} catch(error){
+  throw error
+}
+res.json({status: 'ok'});
 })
 
 router.get('/chat',verify.auth ,function(req, res, next) {
