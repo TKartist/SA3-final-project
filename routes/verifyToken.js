@@ -11,7 +11,7 @@ function auth (req, res, next) {
         req.user = verified;
         req.userId = verified._id;
         req.userName = verified.username;
-         next();
+        next();
     } catch (err) {
         return res.status(400).send('Invalid Token');
     }
@@ -19,16 +19,17 @@ function auth (req, res, next) {
 
 function check (req) {
     const token = req.cookies.token;
-    if (!token) return false;
+    if (!token) return {status: false, name: null};
 
     try {
         const verified = jwt.verify(token, KEY);
         req.user = verified;
-        req.userId = verified._id;
-        req.userName = verified.username;
-        return true
+        let id = verified._id;
+        let name = verified.username;
+        console.log(name)
+        return  {status: true, name: name};
     } catch (err) {
-        return false;
+        return {status: false, name: null};
     }
 }
 

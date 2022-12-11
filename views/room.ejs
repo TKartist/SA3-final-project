@@ -7,9 +7,11 @@
   <link rel="stylesheet" href="./static/css/style.css" />
   <link href="https://fonts.cdnfonts.com/css/gotham" rel="stylesheet">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script defer src="/socket.io/socket.io.js"></script>
+  <script defer src="/static/js/room.js"></script>
 </head>
 
-<body class="website-container">
+<body class="website-container" onload="init()">
   <header class="website-header">
 
 
@@ -35,8 +37,8 @@
           <div class="row">
             <div class="programs-k">
 
-              <a href="./index.html"><img class="top" src="static/images/website/one.png" /></a>
-              <a href="./index.html"><img class="width" src="static/images/website/chess_room_red.jpg" /></a>
+              <a href="./index"><img class="top" src="static/images/website/one.png" /></a>
+              <a href="./index"><img class="width" src="static/images/website/chess_room_red.jpg" /></a>
 
               <button class="start">
                 <h4>Enter</h4>
@@ -49,8 +51,8 @@
             </div>
             <div class="programs-k">
 
-              <a href="./index.html"><img class="top" src="static/images/website/two.png" /></a>
-              <a href="./index.html"><img class="width" src="static/images/website/chess_room_black.jpg" /></a>
+              <a href="./index"><img class="top" src="static/images/website/two.png" /></a>
+              <a href="./index"><img class="width" src="static/images/website/chess_room_black.jpg" /></a>
 
               <button class="start">
                 <h4>Enter</h4>
@@ -63,8 +65,8 @@
             </div>
             <div class="programs-k">
 
-              <a href="./index.html"><img class="top" src="static/images/website/three.png" /></a>
-              <a href="./index.html"><img class="width" src="static/images/website/chess_room_blue.jpg" /></a>
+              <a href="./index"><img class="top" src="static/images/website/three.png" /></a>
+              <a href="./index"><img class="width" src="static/images/website/chess_room_blue.jpg" /></a>
 
               <button class="start">
                 <h4>Enter</h4>
@@ -74,18 +76,7 @@
               </div>
             </div>
           </div>
-
-
         </section>
-
-
-
-
-
-
-
-
-
     </main>
 
 
@@ -115,7 +106,6 @@
       <a href="https://www.youtube.com/channel/UCqjwF8rxRsotnojGl4gM0Zw"><i class="fa fa-youtube"></i></a>
     </div>
   </footer>
-
   <script src="/static/js/background.js"></script>
 </body>
 

@@ -3,7 +3,9 @@ var router = express.Router();
 const verify = require('./verifyToken');
 /* GET home page. */
 router.get('/index', function(req, res, next) {
-  if (verify.check(req)) {
+  response = verify.check(req);
+  if (response.status) {
+    console.log(response.name)
     res.render('index', { title: 'Index Page', filename: "unlocked" });
   } else {
     res.render('index', { title: 'Index Page', filename: "locked" });
@@ -15,7 +17,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/browse', verify.auth, function(req, res, next) {
-  console.log("user" + req.userName)
+  let name = req.userName;
   res.render('browse', {});
 })
 
