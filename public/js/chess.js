@@ -36,9 +36,6 @@ function initBoard() {
             let tileID = "" + i + j;
             let tile = document.createElement("button");
             tile.setAttribute('id', tileID);
-            if (tileInfo.get(tileID) !== em) {
-                styleAttribute += "background: url(static/images/chesspieces/" + tileInfo.get(tileID) + ".png) no-repeat 10px center;";
-            }
             if ((i + j) % 2 === 1) {
                 styleAttribute += "background-color: #dae9f2";
             } else {
@@ -48,12 +45,11 @@ function initBoard() {
             document.querySelector("main").appendChild(tile);
         }
     }
-    document.querySelectorAll("button").forEach(tile => {
-        tile.addEventListener("click", choose);
-    });
-    document.querySelector(".playing span").innerHTML = atk;
-    document.querySelector(".check span").innerHTML = check;
 }
+
+document.getElementById("start").addEventListener("click", e => {
+    board();
+})
 
 function board() {
     for (let i = 1; i < 9; i++) {
@@ -72,6 +68,9 @@ function board() {
             tile.setAttribute('style', styleAttribute);
         }
     }
+    document.querySelectorAll("button").forEach(tile => {
+        tile.addEventListener("click", choose);
+    });
     document.querySelector(".playing span").innerHTML = atk;
     document.querySelector(".check span").innerHTML = check;
 }
@@ -170,6 +169,7 @@ function executeMove() {
             board();
         } else if (check === opp) {
             if (switched === 0) {
+                //store atk
                 switchTeam();
                 switched++;
             }
@@ -178,6 +178,7 @@ function executeMove() {
                 gameover();
             }
         } else {
+            //store atk
             switchTeam();
             board();
             switched = 0;
