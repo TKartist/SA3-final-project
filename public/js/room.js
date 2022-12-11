@@ -2,8 +2,6 @@ const socket = io();
 // const messageContainer = document.getElementById('message-container');
 // const messageForm = document.getElementById('send-container');
 // const messageInput = document.getElementById('message-input');
-const name = prompt('What is your name?');
-const room_id = prompt('Choose the room');
 
 socket.emit('enter-room', name, room_id);
 // socket.on('chat-message', data => {
