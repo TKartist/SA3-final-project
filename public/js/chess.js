@@ -98,22 +98,19 @@ function storeInfo() {
 }
 
 
-async function storeDatabase(){
+async function storeDatabase() {
     var obj = Object.fromEntries(tileInfo);
     var map = JSON.stringify(obj);
-    console.log(map);
-    
     const result = await fetch('/play', {
         method: 'POST',
         headers: {
-            'Content-Type' : 'application/json'
-        }, 
+            'Content-Type': 'application/json'
+        },
         body: JSON.stringify({
             map,
             atk
         })
-    }).then((res)=> res.json())
-    console.log(result);
+    }).then((res) => res.json())
 }
 
 function initPos() {
@@ -279,7 +276,7 @@ function bishopMove(tmp) {
     }
     let tmpx, tmpy;
     let t = [];
-    for(let i = 1; i < 8; i++) {
+    for (let i = 1; i < 8; i++) {
         tmpx = sx + i;
         tmpy = sy + i;
         newID = "" + tmpy + tmpx;
@@ -444,7 +441,7 @@ function kingRange(tmp) {
             if (newX < 9 && newX > 0 && newY < 9 && newY > 0) {
                 if (i !== 0 && j !== 0) {
                     let newID = "" + newY + newX;
-                    pTiles.push(newID); 
+                    pTiles.push(newID);
                 }
             }
         }
@@ -508,8 +505,11 @@ function kingMove(moved, tmp) {
             let newX = x + j;
             let newY = y + i;
             if (newX < 9 && newX > 0 && newY < 9 && newY > 0) {
-                if (i !== 0 && j !== 0) {
+                if (i === 0 && j === 0) {
+                    continue;
+                } else {
                     let newID = "" + newY + newX;
+                    console.log(newID);
                     let size = tmpTiles.length;
                     for (let i = 0; i < size; i++) {
                         if (tmpTiles[i] === newID) {
@@ -615,8 +615,10 @@ function checkmate() {
             } else if (piece.includes("Queen")) {
                 rookMove(curID);
                 bishopMove(curID);
+                console.log(pTiles);
             } else if (piece.includes("King")) {
                 kingMove(piece, curID);
+                console.log(pTiles);
             }
             let tmp2 = Array.from(pTiles);
             let sizep = pTiles.length;
@@ -655,8 +657,10 @@ function checkmate() {
             } else if (piece.includes("Queen")) {
                 rookMove(curID);
                 bishopMove(curID);
+                console.log(pTiles);
             } else if (piece.includes("King")) {
                 kingMove(piece, curID);
+                console.log(pTiles);
             }
             let tmp2 = Array.from(pTiles);
             let sizep = pTiles.length;
