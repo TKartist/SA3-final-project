@@ -63,21 +63,43 @@ h1 {
     color: var(--blunderBiege);
   
   }
+/*  */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 main {
     
-    display: grid;
-    grid-template-columns: repeat(8, 90px);
-    grid-template-rows: repeat(8, 90px);
-    margin-left: 32%;
-    margin-top: 5%;
+  /* display: grid;
+  grid-template-columns: repeat(8, 90px);
+  grid-template-rows: repeat(8, 90px); */
+
 }
 
 
-  .sidebar-2{
-    display: flex;
-    flex: 0 0 auto;
-    background-color: var(--blunderBlack);
-  }
+.sidebar-2 {
+  display: flex;
+  flex: 0 0 auto;
+  background-color: var(--blunderBlack);
+}
 
 p {
   font-weight: bolder;
@@ -89,4 +111,30 @@ p span {
   font-weight: bolder;
   font-size: 30px;
   color: black;
+}
+
+
+.website-container-body{
+  float: left;
+}
+
+
+
+table {
+  float: right;
+  border: solid;
+  background-color: #0e5b05;
+}
+
+
+#start{
+  background-color: #18204c;
+}
+
+
+
+#chess-grid{
+  display: grid;
+  grid-template-columns: repeat(8, 90px);
+  grid-template-rows: repeat(8, 90px);
 }

@@ -42,7 +42,7 @@ function initBoard() {
                 styleAttribute += "background-color: #6e99c0";
             }
             tile.setAttribute('style', styleAttribute);
-            document.querySelector("main").appendChild(tile);
+            document.querySelector("#chess-grid").appendChild(tile);
         }
     }
 }
