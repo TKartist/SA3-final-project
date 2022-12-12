@@ -149,6 +149,10 @@ function initPos() {
     initBoard();
 }
 
+function ptq() {
+
+}
+
 function choose(event) {
     let eventID = event.target.id;
     let selected = tileInfo.get(eventID);
@@ -176,6 +180,7 @@ function executeMove() {
         let tmpwhite = Array.from(white);
         tileInfo.set(end, tileInfo.get(start));
         tileInfo.set(start, em);
+        upgrade();
         storeInfo();
         check = checked("check");
         if (check === atk) {
@@ -229,6 +234,19 @@ function validMove() {
     return found;
 }
 
+function upgrade() {
+    for (let i = 1; i < 9; i++) {
+        let newID = "" + 1 + i;
+        if (tileInfo.get(newID) === bp) {
+            tileInfo.set(newID, bq);
+        }
+        newID = "" + 8 + i;
+        if (tileInfo.get(newID) === wp) {
+            tileInfo.set(newID, wq);
+        }
+    }
+}
+
 function switchTeam() {
     let tmp = atk;
     atk = opp;
@@ -255,10 +273,10 @@ function pawnMove(moved, tmp) {
         newID = "" + (sy + (dy * 2)) + sx;
         pTiles.push(newID);
     }
-    if ((sx - 1) > 0 && tileInfo.get("" + (sy + dy) + (sx - 1)).includes(oppcolor)) {
+    if (sy < 8 && sy > 1 && (sx - 1) > 0 && tileInfo.get("" + (sy + dy) + (sx - 1)).includes(oppcolor)) {
         newID = "" + (sy + dy) + (sx - 1);
         pTiles.push(newID);
-    } if ((sx + 1) < 9 && tileInfo.get("" + (sy + dy) + (sx + 1)).includes(oppcolor)) {
+    } if (sy < 8 && sy > 1 && (sx + 1) < 9 && tileInfo.get("" + (sy + dy) + (sx + 1)).includes(oppcolor)) {
         newID = "" + (sy + dy) + (sx + 1);
         pTiles.push(newID);
     }
@@ -509,7 +527,6 @@ function kingMove(moved, tmp) {
                     continue;
                 } else {
                     let newID = "" + newY + newX;
-                    console.log(newID);
                     let size = tmpTiles.length;
                     for (let i = 0; i < size; i++) {
                         if (tmpTiles[i] === newID) {
@@ -615,10 +632,8 @@ function checkmate() {
             } else if (piece.includes("Queen")) {
                 rookMove(curID);
                 bishopMove(curID);
-                console.log(pTiles);
             } else if (piece.includes("King")) {
                 kingMove(piece, curID);
-                console.log(pTiles);
             }
             let tmp2 = Array.from(pTiles);
             let sizep = pTiles.length;
@@ -657,10 +672,8 @@ function checkmate() {
             } else if (piece.includes("Queen")) {
                 rookMove(curID);
                 bishopMove(curID);
-                console.log(pTiles);
             } else if (piece.includes("King")) {
                 kingMove(piece, curID);
-                console.log(pTiles);
             }
             let tmp2 = Array.from(pTiles);
             let sizep = pTiles.length;
