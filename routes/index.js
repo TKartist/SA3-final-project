@@ -10,7 +10,7 @@ router.get('/index', function(req, res, next) {
     console.log(response.name)
     res.render('index', { title: 'Index Page', filename: "unlocked", name: response.name });
   } else {
-    res.render('index', { title: 'Index Page', filename: "locked" });
+    res.render('index', { title: 'Index Page', filename: "locked",name: response.name });
   }
 });
 
@@ -58,5 +58,10 @@ router.get('/room',verify.auth ,function(req, res, next) {
   let name = req.userName;
   console.log(name);
   res.render('room', {name : name});
+})
+
+router.get('/about', function(req, res, next) {
+  res.render('about', {});
+
 })
 module.exports = router;

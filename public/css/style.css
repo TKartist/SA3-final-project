@@ -751,7 +751,6 @@ color: #3a3d51;
   align-items: center;
   width: 50%;
   justify-content: center;
-  align-items: center;
 }
 .description h3 {
   text-align:justify; 
@@ -811,4 +810,16 @@ color: #3a3d51;
     padding: 10px;
 
 
+}
+
+.info-logo{
+  margin-top: auto;
+  margin-bottom: auto;
+  align-items: center;
+  width: 50%;
+  justify-content: center;
+}
+.info{
+  width: 450px;
+  height: 450px;
 }

@@ -1,0 +1,157 @@
+
+:root {
+
+    /**
+     * colors
+     */
+  
+    --blunderGreen: #0e5b05;
+    --blunderBlack: #101820ff;
+    --blunderBiege: #E7E3DA;
+    --blunderBlue:  #18204c;
+    --blunderLightBlue: #6e99c0;
+    --blunderLightLightBlue: #dae9f2;
+  }
+
+  *, *:before, *:after {
+    box-sizing: inherit;
+    font-family: 'Gotham', sans-serif;
+    overscroll-behavior: none;
+    color: var(--blunderBiege);
+    transition: 250ms;
+  
+  }
+
+body {
+    background-image:linear-gradient(rgba(160, 164, 176, 0.5),
+    rgba(160, 164, 176, 0.5)), url(/static/images/website/banner.jpg);
+    margin: 0;
+  }
+
+  .website-header {
+    display: inline-flex;
+    position: relative;
+    align-items: center;
+    justify-content: left;
+  
+    height: 10vh;
+  
+    width: 99%;
+  
+    letter-spacing: 3px;
+    background: var(--blunderBlack);
+    border: 1mm ridge var(--blunderBiege);
+  
+  }
+  
+  .logo {
+    margin-left: -15px;
+    width: 90px;
+    height: 90px;
+  }
+  
+  .website-header h1 {
+    margin-left: 10px;
+    font-size: 15px;
+    color: var(--blunderBiege);
+  }
+  
+  .website-header h2 {
+    margin-left: -20px;
+    font-size: 15px;
+    color: var(--blunderBiege);
+  
+  }
+ 
+  .row img{
+    width: 300px;
+    height: 300px;
+    margin-right: auto;
+    margin-left: auto;
+    align-items: center;
+   
+   
+  }
+  .profile{
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+  }
+  .profile-pic {
+  width: 80px;
+  height: 80px;
+  
+  
+  }
+  .profile h1{
+    font-size: 20px;
+    margin-top: -25px;
+  
+  }
+  
+  html {
+    box-sizing: border-box;
+  }
+ h5{ color: var(--blunderBlack);
+    font-size: 50px;
+    text-align: center;
+  }
+
+  
+  .column {
+    float: left;
+    width: 33.3%;
+    margin-bottom: 16px;
+    padding: 0 8px;
+  }
+  
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+
+      
+
+  }
+  
+  .about-section {
+    padding: 50px;
+    text-align: center;
+    background-color: #474e5d;
+    color: white;
+  }
+  
+  .container {
+    padding: 0 16px;
+  }
+  
+  .container::after, .row::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+  
+  .title {
+    color: grey;
+  }
+  
+  .button {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  .button:hover {
+    background-color: #555;
+  }
+  
+  @media screen and (max-width: 650px) {
+    .column {
+      width: 100%;
+      display: block;
+    }
+  }
