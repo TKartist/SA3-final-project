@@ -59,4 +59,9 @@ router.get('/room',verify.auth ,function(req, res, next) {
   console.log(name);
   res.render('room', {name : name});
 })
+
+router.get('/about', function(req, res, next) {
+  res.render('about', {});
+
+})
 module.exports = router;
