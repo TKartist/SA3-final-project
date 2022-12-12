@@ -23,24 +23,42 @@
     <p class="playing"> Playing: <span> </span></p>
     <p class="check"><span></span> is checked</p>
 
-    <section class="website-container-body">
+    <section>
         <main class="website-content">
             <section id="chess-grid">
             </section>
 
-            <section class="sidebar-2" >
+            <section class="sidebar" >
+                <!-- Table -->
                 <table>
                     <tr>
                         <td>try </td>
                         <td>try </td>
                         <td>try </td>
-                        <td>try </td>
-                        <td>try </td>
                     </tr>
+
+                    <% for (let i = 0; i < 10; i++) { %>
+                        <tr>
+                            <td> <%- i %> </td>
+                            <td> posn in </td>
+                            <td> posn out</td>
+                        </tr>
+                    <% } %>
                 </table>
+
+                <!-- buttons forw and back -->
+                <section class="replay-buttons-section">
+                    <button class="replay-buttons">Back</button>
+                    <button class="replay-buttons">Forw</button>
+                    <button class="replay-buttons">do</button>
+                    <button class="replay-buttons">try</button>
+                </section>
+
+                <!-- Start button -->
+                <button id="start">Start</button>
+            
             </section>
 
-            <button class = "start" id="start">Start</button>
         </main>
     
     </section>
