@@ -25,8 +25,8 @@ router.get('/browse', verify.auth, function(req, res, next) {
 })
 
 
-router.get('/play',verify.auth ,function(req, res, next) {
-  res.render('play', {});
+router.get('/test',function(req, res, next) {
+  res.render('test', {});
 })
 
 router.post('/play', async(req, res)=> {
