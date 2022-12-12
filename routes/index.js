@@ -10,7 +10,7 @@ router.get('/index', function(req, res, next) {
     console.log(response.name)
     res.render('index', { title: 'Index Page', filename: "unlocked", name: response.name });
   } else {
-    res.render('index', { title: 'Index Page', filename: "locked" });
+    res.render('index', { title: 'Index Page', filename: "locked",name: response.name });
   }
 });
 
