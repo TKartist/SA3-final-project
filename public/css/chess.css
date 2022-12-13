@@ -142,8 +142,8 @@ p span {
 
 #chess-grid{
   display: grid;
-  grid-template-columns: repeat(8, 90px);
-  grid-template-rows: repeat(8, 90px);
+  grid-template-columns: repeat(8, 75px);
+  grid-template-rows: repeat(8, 75px);
   margin-left: 2%;
 }
 
@@ -178,7 +178,7 @@ p span {
 }
 .moves {
   overflow-y: auto;
-  height: 500px;
+  height: 350px;
 }
 /* .sidebar:first-child {
   background-color: #5b0505;
