@@ -123,6 +123,8 @@ table {
   float: right;
   border: solid;
   background-color: #0e5b05;
+  overflow-y: auto;
+  height: 200px;
 }
 table tr {
   transition: all .2s ease-in;
@@ -139,20 +141,36 @@ tr:hover {
   box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2), -1px -1px 8px rgba(0, 0, 0, 0.2);
 }
 
-
-
-.sidebar:first-child {
+/* .sidebar:first-child {
   background-color: #5b0505;
   color: #E7E3DA;
-}
+} */
 
+
+/* Timer */
+.clock-container {
+  display: flex;
+  justify-content: space-between;
+}
+.player-1-timer-container, .player-2-timer-container {
+  text-align: center;
+}
+.player-1-timer, .player-2-timer {
+  color: #E7E3DA;
+}
+.buttons-container button {
+  margin-top: 15px;
+  height: 30px;
+  width: 50px;
+  color: var(--blunderBlack);
+}
 
 
 /* backward + forward buttons */
 .replay-buttons-section{
   display: flex;
   flex-direction: row;
-  top: 43%;
+  top: 39%;
   position: relative;
 }
 .replay-buttons {
@@ -164,7 +182,6 @@ tr:hover {
   /* margin-top: 10%; */
   border-radius: 25%;
   /* margin-left: 23%; */
-
 }
 
 
@@ -174,7 +191,7 @@ tr:hover {
   float: right;
   height: 50px;
   position: relative;
-  top:44%;
+  top:40%;
 }
 
 
