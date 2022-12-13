@@ -456,7 +456,9 @@ function kingRange(tmp) {
             let newX = x + j;
             let newY = y + i;
             if (newX < 9 && newX > 0 && newY < 9 && newY > 0) {
-                if (i !== 0 && j !== 0) {
+                if (i === 0 && j === 0) {
+                    continue;
+                } else {
                     let newID = "" + newY + newX;
                     pTiles.push(newID);
                 }
