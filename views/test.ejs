@@ -1,145 +1,203 @@
 <html>
 
 <head>
-    <title>Pay</title>
-    <meta name="author" content="Georgy Batyrev" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pay</title>
+  <meta name="author" content="Georgy Batyrev" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" href="./static/css/chess.css">
+  <link rel="stylesheet" href="./static/css/chess.css">
 
-    <link href="https://fonts.cdnfonts.com/css/gotham" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.cdnfonts.com/css/gotham" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body class="website-container" onload="initPos()">
 
-    <header class="website-header">
-        <h1>Blunder</h1>
-        <a href="./index"> <img class="logo" src="static/images/website/logo.png" /></a>
-        <h2>.com </h2>
-        <canvas></canvas>
-    </header>
+  <header class="website-header">
+    <h1>Blunder</h1>
+    <a href="./index"> <img class="logo" src="static/images/website/logo.png" /></a>
+    <h2>.com </h2>
+    <canvas></canvas>
+  </header>
 
-    <section>
-        <main class="website-content">
+  <section>
+    <main class="website-content">
 
-          <section class="section-one">
-            <!-- Playing? -->
-            <div class="playing">
-              <p class="playing"> Playing: <span> </span></p>
-              <p class="check"><span></span> is checked</p>
-            </div>
+      <section class="section-one">
 
+
+
+        <div class="clock-container">
+
+
+          <div class="player-1-timer-container">
+            <h2>Player 1</h2>
+            <p class="player-1-timer">10</p>
+          </div>
+          <div class="buttons-container">
+            <button class="start-button" id="timer-start"> <img class="small" src="/static/images/website/start.png"
+                alt=""></button>
+            <button class="stop-button" id="timer-stop"><img class="small" src="/static/images/website/stop.png">
+            </button>
+            <button class="reset-button" id="timer-reset"><img class="small" src="/static/images/website/reset.png">
+            </button>
+          </div>
+          <div class="player-2-timer-container">
+            <h2>Player 2</h2>
+            <p class="player-2-timer">10</p>
+          </div>
+        </div>
+      </section>
+
+
+      <section class="section-two">
+
+
+        <!-- Timer -->
+
+        <section class="sidebar1">
+
+          <!-- Playing? -->
+          <div class="playing">
+            <p class="player"> Playing: <span> </span></p>
+
+          </div>
+
+          <div class="playing">
+            <p class="check"> <span></span> is checked</p>
+          </div>
+
+          <!-- Eaten pieces placeholder -->
+          <img class="eat" src="/static/images/website/eat.png" alt="">
+          <section class="eatenPieces-section">
+
+            <img src="/static/images/chesspieces/whiteKing.png" alt="">
+            <img src="/static/images/chesspieces/whiteKing.png" alt="">
+            <img src="/static/images/chesspieces/whiteKing.png" alt="">
+            <img src="/static/images/chesspieces/whiteKing.png" alt="">
+            <img src="/static/images/chesspieces/whiteKing.png" alt="">
           </section>
 
 
-          <section class="section-two">
-            <!-- Timer -->
-<div class="clock-container">
-  <div class="player-1-timer-container">
-    <h2>Player 1</h2>
-    <p class="player-1-timer">10</p>
-  </div>
-  <div class="buttons-container">
-    <button class="start-button" id="timer-start">Start</button>
-    <button class="stop-button" id="timer-stop">Stop</button>
-    <button class="reset-button" id="timer-reset">Reset</button>
-  </div>
-  <div class="player-2-timer-container">
-    <h2>Player 2</h2>
-    <p class="player-2-timer">10</p>
-  </div>
-</div>
-            <section id="chess-grid">
-            </section>
-
-            
-            
-            
+                
+          <!-- Pop up chat -->
           
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            <section class="sidebar">
-
-              <!-- Table -->
-              <div class="moves">
-                <table>
-                    <tr>
-                        <td> White </td>
-                        <td> Black </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <ol id="white">
-                  
-                        </ol>
-                      </td>
-                      <td>
-                        <ul id="black">
-
-                        </ul>
-                      </td>
-                    </tr>
-                </table>
-              </div>
-
-              <!-- buttons forw and back -->
-              <section class="default-buttons-section">
-                  <button class="default-buttons" id="backward">Back</button>
-                  <button class="default-buttons" id="forward">Forw</button>
-                  <button class="default-buttons" id="draw">Draw</button>
-              </section>
-
-              <!-- Start button -->
-              <button id="start">Start</button>
-
-              <!-- Forfeit & IDK -->
-              <div class="default-buttons-section">
-                <button class="default-buttons" id="forfeit">Forfeit</button>
-                <button class="default-buttons" id="connect">Connect</button>
-              </div>
-            </section> <!-- endl sidebar -->
-          </section>
-
-
-          <section class="section-three">
-            <!-- Eaten pieces placeholder -->
-            <section class="eatenPieces-section">
-              <h2>Eaten Pieces</h2>
-              <img src="/static/images/chesspieces/whiteKing.png" alt="">
-              <img src="/static/images/chesspieces/whiteKing.png" alt="">
-              <img src="/static/images/chesspieces/whiteKing.png" alt="">
-              <img src="/static/images/chesspieces/whiteKing.png" alt="">
-              <img src="/static/images/chesspieces/whiteKing.png" alt="">
-            </section>
-            <!-- Pop up chat -->
-            <div>
-              <button class="chat-button" id="chat"><i class="fa-solid fa-comments"></i>CHAT</button>
+          <section class="connect-buttons-section">
+            <div class="chat-popup" id="myForm">
+              <form action="/action_page.php" class="form-container">
+                <label for="msg"><b>Message</b></label>
+                <textarea placeholder="Type message.." name="msg" required></textarea>
+          
+                <button type="submit" class="btn">Send</button>
+                <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+              </form>
             </div>
+            
+            <button class="open-button" id="open-button" onclick="openForm()">  <img src="/static/images/website/chat.png" alt=""></button>
+          </section>
+         
+
+          
+        
+
+          <script>
+            function openForm() {
+              document.getElementById("myForm").style.display = "block";
+              document.getElementById("open-button").style.display = "none";
+            }
+
+            function closeForm() {
+              document.getElementById("myForm").style.display = "none"
+              document.getElementById("open-button").style.display = "block";
+            }
+          </script>
+
+        </section>
+
+
+
+
+
+        <section id="chess-grid">
+        </section>
+
+        <section class="sidebar">
+
+          <!-- Table -->
+          <div class="moves">
+            <table>
+              <tr>
+                <td> White </td>
+                <td> Black </td>
+              </tr>
+              <tr>
+                <td>
+                  <ol id="white">
+
+                  </ol>
+                </td>
+                <td>
+                  <ul id="black">
+
+                  </ul>
+                </td>
+              </tr>
+            </table>
+          </div>
+
+          <!-- buttons forw and back -->
+          <section class="default-buttons-section">
+            <button class="default-buttons" id="backward">
+              <h3>
+                < </h3>
+            </button>
+            <button class="default-buttons" id="forward">
+              <h3>></h3>
+            </button>
+
           </section>
 
-        </main>
-    
-    </section>
-    
+          <section class="start-buttons-section">
+            <button id="start">
+              <h1>Start</h1>
+            </button>
+          </section>
 
-    <script src="/static/js/chess.js"></script>
-    <script src="/static/js/timer.js"></script>
+          <!-- Forfeit & IDK -->
+          <div class="offer-buttons-section">
+            <button class="offer-buttons" id="draw"> <img class="offer" src="/static/images/website/draw.png"
+                alt=""></button>
+            <button class="offer-buttons" id="forfeit"><img class="offer" src="/static/images/website/give_up.png"
+                alt=""></button>
+
+          </div>
+        </section> <!-- endl sidebar -->
+      </section>
+
+
+      <section class="section-three">
+
+
+      </section>
+
+    </main>
+
+  </section>
+  <footer>
+    <div class="icons">
+      <a href="https://business.facebook.com/OfficialTHENX/"><i class="fa fa-facebook"></i></a>
+      <a href="https://www.instagram.com/thenx/?hl=en"><i class="fa fa-instagram"></i></a>
+      <a href="https://twitter.com/officialthenx?lang=en"><i class="fa fa-twitter"></i></a>
+      <a href="https://www.youtube.com/channel/UCqjwF8rxRsotnojGl4gM0Zw"><i class="fa fa-youtube"></i></a>
+    </div>
+  </footer>
+  
+
+  <script src="/static/js/chess.js"></script>
+  <script src="/static/js/play_background.js"></script>
+  <script src="/static/js/timer.js"></script>
 </body>
 
 
 </html>
-
-

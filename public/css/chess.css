@@ -1,5 +1,6 @@
 h1 {
     text-align: center;
+    color: var(--blunderBiege);
 }
 
 :root {
@@ -28,7 +29,6 @@ h1 {
   
   }
   
-  /*--The follwing header belongs to the browser page--*/
   .website-header {
     display: inline-flex;
     position: relative;
@@ -62,6 +62,17 @@ h1 {
     font-size: 15px;
     color: var(--blunderBiege);
   
+  }
+
+  h3{
+    color: var(--blunderBlack);
+  font-size: 20px;
+  margin-top: auto;
+  margin-bottom: auto;
+  align-items: center;
+  }
+  canvas{
+    width: 100%;
   }
 /*  */
 
@@ -103,36 +114,48 @@ p span {
 .section-one{
   display: flex;
   flex-direction: row;
-  margin: 10px;
-  justify-content: space-between;
+  margin: 5px;
 }
 
 /* PLaying? */
 .playing {
   display: flex;
   flex-direction: row;
+  color: var(--blunderBiege);
+  height: 100px;
+  margin-left: auto;
+  margin-right: auto;
+
+  align-items: center;
+
 }
-.check {
-  margin-left: 15px;
+.player {
+  color: var(--blunderBiege);
+  
 }
+
+
 
 /* Timer */
 .clock-container {
   display: flex;
   justify-content: space-between;
-  background-color: rgba(0, 0, 0, 0.7);
-  padding: 10px;
+  background-color: var(--blunderBlack);
+  padding: 5px;
   height: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+  width: 750px;
+  border: 3mm ridge var(--blunderBiege);
 }
 .player-1-timer-container, .player-2-timer-container {
   text-align: center;
 }
 .player-1-timer, .player-2-timer {
-  color: #E7E3DA;
+  color: var(--blunderBiege)
 }
-.buttons-container{
-  margin: 15px;
-}
+
 .buttons-container button {
   height: 50px;
   width: 50px;
@@ -148,30 +171,47 @@ p span {
 .section-two {
   display: flex;
   flex-direction: row;
-  margin: 10px;
+  margin: 5px;
   justify-content: space-between;
+  
   align-items: center;
 }
 
 #chess-grid{
   display: grid;
-  grid-template-columns: repeat(8, 75px);
-  grid-template-rows: repeat(8, 75px);
+  grid-template-columns: repeat(8, 90px);
+  grid-template-rows: repeat(8, 90px);
+  border: 20px solid var(--blunderBlack);
 }
 
 /* ----- Sidebar ------ */
 .sidebar {
   display: flex;
   flex-direction: column;
-  background-color: rgba(0, 0, 0, 0.6);
-  width: 30%;
+  background-color: var(--blunderBlack);
+  height: 800px;
+  width: 20%;
+  border: 10px ridge var(--blunderBiege);
+}
+
+.sidebar1 {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--blunderBlack);
+  height: 800px;
+  width: 20%;
+  border: 10px ridge var(--blunderBiege);
+}
+.sidebar1 h1{
+  color: var(--blunderBiege);
+  font-size: 30px;
+  letter-spacing: 3px;
 }
 
 /* Table w/ moves */
 .moves table {
   float: right;
-  border: solid;
-  background-color: rgba(0, 0, 0, 0.45);
+  background-color: var(--blunderBlack);
   width: 100%;
 }
 .moves table tr {
@@ -179,15 +219,11 @@ p span {
   cursor: pointer;
 }
 .moves table th, td {
-  padding: 12px;
-  text-align: left;
-  border-bottom: 1px solid;
+  padding: 20px 5px;
+  text-align: center;
+  border-bottom: 1px solid var(--blunderBlue);
 }
-.moves tr:hover {
-  background-color:rgba(9, 62, 219, 0.7);
-  transform: scale(1.02);
-  box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2), -1px -1px 8px rgba(0, 0, 0, 0.2);
-}
+
 .moves {
   overflow-y: auto;
   height: 350px;
@@ -200,27 +236,94 @@ p span {
 /* backward + forward buttons */
 .default-buttons-section{
   display: flex;
+  justify-content: center;
   flex-direction: row;
   margin-top: 20px;
+  border: 1mm ridge var(--blunderBlack);
+  
 }
+
 .default-buttons {
-  background-color: aliceblue;
+  background-color: var(--blunderBiege);
   color: var(--blunderBlack);
   height: 50px;
   padding: 10px;
-  width: 100%;
+  width: 50%;
   cursor: pointer;
+  border: var(--blunderBlack)
+}
+
+
+.offer-buttons-section{
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  margin-top: 120px;
+
+  bottom:   0;
+  border: 1mm ridge var(--blunderBlack);
+}
+.offer-buttons {
+  background-color: var(--blunderBiege);
+  color: var(--blunderBlack);
+  height: 100px;
+  padding: 10px;
+  width: 40%;
+  cursor: pointer;
+  
+}
+
+.offer{
+  width: 90px;
+  height: 90px;
+  margin-top: auto;
+  margin-bottom: auto;
+  align-items: center;
 }
 /* Start buttons */
+
+.start-button, .stop-button, .reset-button{
+  
+  background-color: var(--blunderBiege);
+
+
+}
 #start{
-  background-color: rgba(9, 62, 219, 0.5);
-  float: right;
-  height: 50px;
+  background-color: var(--blunderLightBlue);
+  height: 100px;
+  width: 90%;
+  margin-top: auto;
+  margin-bottom: auto;
+  align-items: center;
   margin-top: 20px;
   cursor: pointer;
+
+
+
 }
 
+#start h1{
+  color: var(--blunderBiege);
+  font-size: 30px;
+  margin-top: auto;
+  margin-bottom: auto;
+  align-items: center;
+}
 
+.start-buttons-section{
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+
+}
+
+.small{
+  width: 40px;
+  height: 40px;
+  margin-left: auto;
+  margin-right: 40px;
+  align-items: center;
+}
 
 
 
@@ -233,27 +336,132 @@ p span {
 }
 /* Eaten pieces */
 .eatenPieces-section {
-  /* background-color: rgba(0, 0, 0, 0.7); */
-  width: fit-content;
-  border-radius: 45%;
+
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
 }
 .eatenPieces-section img {
   width: 50px;
   height: 50px;
-  margin-top: -20px;
+
 }
-.eatenPieces-section h2 {
-  margin-left: 5px;
-  color: var(--blunderBlack);
+
+.eat{
+  width:150px;
+  height: 150px;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+}
+.section-two h2 {
+ 
+  color: var(--blunderBiege);
+  font-size: 30px;
 }
 
 /*  */
-.chat-button {
-  width: 100px;
-  height: 100px;
+
+.connect-buttons-section{
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+
 }
 
+#connect{
+  background-color: var(--blunderLightLightBlue);
+  height: 50px;
+  width: 50%;
+  margin-top: auto;
+  margin-bottom: auto;
+  align-items: center;
+  margin-top: 50px;
+  cursor: pointer;
 
+
+
+}
+
+#connect h1{
+  color: var(--blunderBiege);
+  font-size: 30px;
+  margin-top: auto;
+  margin-bottom: auto;
+  align-items: center;
+}
+
+/* Button used to open the chat form - fixed at the bottom of the page */
+.open-button {
+margin-top: 200px;
+  background-color: transparent;
+
+  border: none;
+  cursor: pointer;
+
+
+  width: 280px;
+}
+
+.open-button img{
+  width: 150px;
+  height: 150px;
+}
+
+/* The popup chat - hidden by default */
+.chat-popup {
+  display: none;
+  border: 3px solid var(--blunderBlack);
+
+}
+
+/* Add styles to the form container */
+.form-container {
+  width:400px;
+  height: 300px;
+  padding: 10px;
+  background-color: white;
+}
+
+/* Full-width textarea */
+.form-container textarea {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+  resize: none;
+  min-height: 200px;
+}
+
+/* When the textarea gets focus, do something */
+.form-container textarea:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/send button */
+.form-container .btn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color: red;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}
 
 
 
@@ -275,4 +483,37 @@ p span {
     margin-top: 25px;
     margin-left: 0;
   }
+}
+
+footer {
+  display: inline-flex;
+  align-items: center;
+  justify-content: left;
+
+
+  width: 99%;
+ height: 100px;
+  letter-spacing: 3px;
+  background: var(--blunderBlack);
+  border: 1mm ridge var(--blunderBiege);
+}
+
+.icons {
+  align-items: center;
+  color: var(--blunderBiege);
+  cursor: pointer;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.check span{
+  color: var(--blunderBiege);
+}
+
+.check {
+  color: var(--blunderBiege);
+}
+
+.player span{
+  color: var(--blunderBiege);
 }
