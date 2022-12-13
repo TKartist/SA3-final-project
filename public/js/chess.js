@@ -281,6 +281,27 @@ function pawnMove(moved, tmp) {
     }
 }
 
+function pawnEat(moved, tmp) {
+    let sx = parseInt(tmp[1]);
+    let sy = parseInt(tmp[0]);
+    let newID = "", oppcolor = "";
+    let dy = 0;
+    if (moved.includes("white")) {
+        oppcolor = "black";
+        dy = 1;
+    } else {
+        oppcolor = "white";
+        dy = -1;
+    }
+    if (sy < 8 && sy > 1 && (sx - 1) > 0 && tileInfo.get("" + (sy + dy) + (sx - 1)).includes(oppcolor)) {
+        newID = "" + (sy + dy) + (sx - 1);
+        pTiles.push(newID);
+    } if (sy < 8 && sy > 1 && (sx + 1) < 9 && tileInfo.get("" + (sy + dy) + (sx + 1)).includes(oppcolor)) {
+        newID = "" + (sy + dy) + (sx + 1);
+        pTiles.push(newID);
+    }
+}
+
 function bishopMove(tmp) {
     let sx = parseInt(tmp[1]), sy = parseInt(tmp[0]);
     let oppcolor = "";
@@ -479,7 +500,7 @@ function kingMove(moved, tmp) {
         black.forEach(tile => {
             let piece = tileInfo.get(tile);
             if (piece.includes("Pawn")) {
-                pawnMove(piece, tile);
+                pawnEat(piece, tile);
             } else if (piece.includes("Bishop")) {
                 bishopMove(tile);
             } else if (piece.includes("Rook")) {
@@ -499,7 +520,7 @@ function kingMove(moved, tmp) {
         white.forEach(tile => {
             let piece = tileInfo.get(tile);
             if (piece.includes("Pawn")) {
-                pawnMove(piece, tile);
+                pawnEat(piece, tile);
             } else if (piece.includes("Bishop")) {
                 bishopMove(tile);
             } else if (piece.includes("Rook")) {
