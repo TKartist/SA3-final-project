@@ -99,8 +99,10 @@ function storeInfo() {
 
 
 async function storeDatabase() {
-    var obj = Object.fromEntries(tileInfo);
-    var map = JSON.stringify(obj);
+    var array = [start, end];
+    var object = tileInfo.get(end);
+    var map = JSON.stringify(array);
+    console.log("the map is "+ map);
     const result = await fetch('/play', {
         method: 'POST',
         headers: {
@@ -108,7 +110,8 @@ async function storeDatabase() {
         },
         body: JSON.stringify({
             map,
-            atk
+            atk,
+            object
         })
     }).then((res) => res.json())
 }
@@ -147,10 +150,6 @@ function initPos() {
         }
     }
     initBoard();
-}
-
-function ptq() {
-
 }
 
 function choose(event) {

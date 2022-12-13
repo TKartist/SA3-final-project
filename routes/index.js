@@ -4,7 +4,10 @@ var Moves = require('../models/moves');
 var express = require('express');
 var router = express.Router();
 const verify = require('./verifyToken');
-const { useColors } = require('debug/src/browser');
+var mongoose = require('mongoose');
+
+var id;
+
 /* GET home page. */
 router.get('/index', async (req, res, next) => {
   let scores = [];
@@ -34,17 +37,20 @@ router.get('/browse', verify.auth, function(req, res, next) {
 
 
 router.get('/test',function(req, res, next) {
+  id = mongoose.Types.ObjectId();
   res.render('test', {});
 })
 
 router.post('/play', async(req, res)=> {
-  const { map, atk } = req.body;
+  const { map, atk, object } = req.body;
   
 try {
 
   const response = await Moves.create({
     map,
     atk,
+    object,
+    id
   })
   console.log('created moves', response);
 
