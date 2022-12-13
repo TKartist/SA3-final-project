@@ -52,20 +52,47 @@ document.getElementById("start").addEventListener("click", e => {
 })
 
 function board() {
-    for (let i = 1; i < 9; i++) {
-        for (let j = 1; j < 9; j++) {
-            let styleAttribute = "";
-            let tileID = "" + i + j;
-            let tile = document.getElementById(tileID);
-            if (tileInfo.get(tileID) !== em) {
-                styleAttribute += "background: url(static/images/chesspieces/" + tileInfo.get(tileID) + ".png) no-repeat 10px center;";
+    let section = document.querySelector("#chess-grid");
+    section.querySelectorAll("button").forEach(tile => {
+        section.removeChild(tile);
+    })
+    if (atk === "black") {
+        for (let i = 1; i < 9; i++) {
+            for (let j = 1; j < 9; j++) {
+                let styleAttribute = "";
+                let tileID = "" + i + j;
+                let tile = document.createElement("button");
+                tile.setAttribute('id', tileID);
+                if (tileInfo.get(tileID) !== em) {
+                    styleAttribute += "background: url(static/images/chesspieces/" + tileInfo.get(tileID) + ".png) no-repeat 10px center;";
+                }
+                if ((i + j) % 2 === 1) {
+                    styleAttribute += "background-color: #dae9f2";
+                } else {
+                    styleAttribute += "background-color: #6e99c0";
+                }
+                tile.setAttribute('style', styleAttribute);
+                document.querySelector("#chess-grid").appendChild(tile);
             }
-            if ((i + j) % 2 === 1) {
-                styleAttribute += "background-color: #dae9f2";
-            } else {
-                styleAttribute += "background-color: #6e99c0";
+        }
+    } else {
+        for (let i = 8; i > 0; i--) {
+            for (let j = 8; j > 0; j--) {
+                let styleAttribute = "";
+                let tileID = "" + i + j;
+                let tile = document.createElement("button");
+                tile.setAttribute('id', tileID);
+                if (tileInfo.get(tileID) !== em) {
+                    styleAttribute += "background: url(static/images/chesspieces/" + tileInfo.get(tileID) + ".png) no-repeat 10px center;";
+                }
+                if ((i + j) % 2 === 1) {
+                    styleAttribute += "background-color: #dae9f2";
+                } else {
+                    styleAttribute += "background-color: #6e99c0";
+                }
+                tile.setAttribute('style', styleAttribute);
+                document.querySelector("#chess-grid").appendChild(tile);
             }
-            tile.setAttribute('style', styleAttribute);
         }
     }
     document.querySelectorAll("button").forEach(tile => {
@@ -99,8 +126,10 @@ function storeInfo() {
 
 
 async function storeDatabase() {
-    var obj = Object.fromEntries(tileInfo);
-    var map = JSON.stringify(obj);
+    var array = [start, end];
+    var object = tileInfo.get(end);
+    var map = JSON.stringify(array);
+    console.log("the map is "+ map);
     const result = await fetch('/play', {
         method: 'POST',
         headers: {
@@ -108,7 +137,8 @@ async function storeDatabase() {
         },
         body: JSON.stringify({
             map,
-            atk
+            atk,
+            object
         })
     }).then((res) => res.json())
 }
@@ -147,10 +177,6 @@ function initPos() {
         }
     }
     initBoard();
-}
-
-function ptq() {
-
 }
 
 function choose(event) {
@@ -272,6 +298,27 @@ function pawnMove(moved, tmp) {
     if (tileInfo.get("" + (sy + (dy * 2)) + sx) === em && ((sy === 2 && moved.includes("white")) || (sy === 7 && moved.includes("black"))) && tileInfo.get("" + (sy + dy) + sx) === em) {
         newID = "" + (sy + (dy * 2)) + sx;
         pTiles.push(newID);
+    }
+    if (sy < 8 && sy > 1 && (sx - 1) > 0 && tileInfo.get("" + (sy + dy) + (sx - 1)).includes(oppcolor)) {
+        newID = "" + (sy + dy) + (sx - 1);
+        pTiles.push(newID);
+    } if (sy < 8 && sy > 1 && (sx + 1) < 9 && tileInfo.get("" + (sy + dy) + (sx + 1)).includes(oppcolor)) {
+        newID = "" + (sy + dy) + (sx + 1);
+        pTiles.push(newID);
+    }
+}
+
+function pawnEat(moved, tmp) {
+    let sx = parseInt(tmp[1]);
+    let sy = parseInt(tmp[0]);
+    let newID = "", oppcolor = "";
+    let dy = 0;
+    if (moved.includes("white")) {
+        oppcolor = "black";
+        dy = 1;
+    } else {
+        oppcolor = "white";
+        dy = -1;
     }
     if (sy < 8 && sy > 1 && (sx - 1) > 0 && tileInfo.get("" + (sy + dy) + (sx - 1)).includes(oppcolor)) {
         newID = "" + (sy + dy) + (sx - 1);
@@ -457,7 +504,9 @@ function kingRange(tmp) {
             let newX = x + j;
             let newY = y + i;
             if (newX < 9 && newX > 0 && newY < 9 && newY > 0) {
-                if (i !== 0 && j !== 0) {
+                if (i === 0 && j === 0) {
+                    continue;
+                } else {
                     let newID = "" + newY + newX;
                     pTiles.push(newID);
                 }
@@ -478,7 +527,7 @@ function kingMove(moved, tmp) {
         black.forEach(tile => {
             let piece = tileInfo.get(tile);
             if (piece.includes("Pawn")) {
-                pawnMove(piece, tile);
+                pawnEat(piece, tile);
             } else if (piece.includes("Bishop")) {
                 bishopMove(tile);
             } else if (piece.includes("Rook")) {
@@ -498,7 +547,7 @@ function kingMove(moved, tmp) {
         white.forEach(tile => {
             let piece = tileInfo.get(tile);
             if (piece.includes("Pawn")) {
-                pawnMove(piece, tile);
+                pawnEat(piece, tile);
             } else if (piece.includes("Bishop")) {
                 bishopMove(tile);
             } else if (piece.includes("Rook")) {

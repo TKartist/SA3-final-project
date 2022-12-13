@@ -7,7 +7,7 @@ h1 {
     /**
      * colors
      */
-  
+
     --blunderGreen: #0e5b05;
     --blunderBlack: #101820ff;
     --blunderBiege: #E7E3DA;
@@ -144,6 +144,7 @@ p span {
   display: grid;
   grid-template-columns: repeat(8, 90px);
   grid-template-rows: repeat(8, 90px);
+  margin-left: 2%;
 }
 
 /* ----- Sidebar ------ */
