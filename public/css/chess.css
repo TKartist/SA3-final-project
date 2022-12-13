@@ -7,7 +7,7 @@ h1 {
     /**
      * colors
      */
-  
+
     --blunderGreen: #0e5b05;
     --blunderBlack: #101820ff;
     --blunderBiege: #E7E3DA;
@@ -101,8 +101,8 @@ p span {
 
 #chess-grid{
   display: grid;
-  grid-template-columns: repeat(8, 90px);
-  grid-template-rows: repeat(8, 90px);
+  grid-template-columns: repeat(8, 75px);
+  grid-template-rows: repeat(8, 75px);
   margin-left: 2%;
 }
 
