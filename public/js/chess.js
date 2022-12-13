@@ -52,20 +52,47 @@ document.getElementById("start").addEventListener("click", e => {
 })
 
 function board() {
-    for (let i = 1; i < 9; i++) {
-        for (let j = 1; j < 9; j++) {
-            let styleAttribute = "";
-            let tileID = "" + i + j;
-            let tile = document.getElementById(tileID);
-            if (tileInfo.get(tileID) !== em) {
-                styleAttribute += "background: url(static/images/chesspieces/" + tileInfo.get(tileID) + ".png) no-repeat 10px center;";
+    let section = document.querySelector("#chess-grid");
+    section.querySelectorAll("button").forEach(tile => {
+        section.removeChild(tile);
+    })
+    if (atk === "black") {
+        for (let i = 1; i < 9; i++) {
+            for (let j = 1; j < 9; j++) {
+                let styleAttribute = "";
+                let tileID = "" + i + j;
+                let tile = document.createElement("button");
+                tile.setAttribute('id', tileID);
+                if (tileInfo.get(tileID) !== em) {
+                    styleAttribute += "background: url(static/images/chesspieces/" + tileInfo.get(tileID) + ".png) no-repeat 10px center;";
+                }
+                if ((i + j) % 2 === 1) {
+                    styleAttribute += "background-color: #dae9f2";
+                } else {
+                    styleAttribute += "background-color: #6e99c0";
+                }
+                tile.setAttribute('style', styleAttribute);
+                document.querySelector("#chess-grid").appendChild(tile);
             }
-            if ((i + j) % 2 === 1) {
-                styleAttribute += "background-color: #dae9f2";
-            } else {
-                styleAttribute += "background-color: #6e99c0";
+        }
+    } else {
+        for (let i = 8; i > 0; i--) {
+            for (let j = 8; j > 0; j--) {
+                let styleAttribute = "";
+                let tileID = "" + i + j;
+                let tile = document.createElement("button");
+                tile.setAttribute('id', tileID);
+                if (tileInfo.get(tileID) !== em) {
+                    styleAttribute += "background: url(static/images/chesspieces/" + tileInfo.get(tileID) + ".png) no-repeat 10px center;";
+                }
+                if ((i + j) % 2 === 1) {
+                    styleAttribute += "background-color: #dae9f2";
+                } else {
+                    styleAttribute += "background-color: #6e99c0";
+                }
+                tile.setAttribute('style', styleAttribute);
+                document.querySelector("#chess-grid").appendChild(tile);
             }
-            tile.setAttribute('style', styleAttribute);
         }
     }
     document.querySelectorAll("button").forEach(tile => {
