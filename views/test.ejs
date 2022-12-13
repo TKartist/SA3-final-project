@@ -20,16 +20,49 @@
         <canvas></canvas>
     </header>
 
-    <p class="playing"> Playing: <span> </span></p>
-    <p class="check"><span></span> is checked</p>
-
     <section>
         <main class="website-content">
+
+          <section class="section-one">
+            <!-- Playing? -->
+            <div>
+              <p class="playing"> Playing: <span> </span></p>
+              <p class="check"><span></span> is checked</p>
+            </div>
+
+            <!-- Timer -->
+            <div class="clock-container">
+              <div class="player-1-timer-container">
+                <h2>Player 1</h2>
+                <p class="player-1-timer">10</p>
+              </div>
+              <div class="buttons-container">
+                <button class="start-button">Start</button>
+                <button class="stop-button">Stop</button>
+                <button class="reset-button">Reset</button>
+              </div>
+              <div class="player-2-timer-container">
+                <h2>Player 2</h2>
+                <p class="player-2-timer">10</p>
+              </div>
+            </div>
+
+            <!-- Connect -->
+            <div>
+              <button class="default-buttons">Connect</button>
+            </div>
+
+          </section>
+
+
+          <section class="section-two">
             <section id="chess-grid">
             </section>
 
-            <section class="sidebar" >
-                <!-- Table -->
+            <section class="sidebar">
+
+              <!-- Table -->
+              <div class="moves">
                 <table>
                     <tr>
                         <td> N </td>
@@ -45,46 +78,43 @@
                         </tr>
                     <% } %>
                 </table>
+              </div>
 
-                <!-- Timer -->
-                <div class="clock-container">
-                    <div class="player-1-timer-container">
-                      <h2>Player 1</h2>
-                      <p class="player-1-timer">10</p>
-                    </div>
-                    <div class="buttons-container">
-                      <button class="start-button">Start</button>
-                      <button class="stop-button">Stop</button>
-                      <button class="reset-button">Reset</button>
-                    </div>
-                    <div class="player-2-timer-container">
-                      <h2>Player 2</h2>
-                      <p class="player-2-timer">10</p>
-                    </div>
-                </div>
+              <!-- buttons forw and back -->
+              <section class="default-buttons-section">
+                  <button class="default-buttons">Back</button>
+                  <button class="default-buttons">Forw</button>
+                  <button class="default-buttons">Quit</button>
+                  <button class="default-buttons">Draw</button>
+              </section>
 
-                <!-- Eaten pieces placeholder -->
-                <section class="eatenPieces-section">
-                  <h2>Eaten Pieces</h2>
-                  <img src="/static/images/chesspieces/whiteKing.png" alt="">
-                  <img src="/static/images/chesspieces/whiteKing.png" alt="">
-                  <img src="/static/images/chesspieces/whiteKing.png" alt="">
-                  <img src="/static/images/chesspieces/whiteKing.png" alt="">
-                  <img src="/static/images/chesspieces/whiteKing.png" alt="">
-                </section>
+              <!-- Start button -->
+              <button id="start">Start</button>
 
-                <!-- buttons forw and back -->
-                <section class="replay-buttons-section">
-                    <button class="replay-buttons">Back</button>
-                    <button class="replay-buttons">Forw</button>
-                    <button class="replay-buttons">Quit</button>
-                    <button class="replay-buttons">Draw</button>
-                </section>
+              <!-- Forfeit & IDK -->
+              <div class="default-buttons-section">
+                <button class="default-buttons">Forfeit</button>
+                <button class="default-buttons">IDK</button>
+              </div>
+            </section> <!-- endl sidebar -->
+          </section>
 
-                <!-- Start button -->
-                <button id="start">Start</button>
-            
+
+          <section class="section-three">
+            <!-- Eaten pieces placeholder -->
+            <section class="eatenPieces-section">
+              <h2>Eaten Pieces</h2>
+              <img src="/static/images/chesspieces/whiteKing.png" alt="">
+              <img src="/static/images/chesspieces/whiteKing.png" alt="">
+              <img src="/static/images/chesspieces/whiteKing.png" alt="">
+              <img src="/static/images/chesspieces/whiteKing.png" alt="">
+              <img src="/static/images/chesspieces/whiteKing.png" alt="">
             </section>
+            <!-- Pop up chat -->
+            <div>
+              <button class="chat-button" class="fa-solid fa-comments">CHAT</button>
+            </div>
+          </section>
 
         </main>
     

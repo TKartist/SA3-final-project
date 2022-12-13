@@ -95,57 +95,20 @@ p span {
 /* Chess Board + side + buttons  */
 .website-content {
   display: flex;
-  flex-direction: row;
-}
-
-
-#chess-grid{
-  display: grid;
-  grid-template-columns: repeat(8, 90px);
-  grid-template-rows: repeat(8, 90px);
-  margin-left: 2%;
-}
-
-
-
-/* ----- Sidebar ------ */
-.sidebar {
-  display: flex;
   flex-direction: column;
-  margin-left: 20%;
-  width: 100%;
-  background-color: var(--blunderBlack);
 }
 
 
-/* Table w/ moves */
-table {
-  float: right;
-  border: solid;
-  background-color: #0e5b05;
-  overflow-y: scroll;
-  height: 200px;
-}
-table tr {
-  transition: all .2s ease-in;
-  cursor: pointer;
-}
-table th, td {
-  padding: 12px;
-  text-align: left;
-  border-bottom: 1px solid;
-}
-tr:hover {
-  background-color:rgba(9, 62, 219, 0.5);
-  transform: scale(1.02);
-  box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2), -1px -1px 8px rgba(0, 0, 0, 0.2);
+/* ------ SECTION ONE ------ */
+.section-one{
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  flex-direction: row;
+  margin: 10px;
+  justify-content: space-between;
 }
 
-/* .sidebar:first-child {
-  background-color: #5b0505;
-  color: #E7E3DA;
-} */
-
+/* PLaying? */
 
 /* Timer */
 .clock-container {
@@ -165,23 +128,69 @@ tr:hover {
   color: var(--blunderBlack);
 }
 
-
-/* Eaten pieces */
-.eatenPieces-section img {
-  width: 50px;
-  height: 50px;
-  margin-top: -20px;
-}
+/* Connect */
 
 
-/* backward + forward buttons */
-.replay-buttons-section{
+
+/* ----- SECTION TWO ------ */
+.section-two {
   display: flex;
   flex-direction: row;
-  top: 39%;
-  position: relative;
+  margin: 10px;
+  justify-content: space-between;
 }
-.replay-buttons {
+
+#chess-grid{
+  display: grid;
+  grid-template-columns: repeat(8, 90px);
+  grid-template-rows: repeat(8, 90px);
+}
+
+/* ----- Sidebar ------ */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(0, 0, 0, 0.6);
+  width: 30%;
+}
+
+/* Table w/ moves */
+.moves table {
+  float: right;
+  border: solid;
+  background-color: #0e5b05;
+  width: 100%;
+}
+.moves table tr {
+  transition: all .2s ease-in;
+  cursor: pointer;
+}
+.moves table th, td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid;
+}
+.moves tr:hover {
+  background-color:rgba(9, 62, 219, 0.5);
+  transform: scale(1.02);
+  box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2), -1px -1px 8px rgba(0, 0, 0, 0.2);
+}
+.moves {
+  overflow-y: auto;
+  height: 500px;
+}
+/* .sidebar:first-child {
+  background-color: #5b0505;
+  color: #E7E3DA;
+} */
+
+/* backward + forward buttons */
+.default-buttons-section{
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
+}
+.default-buttons {
   background-color: aliceblue;
   color: #5b0505;
   height: 50px;
@@ -191,16 +200,45 @@ tr:hover {
   border-radius: 25%;
   /* margin-left: 23%; */
 }
-
-
 /* Start buttons */
 #start{
   background-color: #18204c;
   float: right;
   height: 50px;
-  position: relative;
-  top:40%;
+  margin-top: 20px;
 }
+
+
+
+
+
+/* ----- SECTION THREE ----- */
+.section-three{
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  flex-direction: row;
+  margin: 10px;
+  justify-content: space-between;
+}
+/* Eaten pieces */
+.eatenPieces-section img {
+  width: 50px;
+  height: 50px;
+  margin-top: -20px;
+}
+/*  */
+.chat-button {
+  width: 100px;
+  height: 100px;
+  color: black;
+}
+
+
+
+
+
+
+
 
 
 
