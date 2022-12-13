@@ -1,10 +1,22 @@
+const { remove } = require('./models/moves');
+
 const io = require('socket.io')();
 
-const users = {waiting_users: [], playing_users: []}
+let active_users = [];
+let players = [];
 
-const rooms = [users, users, users];
+function remove_player(id) {
+    for(let i=0; i < active_users.length; i++){
+        if(active_users[i].id == id){
+            active_users.splice(i, 1);
+            break;
+        } else if (i<2 && players[i].id) {
+            players.splice(i,1);
+            break; 
+        }
+    }
+}
 
-const ids = {};
 
 function init(server) {
     
@@ -13,41 +25,46 @@ function init(server) {
     io.on('connection', function(socket) {
         console.log('client connected');
 
-        socket.on('enter-room', (name, room_id) => {
-            ids[socket.id] = room_id;
+        socket.on('connect', (name) => {
+            remove_player(socket.id);
             data = {
                 ref: socket,
                 name: name
             }
-            rooms[room_id].waiting_users.push(data);
-            io.emit('update-waiting', name, room_id);
+            active_users.push(data);
+            io.emit('update-waiting', active_users, players);
         });
 
-        socket.on('send-chat-message', message => {
-            // console.log(message);
-            socket.broadcast.emit('chat-message', {message: message, name: users[socket.id]});
+        socket.on('disconnect', () => {
+            remove_player(socket.id);
+            io.emit('update-waiting', active_users, players);
+        });
+
+        socket.on('play-button', () => {
+            if (players.length < 2) {
+                for(let i=0; i < active_users.length; i++){
+                    if(active_users[i].id == id){
+                        players.push(active_users[i]);
+                        active_users.splice(i, 1);
+                        break;
+                    }
+                }
+            } else {
+                console.log("too many players");
+            }
+            io.emit('update-playing', active_users);
         })
+
+        socket.on('move', (board) => {
+            io.emit('move', board);
+        });
+
+        socket.on('end-game', () => {
+            io.emit('end-game')
+        }) 
         
         socket.on('disconnect', () => {
-            let name;
-            console.log(ids[socket.id])
-            let room_id = ids[socket.id];
-            console.log(room_id)
-            // for (let i = 0; i < rooms[room_id].waiting_users.length; i++) {
-            //     console.log(rooms[room_id].waiting_users[i]);
-            //     if (rooms[room_id].waiting_users[i].ref.id == socket.id) {
-            //         name = rooms[room_id].waiting_users[i].name;
-            //         delete rooms[room_id].waiting_users[i];
-            //         delete ids[socket.id]
-            //         break;
-            //     } else if (i < 2 && rooms[room_id].playing_users[i].ref.id == socket.id) {
-            //         name = rooms[room_id].playing_users[i].name;
-            //         delete rooms[room_id].playing_users[i];
-            //         delete ids[socket.id]
-            //         // stop the game
-            //     }
-            // }
-            io.emit('user-disconnected', "hi")
+            remove_player(socket.id);
         })
     })
 }
