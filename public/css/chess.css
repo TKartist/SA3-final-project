@@ -123,7 +123,7 @@ table {
   float: right;
   border: solid;
   background-color: #0e5b05;
-  overflow-y: auto;
+  overflow-y: scroll;
   height: 200px;
 }
 table tr {
@@ -166,6 +166,14 @@ tr:hover {
 }
 
 
+/* Eaten pieces */
+.eatenPieces-section img {
+  width: 50px;
+  height: 50px;
+  margin-top: -20px;
+}
+
+
 /* backward + forward buttons */
 .replay-buttons-section{
   display: flex;
@@ -196,3 +204,17 @@ tr:hover {
 
 
 
+
+
+@media only screen and (max-width: 768px) {
+  .website-content {
+    display: flex;
+    flex-direction: column;
+  }
+  
+
+  .sidebar{
+    margin-top: 25px;
+    margin-left: 0;
+  }
+}
