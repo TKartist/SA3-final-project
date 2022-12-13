@@ -101,7 +101,6 @@ p span {
 
 /* ------ SECTION ONE ------ */
 .section-one{
-  background-color: rgba(0, 0, 0, 0.7);
   display: flex;
   flex-direction: row;
   margin: 10px;
@@ -114,6 +113,8 @@ p span {
 .clock-container {
   display: flex;
   justify-content: space-between;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 10px;
 }
 .player-1-timer-container, .player-2-timer-container {
   text-align: center;
@@ -121,14 +122,17 @@ p span {
 .player-1-timer, .player-2-timer {
   color: #E7E3DA;
 }
+.buttons-container{
+  margin: 15px;
+}
 .buttons-container button {
-  margin-top: 15px;
-  height: 30px;
-  width: 50px;
+  height: 100px;
+  width: 150px;
   color: var(--blunderBlack);
+  border-radius: 3%;
 }
 
-/* Connect */
+
 
 
 
@@ -144,7 +148,6 @@ p span {
   display: grid;
   grid-template-columns: repeat(8, 75px);
   grid-template-rows: repeat(8, 75px);
-  margin-left: 2%;
 }
 
 /* ----- Sidebar ------ */
@@ -159,7 +162,7 @@ p span {
 .moves table {
   float: right;
   border: solid;
-  background-color: #0e5b05;
+  background-color: rgba(0, 0, 0, 0.45);
   width: 100%;
 }
 .moves table tr {
@@ -193,20 +196,19 @@ p span {
 }
 .default-buttons {
   background-color: aliceblue;
-  color: #5b0505;
+  color: var(--blunderBlack);
   height: 50px;
   padding: 10px;
   width: 100%;
-  /* margin-top: 10%; */
-  border-radius: 25%;
-  /* margin-left: 23%; */
+  cursor: pointer;
 }
 /* Start buttons */
 #start{
-  background-color: #18204c;
+  background-color: rgba(9, 62, 219, 0.5);
   float: right;
   height: 50px;
   margin-top: 20px;
+  cursor: pointer;
 }
 
 
@@ -231,7 +233,6 @@ p span {
 .chat-button {
   width: 100px;
   height: 100px;
-  color: black;
 }
 
 

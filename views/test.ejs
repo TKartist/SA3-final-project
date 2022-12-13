@@ -9,6 +9,7 @@
 
     <link href="https://fonts.cdnfonts.com/css/gotham" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body class="website-container" onload="initPos()">
@@ -37,19 +38,14 @@
                 <p class="player-1-timer">10</p>
               </div>
               <div class="buttons-container">
-                <button class="start-button">Start</button>
-                <button class="stop-button">Stop</button>
-                <button class="reset-button">Reset</button>
+                <button class="start-button" id="timer-start">Start</button>
+                <button class="stop-button" id="timer-stop">Stop</button>
+                <button class="reset-button" id="timer-reset">Reset</button>
               </div>
               <div class="player-2-timer-container">
                 <h2>Player 2</h2>
                 <p class="player-2-timer">10</p>
               </div>
-            </div>
-
-            <!-- Connect -->
-            <div>
-              <button class="default-buttons">Connect</button>
             </div>
 
           </section>
@@ -82,10 +78,9 @@
 
               <!-- buttons forw and back -->
               <section class="default-buttons-section">
-                  <button class="default-buttons">Back</button>
-                  <button class="default-buttons">Forw</button>
-                  <button class="default-buttons">Quit</button>
-                  <button class="default-buttons">Draw</button>
+                  <button class="default-buttons" id="backward">Back</button>
+                  <button class="default-buttons" id="forward">Forw</button>
+                  <button class="default-buttons" id="draw">Draw</button>
               </section>
 
               <!-- Start button -->
@@ -93,8 +88,8 @@
 
               <!-- Forfeit & IDK -->
               <div class="default-buttons-section">
-                <button class="default-buttons">Forfeit</button>
-                <button class="default-buttons">IDK</button>
+                <button class="default-buttons" id="forfeit">Forfeit</button>
+                <button class="default-buttons" id="connect">Connect</button>
               </div>
             </section> <!-- endl sidebar -->
           </section>
@@ -112,7 +107,7 @@
             </section>
             <!-- Pop up chat -->
             <div>
-              <button class="chat-button" class="fa-solid fa-comments">CHAT</button>
+              <button class="chat-button" id="chat"><i class="fa-solid fa-comments"></i>CHAT</button>
             </div>
           </section>
 
