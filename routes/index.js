@@ -41,26 +41,25 @@ router.get('/test',function(req, res, next) {
   res.render('test', {});
 })
 
-// router.post('/play', async(req, res)=> {
-//   const { map, atk, object } = req.body;
+router.post('/play', async(req, res)=> {
+  const { map, atk, object } = req.body;
   
-// try {
+try {
 
-//   const response = await Moves.create({
-//     map,
-//     atk,
-//     object,
-//     id
-//   })
-//   console.log('created moves', response);
+  const response = await Moves.create({
+    map,
+    atk,
+    object,
+    id
+  })
+  console.log('created moves', response);
 
-// } catch(error){
-//   throw error
-// }
-// res.json({status: 'ok'});
-// router.get('/test', function (req, res, next) {
-//   res.render('test', {});
-// }));
+} catch(error){
+  throw error
+}
+res.json({status: 'ok'});
+
+})
 
 
 router.post('/play', async (req, res) => {

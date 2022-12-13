@@ -141,6 +141,23 @@ async function storeDatabase() {
             object
         })
     }).then((res) => res.json())
+
+    if(result.status === 'ok'){
+        if(atk == "white"){
+            let el_w = document.getElementById('black')
+
+            let new_td1 = document.createElement('li');
+            new_td1.innerHTML = object + "" + array;
+            el_w.appendChild(new_td1)
+        } else {
+            let el_b = document.getElementById('white')
+            let new_td2 = document.createElement('li');
+            new_td2.innerHTML = object + " " + array;
+            el_b.appendChild(new_td2)
+        }
+    } else {
+        console.log("error")
+    }
 }
 
 function initPos() {
