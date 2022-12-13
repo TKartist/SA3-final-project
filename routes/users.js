@@ -79,13 +79,14 @@ router.post('/new', async(req, res)=> {
   console.log('password is ' + password);
 
   const password_crypt = await bcrypt.hash(password, 5)
-
+  const score = 1000;
   try {
 
     const response = await User.create({
       email,
       username,
-      password_crypt
+      password_crypt,
+      score
     })
     console.log('User created successfully', password_crypt);
     console.log('User created successfully', response);

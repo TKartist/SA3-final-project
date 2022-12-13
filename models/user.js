@@ -9,6 +9,9 @@ const UserSchema = new mongoose.Schema({
     },
     password_crypt: {
         type: String, require:true
+    },
+    score : {
+        type: Number
     }
 }, {collection: 'data-users'})
 
