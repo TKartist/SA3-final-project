@@ -895,3 +895,29 @@ figure#spinner2 img:nth-child(8) { transform: rotateY(-45deg); }
   border: 1mm ridge var(--blunderBlack);
 
 }
+
+.log-out{
+  position: absolute;
+
+  bottom:   0;
+
+background-image:linear-gradient(rgba(160, 164, 176, 0.5),
+rgba(160, 164, 176, 0.5)), url(/static/images/website/banner.jpg) ;
+width: 120px;
+padding: 8px 10px;
+letter-spacing: 2px;
+font-size: 15px;
+text-align: center;
+margin-left: 30px;
+
+background-color: #101820ff;
+border: 1mm ridge var(--blunderBiege);
+
+}
+
+.log-out h3 {
+  font-size: 15px;
+  color: var(--blunderBlack);
+}
+
+
