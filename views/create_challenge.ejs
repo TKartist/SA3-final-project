@@ -56,8 +56,7 @@ label img {
     width: 100%;
     padding: 5px 25px 25px 25px; /* top, right, bottom, left */
     border: 10px ridge var(--blunderBlack);
-    background-color: rgba(255, 255, 255, 0.75);
-    background-image: url("/static/images/website/black_horse_back.jpg");
+    background-image: url("/static/images/website/black_horse_back.avif");
 	background-repeat: no-repeat;  
 	background-position: center;    /* Set it to the center */
 	background-size: cover;        /* Make it resizable */
@@ -112,6 +111,9 @@ label img {
 
                     <label for="blackRook"><b>Black Rook</b><img src="/static/images/chesspieces/blackRook.png" alt=""></label>
                     <input name="blackRook" type="text" placeholder="blackRook" id="blackRook">
+
+                    <label for="moves_black"><b>Moves</b></label>
+                    <input name="moves_black" type="text" placeholder="moves" id="moves_black" required>
                 </section>
 
                 <!-- WHITE PIECES  -->
@@ -133,6 +135,9 @@ label img {
                     
                     <label for="whiteRook"><b>White Rook</b><img src="/static/images/chesspieces/whiteRook.png" alt=""></label>
                     <input name="whiteRook" type="text" placeholder="whiteRook" id="whiteRook">
+
+                    <label for="moves_white"><b>Moves</b></label>
+                    <input name="moves_white" type="text" placeholder="moves" id="moves_white" required>
                 </section>
             </div>
             <div class="btn-container">
