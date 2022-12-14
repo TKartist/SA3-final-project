@@ -20,13 +20,11 @@ let interval;
 // Set up the function to start the chess clock
 function startClock() {
   // Start the interval that will update the timers
-  console.log('ciao');
   let t = 1000;
   interval = setInterval(() => {
     // If it is player 1's turn, decrement their time and update the timer display
     if (isPlayer1Turn) {
       player1Time--;
-      console.log(player1Time)
       player1Timer.textContent = format_seconds(player1Time);
 
       // If player 1 runs out of time, stop the clock and switch to player 2's turn
@@ -37,7 +35,6 @@ function startClock() {
     } else {
       // If it is player 2's turn, decrement their time and update the timer display
       player2Time--;
-      console.log(player2Time)
       player2Timer.textContent = format_seconds(player2Time);
 
       // If player 2 runs out of time, stop the clock and switch to player 1's turn
