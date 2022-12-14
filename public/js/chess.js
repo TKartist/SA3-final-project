@@ -143,8 +143,14 @@ function castleEffect() {
 }
 
 
+let prec = document.querySelector('table tbody').lastElementChild;
+let main_element = document.querySelector('table tbody');
+let FLAG = 0;
+let counter = 0;
+
 async function storeDatabase() {
-    resetClock();
+    //resetClock();
+    stopClock()
     if(atk == "white"){
         isPlayer1Turn = false;
         isPlayer2Turn = true;
@@ -169,19 +175,35 @@ async function storeDatabase() {
         })
     }).then((res) => res.json())
 
+       
     if (result.status === 'ok') {
         if (atk == "white") {
-            let el_w = document.getElementById('black')
-
-            let new_td1 = document.createElement('li');
+            
+            let new_td1 = document.createElement('td');
             new_td1.innerHTML = object + "" + array[0] + "->" + array[1];
-            el_w.appendChild(new_td1)
+            
+            prec.appendChild(new_td1);
+            FLAG = 1;
         } else {
-            let el_b = document.getElementById('white')
-            let new_td2 = document.createElement('li');
+            let new_count = document.createElement('td')
+            new_count.innerHTML = counter; 
+            prec.appendChild(new_count);
+            let new_td2 = document.createElement('td');
             new_td2.innerHTML = object + " " + array[0] + "->" + array[1];
-            el_b.appendChild(new_td2)
+            prec.appendChild(new_td2)
+            FLAG = 0;
         }
+
+        if(FLAG){
+            let new_element = document.createElement('tr');
+            main_element.appendChild(new_element);
+            prec = new_element;
+            counter++;
+        }
+        
+
+
+
     } else {
         console.log("error")
     }
