@@ -6,9 +6,18 @@ let white = [];
 let blackKing = "";
 let whiteKing = "";
 let pTiles = []; //possible tiles
-let check = "No One";
+let check = "No-One";
 
 let eaten = [];
+
+let castleInfo = {
+    "15": false,
+    "11": false,
+    "18": false,
+    "85": false,
+    "81": false,
+    "88": false
+}
 
 const bb = "blackBishop";
 const wb = "whiteBishop";
@@ -100,8 +109,8 @@ function board() {
     document.querySelectorAll("button").forEach(tile => {
         tile.addEventListener("click", choose);
     });
-    document.querySelector(".playing span").innerHTML = atk;
-    document.querySelector(".check span").innerHTML = check;
+    document.querySelector(".playing span").innerHTML = "Playing: " + atk.toUpperCase();
+    document.querySelector(".check span").innerHTML = check.toUpperCase() + " is checked";
 }
 
 function storeInfo() {
@@ -123,6 +132,12 @@ function storeInfo() {
                 black.push(ID);
             }
         }
+    }
+}
+
+function castleEffect() {
+    if (castleInfo.start !== undefined) {
+        castleInfo.start = true;
     }
 }
 
@@ -241,7 +256,8 @@ function executeMove() {
             }
             if (tmp.get(end) !== em) {
                 eaten.push(tmp.get(end));
-            } 
+            }
+            // castleEffect();
             board();
             if (checkmate()) {
                 gameover();
@@ -251,7 +267,8 @@ function executeMove() {
             switchTeam();
             if (tmp.get(end) !== em) {
                 eaten.push(tmp.get(end));
-            } 
+            }
+            // castleEffect();
             board();
             switched = 0;
         }
@@ -284,6 +301,21 @@ function validMove() {
         }
     }
     return found;
+}
+
+function castle() {
+    let kingPos;
+    let rookPos;
+    let dir = 1;
+    let y = parseInt(start[0]);
+    if (y === parseInt(end[0]) && castleInfo.start === false && castleInfo.end === false) {
+        if (!checked()) {
+
+        } else {
+            return false;
+        }
+    }
+    return false;
 }
 
 function upgrade() {
@@ -681,7 +713,7 @@ function checked(p) {
     if (p === "checkmate" && s === 0) {
         return "black";
     } else {
-        return "No One";
+        return "No-One";
     }
 }
 
