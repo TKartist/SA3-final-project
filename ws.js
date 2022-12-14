@@ -33,6 +33,11 @@ function init(server) {
             }
             active_users.push(data);
             console.log(active_users);
+            
+        });
+
+        socket.on('send-chat-message', message => {
+            socket.broadcast.emit('chat-message', {name: active_users.id ,message: message});
         });
 
         socket.on('play-button', () => {
