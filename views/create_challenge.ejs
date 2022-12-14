@@ -91,6 +91,23 @@ label img {
 #createChallegebtn b {
     color: black;
 }
+.moves-container {
+    margin-top: 10px;
+    margin-left: 15px;
+    display: flex;
+    flex-direction: column;
+    border: 10px ridge var(--blunderBiege);
+    padding: 3px 25px 5px 10px; /* top, right, bottom, left */
+    background-image: linear-gradient( var(--blunderBiege), var(--blunderBlack));
+}
+.moves-container label b {
+    color: black;
+}
+.moves-container input[type=text]  {
+    border: 5px ridge var(--blunderBlack);
+    width: 60%;
+}
+
 
 
 </style>
@@ -128,8 +145,7 @@ label img {
 
                     <label for="blackRook"><b>Black Rook</b><img src="/static/images/chesspieces/blackRook.png" alt=""></label>
                     <input name="blackRook" type="text" placeholder="blackRook" id="blackRook">
-                    <label for="moves_black"><b>Moves</b></label>
-                    <input name="moves_black" type="text" placeholder="moves" id="moves_black" required>
+                    
                 </section>
 
                 <!-- WHITE PIECES  -->
@@ -152,13 +168,16 @@ label img {
                     <label for="whiteRook"><b>White Rook</b><img src="/static/images/chesspieces/whiteRook.png" alt=""></label>
                     <input name="whiteRook" type="text" placeholder="whiteRook" id="whiteRook">
 
-                    <label for="moves_white"><b>Moves</b></label>
-                    <input name="moves_white" type="text" placeholder="moves" id="moves_white" required>
-
                 </section>
             </div>
+            
+            <div class="moves-container">
+                <label for="moves"><b>Moves</b></label>
+                <input name="moves" type="text" placeholder="moves" id="moves" required>
+            </div>
+
             <div class="btn-container">
-            <button id="createChallegebtn" type="submit"><b>Create Challenge</b></button>
+                <button id="createChallegebtn" type="submit"><b>Create Challenge</b></button>
             </div>
         </form>
     </div>
