@@ -1,95 +1,90 @@
 h1 {
-    text-align: center;
-    color: var(--blunderBiege);
+  text-align: center;
+  color: var(--blunderBiege);
 }
 
 :root {
 
-    /**
-     * colors
-     */
+  /**
+   * colors
+   */
 
-    --blunderGreen: #0e5b05;
-    --blunderBlack: #101820ff;
-    --blunderBiege: #E7E3DA;
-    --blunderBlue:  #18204c;
-    --blunderLightBlue: #6e99c0;
-    --blunderLightLightBlue: #dae9f2;
-  }
+  --blunderGreen: #0e5b05;
+  --blunderBlack: #101820ff;
+  --blunderBiege: #E7E3DA;
+  --blunderBlue:  #18204c;
+  --blunderLightBlue: #6e99c0;
+  --blunderLightLightBlue: #dae9f2;
+}
 * {
-    font-family: 'Gotham', sans-serif;
-    overscroll-behavior: none;
-    color: var(--blunderBiege);
-    transition: 250ms;
-  }
-  
-  body {
-    background-image:linear-gradient(rgba(160, 164, 176, 0.5),
-    rgba(160, 164, 176, 0.5)), url(/static/images/website/banner.jpg);
-  
-  }
-  
-  .website-header {
-    display: inline-flex;
-    position: relative;
-    align-items: center;
-  
-    height: 150px;
-  
-    width: 20%;
-  
-    letter-spacing: 3px;
-    background: var(--blunderBlack);
-    border: 3mm ridge var(--blunderBiege);
-  
-  }
-  
-  .logo {
-    margin-left: -5px;
-    width: 90px;
-    height: 90px;
-  }
-  
-  .website-header h1 {
-    margin-top: auto;
-  margin-bottom: auto;
+  font-family: 'Gotham', sans-serif;
+  overscroll-behavior: none;
+  color: var(--blunderBiege);
+  transition: 250ms;
+}
+
+body {
+  background-image:linear-gradient(rgba(160, 164, 176, 0.5),
+  rgba(160, 164, 176, 0.5)), url(/static/images/website/banner.jpg);
+
+}
+
+.website-header {
+  display: inline-flex;
+  position: relative;
   align-items: center;
+
+  height: 150px;
+
+  width: 20%;
+
+  letter-spacing: 3px;
+  background: var(--blunderBlack);
+  border: 3mm ridge var(--blunderBiege);
+
+}
+
+.logo {
+  margin-left: -15px;
+  width: 90px;
+  height: 90px;
+}
+
+.website-header h1 {
   margin-left: 20%;
-    font-size: 15px;
-    color: var(--blunderBiege);
-  }
-  
-  .website-header h2 {
+  font-size: 15px;
+  color: var(--blunderBiege);
+}
 
-    margin-right: 20%;
-    margin-left: -20px;
-    font-size: 15px;
-    color: var(--blunderBiege);
-  
-  }
+.website-header h2 {
+  margin-left: -20px;
+  font-size: 15px;
+  color: var(--blunderBiege);
 
-  h3{
-    color: var(--blunderBlack);
-  font-size: 20px;
-  margin-top: auto;
-  margin-bottom: auto;
-  align-items: center;
-  }
-  canvas{
-    width: 100%;
-  }
+}
+
+h3{
+  color: var(--blunderBlack);
+font-size: 20px;
+margin-top: auto;
+margin-bottom: auto;
+align-items: center;
+}
+canvas{
+  width: 100%;
+}
 /*  */
 
 p {
-  font-weight: bolder;
-  font-size: 30px;
-  color: black;
+font-weight: bolder;
+font-size: 30px;
+color: black;
 }
 
 p span {
-  font-weight: bolder;
-  font-size: 30px;
-  color: black;
+font-weight: bolder;
+font-size: 30px;
+color: black;
 }
 
 
@@ -109,62 +104,62 @@ p span {
 
 /* Chess Board + side + buttons  */
 .website-content {
-  display: flex;
-  flex-direction: column;
+display: flex;
+flex-direction: column;
 }
 
 
 /* ------ SECTION ONE ------ */
 .section-one{
-  display: flex;
-  flex-direction: row;
-  margin: 5px;
+display: flex;
+flex-direction: row;
+margin: 5px;
 }
 
 /* PLaying? */
 .playing {
-  display: flex;
-  flex-direction: row;
-  color: var(--blunderBiege);
-  height: 100px;
-  margin-left: auto;
-  margin-right: auto;
+display: flex;
+flex-direction: row;
+color: var(--blunderBiege);
+height: 100px;
+margin-left: auto;
+margin-right: auto;
 
-  align-items: center;
+align-items: center;
 
 }
 .player {
-  color: var(--blunderBiege);
-  
+color: var(--blunderBiege);
+
 }
 
 
 
 /* Timer */
 .clock-container {
-  display: flex;
-  justify-content: space-between;
-  background-color: var(--blunderBlack);
-  padding: 5px;
-  height: fit-content;
-  margin-left: auto;
-  margin-right: auto;
-  align-items: center;
-  width: 750px;
-  border: 3mm ridge var(--blunderBiege);
+display: flex;
+justify-content: space-between;
+background-color: var(--blunderBlack);
+padding: 5px;
+height: fit-content;
+margin-left: auto;
+margin-right: auto;
+align-items: center;
+width: 750px;
+border: 3mm ridge var(--blunderBiege);
 }
 .player-1-timer-container, .player-2-timer-container {
-  text-align: center;
+text-align: center;
 }
 .player-1-timer, .player-2-timer {
-  color: var(--blunderBiege)
+color: var(--blunderBiege)
 }
 
 .buttons-container button {
-  height: 50px;
-  width: 50px;
-  color: var(--blunderBlack);
-  border-radius: 3%;
+height: 50px;
+width: 50px;
+color: var(--blunderBlack);
+border-radius: 3%;
 }
 
 
@@ -173,316 +168,317 @@ p span {
 
 /* ----- SECTION TWO ------ */
 .section-two {
-  display: flex;
-  flex-direction: row;
-  margin: 5px;
-  justify-content: space-between;
-  
-  align-items: center;
+display: flex;
+flex-direction: row;
+margin: 5px;
+justify-content: space-between;
+
+align-items: center;
 }
 
 #chess-grid{
-  display: grid;
-  grid-template-columns: repeat(8, 90px);
-  grid-template-rows: repeat(8, 90px);
-  border: 20px solid var(--blunderBlack);
+display: grid;
+grid-template-columns: repeat(8, 90px);
+grid-template-rows: repeat(8, 90px);
+border: 20px solid var(--blunderBlack);
 }
 
 /* ----- Sidebar ------ */
+
 .sidebar0 {
-  display: flex;
-  flex-direction: column;
-  background-color: var(--blunderBlack);
-  height: 150px;
-  width: 20%;
-  border: 10px ridge var(--blunderBiege);
+display: flex;
+flex-direction: column;
+background-color: var(--blunderBlack);
+height: 150px;
+width: 20%;
+border: 10px ridge var(--blunderBiege);
 }
 
+
 .sidebar {
-  display: flex;
-  flex-direction: column;
-  background-color: var(--blunderBlack);
-  height: 800px;
-  width: 20%;
-  border: 10px ridge var(--blunderBiege);
+display: flex;
+flex-direction: column;
+background-color: var(--blunderBlack);
+height: 800px;
+width: 20%;
+border: 10px ridge var(--blunderBiege);
 }
 
 .sidebar1 {
-  display: flex;
-  flex-direction: column;
-  background-color: var(--blunderBlack);
-  height: 800px;
-  width: 20%;
-  border: 10px ridge var(--blunderBiege);
+display: flex;
+flex-direction: column;
+background-color: var(--blunderBlack);
+height: 800px;
+width: 20%;
+border: 10px ridge var(--blunderBiege);
 }
 .sidebar1 h1{
-  color: var(--blunderBiege);
-  font-size: 30px;
-  letter-spacing: 3px;
+color: var(--blunderBiege);
+font-size: 30px;
+letter-spacing: 3px;
 }
 
 /* Table w/ moves */
 .moves table {
-  float: right;
-  background-color: var(--blunderBlack);
-  width: 100%;
+float: right;
+background-color: var(--blunderBlack);
+width: 100%;
 }
 .moves table tr {
-  transition: all .2s ease-in;
-  cursor: pointer;
+transition: all .2s ease-in;
+cursor: pointer;
 }
 .moves table th, td {
-  padding: 20px 5px;
-  text-align: center;
-  border-bottom: 1px solid var(--blunderBlue);
+padding: 20px 5px;
+text-align: center;
+border-bottom: 1px solid var(--blunderBlue);
 }
 
 .moves {
-  overflow-y: auto;
-  height: 350px;
+overflow-y: auto;
+height: 350px;
 }
 /* .sidebar:first-child {
-  background-color: #5b0505;
-  color: #E7E3DA;
+background-color: #5b0505;
+color: #E7E3DA;
 } */
 
 /* backward + forward buttons */
 .default-buttons-section{
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
-  margin-top: 20px;
-  border: 1mm ridge var(--blunderBlack);
-  
+display: flex;
+justify-content: center;
+flex-direction: row;
+margin-top: 20px;
+border: 1mm ridge var(--blunderBlack);
+
 }
 
 .default-buttons {
-  background-color: var(--blunderBiege);
-  color: var(--blunderBlack);
-  height: 50px;
-  padding: 10px;
-  width: 50%;
-  cursor: pointer;
-  border: var(--blunderBlack)
+background-color: var(--blunderBiege);
+color: var(--blunderBlack);
+height: 50px;
+padding: 10px;
+width: 50%;
+cursor: pointer;
+border: var(--blunderBlack)
 }
 
 
 .offer-buttons-section{
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
-  margin-top: 120px;
+display: flex;
+justify-content: center;
+flex-direction: row;
+margin-top: 120px;
 
-  bottom:   0;
-
+bottom:   0;
+border: 1mm ridge var(--blunderBlack);
 }
 .offer-buttons {
-  background-color: var(--blunderBiege);
-  color: var(--blunderBlack);
-  height: 100px;
-  padding: 10px;
-  width: 40%;
-  cursor: pointer;
-  
+background-color: var(--blunderBiege);
+color: var(--blunderBlack);
+height: 100px;
+padding: 10px;
+width: 40%;
+cursor: pointer;
+
 }
 
 .offer{
-  width: 90px;
-  height: 90px;
-  margin-top: auto;
-  margin-bottom: auto;
-  align-items: center;
+width: 90px;
+height: 90px;
+margin-top: auto;
+margin-bottom: auto;
+align-items: center;
 }
 /* Start buttons */
 
 .start-button, .stop-button, .reset-button{
-  
-  background-color: var(--blunderBiege);
+
+background-color: var(--blunderBiege);
 
 
 }
 #start{
-  background-color: var(--blunderLightBlue);
-  height: 100px;
-  width: 90%;
-  margin-top: auto;
-  margin-bottom: auto;
-  align-items: center;
-  margin-top: 20px;
-  cursor: pointer;
+background-color: var(--blunderLightBlue);
+height: 100px;
+width: 90%;
+margin-top: auto;
+margin-bottom: auto;
+align-items: center;
+margin-top: 20px;
+cursor: pointer;
 
 
 
 }
 
 #start h1{
-  color: var(--blunderBiege);
-  font-size: 30px;
-  margin-top: auto;
-  margin-bottom: auto;
-  align-items: center;
+color: var(--blunderBiege);
+font-size: 30px;
+margin-top: auto;
+margin-bottom: auto;
+align-items: center;
 }
 
 .start-buttons-section{
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
+display: flex;
+justify-content: center;
+flex-direction: row;
 
 }
 
 .small{
-  width: 40px;
-  height: 40px;
-  margin-left: auto;
-  margin-right: 40px;
-  align-items: center;
+width: 40px;
+height: 40px;
+margin-left: auto;
+margin-right: 40px;
+align-items: center;
 }
 
 
 
 /* ----- SECTION THREE ----- */
 .section-three{
-  display: flex;
-  flex-direction: row;
-  margin: 10px;
-  justify-content: space-between;
+display: flex;
+flex-direction: row;
+margin: 10px;
+justify-content: space-between;
 }
 /* Eaten pieces */
 .eatenPieces-section {
 
-  margin-left: auto;
-  margin-right: auto;
-  align-items: center;
+margin-left: auto;
+margin-right: auto;
+align-items: center;
 }
 .eatenPieces-section img {
-  width: 50px;
-  height: 50px;
+width: 50px;
+height: 50px;
 
 }
 
 .eat{
-  width:150px;
-  height: 150px;
-  margin-left: auto;
-  margin-right: auto;
-  align-items: center;
+width:150px;
+height: 150px;
+margin-left: auto;
+margin-right: auto;
+align-items: center;
 }
 .section-two h2 {
- 
-  color: var(--blunderBiege);
-  font-size: 30px;
+
+color: var(--blunderBiege);
+font-size: 30px;
 }
 
 /*  */
 
 .connect-buttons-section{
-  display: flex;
-  justify-content: center;
-
+margin-top: 20px;
+display: flex;
+justify-content: center;
+flex-direction: row;
 
 }
 
 #myConnect {
-  display: none;
+display: none;
 
 }
 #myConnect h1 {
 margin-top: 50px;
 
-  font-size: 30px
+font-size: 30px
 
 }
 
 #connect{
-  background-color: var(--blunderBiege);
-  height: 50px;
- margin-top: 50px;
- margin-bottom: auto;
+background-color: var(--blunderBiege);
+height: 50px;
+margin-top: 35px;
+margin-bottom: auto;
 width: 300px;
-  align-items: center;
-  cursor: pointer;
+align-items: center;
+cursor: pointer;
 
 
 
 }
-
 #connect h1{
-  color: var(--blunderBlack);
-  font-size: 30px;
-  margin-top: auto;
-  margin-bottom: auto;
-  align-items: center;
+color: var(--blunderBlack);
+font-size: 30px;
+margin-top: auto;
+margin-bottom: auto;
+align-items: center;
 }
-
 /* Button used to open the chat form - fixed at the bottom of the page */
 .open-button {
 margin-top: 200px;
-  background-color: transparent;
+background-color: transparent;
 
-  border: none;
-  cursor: pointer;
+border: none;
+cursor: pointer;
 
 
-  width: 280px;
+width: 280px;
 }
 
 .open-button img{
-  width: 150px;
-  height: 150px;
+width: 150px;
+height: 150px;
 }
 
 /* The popup chat - hidden by default */
 .chat-popup {
-  display: none;
-  border: 3px solid var(--blunderBlack);
+display: none;
+border: 3px solid var(--blunderBlack);
 
 }
 
 /* Add styles to the form container */
 .form-container {
-  width:400px;
-  height: 300px;
-  padding: 10px;
-  background-color: white;
+width:400px;
+height: 300px;
+padding: 10px;
+background-color: white;
 }
 
 /* Full-width textarea */
 .form-container textarea {
-  width: 100%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
-  border: none;
-  background: #f1f1f1;
-  resize: none;
-  min-height: 200px;
+width: 100%;
+padding: 15px;
+margin: 5px 0 22px 0;
+border: none;
+background: #f1f1f1;
+resize: none;
+min-height: 200px;
 }
 
 /* When the textarea gets focus, do something */
 .form-container textarea:focus {
-  background-color: #ddd;
-  outline: none;
+background-color: #ddd;
+outline: none;
 }
 
 /* Set a style for the submit/send button */
 .form-container .btn {
-  background-color: #04AA6D;
-  color: white;
-  padding: 16px 20px;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-  margin-bottom:10px;
-  opacity: 0.8;
+background-color: #04AA6D;
+color: white;
+padding: 16px 20px;
+border: none;
+cursor: pointer;
+width: 100%;
+margin-bottom:10px;
+opacity: 0.8;
 }
 
 /* Add a red background color to the cancel button */
 .form-container .cancel {
-  background-color: red;
+background-color: red;
 }
 
 /* Add some hover effects to buttons */
 .form-container .btn:hover, .open-button:hover {
-  opacity: 1;
+opacity: 1;
 }
 
 
@@ -495,47 +491,47 @@ margin-top: 200px;
 
 
 @media only screen and (max-width: 768px) {
-  .website-content {
-    display: flex;
-    flex-direction: column;
-  }
-  
+.website-content {
+  display: flex;
+  flex-direction: column;
+}
 
-  .sidebar{
-    margin-top: 25px;
-    margin-left: 0;
-  }
+
+.sidebar{
+  margin-top: 25px;
+  margin-left: 0;
+}
 }
 
 footer {
-  display: inline-flex;
-  align-items: center;
-  justify-content: left;
+display: inline-flex;
+align-items: center;
+justify-content: left;
 
 
-  width: 99%;
- height: 100px;
-  letter-spacing: 3px;
-  background: var(--blunderBlack);
-  border: 1mm ridge var(--blunderBiege);
+width: 99%;
+height: 100px;
+letter-spacing: 3px;
+background: var(--blunderBlack);
+border: 1mm ridge var(--blunderBiege);
 }
 
 .icons {
-  align-items: center;
-  color: var(--blunderBiege);
-  cursor: pointer;
-  margin-left: auto;
-  margin-right: auto;
+align-items: center;
+color: var(--blunderBiege);
+cursor: pointer;
+margin-left: auto;
+margin-right: auto;
 }
 
 .check span{
-  color: var(--blunderBiege);
+color: var(--blunderBiege);
 }
 
 .check {
-  color: var(--blunderBiege);
+color: var(--blunderBiege);
 }
 
 .player span{
-  color: var(--blunderBiege);
+color: var(--blunderBiege);
 }

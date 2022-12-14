@@ -146,7 +146,7 @@ async function storeDatabase() {
     var array = [start, end];
     var object = tileInfo.get(end);
     var map = JSON.stringify(array);
-    console.log("the map is "+ map);
+    console.log("the map is " + map);
     const result = await fetch('/play', {
         method: 'POST',
         headers: {
@@ -159,8 +159,8 @@ async function storeDatabase() {
         })
     }).then((res) => res.json())
 
-    if(result.status === 'ok'){
-        if(atk == "white"){
+    if (result.status === 'ok') {
+        if (atk == "white") {
             let el_w = document.getElementById('black')
 
             let new_td1 = document.createElement('li');
