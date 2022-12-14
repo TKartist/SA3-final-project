@@ -41,6 +41,11 @@ router.get('/test',function(req, res, next) {
   res.render('test', {});
 })
 
+router.get('/createChallenge',function(req, res, next) {
+  id = mongoose.Types.ObjectId();
+  res.render('create_challenge', {});
+})
+
 router.post('/play', async(req, res)=> {
   const { map, atk, object } = req.body;
   
