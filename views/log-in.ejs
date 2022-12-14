@@ -19,19 +19,23 @@
   <section class="box">
     <section class="inner-box">
       <section class="forms-wrap">
+       
         <form id="login" action="index" autocomplete="off" class="sign-in-form">
           <section class="main_logo">
             <img src="/static/images/website/logo.png" />
-            <h4>WEBSITE NAME</h4>
+            <h4>Blunder.com</h4>
           </section>
 
           <section class="heading">
             <h2>Welcome Back</h2>
-            <h6>Not registred yet?</h6>
-            <a href="#" class="toggle">Sign up</a>
           </section>
 
-          <section class="actual-form">
+          <section class="heading">
+            <h6>Not registred yet?</h6>
+            <a href="#" class="toggle"><button id="sign-up" >Sign up</button></a>
+          </section>
+          
+        
             <section class="input-wrap">
               <input
                 id="username_l"
@@ -42,6 +46,7 @@
                 required
               />
               <label>Name</label>
+            
             </section>
 
             <section class="input-wrap">
@@ -58,7 +63,7 @@
 
             <input type="submit" value="Sign In" class="sign-btn" />
 
-          </section>
+    
         </form>
 
         <form id="reg-form" action="/index" autocomplete="off" class="sign-up-form">
