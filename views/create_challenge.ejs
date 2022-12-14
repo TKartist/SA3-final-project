@@ -1,0 +1,154 @@
+
+<head>
+
+    <link rel="stylesheet" href="./static/css/chess.css">
+<style>   
+
+/* Inner box */
+.inner-box {
+    display: flex;
+    flex-direction: column;
+    margin: 5% auto 15% auto; /* 5% top, 15% bottom, auto for centering */
+    margin: auto auto auto auto; /* 5% top, 15% bottom, auto for centering */
+    width: 100%; /* Could be more or less, depending on screen size */
+    height: 100%;
+}
+input {
+    height: 50px;
+}
+h1 {
+    color: black;
+}
+label {
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+label img {
+    width: 25px;
+    height: 25px;
+    margin-bottom: -5px;
+}
+/* Container for labels and buttons */
+.container {
+    display: flex;
+    flex-direction: row;
+}
+/* WHITE */
+.white-pieces {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 5px 25px 25px 25px; /* top, right, bottom, left */
+    margin-left: 15px;
+    border: 10px ridge var(--blunderBiege);
+    background-image: url("/static/images/website/white_chess_back.avif");
+	background-repeat: no-repeat;  
+	background-position: center;    /* Set it to the center */
+	background-size: cover;        /* Make it resizable */
+}
+.white-pieces label  b {
+    color: white;
+}
+/* BLACK */
+.black-pieces {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 5px 25px 25px 25px; /* top, right, bottom, left */
+    border: 10px ridge var(--blunderBlack);
+    background-image: url("/static/images/website/black_horse_back.avif");
+	background-repeat: no-repeat;  
+	background-position: center;    /* Set it to the center */
+	background-size: cover;        /* Make it resizable */
+}
+.black-pieces label  b {
+    color: black;
+}
+/* Create btn */
+.btn-container {
+   margin-left: 35%;
+}
+#createChallegebtn{
+    height: 40px;
+    width: 50%;
+    margin-top: 20px;
+}
+#createChallegebtn b {
+    color: black;
+}
+
+
+</style>
+</head>
+
+<body>
+    
+
+
+<main class="website-content">
+    <div class="inner-box">
+        <form action="/actionpage" method="post" name="userCreateForm">
+            <h1>Create New Challenge</h1>
+            <hr>
+
+            <div class="container">
+                <!-- BLACK PIECES -->
+                <section class="black-pieces">
+                    <label for="blackBishop"><b>Black Bishop</b> <img src="/static/images/chesspieces/blackBishop.png" alt=""> </label>
+                    <input name="blackBishop" type="text" placeholder="blackBishop" id="blackBishop">
+
+                    <label for="blackHorse"><b>Black Horse</b><img src="/static/images/chesspieces/blackHorse.png" alt=""></label>
+                    <input name="blackHorse" type="text" placeholder="blackHorse" id="blackHorse">
+
+                    <label for="blackKing"><b>Black King</b><img src="/static/images/chesspieces/blackKing.png" alt=""></label>
+                    <input name="blackKing" type="text" placeholder="blackKing" id="blackKing">
+
+                    <label for="blackPawn"><b>Black Pawn</b><img src="/static/images/chesspieces/blackPawn.png" alt=""></label>
+                    <input name="blackPawn" type="text" placeholder="blackPawn" id="blackPawn">
+
+                    <label for="blackQueen"><b>Black Queen</b><img src="/static/images/chesspieces/blackQueen.png" alt=""></label>
+                    <input name="blackQueen" type="text" placeholder="blackQueen" id="blackQueen">
+
+                    <label for="blackRook"><b>Black Rook</b><img src="/static/images/chesspieces/blackRook.png" alt=""></label>
+                    <input name="blackRook" type="text" placeholder="blackRook" id="blackRook">
+
+                    <label for="moves_black"><b>Moves</b></label>
+                    <input name="moves_black" type="text" placeholder="moves" id="moves_black" required>
+                </section>
+
+                <!-- WHITE PIECES  -->
+                <section class="white-pieces">
+                    <label for="whiteBishop"><b>White Bishop</b><img src="/static/images/chesspieces/whiteBishop.png" alt=""></label>
+                    <input name="whiteBishop" type="text" placeholder="whiteBishop" id="whiteBishop">
+                    
+                    <label for="whiteHorse"><b>White Horse</b><img src="/static/images/chesspieces/whiteHorse.png" alt=""></label>
+                    <input name="whiteHorse" type="text" placeholder="whiteHorse" id="whiteHorse">
+                    
+                    <label for="whiteKing"><b>White King</b><img src="/static/images/chesspieces/whiteKing.png" alt=""></label>
+                    <input name="whiteKing" type="text" placeholder="whiteKing" id="whiteKing">
+                    
+                    <label for="whitePawn"><b>White Pawn</b><img src="/static/images/chesspieces/whitePawn.png" alt=""></label>
+                    <input name="whitePawn" type="text" placeholder="whitePawn" id="whitePawn">
+                    
+                    <label for="whiteQueen"><b>White Queen</b><img src="/static/images/chesspieces/whiteQueen.png" alt=""></label>
+                    <input name="whiteQueen" type="text" placeholder="whiteQueen" id="whiteQueen">
+                    
+                    <label for="whiteRook"><b>White Rook</b><img src="/static/images/chesspieces/whiteRook.png" alt=""></label>
+                    <input name="whiteRook" type="text" placeholder="whiteRook" id="whiteRook">
+
+                    <label for="moves_white"><b>Moves</b></label>
+                    <input name="moves_white" type="text" placeholder="moves" id="moves_white" required>
+                </section>
+            </div>
+            <div class="btn-container">
+            <button id="createChallegebtn" type="submit"><b>Create Challenge</b></button>
+            </div>
+        </form>
+    </div>
+</main>
+
+</body>
+
+
+
+
