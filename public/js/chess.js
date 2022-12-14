@@ -60,6 +60,7 @@ function initBoard() {
 
 document.getElementById("start").addEventListener("click", e => {
     board();
+    startClock();
 })
 
 function board() {
@@ -143,6 +144,15 @@ function castleEffect() {
 
 
 async function storeDatabase() {
+    resetClock();
+    if(atk == "white"){
+        isPlayer1Turn = false;
+        isPlayer2Turn = true;
+    } else {
+        isPlayer1Turn = true;
+        isPlayer2Turn = false;
+    }
+    startClock();
     var array = [start, end];
     var object = tileInfo.get(end);
     var map = JSON.stringify(array);
@@ -164,12 +174,12 @@ async function storeDatabase() {
             let el_w = document.getElementById('black')
 
             let new_td1 = document.createElement('li');
-            new_td1.innerHTML = object + "" + array;
+            new_td1.innerHTML = object + "" + array[0] + "->" + array[1];
             el_w.appendChild(new_td1)
         } else {
             let el_b = document.getElementById('white')
             let new_td2 = document.createElement('li');
-            new_td2.innerHTML = object + " " + array;
+            new_td2.innerHTML = object + " " + array[0] + "->" + array[1];
             el_b.appendChild(new_td2)
         }
     } else {

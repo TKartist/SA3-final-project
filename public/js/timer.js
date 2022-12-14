@@ -8,8 +8,8 @@ const player1Timer = document.querySelector(".player-1-timer");
 const player2Timer = document.querySelector(".player-2-timer");
 
 // Set up the initial time for each player
-let player1Time = 10;
-let player2Time = 10;
+let player1Time = 20;
+let player2Time = 20;
 
 // Set up a flag to keep track of which player's turn it is
 let isPlayer1Turn = true;
@@ -29,7 +29,7 @@ function startClock() {
       // If player 1 runs out of time, stop the clock and switch to player 2's turn
       if (player1Time === 0) {
         stopClock();
-        isPlayer1Turn = false;
+        gameover();
       }
     } else {
       // If it is player 2's turn, decrement their time and update the timer display
@@ -39,7 +39,7 @@ function startClock() {
       // If player 2 runs out of time, stop the clock and switch to player 1's turn
       if (player2Time === 0) {
         stopClock();
-        isPlayer1Turn = true;
+        gameover()
       }
     }
   }, 1000); // Update the timers every 1000 milliseconds (1 second)
@@ -54,13 +54,13 @@ function stopClock() {
 function resetClock() {
   // Stop the clock and reset the timers
   stopClock();
-  player1Time = 10;
-  player2Time = 10;
+  player1Time = 20;
+  player2Time = 20;
   player1Timer.textContent = player1Time;
   player2Timer.textContent = player2Time;
 
-  // Set player 1's turn
-  isPlayer1Turn = true;
+  // // Set player 1's turn
+  // isPlayer1Turn = true;
 }
 
 // Listen for clicks on the start, stop, and reset buttons
