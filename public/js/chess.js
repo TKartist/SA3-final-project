@@ -10,14 +10,13 @@ let check = "No-One";
 
 let eaten = [];
 
-let castleInfo = {
-    "15": false,
-    "11": false,
-    "18": false,
-    "85": false,
-    "81": false,
-    "88": false
-}
+let castleInfo = new Map();
+castleInfo.set("11", false);
+castleInfo.set("15", false);
+castleInfo.set("18", false);
+castleInfo.set("81", false);
+castleInfo.set("85", false);
+castleInfo.set("88", false);
 
 const bb = "blackBishop";
 const wb = "whiteBishop";
@@ -137,9 +136,10 @@ function storeInfo() {
 }
 
 function castleEffect() {
-    if (castleInfo.start !== undefined) {
+    if (castleInfo.get(start) !== undefined && start !== end) {
         castleInfo.start = true;
     }
+    console.log(castleInfo);
 }
 
 
@@ -156,7 +156,6 @@ async function storeDatabase() {
     var array = [start, end];
     var object = tileInfo.get(end);
     var map = JSON.stringify(array);
-    console.log("the map is " + map);
     const result = await fetch('/play', {
         method: 'POST',
         headers: {
@@ -233,8 +232,14 @@ function choose(event) {
         }
     } else if (stage === 1) {
         if (selected.includes(atk)) {
-            stage = 1;
-            start = eventID;
+            if (tileInfo.get(start).includes("King") && selected.includes("Rook")) {
+                end = eventID;
+                stage = 0;
+                executeMove();
+            } else {
+                stage = 1;
+                start = eventID;
+            }
         } else {
             end = eventID;
             stage = 0;
@@ -267,7 +272,7 @@ function executeMove() {
             if (tmp.get(end) !== em) {
                 eaten.push(tmp.get(end));
             }
-            // castleEffect();
+            castleEffect();
             board();
             if (checkmate()) {
                 gameover();
@@ -278,11 +283,44 @@ function executeMove() {
             if (tmp.get(end) !== em) {
                 eaten.push(tmp.get(end));
             }
-            // castleEffect();
+            castleEffect();
             board();
             switched = 0;
         }
-        console.log(eaten);
+    } else if (castle()) {
+        let tmp = new Map(tileInfo);
+        let tmpblack = Array.from(black);
+        let tmpwhite = Array.from(white);
+        if (parseInt(start[1]) > parseInt(end[1])) {
+            end = start[0] + "7";
+            tileInfo.set(end, tileInfo.get(start));
+            tileInfo.set(start, em);
+            end = start[0] + "6";
+            start = start[0] + "8";
+            tileInfo.set(end, tileInfo.get(start));
+            tileInfo.set(start, em);
+        } else {
+            end = start[0] + "7";
+            tileInfo.set(end, tileInfo.get(start));
+            tileInfo.set(start, em);
+            end = start[0] + "6";
+            start = start[0] + "8";
+            tileInfo.set(end, tileInfo.get(start));
+            tileInfo.set(start, em);
+        }
+        storeInfo();
+        let check = checked("check");
+        if (check === atk) {
+            tileInfo = tmp;
+            black = tmpblack;
+            white = tmpwhite;
+            board();
+        } else {
+            switchTeam();
+            castleEffect();
+            board();
+            switched = 0;
+        }
     }
 }
 
@@ -314,13 +352,18 @@ function validMove() {
 }
 
 function castle() {
-    let kingPos;
-    let rookPos;
-    let dir = 1;
     let y = parseInt(start[0]);
-    if (y === parseInt(end[0]) && castleInfo.start === false && castleInfo.end === false) {
-        if (!checked()) {
-
+    if (y === parseInt(end[0]) && castleInfo.get(start) === false && castleInfo.get(end) === false) {
+        if (checked("check") !== atk) {
+            if (start[1] === "8" || end[1] === "8") {
+                if (tileInfo.get(y + "6") === em && tileInfo.get(y + "7") === em) {
+                    return true;
+                }
+            } else {
+                if (tileInfo.get(y + "4") === em && tileInfo.get(y + "3") === em && tileInfo.get(y + "2") === em) {
+                    return true;
+                }
+            }
         } else {
             return false;
         }
