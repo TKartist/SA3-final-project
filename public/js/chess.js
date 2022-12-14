@@ -137,7 +137,7 @@ function storeInfo() {
 
 function castleEffect() {
     if (castleInfo.get(start) !== undefined && start !== end) {
-        castleInfo.start = true;
+        castleInfo.set(start, true);
     }
     console.log(castleInfo);
 }
@@ -149,7 +149,6 @@ let FLAG = 0;
 let counter = 0;
 
 async function storeDatabase() {
-    //resetClock();
     stopClock()
     if(atk == "white"){
         isPlayer1Turn = false;
@@ -199,10 +198,6 @@ async function storeDatabase() {
             prec = new_element;
             counter++;
         }
-        
-
-
-
     } else {
         console.log("error")
     }
@@ -890,5 +885,5 @@ function gameover() {
     main.querySelectorAll("button").forEach(e => {
         e.disabled = true;
     })
-    document.querySelector(".check").innerHTML = atk + " is checkmated.";
+    document.querySelector(".check").innerHTML = opp + "has won.";
 }
