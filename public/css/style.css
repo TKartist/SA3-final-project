@@ -152,6 +152,12 @@ width: 80%;
 
 }
 
+.website-content-text h3 {
+  color: var(--blunderBlack);
+
+  text-align:justify; 
+}
+
 .website-container-body {
   display: flex;
 

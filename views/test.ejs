@@ -14,19 +14,23 @@
 
 <body class="website-container" onload="initPos()">
 
-  <header class="website-header">
+  <!-- <header class="website-header">
     <h1>Blunder</h1>
     <a href="./index"> <img class="logo" src="static/images/website/logo.png" /></a>
     <h2>.com </h2>
     <canvas></canvas>
-  </header>
+  </header> -->
 
   <section>
     <main class="website-content">
 
       <section class="section-one">
 
-
+        <div class="website-header">
+          <h1>Blunder</h1>
+          <a href="./index"> <img class="logo" src="static/images/website/logo.png" /></a>
+          <h2>.com </h2>
+        </div>
 
         <div class="clock-container">
 
@@ -48,6 +52,36 @@
             <p class="player-2-timer">10</p>
           </div>
         </div>
+
+        <section class="sidebar0">
+       
+          <section class="connect-buttons-section">
+            <button id="connect"  onclick="openConnect()">
+              <h1>Connect</h1>
+
+
+             
+            </button>
+          </section>
+          <div class="connect-pop" id="myConnect">
+          <h1 > Player 1</h1>
+          </div>
+          </section>
+
+
+       
+         <script>
+            function openConnect() {
+              document.getElementById("myConnect").style.display = "block";
+              document.getElementById("connect").style.display = "none";
+            }
+
+            function closeConnect() {
+              document.getElementById("myConnect").style.display = "none"
+              document.getElementById("connect").style.display = "block";
+            }
+          </script>
+
       </section>
 
 
@@ -184,14 +218,7 @@
     </main>
 
   </section>
-  <footer>
-    <div class="icons">
-      <a href="https://business.facebook.com/OfficialTHENX/"><i class="fa fa-facebook"></i></a>
-      <a href="https://www.instagram.com/thenx/?hl=en"><i class="fa fa-instagram"></i></a>
-      <a href="https://twitter.com/officialthenx?lang=en"><i class="fa fa-twitter"></i></a>
-      <a href="https://www.youtube.com/channel/UCqjwF8rxRsotnojGl4gM0Zw"><i class="fa fa-youtube"></i></a>
-    </div>
-  </footer>
+
   
 
   <script src="/static/js/chess.js"></script>
