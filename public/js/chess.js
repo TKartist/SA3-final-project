@@ -57,11 +57,6 @@ function initBoard() {
     }
 }
 
-document.getElementById("start").addEventListener("click", e => {
-    board();
-    startClock();
-})
-
 function board() {
     let section = document.querySelector("#chess-grid");
     section.querySelectorAll("button").forEach(tile => {
@@ -149,6 +144,7 @@ let FLAG = 0;
 let counter = 0;
 
 async function storeDatabase() {
+    socket.emit('move', tileInfo)
     stopClock()
     if(atk == "white"){
         isPlayer1Turn = false;
@@ -341,6 +337,7 @@ function executeMove() {
             switched = 0;
         }
     }
+    
 }
 
 function validMove() {
@@ -889,3 +886,23 @@ function gameover() {
     })
     document.querySelector(".check").innerHTML = opp + "has won.";
 }
+
+document.getElementById("start").addEventListener("click", e => {
+    if (document.getElementById("myConnect").style.display == "block") {
+        socket.emit("play-button")
+    } else {
+        console.log("Hey 2")
+        board();
+        startClock();
+    }
+})
+
+socket.on('start-match', () => {
+    console.log("hey"); 
+    board();
+    startClock();
+})
+
+socket.on('move', (tile) => {
+    tileInfo = tile;
+})
