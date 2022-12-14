@@ -8,6 +8,8 @@ let whiteKing = "";
 let pTiles = []; //possible tiles
 let check = "No One";
 
+let eaten = [];
+
 const bb = "blackBishop";
 const wb = "whiteBishop";
 const bh = "blackHorse";
@@ -237,6 +239,9 @@ function executeMove() {
                 switchTeam();
                 switched++;
             }
+            if (tmp.get(end) !== em) {
+                eaten.push(tmp.get(end));
+            } 
             board();
             if (checkmate()) {
                 gameover();
@@ -244,9 +249,13 @@ function executeMove() {
         } else {
             storeDatabase();
             switchTeam();
+            if (tmp.get(end) !== em) {
+                eaten.push(tmp.get(end));
+            } 
             board();
             switched = 0;
         }
+        console.log(eaten);
     }
 }
 
