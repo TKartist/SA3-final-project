@@ -207,7 +207,8 @@ border: 10px ridge var(--blunderBiege);
 .sidebar1 {
 display: flex;
 flex-direction: column;
-background-color: var(--blunderBlack);
+background-color: transparent;
+backdrop-filter: blur(3px);
 height: 800px;
 width: 20%;
 border: 10px ridge var(--blunderBiege);
@@ -525,13 +526,13 @@ margin-right: auto;
 }
 
 .check span{
-color: var(--blunderBiege);
+color: var(--blunderBlack);
 }
 
 .check {
-color: var(--blunderBiege);
+color: var(--blunderBlack);
 }
 
 .player span{
-color: var(--blunderBiege);
+color: var(--blunderBlack);
 }

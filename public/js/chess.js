@@ -288,6 +288,7 @@ function executeMove() {
             }
             if (tmp.get(end) !== em) {
                 eaten.push(tmp.get(end));
+                show(eaten)
             }
             // castleEffect();
             board();
@@ -299,6 +300,7 @@ function executeMove() {
             switchTeam();
             if (tmp.get(end) !== em) {
                 eaten.push(tmp.get(end));
+                show(eaten);
             }
             // castleEffect();
             board();
