@@ -19,6 +19,13 @@ input {
 h1 {
     color: black;
 }
+h3 {
+    /* background-color: rgba(0, 0, 0, 0.8); */
+    text-align: center;
+    color: black;
+    padding: 10px;
+    backdrop-filter: blur(1px);
+}
 label {
     padding-top: 10px;
     padding-bottom: 5px;
@@ -46,6 +53,10 @@ label img {
 	background-position: center;    /* Set it to the center */
 	background-size: cover;        /* Make it resizable */
 }
+.white-pieces input[type=text] {
+    background-color: rgba(255, 255, 255, 0.8);
+    color: black;
+}
 .white-pieces label  b {
     color: white;
 }
@@ -60,6 +71,10 @@ label img {
 	background-repeat: no-repeat;  
 	background-position: center;    /* Set it to the center */
 	background-size: cover;        /* Make it resizable */
+}
+.black-pieces input[type=text] {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
 }
 .black-pieces label  b {
     color: black;
@@ -89,6 +104,10 @@ label img {
     <div class="inner-box">
         <form action="/actionpage" method="post" name="userCreateForm">
             <h1>Create New Challenge</h1>
+            <h3>The below is a form to add a new challenge. <br> 
+                You can choose what piece to add where by entering coordinates (11 - 18, 21- 28 ... 81 - 88). <br>  
+                Although all fields in the piece section can be empty, if the move section is empty the challenge won't be created.
+            </h3>
             <hr>
 
             <div class="container">
