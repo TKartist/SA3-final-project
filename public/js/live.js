@@ -1,9 +1,24 @@
 const socket = io();
 
-socket.on('update-waiting', (active_users, players) => {
-    board();
-    refreshMoves(active_users, players);
+// Connect to server
+
+// document.getElementById("connect").addEventListener('click', () => {
+//     console.log("hey");
+// })
+
+document.getElementById("connect").addEventListener('click', () => {
+    socket.emit("connect-online", document.querySelector(".sidebar0 h1").textContent);
+    document.getElementById("myConnect").style.display = "block";
+    document.getElementById("connect").style.display = "none";
 })
+
+document.getElementById("disconnect").addEventListener('click', () => {
+    socket.emit("disconnect-online", document.querySelector(".sidebar0 h1").textContent);
+    document.getElementById("myConnect").style.display = "none";
+    document.getElementById("connect").style.display = "block";
+})
+
+
 
 // const messageContainer = document.getElementById('message-container');
 // const messageForm = document.getElementById('send-container');

@@ -38,7 +38,7 @@ router.get('/browse', verify.auth, function (req, res, next) {
 
 router.get('/test',function(req, res, next) {
   id = mongoose.Types.ObjectId();
-  res.render('test', {});
+  res.render('test', {username: verify.check(req).name});
 })
 
 router.get('/createChallenge',function(req, res, next) {
@@ -95,7 +95,6 @@ router.get('/learn', verify.auth, function (req, res, next) {
 
 router.get('/about', function (req, res, next) {
   res.render('about', {});
-
 })
 
 

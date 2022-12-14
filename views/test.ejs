@@ -2,12 +2,12 @@
 
 <head>
   <link rel="icon" href="./static/images/website/logo.png">
-  <title>Pay</title>
+  <title>Play</title>
   <meta name="author" content="Georgy Batyrev" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <link rel="stylesheet" href="./static/css/chess.css">
-
+  
   <link href="https://fonts.cdnfonts.com/css/gotham" rel="stylesheet">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -57,15 +57,15 @@
         </div>
 
         <section class="sidebar0">
-          <h1> Player 1</h1>
+          <h1> <%= username %></h1>
           <section class="connect-buttons-section">
-            <button id="connect" onclick="openConnect()">
+            <button id="connect">
               <h1>Connect</h1>
             </button>
           </section>
           <div class="connect-pop" id="myConnect">
             <section class="connect-buttons-section">
-              <button id="disconnect" onclick="closeConnect()">
+              <button id="disconnect">
                 <h1>Disconnect</h1>
               </button>
             </section>
@@ -74,7 +74,7 @@
 
 
 
-        <script>
+        <!-- <script>
           function openConnect() {
             document.getElementById("myConnect").style.display = "block";
             document.getElementById("connect").style.display = "none";
@@ -84,7 +84,7 @@
             document.getElementById("myConnect").style.display = "none"
             document.getElementById("connect").style.display = "block";
           }
-        </script>
+        </script> -->
 
       </section>
 
@@ -230,6 +230,8 @@
   <script src="/static/js/chess.js"></script>
   <script src="/static/js/play_background.js"></script>
   <script src="/static/js/timer.js"></script>
+  <script src="socket.io/socket.io.js"></script>
+  <script src="/static/js/live.js"></script>
 </body>
 
 
