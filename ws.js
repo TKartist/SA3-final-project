@@ -63,10 +63,11 @@ function init(server) {
             console.log(active_users);
         })
 
-        socket.on('move', (board) => {
-            console.log("het")
-            socket[0].ref.emit('move', board);
-            socket[1].ref.emit('move', board);
+        socket.on('move', (board, atk, opp) => {
+            console.log(players);
+            console.log(board);
+            players[0].ref.emit('moved', board, atk, opp);
+            players[1].ref.emit('moved', board, atk, opp);
         });
 
         // socket.on('end-game', () => {

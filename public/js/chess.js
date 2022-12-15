@@ -10,6 +10,8 @@ let check = "No-One";
 
 let eaten = [];
 
+let you = "";
+
 let castleInfo = new Map();
 castleInfo.set("11", false);
 castleInfo.set("15", false);
@@ -62,7 +64,7 @@ function board() {
     section.querySelectorAll("button").forEach(tile => {
         section.removeChild(tile);
     })
-    if (atk === "black") {
+    if (you === "black") {
         for (let i = 1; i < 9; i++) {
             for (let j = 1; j < 9; j++) {
                 let styleAttribute = "";
@@ -144,7 +146,7 @@ let FLAG = 0;
 let counter = 0;
 
 async function storeDatabase() {
-    socket.emit('move', tileInfo)
+    socket.emit('move', JSON.stringify(Array.from(tileInfo)), opp, atk);
     stopClock()
     if(atk == "white"){
         isPlayer1Turn = false;
@@ -238,25 +240,27 @@ function initPos() {
 function choose(event) {
     let eventID = event.target.id;
     let selected = tileInfo.get(eventID);
-    if (stage === 0) {
-        if (selected.includes(atk)) {
-            stage = 1;
-            start = eventID;
-        }
-    } else if (stage === 1) {
-        if (selected.includes(atk)) {
-            if (tileInfo.get(start).includes("King") && selected.includes("Rook")) {
-                end = eventID;
-                stage = 0;
-                executeMove();
-            } else {
+    if (you === atk) {
+        if (stage === 0) {
+            if (selected.includes(atk)) {
                 stage = 1;
                 start = eventID;
             }
-        } else {
-            end = eventID;
-            stage = 0;
-            executeMove();
+        } else if (stage === 1) {
+            if (selected.includes(atk)) {
+                if (tileInfo.get(start).includes("King") && selected.includes("Rook")) {
+                    end = eventID;
+                    stage = 0;
+                    executeMove();
+                } else {
+                    stage = 1;
+                    start = eventID;
+                }
+            } else {
+                end = eventID;
+                stage = 0;
+                executeMove();
+            }
         }
     }
 }
@@ -897,12 +901,19 @@ document.getElementById("start").addEventListener("click", e => {
     }
 })
 
-socket.on('start-match', () => {
+socket.on('start-match', (color) => {
     console.log("hey"); 
+    you = color;
     board();
     startClock();
 })
 
-socket.on('move', (tile) => {
-    tileInfo = tile;
+socket.on('moved', (tile, atk1, opp1) => {
+    console.log("got till here");
+    tileInfo = new Map(JSON.parse(tile));
+    console.log(tileInfo);
+    storeInfo();
+    atk = atk1;
+    opp = opp1;
+    board();
 })
