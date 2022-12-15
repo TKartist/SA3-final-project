@@ -1,125 +1,44 @@
 
 <head>
     <link rel="stylesheet" href="./static/css/chess.css">
-<style>
-
-/* Inner box */
-.inner-box {
-    display: flex;
-    flex-direction: column;
-    margin: 5% auto 15% auto; /* 5% top, 15% bottom, auto for centering */
-    margin: auto auto auto auto; /* 5% top, 15% bottom, auto for centering */
-    width: 100%; /* Could be more or less, depending on screen size */
-    height: 100%;
-}
-input {
-    height: 50px;
-}
-h1 {
-    color: black;
-}
-h3 {
-    /* background-color: rgba(0, 0, 0, 0.8); */
-    text-align: center;
-    color: black;
-    padding: 10px;
-    backdrop-filter: blur(1px);
-}
-label {
-    padding-top: 10px;
-    padding-bottom: 5px;
-}
-label img {
-    width: 25px;
-    height: 25px;
-    margin-bottom: -5px;
-}
-/* Container for labels and buttons */
-.container {
-    display: flex;
-    flex-direction: row;
-}
-/* WHITE */
-.white-pieces {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    padding: 5px 25px 25px 25px; /* top, right, bottom, left */
-    margin-left: 15px;
-    border: 10px ridge var(--blunderBiege);
-    background-image: url("/static/images/website/white_chess_back.avif");
-	background-repeat: no-repeat;
-	background-position: center;    /* Set it to the center */
-	background-size: cover;        /* Make it resizable */
-}
-.white-pieces input[type=text] {
-    background-color: rgba(255, 255, 255, 0.8);
-    color: black;
-}
-.white-pieces label  b {
-    color: white;
-}
-/* BLACK */
-.black-pieces {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    padding: 5px 25px 25px 25px; /* top, right, bottom, left */
-    border: 10px ridge var(--blunderBlack);
-    background-image: url("/static/images/website/black_horse_back.jpg");
-	background-repeat: no-repeat;
-    background-position: center;    /* Set it to the center */
-	background-size: cover;        /* Make it resizable */
-}
-.black-pieces input[type=text] {
-    background-color: rgba(0, 0, 0, 0.8);
-    color: white;
-}
-.black-pieces label  b {
-    color: black;
-}
-/* Create btn */
-.btn-container {
-   margin-left: 35%;
-}
-#createChallegebtn{
-    height: 40px;
-    width: 50%;
-    margin-top: 20px;
-}
-#createChallegebtn b {
-    color: black;
-}
-.moves-container {
-    margin-top: 10px;
-    margin-left: 15px;
-    display: flex;
-    flex-direction: column;
-    border: 10px ridge var(--blunderBiege);
-    padding: 3px 25px 5px 10px; /* top, right, bottom, left */
-    background-image: linear-gradient( var(--blunderBiege), var(--blunderBlack));
-}
-.moves-container label b {
-    color: black;
-}
-.moves-container input[type=text]  {
-    border: 5px ridge var(--blunderBlack);
-    width: 60%;
-}
-
-
-
-</style>
+    <link rel="stylesheet" href="./static/css/create.css">
 </head>
 
 <body>
 
+<main class="website-content">
+    <h1>Create New Challenge</h1>
 
+    <div class="create-chess-board">
+        <section id="chess-grid"></section>
+
+        <section class="create-buttons-chess">
+
+            <!-- white buttons -->
+            <div class="create-buttons-chess-black">
+                <button class="try" id="bB"><img src="/static/images/chesspieces/blackBishop.png" alt=""></button>
+                <button class="try" id="bH"><img src="/static/images/chesspieces/blackHorse.png" alt=""></button>
+                <button class="try" id="bK"><img src="/static/images/chesspieces/blackKing.png" alt=""></button>
+                <button class="try" id="bP"><img src="/static/images/chesspieces/blackPawn.png" alt=""></button>
+                <button class="try" id="bQ"><img src="/static/images/chesspieces/blackQueen.png" alt=""></button>
+                <button class="try" id="bR"><img src="/static/images/chesspieces/blackRook.png" alt=""></button>
+            </div>
+
+            <!-- black buttons -->
+            <div class="create-buttons-chess-white">
+                <button class="try" id="wB"><img src="/static/images/chesspieces/whiteBishop.png" alt=""></button>
+                <button class="try" id="wH"><img src="/static/images/chesspieces/whiteHorse.png" alt=""></button>
+                <button class="try" id="wK"><img src="/static/images/chesspieces/whiteKing.png" alt=""></button>
+                <button class="try" id="wP"><img src="/static/images/chesspieces/whitePawn.png" alt=""></button>
+                <button class="try" id="wQ"><img src="/static/images/chesspieces/whiteQueen.png" alt=""></button>
+                <button class="try" id="wQ"><img src="/static/images/chesspieces/whiteRook.png" alt=""></button>
+            </div>
+        </section>
+    </div>
 
 <main class="website-content">
     <div class="inner-box">
         <form action="/createChallenge" method="POST" name="userCreateForm">
-            <h1>Create New Challenge</h1>
             <h3>The below is a form to add a new challenge. <br>
                 You can choose what piece to add where by entering coordinates (11 - 18, 21- 28 ... 81 - 88). <br>
                 Although all fields in the piece section can be empty, if the move section is empty the challenge won't be created.
@@ -194,6 +113,6 @@ label img {
     </div>
 </main>
 
-<script></script>
+<script src="./static/js/create.js"></script>
 
 </body>
