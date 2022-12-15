@@ -203,7 +203,11 @@ async function storeDatabase() {
     startClock();
     var array = [start, end];
     var object = tileInfo.get(end);
-    var map = JSON.stringify(array);
+    //var map = JSON.stringify(array);
+    var obj = Object.fromEntries(tileInfo);
+    var map = JSON.stringify(obj);
+    console.log("map")
+    console.log(map)
     const result = await fetch('/play', {
         method: 'POST',
         headers: {
