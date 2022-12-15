@@ -20,7 +20,6 @@ h1 {
   font-family: 'Gotham', sans-serif;
   overscroll-behavior: none;
   color: var(--blunderBiege);
-  transition: 250ms;
 }
 
 body {
@@ -453,65 +452,46 @@ height: 150px;
 /* The popup chat - hidden by default */
 .chat-popup {
 display: none;
-border: 3px solid var(--blunderBlack);
+border: 1mm ridge var(--blunderBlack);
+width:90%;
+height: 360px;
+background-color: var(--blunderBlack);
 
 }
 
-/* Add styles to the form container */
-.form-container {
-width:400px;
-height: 300px;
-padding: 10px;
-background-color: white;
+/* NAME input in sign in form */
+
+.input-field {
+  height: 30px;
+  width: 100%;
+
+  border: none;
+  outline: none;
+  border: 3px ridge var(--blunderBiege);
+
+  transition: 0.4s;
+  margin-bottom: 10px;
 }
 
-/* Full-width textarea */
-.form-container textarea {
-width: 100%;
-padding: 15px;
-margin: 5px 0 22px 0;
-border: none;
-background: #f1f1f1;
-resize: none;
-min-height: 200px;
+#send-container h2{
+font-size: 0.95rem;
+color: var(--blunderBlack);
+margin-bottom: auto;
+margin-top: auto;
+align-items: center;
 }
 
-/* When the textarea gets focus, do something */
-.form-container textarea:focus {
-background-color: #ddd;
-outline: none;
+.send, .btn{
+
+  background-color: var(--blunderBiege);
+  color: var(--blunderBlack);
+  margin-right: auto;
+  margin-left: auto;
+  align-items: center;
+  height: 30px;
+  width: 100px;
+
 }
-
-/* Set a style for the submit/send button */
-.form-container .btn {
-background-color: #04AA6D;
-color: white;
-padding: 16px 20px;
-border: none;
-cursor: pointer;
-width: 100%;
-margin-bottom:10px;
-opacity: 0.8;
-}
-
-/* Add a red background color to the cancel button */
-.form-container .cancel {
-background-color: red;
-}
-
-/* Add some hover effects to buttons */
-.form-container .btn:hover, .open-button:hover {
-opacity: 1;
-}
-
-
-
-
-
-
-
-
-
 
 @media only screen and (max-width: 768px) {
 .website-content {
