@@ -262,6 +262,28 @@ function choose(event) {
                 executeMove();
             }
         }
+    } else if (you === "") {
+        if (stage === 0) {
+            if (selected.includes(atk)) {
+                stage = 1;
+                start = eventID;
+            }
+        } else if (stage === 1) {
+            if (selected.includes(atk)) {
+                if (tileInfo.get(start).includes("King") && selected.includes("Rook")) {
+                    end = eventID;
+                    stage = 0;
+                    executeMove();
+                } else {
+                    stage = 1;
+                    start = eventID;
+                }
+            } else {
+                end = eventID;
+                stage = 0;
+                executeMove();
+            }
+        }
     }
 }
 
