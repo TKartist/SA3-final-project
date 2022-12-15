@@ -2,6 +2,8 @@
 
 let tileInfo = new Map();
 
+let past = new Map();
+
 let black = [];
 let white = [];
 let blackKing = "";
@@ -12,6 +14,8 @@ let check = "No-One";
 let eaten = [];
 
 let you = "";
+
+let backward = 1;
 
 let castleInfo = new Map();
 castleInfo.set("11", false);
@@ -59,9 +63,12 @@ function initBoard() {
             document.querySelector("#chess-grid").appendChild(tile);
         }
     }
+    storeDatabase();
+
 }
 
 function board() {
+    backward = 1;
     playing = true;
     let section = document.querySelector("#chess-grid");
     section.querySelectorAll("button").forEach(tile => {
@@ -146,12 +153,25 @@ function board() {
             }
         }
     }
-    document.querySelectorAll("button").forEach(tile => {
+    section = document.querySelector("#chess-grid");
+    section.querySelectorAll("button").forEach(tile => {
         tile.addEventListener("click", choose);
     });
     document.querySelector(".playing span").innerHTML = "Playing: " + atk.toUpperCase();
     document.querySelector(".check span").innerHTML = check.toUpperCase() + " is checked";
 }
+
+document.getElementById("backward").addEventListener("click", () => {
+    backward++;
+    backwards();
+})
+
+document.getElementById("forward").addEventListener("click", () => {
+    backward--;
+    if (backward > 0) {
+        backwards();
+    }
+})
 
 function storeInfo() {
     black = [];
@@ -188,6 +208,51 @@ let main_element = document.querySelector('table tbody');
 let FLAG = 0;
 let counter = 0;
 
+async function backwards() {
+    console.log("yippy");
+    const result = await fetch('/play').then((res) => res.json());
+    if (result.status === 'ok') {
+        if (result.details.length >= backward) {
+            past = new Map(Object.entries(JSON.parse(result.details[result.details.length - backward].map)));
+            console.log(past);
+            displayPast();
+        }
+    } else {
+        console.log("error");
+    }
+}
+
+function displayPast() {
+    let section = document.querySelector("#chess-grid");
+    section.querySelectorAll("button").forEach(tile => {
+        section.removeChild(tile);
+    })
+    for (let i = 1; i < 9; i++) {
+        for (let j = 1; j < 9; j++) {
+            let styleAttribute = "";
+            let tileID = "" + i + j;
+            let tile = document.createElement("button");
+            tile.setAttribute('id', tileID);
+            if (past.get(tileID) !== em) {
+                console.log(past.get(tileID));
+                styleAttribute += "background: url(static/images/chesspieces/" + past.get(tileID) + ".png) no-repeat 10px center;";
+            }
+            if ((i + j) % 2 === 1) {
+                styleAttribute += "background-color: #dae9f2";
+            } else {
+                styleAttribute += "background-color: #6e99c0";
+            }
+            tile.setAttribute('style', styleAttribute);
+            document.querySelector("#chess-grid").appendChild(tile);
+        }
+    }
+    section = document.querySelector("#chess-grid");
+    section.querySelectorAll("button").forEach(tile => {
+        tile.addEventListener("click", board);
+    });
+}
+
+
 async function storeDatabase() {
     if (you !== "") {
         socket.emit('move', JSON.stringify(Array.from(tileInfo)), opp, atk);
@@ -206,8 +271,6 @@ async function storeDatabase() {
     //var map = JSON.stringify(array);
     var obj = Object.fromEntries(tileInfo);
     var map = JSON.stringify(obj);
-    console.log("map")
-    console.log(map)
     const result = await fetch('/play', {
         method: 'POST',
         headers: {
