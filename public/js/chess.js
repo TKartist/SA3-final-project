@@ -64,7 +64,7 @@ function board() {
     section.querySelectorAll("button").forEach(tile => {
         section.removeChild(tile);
     })
-    if (you === "black") {
+    if (you === "black" || atk === "black") {
         for (let i = 1; i < 9; i++) {
             for (let j = 1; j < 9; j++) {
                 let styleAttribute = "";
@@ -146,7 +146,9 @@ let FLAG = 0;
 let counter = 0;
 
 async function storeDatabase() {
-    socket.emit('move', JSON.stringify(Array.from(tileInfo)), opp, atk);
+    if (you !== "") {
+        socket.emit('move', JSON.stringify(Array.from(tileInfo)), opp, atk);
+    }
     stopClock()
     if(atk == "white"){
         isPlayer1Turn = false;
@@ -241,6 +243,28 @@ function choose(event) {
     let eventID = event.target.id;
     let selected = tileInfo.get(eventID);
     if (you === atk) {
+        if (stage === 0) {
+            if (selected.includes(atk)) {
+                stage = 1;
+                start = eventID;
+            }
+        } else if (stage === 1) {
+            if (selected.includes(atk)) {
+                if (tileInfo.get(start).includes("King") && selected.includes("Rook")) {
+                    end = eventID;
+                    stage = 0;
+                    executeMove();
+                } else {
+                    stage = 1;
+                    start = eventID;
+                }
+            } else {
+                end = eventID;
+                stage = 0;
+                executeMove();
+            }
+        }
+    } else if (you === "") {
         if (stage === 0) {
             if (selected.includes(atk)) {
                 stage = 1;
