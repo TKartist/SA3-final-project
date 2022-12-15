@@ -9,6 +9,7 @@ function remove_player(id) {
             active_users.splice(i, 1);
             break;
         } else if (i < players.length && players[i].ref.id == id) {
+            console.log("removed player");
             players.splice(i,1);
             break; 
         }
@@ -75,6 +76,10 @@ function init(server) {
         // }) 
         
         socket.on('disconnect-online', () => {
+            remove_player(socket.id);
+        })
+
+        socket.on('disconnect', () => {
             remove_player(socket.id);
         })
     })

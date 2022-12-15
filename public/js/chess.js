@@ -64,7 +64,7 @@ function board() {
     section.querySelectorAll("button").forEach(tile => {
         section.removeChild(tile);
     })
-    if (you === "black") {
+    if (you === "black" || atk === "black") {
         for (let i = 1; i < 9; i++) {
             for (let j = 1; j < 9; j++) {
                 let styleAttribute = "";
@@ -146,7 +146,9 @@ let FLAG = 0;
 let counter = 0;
 
 async function storeDatabase() {
-    socket.emit('move', JSON.stringify(Array.from(tileInfo)), opp, atk);
+    if (you !== "") {
+        socket.emit('move', JSON.stringify(Array.from(tileInfo)), opp, atk);
+    }
     stopClock()
     if(atk == "white"){
         isPlayer1Turn = false;
@@ -914,7 +916,7 @@ function gameover() {
 }
 
 document.getElementById("start").addEventListener("click", e => {
-    if (document.getElementById("myConnect").style.display == "block") {
+    if (document.getElementById("myConnect").style.display == "block" && you !== "") {
         socket.emit("play-button")
     } else {
         console.log("Hey 2")
