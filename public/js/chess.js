@@ -63,7 +63,6 @@ function initBoard() {
             document.querySelector("#chess-grid").appendChild(tile);
         }
     }
-    storeDatabase();
 
 }
 
