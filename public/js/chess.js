@@ -1,4 +1,5 @@
 
+
 let tileInfo = new Map();
 
 let black = [];
@@ -38,6 +39,7 @@ let atk = "white";
 let opp = "black";
 
 let switched = 0;
+let playing = false;
 
 let stage = 0, start, end;
 
@@ -60,11 +62,12 @@ function initBoard() {
 }
 
 function board() {
+    playing = true;
     let section = document.querySelector("#chess-grid");
     section.querySelectorAll("button").forEach(tile => {
         section.removeChild(tile);
     })
-    if (you === "black" || atk === "black") {
+    if (you === "black") {
         for (let i = 1; i < 9; i++) {
             for (let j = 1; j < 9; j++) {
                 let styleAttribute = "";
@@ -83,7 +86,7 @@ function board() {
                 document.querySelector("#chess-grid").appendChild(tile);
             }
         }
-    } else {
+    } else if (you === "white"){
         for (let i = 8; i > 0; i--) {
             for (let j = 8; j > 0; j--) {
                 let styleAttribute = "";
@@ -100,6 +103,46 @@ function board() {
                 }
                 tile.setAttribute('style', styleAttribute);
                 document.querySelector("#chess-grid").appendChild(tile);
+            }
+        }
+    } else {
+        if (atk === "black") {
+            for (let i = 1; i < 9; i++) {
+                for (let j = 1; j < 9; j++) {
+                    let styleAttribute = "";
+                    let tileID = "" + i + j;
+                    let tile = document.createElement("button");
+                    tile.setAttribute('id', tileID);
+                    if (tileInfo.get(tileID) !== em) {
+                        styleAttribute += "background: url(static/images/chesspieces/" + tileInfo.get(tileID) + ".png) no-repeat 10px center;";
+                    }
+                    if ((i + j) % 2 === 1) {
+                        styleAttribute += "background-color: #dae9f2";
+                    } else {
+                        styleAttribute += "background-color: #6e99c0";
+                    }
+                    tile.setAttribute('style', styleAttribute);
+                    document.querySelector("#chess-grid").appendChild(tile);
+                }
+            }
+        } else {
+            for (let i = 8; i > 0; i--) {
+                for (let j = 8; j > 0; j--) {
+                    let styleAttribute = "";
+                    let tileID = "" + i + j;
+                    let tile = document.createElement("button");
+                    tile.setAttribute('id', tileID);
+                    if (tileInfo.get(tileID) !== em) {
+                        styleAttribute += "background: url(static/images/chesspieces/" + tileInfo.get(tileID) + ".png) no-repeat 10px center;";
+                    }
+                    if ((i + j) % 2 === 1) {
+                        styleAttribute += "background-color: #dae9f2";
+                    } else {
+                        styleAttribute += "background-color: #6e99c0";
+                    }
+                    tile.setAttribute('style', styleAttribute);
+                    document.querySelector("#chess-grid").appendChild(tile);
+                }
             }
         }
     }
@@ -912,12 +955,16 @@ function gameover() {
     main.querySelectorAll("button").forEach(e => {
         e.disabled = true;
     })
-    document.querySelector(".check").innerHTML = opp + "has won.";
+    document.querySelector(".check").innerHTML = opp + " has won.";
 }
 
 document.getElementById("start").addEventListener("click", e => {
-    if (document.getElementById("myConnect").style.display == "block") {
+    if (document.getElementById("myConnect").style.display == "block" && document.getElementById("start").querySelector('h1').textContent != "Searching") {
+        document.getElementById("start").querySelector('h1').innerHTML = "Searching";
         socket.emit("play-button")
+    } else if (document.getElementById("myConnect").style.display == "block") {
+        document.getElementById("start").querySelector('h1').innerHTML = "Start";
+        socket.emit("stop-play-button")
     } else {
         console.log("Hey 2")
         board();
@@ -940,4 +987,19 @@ socket.on('moved', (tile, atk1, opp1) => {
     atk = atk1;
     opp = opp1;
     board();
+})
+
+socket.on('stop-game', (color) => {
+    if (playing) {
+        opp = color;
+        gameover();
+    }
+})
+
+document.getElementById("forfeit").addEventListener("click", ()=>{
+    if (you === "") {
+        gameover();
+    } else {
+        socket.emit('surrend');
+    }
 })

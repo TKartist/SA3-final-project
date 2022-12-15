@@ -1,3 +1,5 @@
+const { Socket } = require('socket.io');
+
 const io = require('socket.io')();
 
 let active_users = [];
@@ -15,6 +17,18 @@ function remove_player(id) {
         }
     }
     console.log(active_users);
+}
+
+function stop_game (id) {
+    let color;
+    console.log(players)
+    if (players.length == 2 && id == players[0].ref.id) {
+        color = "black";
+    } else if (players.length == 2) {
+        color = "white";
+    }
+    players[0].ref.emit('stop-game', color);
+    players[1].ref.emit('stop-game', color);
 }
 
 
@@ -64,6 +78,18 @@ function init(server) {
             console.log(active_users);
         })
 
+        socket.on('stop-play-button', () => {
+            let index = undefined;
+            for (let i = 0; i < players.length; i+=1) {
+                if (players[i].ref.id == socket.id) {
+                    index = i
+                    break
+                }
+            }
+            active_users.push(players[index])
+            players.splice(index,1);
+        })
+
         socket.on('move', (board, atk, opp) => {
             console.log(players);
             console.log(board);
@@ -71,15 +97,29 @@ function init(server) {
             players[1].ref.emit('moved', board, atk, opp);
         });
 
+        socket.on('surrend', () =>{
+            stop_game(socket.id)
+        })
+
         // socket.on('end-game', () => {
         //     io.emit('end-game')
         // }) 
         
         socket.on('disconnect-online', () => {
+            stop_game(socket.id);
             remove_player(socket.id);
         })
 
         socket.on('disconnect', () => {
+            
+            console.log(players)
+            if (players.length == 2 && socket.id == players[0].ref.id) {
+                color = "black";
+                players[1].ref.emit('stop-game', "black");
+            } else if (players.length == 2) {
+                color = "white";
+                players[0].ref.emit('stop-game', "white");
+            }
             remove_player(socket.id);
         })
     })
