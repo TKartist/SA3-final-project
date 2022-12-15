@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <link rel="stylesheet" href="./static/css/chess.css">
-  
+
   <link href="https://fonts.cdnfonts.com/css/gotham" rel="stylesheet">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -43,12 +43,7 @@
             <p class="player-1-timer">5 min</p>
           </div>
           <div class="buttons-container">
-            <button class="start-button" id="timer-start"> <img class="small" src="/static/images/website/start.png"
-                alt=""></button>
-            <button class="stop-button" id="timer-stop"><img class="small" src="/static/images/website/stop.png">
-            </button>
-            <button class="reset-button" id="timer-reset"><img class="small" src="/static/images/website/reset.png">
-            </button>
+            <img class="clock" src="/static/images/website/sidebar2.png" alt="">
           </div>
           <div class="player-2-timer-container">
             <h2>Player 2</h2>
@@ -57,9 +52,11 @@
         </div>
 
         <section class="sidebar0">
-          <h1> <%= username %></h1>
+          <h1>
+            <%= username %>
+          </h1>
           <section class="connect-buttons-section">
-            <button id="connect">
+            <button id="connect" onclick="openOffer()">
               <h1>Connect</h1>
             </button>
           </section>
@@ -113,7 +110,7 @@
           </section>
           <section id="white-pieces" class="eatenPieces-section">
 
-            
+
           </section>
 
 
@@ -123,12 +120,19 @@
           <section class="connect-buttons-section">
             <div class="chat-popup" id="myForm">
 
-              
+
               <form id="send-container">
                 <input class="input-field" type="text" id="message-input" placeholder="Start writing:">
-                <button type="submit" id="send-button" class="send"> <h2>Send</h2></button>
-                <button type="button" class="btn" onclick="closeForm()"><h2>Close</h2></button>
+                <section class="default-buttons-section">
+                <button type="submit" id="send-button" class="send">
+                  <h2>Send</h2>
+                </button>
+                <button type="button" class="btn" onclick="closeForm()">
+                  <h2>Close</h2>
+                </button>
+                </section>
               </form>
+             
             </div>
 
             <button class="open-button" id="open-button" onclick="openForm()"> <img class="eat"
@@ -196,13 +200,22 @@
           </section>
 
           <!-- Forfeit & IDK -->
-          <div class="offer-buttons-section">
-            <button class="offer-buttons" id="draw"> <img class="offer" src="/static/images/website/draw.png"
-                alt=""></button>
-            <button class="offer-buttons" id="forfeit"><img class="offer" src="/static/images/website/give_up.png"
-                alt=""></button>
+          <div id="myOffer" style="display:none;">
+            <div class="offer-buttons-section">
+              <button class="offer-buttons" id="draw"> <img class="offer" src="/static/images/website/draw.png"
+                  alt=""></button>
+              <button class="offer-buttons" id="forfeit"><img class="offer" src="/static/images/website/give_up.png"
+                  alt=""></button>
 
+            </div>
           </div>
+
+          <script>
+            function openOffer() {
+              document.getElementById("myOffer").style.display = "block";
+            }
+
+          </script>
         </section> <!-- endl sidebar -->
       </section>
 
@@ -210,14 +223,14 @@
       <section class="section-three">
         <section class="sidebar0">
           <section class="connect-buttons-section">
-            <button id="back-to-index" >
-              <h1> <- INDEX</h1>
+            <button id="back-to-index">
+              <h1> To Index</h1>
             </button>
           </section>
 
         </section>
-         
-     
+
+
 
         <div class="clock-container" style="display:none;">
 
@@ -225,11 +238,11 @@
         </div>
 
         <section class="sidebar0">
-          <h1>  Players Online</h1>
-               <span>4</span>
+          <h1> Players Online</h1>
+          <span>4</span>
         </section>
 
-        
+
 
       </section>
 

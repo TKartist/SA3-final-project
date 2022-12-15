@@ -69,9 +69,7 @@ margin-top: auto;
 margin-bottom: auto;
 align-items: center;
 }
-canvas{
-  width: 100%;
-}
+
 /*  */
 
 p {
@@ -147,6 +145,8 @@ align-items: center;
 width: 750px;
 border: 3mm ridge var(--blunderBiege);
 }
+
+
 .player-1-timer-container, .player-2-timer-container {
 text-align: center;
 }
@@ -193,6 +193,13 @@ width: 20%;
 border: 10px ridge var(--blunderBiege);
 }
 
+.clock{
+  width:120px;
+height: 120px;
+margin-left: auto;
+margin-right: auto;
+align-items: center;
+}
 
 .sidebar {
 display: flex;
@@ -258,7 +265,7 @@ background-color: var(--blunderBiege);
 color: var(--blunderBlack);
 height: 50px;
 padding: 10px;
-width: 50%;
+width: 45%;
 cursor: pointer;
 border: var(--blunderBlack)
 }
@@ -271,14 +278,14 @@ flex-direction: row;
 margin-top: 120px;
 
 bottom:   0;
-border: 1mm ridge var(--blunderBlack);
+
 }
 .offer-buttons {
 background-color: var(--blunderBiege);
 color: var(--blunderBlack);
 height: 100px;
 padding: 10px;
-width: 40%;
+width: 45%;
 cursor: pointer;
 
 }
@@ -403,7 +410,7 @@ margin-top: -50px;
 background-color: var(--blunderBiege);
 height: 50px;
 margin-bottom: auto;
-width: 300px;
+width: 200px;
 align-items: center;
 cursor: pointer;
 
@@ -414,7 +421,7 @@ cursor: pointer;
 background-color: var(--blunderBiege);
 height: 50px;
 margin-bottom: auto;
-width: 300px;
+width: 80%;
 align-items: center;
 cursor: pointer;
 }
@@ -426,14 +433,14 @@ cursor: pointer;
 
 #connect h1, #disconnect h1, #back-to-index h1{
 color: var(--blunderBlack);
-font-size: 30px;
+font-size: 15px;
 margin-top: auto;
 margin-bottom: auto;
 align-items: center;
 }
 /* Button used to open the chat form - fixed at the bottom of the page */
 .open-button {
-  position: fixed;
+position: fixed;
 bottom: 0;
 background-color: transparent;
 
@@ -462,9 +469,10 @@ background-color: var(--blunderBlack);
 /* NAME input in sign in form */
 
 .input-field {
+  margin-top: 5%;
   height: 30px;
   width: 100%;
-
+  background: none;
   border: none;
   outline: none;
   border: 3px ridge var(--blunderBiege);
@@ -481,16 +489,25 @@ margin-top: auto;
 align-items: center;
 }
 
-.send, .btn{
-
+.send{
   background-color: var(--blunderBiege);
   color: var(--blunderBlack);
   margin-right: auto;
   margin-left: auto;
   align-items: center;
   height: 30px;
-  width: 100px;
+  width: 100%;
 
+}
+
+.btn{
+  background-color: var(--blunderBiege);
+  color: var(--blunderBlack);
+  margin-right: auto;
+  margin-left: auto;
+  align-items: center;
+  height: 30px;
+  width: 100%;
 }
 
 @media only screen and (max-width: 768px) {
