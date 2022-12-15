@@ -46,6 +46,9 @@ router.get('/createChallenge',function(req, res, next) {
   res.render('create_challenge', {});
 })
 
+router.post('/createChallenge', function (req, res, next) {
+});
+
 router.post('/play', async(req, res)=> {
   const { map, atk, object } = req.body;
   

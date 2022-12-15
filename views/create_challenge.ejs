@@ -1,6 +1,5 @@
 
 <head>
-
     <link rel="stylesheet" href="./static/css/chess.css">
 <style>
 
@@ -119,11 +118,13 @@ label img {
 
 <main class="website-content">
     <div class="inner-box">
-        <form action="/actionpage" method="post" name="userCreateForm">
+        <form action="/createChallenge" method="POST" name="userCreateForm">
             <h1>Create New Challenge</h1>
             <h3>The below is a form to add a new challenge. <br>
                 You can choose what piece to add where by entering coordinates (11 - 18, 21- 28 ... 81 - 88). <br>
                 Although all fields in the piece section can be empty, if the move section is empty the challenge won't be created.
+                <br><br>
+                *** Remember to add spaces between every coordinates for it to be understood ***
             </h3>
             <div class="container">
                 <!-- BLACK PIECES -->
@@ -176,11 +177,23 @@ label img {
                 <input name="moves" type="text" placeholder="moves" id="moves" required>
             </div>
 
+            <div class="moves-container">
+                <label for="response"><b>Responses</b></label>
+                <input name="response" type="text" placeholder="response" id="response" required>
+            </div>
+
+            <div class="moves-container">
+                <label for="side"><b>Player Side</b></label>
+                <input name="side" type="text" placeholder="Player Side" id="side" required>
+            </div>
+
             <div class="btn-container">
                 <button id="createChallegebtn" type="submit"><b>Create Challenge</b></button>
             </div>
         </form>
     </div>
 </main>
+
+<script></script>
 
 </body>
