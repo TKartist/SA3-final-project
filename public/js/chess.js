@@ -916,7 +916,7 @@ function gameover() {
 }
 
 document.getElementById("start").addEventListener("click", e => {
-    if (document.getElementById("myConnect").style.display == "block" && you !== "") {
+    if (document.getElementById("myConnect").style.display == "block") {
         socket.emit("play-button")
     } else {
         console.log("Hey 2")
