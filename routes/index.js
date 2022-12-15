@@ -46,29 +46,7 @@ router.get('/createChallenge',function(req, res, next) {
   res.render('create_challenge', {});
 })
 
-router.post('/createChallenge', function(req, res, next) {
-  let wp = req.body.whitePawn.split(" ");
-  let wr = req.body.whiteRook.split(" ");
-  let wb = req.body.whiteBishop.split(" ");
-  let wq = req.body.whiteQueen.split(" ");
-  let wk = req.body.whiteKing.split(" ");
-  let wh = req.body.whiteHores.split(" ");
-  let bp = req.body.blackPawn.split(" ");
-  let br = req.body.blackRook.split(" ");
-  let bb = req.body.blackBishop.split(" ");
-  let bq = req.body.blackQueen.split(" ");
-  let bk = req.body.blackKing.split(" ");
-  let bh = req.body.blackHores.split(" ");
-  let urs = req.body.moves.split(" ");
-  let bots = req.body.response.split(" ");
-  let tileInfo = new Map();
-  for (let i = 1; i < 9; i++) {
-    for (let j = 1; j < 9; j++) {
-      newID = "" + i + j;
-      tileInfo.set(newID, "empty");
-    }
-  }
-  
+router.post('/createChallenge', function (req, res, next) {
 });
 
 router.post('/play', async(req, res)=> {
