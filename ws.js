@@ -20,7 +20,7 @@ function remove_player(id) {
     console.log(active_users);
 }
 
-function stop_game(id) {
+function stop_game (id, new_players) {
     let color;
     console.log(players)
     if (players.length == 2 && id == players[0].ref.id) {
@@ -28,8 +28,9 @@ function stop_game(id) {
     } else if (players.length == 2) {
         color = "white";
     }
-    players[0].ref.emit('stop-game', color);
-    players[1].ref.emit('stop-game', color);
+    console.log(new_players)
+    players[0].ref.emit('stop-game', color, new_players);
+    players[1].ref.emit('stop-game', color, new_players);
 }
 
 
@@ -41,7 +42,7 @@ function init(server) {
         console.log('client connected');
 
         socket.on('connect-online', (name) => {
-            console.log(name)
+            console.log("name:"+name);
             remove_player(socket.id);
             data = {
                 ref: socket,
@@ -52,8 +53,8 @@ function init(server) {
 
         });
 
-        socket.on('send-chat-message', message => {
-            socket.broadcast.emit('chat-message', { name: active_users.id, message: message });
+        socket.on('send-chat-message', (message, name) => {
+            socket.broadcast.emit('chat-message', {name: name ,message: message});
         });
 
         socket.on('refresh', table => {
@@ -97,44 +98,50 @@ function init(server) {
             players.splice(index, 1);
         })
 
-        socket.on('move', (board, atk, opp) => {
+        socket.on('move', (board, atk, opp, active) => {
             console.log(players);
             console.log(board);
-            players[0].ref.emit('moved', board, atk, opp);
-            players[1].ref.emit('moved', board, atk, opp);
+            players[0].ref.emit('moved', board, atk, opp, active);
+            players[1].ref.emit('moved', board, atk, opp, active);
         });
 
-        socket.on("refresh-moves", last_move => {
-            if (socket == players[0].ref) {
-                players[1].ref.emit('refresh', last_move);
-            } else {
-                players[0].ref.emit('refresh', last_move);
-            }
-        });
-
-        socket.on('surrend', () => {
-            stop_game(socket.id)
+        socket.on('surrend', () =>{
+            let new_players = []
+            new_players.push({name : players[0].name, color: "white"})
+            new_players.push({name : players[1].name, color: "black"})
+            console.log("new_players")
+            console.log(new_players)
+            stop_game(socket.id, new_players)
         })
 
         // socket.on('end-game', () => {
         //     io.emit('end-game')
-        // }) 
+        // })
 
         socket.on('disconnect-online', () => {
-            stop_game(socket.id);
+            let new_players = []
+            new_players.push({name : players[0].name, color: "white"})
+            new_players.push({name : players[1].name, color: "black"})
+            console.log(new_players)
+            stop_game(socket.id, new_players);
             remove_player(socket.id);
         })
 
         socket.on('disconnect', () => {
-
-            console.log(players)
-            if (players.length == 2 && socket.id == players[0].ref.id) {
-                color = "black";
-                players[1].ref.emit('stop-game', "black");
-            } else if (players.length == 2) {
-                color = "white";
-                players[0].ref.emit('stop-game', "white");
+            if (players.length == 2) {
+                let new_players = []
+                new_players.push({name : players[0].name, color: "white"})
+                new_players.push({name : players[1].name, color: "black"})
+                console.log(new_players)
+                if (socket.id == players[0].ref.id) {
+                    color = "black";
+                    players[1].ref.emit('stop-game', "black", new_players);
+                } else {
+                    color = "white";
+                    players[0].ref.emit('stop-game', "white", new_players);
+                }
             }
+
             remove_player(socket.id);
         })
     })

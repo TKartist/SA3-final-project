@@ -2,6 +2,7 @@ const socket = io();
 
 // Connect / Disconnect to server
 document.getElementById("connect").addEventListener('click', () => {
+    console.log(document.querySelector(".sidebar0 h1").textContent);
     socket.emit("connect-online", document.querySelector(".sidebar0 h1").textContent);
     document.getElementById("myConnect").style.display = "block";
     document.getElementById("connect").style.display = "none";
@@ -27,23 +28,26 @@ socket.on("refresh", last_move => {
 const messageContainer = document.getElementById('myForm');
 const messageForm = document.getElementById('send-container');
 const messageInput = document.getElementById('message-input');
+
 socket.on('chat-message', data => {
-    // console.log(data);
-    appendMessage(`${data.name}: ${data.message}`);
+    console.log(data.message);
+    appendMessage(`${data.name} : ${data.message}`);
 })
 
 messageForm.addEventListener('submit', e => {
     e.preventDefault();
     const message = messageInput.value;
+    console.log("send message")
     appendMessage(`You: ${message}`);
     // to send information from the client to the server
-    socket.emit('send-chat-message', message);
+    socket.emit('send-chat-message', message, document.querySelector('.sidebar0 h1').textContent);
     // set to empty value so that message is empties out every time it's sent
     messageInput.value = '';
 })
 
 function appendMessage(message) {
-    const messageElement = document.createElement('div');
+    const messageElement = document.createElement('h6');
     messageElement.innerText = message;
-    messageContainer.append(messageElement);
+    console.log("received message")
+    messageContainer.appendChild(messageElement);
 }

@@ -10,18 +10,23 @@ var id;
 
 /* GET home page. */
 router.get('/index', async (req, res, next) => {
-  let scores = [];
+  let scores = new Map();
+  let sortedMap = new Map();
   response = verify.check(req);
   if (response.status) {
     console.log(response.name)
     const user = await User.find({}).lean();
     user.forEach(element => {
-      scores.push(element.username);
-      scores.push(element.score);
+      scores.set(element.username, element.score)
     })
-    res.render('index', { title: 'Index Page', filename: "unlocked", name: response.name, leaderboard: scores });
+    sortedMap = new Map([...scores].sort((a, b) => b[1] - a[1]));
+    console.log(user)
+    console.log(scores)
+    console.log(sortedMap);
+
+    res.render('index', { title: 'Index Page', filename: "unlocked", name: response.name, leaderboard: sortedMap });
   } else {
-    res.render('index', { title: 'Index Page', filename: "locked", name: response.name, leaderboard: scores });
+    res.render('index', { title: 'Index Page', filename: "locked", name: response.name, leaderboard: sortedMap });
   }
 });
 
@@ -69,6 +74,23 @@ res.json({status: 'ok'});
 
 })
 
+router.get('/play', async (req, res) => {
+  try {
+    const list = await Moves.find({ id }).lean(); // only json object 
+
+    if (!list) {
+      res.status(404).json("User not found")
+    }
+    res.json({
+      status: 'ok',
+      details: list
+    });
+    
+  } catch (error) {
+    res.status(500).json(error.message);
+  }
+})
+
 
 router.post('/play', async (req, res) => {
   const { map, atk } = req.body;
@@ -98,6 +120,29 @@ router.get('/learn', verify.auth, function (req, res, next) {
 
 router.get('/about', function (req, res, next) {
   res.render('about', {});
+})
+
+router.post('/store-score', async(req,res,next) => {
+  try {
+    const { player, n } = req.body;
+    
+    console.log(player)
+    let filter = {username : player}
+    const user = await User.findOne(filter).lean(); // only json object 
+    console.log(user)
+    let copy;
+    if(n == 10){
+      copy = user.score - n/2;
+    } else {
+      copy = user.score + n/2;
+    }
+    user.score = copy;
+    await User.updateOne(filter, {score: copy}, {new: true})
+    console.log(user)
+
+  } catch(error) {
+    res.status(500).json(error.message);
+  }
 })
 
 

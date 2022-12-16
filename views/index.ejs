@@ -123,7 +123,7 @@
 
       <section class="inner_board_section">
         <h5> Leaderboard </h5>
-        <% for (let i=0; i < leaderboard.length; i = i+2) { %>
+        <% for (let [key, value] of leaderboard) { %>
           <div class="board_content">
             <div class="img">
               <img src="/static/images/website/profile1.png" alt="picture_1">
@@ -132,7 +132,7 @@
               <p><span>
                   <h3></h3>
                 </span>
-              <h3><%- leaderboard[i] %></h3>
+              <h3><%- key %></h3>
               </p>
               <div class="score_bar_wrap">
                 <div class="score_bar"></div>
@@ -142,7 +142,7 @@
               <p><span>
                   <h3></h3>
                 </span>
-              <h3><%- leaderboard[i+1] %></h3>
+              <h3><%- value %></h3>
               </p>
             </div>
           </div>

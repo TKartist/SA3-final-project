@@ -2,6 +2,8 @@
 
 let tileInfo = new Map();
 
+let past = new Map();
+
 let black = [];
 let white = [];
 let blackKing = "";
@@ -12,6 +14,9 @@ let check = "No-One";
 let eaten = [];
 
 let you = "";
+let active = ""
+
+let backward = 1;
 
 let castleInfo = new Map();
 castleInfo.set("11", false);
@@ -59,9 +64,11 @@ function initBoard() {
             document.querySelector("#chess-grid").appendChild(tile);
         }
     }
+
 }
 
 function board() {
+    backward = 1;
     playing = true;
     let section = document.querySelector("#chess-grid");
     section.querySelectorAll("button").forEach(tile => {
@@ -146,12 +153,25 @@ function board() {
             }
         }
     }
-    document.querySelectorAll("button").forEach(tile => {
+    section = document.querySelector("#chess-grid");
+    section.querySelectorAll("button").forEach(tile => {
         tile.addEventListener("click", choose);
     });
     document.querySelector(".playing span").innerHTML = "Playing: " + atk.toUpperCase();
     document.querySelector(".check span").innerHTML = check.toUpperCase() + " is checked";
 }
+
+document.getElementById("backward").addEventListener("click", () => {
+    backward++;
+    backwards();
+})
+
+document.getElementById("forward").addEventListener("click", () => {
+    backward--;
+    if (backward > 0) {
+        backwards();
+    }
+})
 
 function storeInfo() {
     black = [];
@@ -184,22 +204,78 @@ function castleEffect() {
 
 let main_element = document.querySelector('.mlist');
 
+async function backwards() {
+    console.log("yippy");
+    const result = await fetch('/play').then((res) => res.json());
+    if (result.status === 'ok') {
+        if (result.details.length >= backward) {
+            past = new Map(Object.entries(JSON.parse(result.details[result.details.length - backward].map)));
+            console.log(past);
+            displayPast();
+        }
+    } else {
+        console.log("error");
+    }
+}
+
+function displayPast() {
+    let section = document.querySelector("#chess-grid");
+    section.querySelectorAll("button").forEach(tile => {
+        section.removeChild(tile);
+    })
+    for (let i = 1; i < 9; i++) {
+        for (let j = 1; j < 9; j++) {
+            let styleAttribute = "";
+            let tileID = "" + i + j;
+            let tile = document.createElement("button");
+            tile.setAttribute('id', tileID);
+            if (past.get(tileID) !== em) {
+                console.log(past.get(tileID));
+                styleAttribute += "background: url(static/images/chesspieces/" + past.get(tileID) + ".png) no-repeat 10px center;";
+            }
+            if ((i + j) % 2 === 1) {
+                styleAttribute += "background-color: #dae9f2";
+            } else {
+                styleAttribute += "background-color: #6e99c0";
+            }
+            tile.setAttribute('style', styleAttribute);
+            document.querySelector("#chess-grid").appendChild(tile);
+        }
+    }
+    section = document.querySelector("#chess-grid");
+    section.querySelectorAll("button").forEach(tile => {
+        tile.addEventListener("click", board);
+    });
+}
+
+
 async function storeDatabase() {
     if (you !== "") {
-        socket.emit('move', JSON.stringify(Array.from(tileInfo)), opp, atk);
-    }
-    stopClock()
-    if(atk == "white"){
-        isPlayer1Turn = false;
-        isPlayer2Turn = true;
+        active == "white"? active = "black":active="white"
+        socket.emit('move', JSON.stringify(Array.from(tileInfo)), opp, atk, active);
+        if(active == "white"){
+            isPlayer1Turn = false;
+            isPlayer2Turn = true;
+        } else {
+            isPlayer1Turn = true;
+            isPlayer2Turn = false;
+        }
     } else {
-        isPlayer1Turn = true;
-        isPlayer2Turn = false;
+        stopClock()
+        if(atk == "white"){
+            isPlayer1Turn = false;
+            isPlayer2Turn = true;
+        } else {
+            isPlayer1Turn = true;
+            isPlayer2Turn = false;
+        }
+        startClock();
     }
-    startClock();
     var array = [start, end];
     var object = tileInfo.get(end);
-    var map = JSON.stringify(array);
+    //var map = JSON.stringify(array);
+    var obj = Object.fromEntries(tileInfo);
+    var map = JSON.stringify(obj);
     const result = await fetch('/play', {
         method: 'POST',
         headers: {
@@ -958,7 +1034,15 @@ socket.on('start-match', (color) => {
     startClock();
 })
 
-socket.on('moved', (tile, atk1, opp1) => {
+socket.on('moved', (tile, atk1, opp1, newActive) => {
+    active = newActive;
+    if(active == "white"){
+        isPlayer1Turn = false;
+        isPlayer2Turn = true;
+    } else {
+        isPlayer1Turn = true;
+        isPlayer2Turn = false;
+    }
     console.log("got till here");
     tileInfo = new Map(JSON.parse(tile));
     console.log(tileInfo);
@@ -968,10 +1052,49 @@ socket.on('moved', (tile, atk1, opp1) => {
     board();
 })
 
-socket.on('stop-game', (color) => {
+
+function updateScore(player, n){
+    let result = fetch("/store-score", {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+           player,
+           n
+        })
+    }).then((res) => res.json);
+
+    console.log(result)
+    if(result.status == "ok"){
+        console.log('ok')
+    } else {
+        console.log("error")
+    }
+
+}
+
+socket.on('stop-game', (color, new_players) => {
     if (playing) {
         opp = color;
         gameover();
+        stopClock();
+        let win, loser;
+        let score_win = 30;
+        let score_l = 10;
+        console.log(new_players)
+        if(color == new_players[0].color){
+            win = new_players[0].name;
+            loser = new_players[1].name;
+        } else {
+            win = new_players[1].name;
+            loser = new_players[0].name;
+        }
+        updateScore(win, score_win);
+        updateScore(loser, score_l);
+        console.log("win" + win)
+        console.log('loser' + loser)
+
     }
 })
 
@@ -981,4 +1104,6 @@ document.getElementById("forfeit").addEventListener("click", ()=>{
     } else {
         socket.emit('surrend');
     }
+
+
 })
