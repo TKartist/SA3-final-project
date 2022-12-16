@@ -70,6 +70,23 @@ res.json({status: 'ok'});
 
 })
 
+router.get('/play', async (req, res) => {
+  try {
+    const list = await Moves.find({ id }).lean(); // only json object 
+
+    if (!list) {
+      res.status(404).json("User not found")
+    }
+    res.json({
+      status: 'ok',
+      details: list
+    });
+    
+  } catch (error) {
+    res.status(500).json(error.message);
+  }
+})
+
 
 router.post('/play', async (req, res) => {
   const { map, atk } = req.body;
