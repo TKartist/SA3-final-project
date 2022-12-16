@@ -69,6 +69,7 @@ function format_seconds(s) {
   } else {
       return "-" + format_seconds(s * -1);
   }
+
 }
 
 // Set up the function to reset the chess clock

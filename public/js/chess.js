@@ -14,6 +14,7 @@ let check = "No-One";
 let eaten = [];
 
 let you = "";
+let active = ""
 
 let backward = 1;
 
@@ -254,17 +255,26 @@ function displayPast() {
 
 async function storeDatabase() {
     if (you !== "") {
-        socket.emit('move', JSON.stringify(Array.from(tileInfo)), opp, atk);
-    }
-    stopClock()
-    if(atk == "white"){
-        isPlayer1Turn = false;
-        isPlayer2Turn = true;
+        active == "white"? active = "black":active="white"
+        socket.emit('move', JSON.stringify(Array.from(tileInfo)), opp, atk, active);
+        if(active == "white"){
+            isPlayer1Turn = false;
+            isPlayer2Turn = true;
+        } else {
+            isPlayer1Turn = true;
+            isPlayer2Turn = false;
+        }
     } else {
-        isPlayer1Turn = true;
-        isPlayer2Turn = false;
+        stopClock()
+        if(atk == "white"){
+            isPlayer1Turn = false;
+            isPlayer2Turn = true;
+        } else {
+            isPlayer1Turn = true;
+            isPlayer2Turn = false;
+        }
+        startClock();
     }
-    startClock();
     var array = [start, end];
     var object = tileInfo.get(end);
     //var map = JSON.stringify(array);
@@ -1045,7 +1055,15 @@ socket.on('start-match', (color) => {
     startClock();
 })
 
-socket.on('moved', (tile, atk1, opp1) => {
+socket.on('moved', (tile, atk1, opp1, newActive) => {
+    active = newActive;
+    if(active == "white"){
+        isPlayer1Turn = false;
+        isPlayer2Turn = true;
+    } else {
+        isPlayer1Turn = true;
+        isPlayer2Turn = false;
+    }
     console.log("got till here");
     tileInfo = new Map(JSON.parse(tile));
     console.log(tileInfo);

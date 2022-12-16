@@ -51,8 +51,8 @@ function init(server) {
             
         });
 
-        socket.on('send-chat-message', message => {
-            socket.broadcast.emit('chat-message', {name: active_users.id ,message: message});
+        socket.on('send-chat-message', (message, name) => {
+            socket.broadcast.emit('chat-message', {name: name ,message: message});
         });
 
         socket.on('play-button', () => {
@@ -90,11 +90,11 @@ function init(server) {
             players.splice(index,1);
         })
 
-        socket.on('move', (board, atk, opp) => {
+        socket.on('move', (board, atk, opp, active) => {
             console.log(players);
             console.log(board);
-            players[0].ref.emit('moved', board, atk, opp);
-            players[1].ref.emit('moved', board, atk, opp);
+            players[0].ref.emit('moved', board, atk, opp, active);
+            players[1].ref.emit('moved', board, atk, opp, active);
         });
 
         socket.on('surrend', () =>{
