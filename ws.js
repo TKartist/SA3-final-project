@@ -20,7 +20,7 @@ function remove_player(id) {
     console.log(active_users);
 }
 
-function stop_game (id, new_players) {
+function stop_game(id, new_players) {
     let color;
     console.log(players)
     if (players.length == 2 && id == players[0].ref.id) {
@@ -42,7 +42,7 @@ function init(server) {
         console.log('client connected');
 
         socket.on('connect-online', (name) => {
-            console.log("name:"+name);
+            console.log("name:" + name);
             remove_player(socket.id);
             data = {
                 ref: socket,
@@ -54,13 +54,15 @@ function init(server) {
         });
 
         socket.on('send-chat-message', (message, name) => {
-            socket.broadcast.emit('chat-message', {name: name ,message: message});
+            socket.broadcast.emit('chat-message', { name: name, message: message });
         });
 
-        socket.on('refresh', table => {
-            active_users.forEach(user => {
-                table = table;
-            })
+        socket.on('refresh-moves', table => {
+            if (socket.id == players[0].ref.id) {
+                players[1].ref.emit('refresh',table);
+            } else {
+                players[0].ref.emit('refresh',table);
+            }
         })
 
         socket.on('play-button', () => {
@@ -105,10 +107,10 @@ function init(server) {
             players[1].ref.emit('moved', board, atk, opp, active);
         });
 
-        socket.on('surrend', () =>{
+        socket.on('surrend', () => {
             let new_players = []
-            new_players.push({name : players[0].name, color: "white"})
-            new_players.push({name : players[1].name, color: "black"})
+            new_players.push({ name: players[0].name, color: "white" })
+            new_players.push({ name: players[1].name, color: "black" })
             console.log("new_players")
             console.log(new_players)
             stop_game(socket.id, new_players)
@@ -120,8 +122,8 @@ function init(server) {
 
         socket.on('disconnect-online', () => {
             let new_players = []
-            new_players.push({name : players[0].name, color: "white"})
-            new_players.push({name : players[1].name, color: "black"})
+            new_players.push({ name: players[0].name, color: "white" })
+            new_players.push({ name: players[1].name, color: "black" })
             console.log(new_players)
             stop_game(socket.id, new_players);
             remove_player(socket.id);
@@ -130,8 +132,8 @@ function init(server) {
         socket.on('disconnect', () => {
             if (players.length == 2) {
                 let new_players = []
-                new_players.push({name : players[0].name, color: "white"})
-                new_players.push({name : players[1].name, color: "black"})
+                new_players.push({ name: players[0].name, color: "white" })
+                new_players.push({ name: players[1].name, color: "black" })
                 console.log(new_players)
                 if (socket.id == players[0].ref.id) {
                     color = "black";
