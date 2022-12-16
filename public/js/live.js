@@ -3,6 +3,7 @@ const socket = io();
 // Connect / Disconnect to server
 
 document.getElementById("connect").addEventListener('click', () => {
+    console.log(document.querySelector(".sidebar0 h1").textContent);
     socket.emit("connect-online", document.querySelector(".sidebar0 h1").textContent);
     document.getElementById("myConnect").style.display = "block";
     document.getElementById("connect").style.display = "none";

@@ -41,7 +41,7 @@ function init(server) {
         console.log('client connected');
 
         socket.on('connect-online', (name) => {
-            console.log(name)
+            console.log("name:"+name);
             remove_player(socket.id);
             data = {
                 ref: socket,
@@ -102,6 +102,8 @@ function init(server) {
             let new_players = []
             new_players.push({name : players[0].name, color: "white"})
             new_players.push({name : players[1].name, color: "black"})
+            console.log("new_players")
+            console.log(new_players)
             stop_game(socket.id, new_players)
         })
 

@@ -11,14 +11,18 @@ var id;
 /* GET home page. */
 router.get('/index', async (req, res, next) => {
   let scores = new Map();
+  let sortedMap = new Map();
   response = verify.check(req);
   if (response.status) {
     console.log(response.name)
     const user = await User.find({}).lean();
     user.forEach(element => {
-      scores.set(element.score, element.username,)
+      scores.set(element.username, element.score)
     })
-    const sortedMap = new Map([...scores].sort().reverse())
+    sortedMap = new Map([...scores].sort((a, b) => b[1] - a[1]));
+    console.log(user)
+    console.log(scores)
+    console.log(sortedMap);
 
     res.render('index', { title: 'Index Page', filename: "unlocked", name: response.name, leaderboard: sortedMap });
   } else {
@@ -119,20 +123,18 @@ router.get('/about', function (req, res, next) {
 })
 
 router.post('/store-score', async(req,res,next) => {
-  
-  
   try {
     const { player, n } = req.body;
-    var result = player.slice(1);
-    console.log(result)
-    let filter = {username : result}
+    
+    console.log(player)
+    let filter = {username : player}
     const user = await User.findOne(filter).lean(); // only json object 
     console.log(user)
     let copy;
     if(n == 10){
-      copy = user.score - n;
+      copy = user.score - n/2;
     } else {
-      copy = user.score + n;
+      copy = user.score + n/2;
     }
     user.score = copy;
     await User.updateOne(filter, {score: copy}, {new: true})

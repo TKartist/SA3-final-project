@@ -1099,13 +1099,13 @@ socket.on('stop-game', (color, new_players) => {
     if (playing) {
         opp = color;
         gameover();
+        stopClock();
         let win, loser;
         let score_win = 30;
         let score_l = 10;
         console.log(new_players)
         if(color == new_players[0].color){
             win = new_players[0].name;
-
             loser = new_players[1].name;
         } else {
             win = new_players[1].name;
