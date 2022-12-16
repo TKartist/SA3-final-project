@@ -23,11 +23,50 @@ h1 {
 }
 
 body {
+  zoom: 0.75;
+
   background-image:linear-gradient(rgba(160, 164, 176, 0.5),
   rgba(160, 164, 176, 0.5)), url(/static/images/website/banner.jpg);
 
+
 }
 
+
+@media all and (max-width: 1168px) {
+.section-two, .section-one, .section-three{
+  transform: scale(0.9);
+  transition: 250ms;
+}
+
+}
+
+@media all and (max-width: 950px) {
+ 
+  .section-two, .section-one, .section-three{
+    transform: scale(0.8);
+    zoom: 0.9;
+    transition: 250ms;
+  }
+  }
+
+
+@media all and (max-width: 700px) {
+ 
+  .section-two, .section-one, .section-three{
+    transform: scale(0.8);
+    zoom: 0.9;
+    transition: 250ms;
+  }
+  }
+
+
+
+.logo-container{
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+
+}
 .website-header {
   display: inline-flex;
   position: relative;
@@ -45,8 +84,8 @@ body {
 
 .logo {
   margin-left: -15px;
-  width: 90px;
-  height: 90px;
+  width: 150px;
+  height: 150px;
 }
 
 .website-header h1 {
@@ -180,6 +219,7 @@ display: grid;
 grid-template-columns: repeat(8, 90px);
 grid-template-rows: repeat(8, 90px);
 border: 20px solid var(--blunderBlack);
+margin:10px;
 }
 
 /* ----- Sidebar ------ */
@@ -537,6 +577,7 @@ border: 1mm ridge var(--blunderBiege);
 }
 
 .icons {
+  letter-spacing: 10px;
 align-items: center;
 color: var(--blunderBiege);
 cursor: pointer;
