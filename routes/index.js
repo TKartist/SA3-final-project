@@ -10,18 +10,19 @@ var id;
 
 /* GET home page. */
 router.get('/index', async (req, res, next) => {
-  let scores = [];
+  let scores = new Map();
   response = verify.check(req);
   if (response.status) {
     console.log(response.name)
     const user = await User.find({}).lean();
     user.forEach(element => {
-      scores.push(element.username);
-      scores.push(element.score);
+      scores.set(element.score, element.username,)
     })
-    res.render('index', { title: 'Index Page', filename: "unlocked", name: response.name, leaderboard: scores });
+    const sortedMap = new Map([...scores].sort().reverse())
+
+    res.render('index', { title: 'Index Page', filename: "unlocked", name: response.name, leaderboard: sortedMap });
   } else {
-    res.render('index', { title: 'Index Page', filename: "locked", name: response.name, leaderboard: scores });
+    res.render('index', { title: 'Index Page', filename: "locked", name: response.name, leaderboard: sortedMap });
   }
 });
 
@@ -98,6 +99,31 @@ router.get('/learn', verify.auth, function (req, res, next) {
 
 router.get('/about', function (req, res, next) {
   res.render('about', {});
+})
+
+router.post('/store-score', async(req,res,next) => {
+  
+  
+  try {
+    const { player, n } = req.body;
+    var result = player.slice(1);
+    console.log(result)
+    let filter = {username : result}
+    const user = await User.findOne(filter).lean(); // only json object 
+    console.log(user)
+    let copy;
+    if(n == 10){
+      copy = user.score - n;
+    } else {
+      copy = user.score + n;
+    }
+    user.score = copy;
+    await User.updateOne(filter, {score: copy}, {new: true})
+    console.log(user)
+
+  } catch(error) {
+    res.status(500).json(error.message);
+  }
 })
 
 

@@ -993,10 +993,49 @@ socket.on('moved', (tile, atk1, opp1) => {
     board();
 })
 
-socket.on('stop-game', (color) => {
+
+function updateScore(player, n){
+    let result = fetch("/store-score", {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+           player,
+           n
+        })
+    }).then((res) => res.json);
+
+    console.log(result)
+    if(result.status == "ok"){
+        console.log('ok')
+    } else {
+        console.log("error")
+    }
+
+}
+
+socket.on('stop-game', (color, new_players) => {
     if (playing) {
         opp = color;
         gameover();
+        let win, loser;
+        let score_win = 30;
+        let score_l = 10;
+        console.log(new_players)
+        if(color == new_players[0].color){
+            win = new_players[0].name;
+
+            loser = new_players[1].name;
+        } else {
+            win = new_players[1].name;
+            loser = new_players[0].name;
+        }
+        updateScore(win, score_win);
+        updateScore(loser, score_l);
+        console.log("win" + win)
+        console.log('loser' + loser)
+
     }
 })
 
@@ -1006,4 +1045,6 @@ document.getElementById("forfeit").addEventListener("click", ()=>{
     } else {
         socket.emit('surrend');
     }
+
+
 })

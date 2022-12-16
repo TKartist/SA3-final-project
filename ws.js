@@ -19,7 +19,7 @@ function remove_player(id) {
     console.log(active_users);
 }
 
-function stop_game (id) {
+function stop_game (id, new_players) {
     let color;
     console.log(players)
     if (players.length == 2 && id == players[0].ref.id) {
@@ -27,8 +27,9 @@ function stop_game (id) {
     } else if (players.length == 2) {
         color = "white";
     }
-    players[0].ref.emit('stop-game', color);
-    players[1].ref.emit('stop-game', color);
+    console.log(new_players)
+    players[0].ref.emit('stop-game', color, new_players);
+    players[1].ref.emit('stop-game', color, new_players);
 }
 
 
@@ -98,7 +99,10 @@ function init(server) {
         });
 
         socket.on('surrend', () =>{
-            stop_game(socket.id)
+            let new_players = []
+            new_players.push({name : players[0].name, color: "white"})
+            new_players.push({name : players[1].name, color: "black"})
+            stop_game(socket.id, new_players)
         })
 
         // socket.on('end-game', () => {
@@ -106,20 +110,29 @@ function init(server) {
         // }) 
         
         socket.on('disconnect-online', () => {
-            stop_game(socket.id);
+            let new_players = []
+            new_players.push({name : players[0].name, color: "white"})
+            new_players.push({name : players[1].name, color: "black"})
+            console.log(new_players)
+            stop_game(socket.id, new_players);
             remove_player(socket.id);
         })
 
         socket.on('disconnect', () => {
-            
-            console.log(players)
-            if (players.length == 2 && socket.id == players[0].ref.id) {
-                color = "black";
-                players[1].ref.emit('stop-game', "black");
-            } else if (players.length == 2) {
-                color = "white";
-                players[0].ref.emit('stop-game', "white");
+            if (players.length == 2) {
+                let new_players = []
+                new_players.push({name : players[0].name, color: "white"})
+                new_players.push({name : players[1].name, color: "black"})
+                console.log(new_players)
+                if (socket.id == players[0].ref.id) {
+                    color = "black";
+                    players[1].ref.emit('stop-game', "black", new_players);
+                } else {
+                    color = "white";
+                    players[0].ref.emit('stop-game', "white", new_players);
+                }
             }
+            
             remove_player(socket.id);
         })
     })
