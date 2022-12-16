@@ -4,22 +4,23 @@ const io = require('socket.io')();
 
 let active_users = [];
 let players = [];
+let moves = [];
 
 function remove_player(id) {
-    for(let i=0; i < active_users.length; i++){
-        if(active_users[i].ref.id == id){
+    for (let i = 0; i < active_users.length; i++) {
+        if (active_users[i].ref.id == id) {
             active_users.splice(i, 1);
             break;
         } else if (i < players.length && players[i].ref.id == id) {
             console.log("removed player");
-            players.splice(i,1);
-            break; 
+            players.splice(i, 1);
+            break;
         }
     }
     console.log(active_users);
 }
 
-function stop_game (id) {
+function stop_game(id) {
     let color;
     console.log(players)
     if (players.length == 2 && id == players[0].ref.id) {
@@ -33,10 +34,10 @@ function stop_game (id) {
 
 
 function init(server) {
-    
+
     io.attach(server);
-    
-    io.on('connection', function(socket) {
+
+    io.on('connection', function (socket) {
         console.log('client connected');
 
         socket.on('connect-online', (name) => {
@@ -48,17 +49,23 @@ function init(server) {
             }
             active_users.push(data);
             console.log(active_users);
-            
+
         });
 
         socket.on('send-chat-message', message => {
-            socket.broadcast.emit('chat-message', {name: active_users.id ,message: message});
+            socket.broadcast.emit('chat-message', { name: active_users.id, message: message });
         });
+
+        socket.on('refresh', table => {
+            active_users.forEach(user => {
+                table = table;
+            })
+        })
 
         socket.on('play-button', () => {
             if (players.length < 2) {
-                for(let i=0; i < active_users.length; i++){
-                    if(active_users[i].ref.id == socket.id){
+                for (let i = 0; i < active_users.length; i++) {
+                    if (active_users[i].ref.id == socket.id) {
                         players.push(active_users[i]);
                         active_users.splice(i, 1);
                         break;
@@ -80,14 +87,14 @@ function init(server) {
 
         socket.on('stop-play-button', () => {
             let index = undefined;
-            for (let i = 0; i < players.length; i+=1) {
+            for (let i = 0; i < players.length; i += 1) {
                 if (players[i].ref.id == socket.id) {
                     index = i
                     break
                 }
             }
             active_users.push(players[index])
-            players.splice(index,1);
+            players.splice(index, 1);
         })
 
         socket.on('move', (board, atk, opp) => {
@@ -97,21 +104,29 @@ function init(server) {
             players[1].ref.emit('moved', board, atk, opp);
         });
 
-        socket.on('surrend', () =>{
+        socket.on("refresh-moves", last_move => {
+            if (socket == players[0].ref) {
+                players[1].ref.emit('refresh', last_move);
+            } else {
+                players[0].ref.emit('refresh', last_move);
+            }
+        });
+
+        socket.on('surrend', () => {
             stop_game(socket.id)
         })
 
         // socket.on('end-game', () => {
         //     io.emit('end-game')
         // }) 
-        
+
         socket.on('disconnect-online', () => {
             stop_game(socket.id);
             remove_player(socket.id);
         })
 
         socket.on('disconnect', () => {
-            
+
             console.log(players)
             if (players.length == 2 && socket.id == players[0].ref.id) {
                 color = "black";

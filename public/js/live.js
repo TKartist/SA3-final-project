@@ -1,7 +1,6 @@
 const socket = io();
 
 // Connect / Disconnect to server
-
 document.getElementById("connect").addEventListener('click', () => {
     socket.emit("connect-online", document.querySelector(".sidebar0 h1").textContent);
     document.getElementById("myConnect").style.display = "block";
@@ -14,7 +13,16 @@ document.getElementById("disconnect").addEventListener('click', () => {
     document.getElementById("connect").style.display = "block";
 })
 
+let main = document.querySelector(".mlist");
 
+socket.on("refresh", last_move => {
+    console.log(last_move);
+    let newTr = document.createElement('tr');
+    let newChild = document.createElement('td');
+    newChild.innerHTML = last_move;
+    newTr.appendChild(newChild);
+    main.appendChild(newTr);
+});
 
 const messageContainer = document.getElementById('myForm');
 const messageForm = document.getElementById('send-container');

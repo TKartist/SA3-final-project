@@ -182,11 +182,7 @@ function castleEffect() {
     console.log(castleInfo);
 }
 
-
-let prec = document.querySelector('table tbody').lastElementChild;
-let main_element = document.querySelector('table tbody');
-let FLAG = 0;
-let counter = 0;
+let main_element = document.querySelector('.mlist');
 
 async function storeDatabase() {
     if (you !== "") {
@@ -218,29 +214,12 @@ async function storeDatabase() {
 
        
     if (result.status === 'ok') {
-        if (atk == "white") {
-            
-            let new_td1 = document.createElement('td');
-            new_td1.innerHTML = object + "" + array[0] + "->" + array[1];
-            
-            prec.appendChild(new_td1);
-            FLAG = 1;
-        } else {
-            let new_count = document.createElement('td')
-            new_count.innerHTML = counter; 
-            prec.appendChild(new_count);
-            let new_td2 = document.createElement('td');
-            new_td2.innerHTML = object + " " + array[0] + "->" + array[1];
-            prec.appendChild(new_td2)
-            FLAG = 0;
-        }
-
-        if(FLAG){
-            let new_element = document.createElement('tr');
-            main_element.appendChild(new_element);
-            prec = new_element;
-            counter++;
-        }
+        let new_td1 = document.createElement('td');
+        new_td1.innerHTML = object + "" + array[0] + "->" + array[1];
+        let newTr = document.createElement('tr');
+        newTr.appendChild(new_td1);
+        socket.emit("refresh-moves", new_td1.textContent);
+        main_element.appendChild(newTr);
     } else {
         console.log("error")
     }
