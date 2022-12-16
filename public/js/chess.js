@@ -1,5 +1,3 @@
-
-
 let tileInfo = new Map();
 
 let past = new Map();
@@ -19,12 +17,6 @@ let active = ""
 let backward = 1;
 
 let castleInfo = new Map();
-castleInfo.set("11", false);
-castleInfo.set("15", false);
-castleInfo.set("18", false);
-castleInfo.set("81", false);
-castleInfo.set("85", false);
-castleInfo.set("88", false);
 
 const bb = "blackBishop";
 const wb = "whiteBishop";
@@ -199,13 +191,11 @@ function castleEffect() {
     if (castleInfo.get(start) !== undefined && start !== end) {
         castleInfo.set(start, true);
     }
-    console.log(castleInfo);
 }
 
 let main_element = document.querySelector('.mlist');
 
 async function backwards() {
-    console.log("yippy");
     const result = await fetch('/play').then((res) => res.json());
     if (result.status === 'ok') {
         if (result.details.length >= backward) {
@@ -310,9 +300,11 @@ function initPos() {
             } else if (i === 2) {
                 tileInfo.set(tileID, wp);
             } else if (i === 8 && (j === 1 || j === 8)) {
+                castleInfo.set(tileID, false);
                 tileInfo.set(tileID, br);
             } else if (i === 1 && (j === 1 || j === 8)) {
                 tileInfo.set(tileID, wr);
+                castleInfo.set(tileID, false);
             } else if (i === 8 && (j === 2 || j === 7)) {
                 tileInfo.set(tileID, bh);
             } else if (i === 1 && (j === 2 || j === 7)) {
@@ -321,13 +313,15 @@ function initPos() {
                 tileInfo.set(tileID, bb);
             } else if (i === 1 && (j === 3 || j === 6)) {
                 tileInfo.set(tileID, wb);
-            } else if (i === 8 && j === 4) {
-                tileInfo.set(tileID, bq);
-            } else if (i === 1 && j === 4) {
-                tileInfo.set(tileID, wq);
             } else if (i === 8 && j === 5) {
-                tileInfo.set(tileID, bk);
+                tileInfo.set(tileID, bq);
             } else if (i === 1 && j === 5) {
+                tileInfo.set(tileID, wq);
+            } else if (i === 8 && j === 4) {
+                castleInfo.set(tileID, false);
+                tileInfo.set(tileID, bk);
+            } else if (i === 1 && j === 4) {
+                castleInfo.set(tileID, false);
                 tileInfo.set(tileID, wk);
             } else {
                 tileInfo.set(tileID, em);
@@ -432,7 +426,7 @@ function executeMove() {
         let tmp = new Map(tileInfo);
         let tmpblack = Array.from(black);
         let tmpwhite = Array.from(white);
-        if (parseInt(start[1]) > parseInt(end[1])) {
+        if (parseInt(start[1]) < parseInt(end[1])) {
             end = start[0] + "7";
             tileInfo.set(end, tileInfo.get(start));
             tileInfo.set(start, em);
@@ -441,11 +435,11 @@ function executeMove() {
             tileInfo.set(end, tileInfo.get(start));
             tileInfo.set(start, em);
         } else {
-            end = start[0] + "7";
+            end = start[0] + "3";
             tileInfo.set(end, tileInfo.get(start));
             tileInfo.set(start, em);
-            end = start[0] + "6";
-            start = start[0] + "8";
+            end = start[0] + "4";
+            start = start[0] + "1";
             tileInfo.set(end, tileInfo.get(start));
             tileInfo.set(start, em);
         }
@@ -466,11 +460,7 @@ function executeMove() {
     
 }
 
-function validMove() {
-    let moved = tileInfo.get(start);
-    pTiles = [];
-    let tmp = start;
-    let found = false;
+function move(moved, tmp) {
     if (moved.includes("Pawn")) {
         pawnMove(moved, tmp);
     } else if (moved.includes("Bishop")) {
@@ -485,6 +475,15 @@ function validMove() {
     } else if (moved.includes("King")) {
         kingMove(moved, tmp);
     }
+
+}
+
+function validMove() {
+    let moved = tileInfo.get(start);
+    let tmp = start;
+    pTiles = [];
+    let found = false;
+    move(moved, tmp);
     for (let i = 0; i < pTiles.length; i++) {
         if (pTiles[i] === end) {
             found = true;
@@ -768,6 +767,24 @@ function kingRange(tmp) {
     }
 }
 
+function range(tile) {
+    let piece = tileInfo.get(tile);
+    if (piece.includes("Pawn")) {
+        pawnEat(piece, tile);
+    } else if (piece.includes("Bishop")) {
+        bishopMove(tile);
+    } else if (piece.includes("Rook")) {
+        rookMove(tile);
+    } else if (piece.includes("Horse")) {
+        horseMove(tile);
+    } else if (piece.includes("Queen")) {
+        bishopMove(tile);
+        rookMove(tile);
+    } else if (piece.includes("King")) {
+        kingRange(tile);
+    }
+}
+
 function kingMove(moved, tmp) {
     let tmpTiles = [];
     let atkcolor = "";
@@ -778,41 +795,13 @@ function kingMove(moved, tmp) {
     }
     if (moved.includes("white")) {
         black.forEach(tile => {
-            let piece = tileInfo.get(tile);
-            if (piece.includes("Pawn")) {
-                pawnEat(piece, tile);
-            } else if (piece.includes("Bishop")) {
-                bishopMove(tile);
-            } else if (piece.includes("Rook")) {
-                rookMove(tile);
-            } else if (piece.includes("Horse")) {
-                horseMove(tile);
-            } else if (piece.includes("Queen")) {
-                bishopMove(tile);
-                rookMove(tile);
-            } else if (piece.includes("King")) {
-                kingRange(tile);
-            }
+            range(tile);
         })
         tmpTiles = Array.from(pTiles);
         pTiles = [];
     } else {
         white.forEach(tile => {
-            let piece = tileInfo.get(tile);
-            if (piece.includes("Pawn")) {
-                pawnEat(piece, tile);
-            } else if (piece.includes("Bishop")) {
-                bishopMove(tile);
-            } else if (piece.includes("Rook")) {
-                rookMove(tile);
-            } else if (piece.includes("Horse")) {
-                horseMove(tile);
-            } else if (piece.includes("Queen")) {
-                bishopMove(tile);
-                rookMove(tile);
-            } else if (piece.includes("King")) {
-                kingRange(tile);
-            }
+            range(tile);
         })
         tmpTiles = Array.from(pTiles);
         pTiles = [];
@@ -852,21 +841,7 @@ function checked(p) {
     let sizeb = black.length;
     pTiles = [];
     for (let i = 0; i < sizeb; i++) {
-        let piece = tileInfo.get(black[i]);
-        if (piece.includes("Pawn")) {
-            pawnMove(piece, black[i]);
-        } else if (piece.includes("Bishop")) {
-            bishopMove(black[i]);
-        } else if (piece.includes("Rook")) {
-            rookMove(black[i]);
-        } else if (piece.includes("Horse")) {
-            horseMove(black[i]);
-        } else if (piece.includes("Queen")) {
-            rookMove(black[i]);
-            bishopMove(black[i]);
-        } else if (piece.includes("King")) {
-            kingRange(black[i]);
-        }
+        range(black[i]);
     }
     for (let j = 0; j < pTiles.length; j++) {
         if (pTiles[j] === whiteKing) {
@@ -881,21 +856,7 @@ function checked(p) {
     pTiles = [];
     let sizew = white.length;
     for (let i = 0; i < sizew; i++) {
-        let piece = tileInfo.get(white[i]);
-        if (piece.includes("Pawn")) {
-            pawnMove(piece, white[i]);
-        } else if (piece.includes("Bishop")) {
-            bishopMove(white[i]);
-        } else if (piece.includes("Rook")) {
-            rookMove(white[i]);
-        } else if (piece.includes("Horse")) {
-            horseMove(white[i]);
-        } else if (piece.includes("Queen")) {
-            rookMove(white[i]);
-            bishopMove(white[i]);
-        } else if (piece.includes("King")) {
-            kingRange(white[i]);
-        }
+        range(white[i]);
     }
     for (let j = 0; j < pTiles.length; j++) {
         if (pTiles[j] === blackKing) {
@@ -923,20 +884,7 @@ function checkmate() {
             pTiles = [];
             let curID = black[i];
             let piece = tileInfo.get(curID);
-            if (piece.includes("Pawn")) {
-                pawnMove(piece, curID);
-            } else if (piece.includes("Bishop")) {
-                bishopMove(curID);
-            } else if (piece.includes("Rook")) {
-                rookMove(curID);
-            } else if (piece.includes("Horse")) {
-                horseMove(curID);
-            } else if (piece.includes("Queen")) {
-                rookMove(curID);
-                bishopMove(curID);
-            } else if (piece.includes("King")) {
-                kingMove(piece, curID);
-            }
+            move(piece, curID);
             let tmp2 = Array.from(pTiles);
             let sizep = pTiles.length;
             for (let j = 0; j < sizep; j++) {
@@ -963,20 +911,7 @@ function checkmate() {
             pTiles = [];
             let curID = white[i];
             let piece = tileInfo.get(curID);
-            if (piece.includes("Pawn")) {
-                pawnMove(piece, curID);
-            } else if (piece.includes("Bishop")) {
-                bishopMove(curID);
-            } else if (piece.includes("Rook")) {
-                rookMove(curID);
-            } else if (piece.includes("Horse")) {
-                horseMove(curID);
-            } else if (piece.includes("Queen")) {
-                rookMove(curID);
-                bishopMove(curID);
-            } else if (piece.includes("King")) {
-                kingMove(piece, curID);
-            }
+            move(piece, curID);
             let tmp2 = Array.from(pTiles);
             let sizep = pTiles.length;
             for (let j = 0; j < sizep; j++) {
