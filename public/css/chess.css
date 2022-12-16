@@ -23,7 +23,7 @@ h1 {
 }
 
 body {
-  zoom: 0.75;
+  zoom: 0.95;
 
   background-image:linear-gradient(rgba(160, 164, 176, 0.5),
   rgba(160, 164, 176, 0.5)), url(/static/images/website/banner.jpg);
