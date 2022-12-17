@@ -121,6 +121,7 @@ router.get('/learn', verify.auth, function (req, res, next) {
 router.get('/about', function (req, res, next) {
   res.render('about', {});
 })
+let i= 0;
 
 router.post('/store-score', async(req,res,next) => {
   try {
@@ -128,18 +129,20 @@ router.post('/store-score', async(req,res,next) => {
     
     console.log(player)
     let filter = {username : player}
-    const user = await User.findOne(filter).lean(); // only json object 
-    console.log(user)
+    let user = await User.findOne(filter).lean()
     let copy;
     if(n == 10){
       copy = user.score - n/2;
     } else {
       copy = user.score + n/2;
     }
-    user.score = copy;
-    await User.updateOne(filter, {score: copy}, {new: true})
-    console.log(user)
+    console.log("ripeted"+ i++)
+    await User.updateOne(filter, {score: copy}, {new: true}).then( ()=>{
+      console.log("update score")
+    })
 
+   // only json object 
+    res.json({status: 'ok'})
   } catch(error) {
     res.status(500).json(error.message);
   }

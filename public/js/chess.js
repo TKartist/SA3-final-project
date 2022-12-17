@@ -988,8 +988,9 @@ socket.on('moved', (tile, atk1, opp1, newActive) => {
 })
 
 
-function updateScore(player, n){
-    let result = fetch("/store-score", {
+async function updateScore(player, n){
+    console.log('eccoci aqua')
+    let result =  await fetch("/store-score", {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -998,10 +999,9 @@ function updateScore(player, n){
            player,
            n
         })
-    }).then((res) => res.json);
+    }).then((res) => res.status );
 
-    console.log(result)
-    if(result.status == "ok"){
+    if(result == 200){
         console.log('ok')
     } else {
         console.log("error")
@@ -1029,7 +1029,6 @@ socket.on('stop-game', (color, new_players) => {
         updateScore(loser, score_l);
         console.log("win" + win)
         console.log('loser' + loser)
-
     }
 })
 
