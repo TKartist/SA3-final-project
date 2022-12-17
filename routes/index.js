@@ -34,11 +34,6 @@ router.get('/', function (req, res, next) {
   res.redirect('/index');
 });
 
-router.get('/browse', verify.auth, function (req, res, next) {
-  let name = req.userName;
-  console.log(name);
-  res.render('browse', { username: name });
-})
 
 
 router.get('/test',function(req, res, next) {
