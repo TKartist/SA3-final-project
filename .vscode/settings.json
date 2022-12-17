@@ -16,5 +16,6 @@
 },
 "background.customImages": [
     "https://free4kwallpapers.com/uploads/originals/2015/11/19/daft-punk-random-access-memories-wallpaper.jpg"
-]
+],
+"liveServer.settings.port": 5501
 }

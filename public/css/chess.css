@@ -23,11 +23,15 @@ h1 {
 }
 
 body {
-  zoom: 0.95;
+  
+  margin-top: 3%;
+  zoom: 0.85;
 
   background-image:linear-gradient(rgba(160, 164, 176, 0.5),
   rgba(160, 164, 176, 0.5)), url(/static/images/website/banner.jpg);
 
+
+  overflow: hidden;
 
 }
 
@@ -35,9 +39,11 @@ body {
 @media all and (max-width: 1168px) {
 .section-two, .section-one, .section-three{
   transform: scale(0.9);
-  transition: 250ms;
+  transition: 350ms;
 }
-
+footer{
+  zoom:0.9;
+}
 }
 
 @media all and (max-width: 950px) {
@@ -45,18 +51,44 @@ body {
   .section-two, .section-one, .section-three{
     transform: scale(0.8);
     zoom: 0.9;
-    transition: 250ms;
+    transition: 350ms;
+  }
+  footer{
+    zoom:0.8;
   }
   }
 
-
-@media all and (max-width: 700px) {
- 
-  .section-two, .section-one, .section-three{
-    transform: scale(0.8);
-    zoom: 0.9;
-    transition: 250ms;
+  
+  .pentahedron {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    fill: var(--blunderLightBlue);
   }
+  
+  .point {
+    fill: var(--blunderLightLightBlue);
+  }
+  
+  .rhombus {
+    fill: var(--blunderBiege);
+    stroke:var(--blunderBiege);
+  }
+  
+  .x {
+    fill: var(--blunderLightBlue);
+  }
+  
+  .circle {
+    fill: var(--blunderLightBlue);
+  }
+  
+  svg {
+    display: block;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    transform: translateZ(0px);
   }
 
 
@@ -257,6 +289,7 @@ background-color: transparent;
 backdrop-filter: blur(3px);
 height: 800px;
 width: 20%;
+min-width: 200px;
 border: 10px ridge var(--blunderBiege);
 }
 .sidebar1 h1{
@@ -564,16 +597,22 @@ align-items: center;
 }
 
 footer {
-display: inline-flex;
+display: flex;
 align-items: center;
-justify-content: left;
+bottom: 0px;;
+
+margin-left: auto;
+margin-right: auto;
 
 
-width: 99%;
+margin-top: 5%;
+
+
+width: 50%;
 height: 100px;
 letter-spacing: 3px;
 background: var(--blunderBlack);
-border: 1mm ridge var(--blunderBiege);
+border: 3mm ridge var(--blunderBiege);
 }
 
 .icons {
