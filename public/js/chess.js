@@ -56,7 +56,6 @@ function initBoard() {
             document.querySelector("#chess-grid").appendChild(tile);
         }
     }
-
 }
 
 function board() {
@@ -946,6 +945,10 @@ function gameover() {
         e.disabled = true;
     })
     document.querySelector(".check").innerHTML = opp + " has won.";
+    if (you !== "") {
+        socket.emit("stop-game");
+    }
+    stopClock();
 }
 
 document.getElementById("start").addEventListener("click", e => {
@@ -962,11 +965,15 @@ document.getElementById("start").addEventListener("click", e => {
     }
 })
 
-socket.on('start-match', (color) => {
+socket.on('start-match', (color, opponent) => {
+    playing = true;
+    document.getElementById("start").style.display="none";
     console.log("hey"); 
     you = color;
+    document.querySelector(".player-2-timer-container h2").innerHTML = opponent
     board();
     startClock();
+    console.log()
 })
 
 socket.on('moved', (tile, atk1, opp1, newActive) => {
@@ -989,7 +996,6 @@ socket.on('moved', (tile, atk1, opp1, newActive) => {
 
 
 async function updateScore(player, n){
-    console.log('eccoci aqua')
     let result =  await fetch("/store-score", {
         method: 'POST',
         headers: {
@@ -1029,6 +1035,9 @@ socket.on('stop-game', (color, new_players) => {
         updateScore(loser, score_l);
         console.log("win" + win)
         console.log('loser' + loser)
+        playing = false;
+        document.getElementById("start").style.display = "block";
+        location.reload();
     }
 })
 
@@ -1038,6 +1047,4 @@ document.getElementById("forfeit").addEventListener("click", ()=>{
     } else {
         socket.emit('surrend');
     }
-
-
 })

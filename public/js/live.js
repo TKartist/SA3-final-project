@@ -2,16 +2,19 @@ const socket = io();
 
 // Connect / Disconnect to server
 document.getElementById("connect").addEventListener('click', () => {
-    console.log(document.querySelector(".sidebar0 h1").textContent);
     socket.emit("connect-online", document.querySelector(".sidebar0 h1").textContent);
     document.getElementById("myConnect").style.display = "block";
     document.getElementById("connect").style.display = "none";
+    document.getElementById("myOffer").style.display = "block";
+    document.querySelector(".player-1-timer-container h2").innerHTML = document.querySelector(".sidebar0 h1").textContent;
 })
 
 document.getElementById("disconnect").addEventListener('click', () => {
     socket.emit("disconnect-online", document.querySelector(".sidebar0 h1").textContent);
     document.getElementById("myConnect").style.display = "none";
     document.getElementById("connect").style.display = "block";
+    document.getElementById("myOffer").style.display = "none";
+    document.querySelector(".player-1-timer-container h2").innerHTML = "Player 1"
 })
 
 let main = document.querySelector(".mlist");
