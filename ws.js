@@ -1,5 +1,4 @@
-const { disconnect } = require('mongoose');
-const { Socket } = require('socket.io');
+
 
 const io = require('socket.io')();
 
@@ -8,7 +7,7 @@ let players = [];
 
 function remove_player(id) {
     for (let i = 0; i < active_users.length; i++) {
-        if (active_users == undefined) {
+        if (active_users[i] == undefined) {
             active_users.splice(i, 1);
         }
         else if (active_users[i].ref.id == id) {
