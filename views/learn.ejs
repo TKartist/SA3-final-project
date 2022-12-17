@@ -1,60 +1,30 @@
 <html>
-    <link rel="icon" href="./static/images/website/logo.png" >
+    
 <head>
     <title>Learn</title>
-
+    <link rel="icon" href="./static/images/website/logo.png" >
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./static/css/style.css" />
-
-    <!-- <link rel="stylesheet" href="./static/css/other-style.css" /> -->
-
     <link href="https://fonts.cdnfonts.com/css/gotham" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
-<body class="website-container">
-    <header class="website-header">
 
-
-        <h1>Blunder</h1>
-        <a href="./index"> <img class="logo" src="static/images/website/logo.png" /></a>
-        <h2>.com </h2>
-        <canvas></canvas>
-
-        <div class="profile">
-            <img class="profile-pic" src="static/images/website/profile.png" />
-            <h1>Name</h1>
-        </div>
-
-    </header>
+<%- include("includes/header") %>
 
     <section class="website-container-body">
         <main class="website-content">
-
             <h5> How to Play Chess: Advice On How To Get Started</h5>
             <section class="website-content-text">
-
-
-
-                <h3> It's never too late to learn how to play chess—the most popular game in the world!
-                </h3>
-
-
-
-
-
-
+                <h3> It's never too late to learn how to play chess—the most popular game in the world!</h3>
             </section>
+
             <div id="chess-pieces-move" class="preview">
                 <div id="rules">
-
-
                     <div id="please1">
                         <h3>Board set-up</h3>
                         <img class="width" src="static/images/website/board_real.png" />
                     </div>
-
-
                 </div>
 
                 <div class="description">
@@ -64,28 +34,24 @@
                         way each time. The second row (or rank) is filled with pawns. The rooks go in the corners, then
                         the knights next to them, followed by the bishops, and finally the queen, who always goes on her
                         own matching color (white queen on white, black queen on black), and the king on the remaining
-                        square.</h3>
+                        square.
+                    </h3>
                     </p>
-
-
                 </div>
             </div>
-            <div id="chess-pieces-move" class="preview">
 
+
+            <div id="chess-pieces-move" class="preview">
                 <div class="whiteboard">
                     <div id="please">
-
                         <img class="profile-pic" src="static/images/website/click.png" />
                         <h3>(Learn To Move The Pieces by clicking on them)</h3>
-
-
                     </div>
                     <div id="myDIV">
                     </div>
                 </div>
 
                 <div class="chessboard">
-
                     <!-- 8th -->
                     <div class="white"><button class="chesspiece" id="chess_button_rook"><img
                                 src="/static/images/chesspieces/blackRook.png"></button></div>
@@ -192,31 +158,20 @@
                     <div class="white"><button class="chesspiece" id="chess_button_rook3"><img
                                 src="/static/images/chesspieces/whiteRook.png"></button></div>
                 </div>
-
-
-
-
             </div>
 
             <div id="chess-pieces-move" class="preview">
                 <div id="special">
-
-
                     <div id="please2">
                         <h3>Discover The Special Rules Of Chess</h3>
                     </div>
 
                     <section class="carousel">
                         <section class="images-wrapper">
-
-                            <img id="special_img" src="static/images/chess_learn/promote.gif" class="image img-2 show"
-                                alt="" />
-                            <img id="special_img" src="static/images/website/special.png" class="image img-1 show"
-                                alt="" />
-                            <img id="special_img" src="static/images/chess_learn/passant.gif" class="image img-3"
-                                alt="" />
-                            <img id="special_img" src="static/images/chess_learn/castle.gif" class="image img-4"
-                                alt="" />
+                            <img id="special_img" src="static/images/chess_learn/promote.gif" class="image img-2 show" alt="" />
+                            <img id="special_img" src="static/images/website/special.png" class="image img-1 show" alt="" />
+                            <img id="special_img" src="static/images/chess_learn/passant.gif" class="image img-3" alt="" />
+                            <img id="special_img" src="static/images/chess_learn/castle.gif" class="image img-4" alt="" />
                         </section>
 
                         <section class="text-slider">
@@ -245,7 +200,6 @@
                             </section>
                         </section>
                     </section>
-
                 </div>
 
                 <div class="description">
@@ -255,21 +209,23 @@
                         Pawns have another special ability and that is that if a pawn reaches the other side of the
                         board it can become any other chess piece (called promotion) excluding a king (or pawn, for that
                         matter). A pawn is usually promoted to a queen. Only pawns may be promoted.
-
                     </h3>
                     </p>
 
                     <h2> 2. How To Do "En Passant"</h2>
+
                     <p>
                     <h3>
                         The last rule about pawns is called “en passant”. If a pawn moves out two squares on its first
                         move, and by doing so lands to the side of an opponent's pawn (effectively jumping past the
                         other pawn's ability to capture it), that other pawn has the option of capturing the first pawn
-                        as it passes by.</h3>
+                        as it passes by.
+                    </h3>
                     </p>
 
 
                     <h2> 3. How To Castle</h2>
+
                     <p>
                     <h3>
                         This move allows you to get your king to safety, and get your rook out of the corner and into
@@ -278,55 +234,41 @@
                     </h3>
                     </p>
                 </div>
-
             </div>
+
             <div id="big-description" class="description">
-                <h2> The Rules Of How To Win A Game Of Chess
-                </h2>
+                <h2> The Rules Of How To Win A Game Of Chess</h2>
+
                 <p>
                 <h3>
                     There are several ways to end a game of chess: by checkmate, with a draw, by resignation, by forfeit
                     on time...
-
                 </h3>
                 </p>
 
                 <p>
-                <h2> How To Checkmate
-                </h2>
+                <h2> How To Checkmate</h2>
                 <h3>
-
                     The purpose of the game is to checkmate the opponent's king. This happens when the king is put into
                     check and cannot get out of check. There are only three ways a king can get out of check. Move out
                     of the way (though he cannot castle!), Block the check with another piece or capture the piece
                     threatening the king.
-
                     <br>
                     <br>
                     Checkmate can happen in the early stages of the game if one of the players does not act carefully.
                     Below, you will find an example of the Fools mate, a checkmate that happens in just 2 moves.
                     <img class="width" src="static/images/chess_learn/fool.gif" />
-
-
                 </h3>
-
-                <h2> How To Draw A Game
-                </h2>
+                <h2> How To Draw A Game</h2>
                 <h3>
-
-
                     Occasionally chess games do not end with a winner, but with a draw. There are 5 reasons why a chess
                     game may end in a draw:
-
-
-
                     <br>
                     <br>
                     The position reaches a stalemate where it is one player's turn to move, but his king is NOT in check
                     and yet he does not have another legal move.
                     <br>
                     <br>
-
                     The players may simply agree to a draw and stop playing
                     <br>
                     <br>
@@ -341,45 +283,18 @@
                     Fifty consecutive moves have been played where neither player has moved a pawn or captured a piece
                 </h3>
                 </p>
-
             </div>
-
         </main>
 
+        <%- include("includes/navbar") %>
 
-        <sidebar class="sidebar-1 w-sidebar">
-            <ul>
-                <li><a href="#">Play</a></li>
-                <li> <a href="#">Puzzles</a></li>
-                <li><a href="#">Learn</a></li>
-                <li><a href="#">About</a></li>
-            </ul>
-
-        </sidebar>
-
-       
     </section>
 
-    <footer>
-        <div class="icons">
-            <a href="https://business.facebook.com/OfficialTHENX/"><i class="fa fa-facebook"></i></a>
-            <a href="https://www.instagram.com/thenx/?hl=en"><i class="fa fa-instagram"></i></a>
-            <a href="https://twitter.com/officialthenx?lang=en"><i class="fa fa-twitter"></i></a>
-            <a href="https://www.youtube.com/channel/UCqjwF8rxRsotnojGl4gM0Zw"><i class="fa fa-youtube"></i></a>
-        </div>
-    </footer>
+    <%- include("includes/footer") %>
+
     <script src="/static/js/learn.js"></script>
-
-
     <script src="/static/js/background.js"></script>
     <script src="/static/js/login-form.js"></script>
-
-
 </body>
-
-
-
-
-
 
 </html>

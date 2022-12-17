@@ -9,36 +9,20 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
-<body class="website-container">
-  <header class="website-header">
 
-
-    <h1>Blunder</h1>
-    <a href="./index"> <img class="logo" src="static/images/website/logo.png" /></a>
-    <h2>.com </h2>
-    <canvas></canvas>
-
-    <div class="profile">
-      <img class="profile-pic" src="static/images/website/profile.png" />
-      <h1><span> <%- name %> </span></h1>                                              
-    </div>
-
-  </header>
+<%- include("includes/header") %>
 
   <section class="website-container-body">
     <main class="website-content">
       <h5> Game Modes</h5>
       <section class="website-content-text">
-
         <p>
         <h3> Welcome to the Blunder.com, you have found yourself on the new chess platform which would teach you how to
           blunder in chess. In order to blunder with style, this website offerrs three modes to play. You can learn
           chess from scratch, test yourseklf with challenging chess problems, and blunder against your friends. 
         </h3>
-
         </p>
       </section>
-
 
       <div id="sociallocker">
         <div id="sociallocker-links">
@@ -48,79 +32,47 @@
                 <h4>Enter the site</h4>
               </button></a>
           </div>
-
         </div>
 
         <div id="sociallocker-content">
           <section class="programs">
-
             <div class="row">
               <div class="programs-k">
-
                 <a href="./index.html"><img class="top" src="static/images/website/play.png" /></a>
                 <a href="./index.html"><img class="width" src="static/images/website/play_banner.png" /></a>
-
                 <button class="start">
                   <h4>Play</h4>
                 </button>
-
               </div>
-              <div class="programs-k">
 
+              <div class="programs-k">
                 <a href="./index.html"><img class="top" src="static/images/website/puzzle.png" /></a>
                 <a href="./index.html"><img class="width" src="static/images/website/puzzle_banner.png" /></a>
-
                 <button class="start">
                   <h4>Solve puzzle</h4>
                 </button>
-
               </div>
-              <div class="programs-k">
 
+              <div class="programs-k">
                 <a href="./learn"><img class="top" src="static/images/website/learn.png" /></a>
                 <a href="./learn"><img class="width" src="static/images/website/learn_banner.png" /></a>
-
                 <a href="./learn"> <button class="start">
                   <h4>Start a lesson</h4>
                 </button></a>
-
               </div>
             </div>
-
-
           </section>
-
-
         </div>
 
         <div id="sociallocker-overlay"><img class="lock" src="static/images/website/lock.png" />
           Unlock content by logging in
         </div>
-
       </div>
-
-
     </main>
 
-
-
-    <sidebar class="sidebar-1 w-sidebar">
-      <div id="tiles"></div>
-      <ul>
-        <li><a href="./test">Play</a></li>
-        <li> <a href="#">Puzzles</a></li>
-        <li><a href="./learn">Learn</a></li>
-        <li><a href="./about">About</a></li>
-      </ul>
-
-      
-      <a href="/users/logout"> <button class="log-out">
-        <h3>Log out<h3>
-      </button></a>
-    </sidebar>
+    <%- include("includes/navbar") %>
 
     <sidebar class="sidebar-2 w-sidebar">
-
       <section class="inner_board_section">
         <h3> Leaderboard </h3>
         <% for (let [key, value] of leaderboard) { %>
@@ -147,32 +99,14 @@
             </div>
           </div>
           <% } %>
-
-
       </section>
-
-
-
     </sidebar>
-
   </section>
 
-  <footer>
-    <div class="icons">
-      <a href="https://business.facebook.com/OfficialTHENX/"><i class="fa fa-facebook"></i></a>
-      <a href="https://www.instagram.com/thenx/?hl=en"><i class="fa fa-instagram"></i></a>
-      <a href="https://twitter.com/officialthenx?lang=en"><i class="fa fa-twitter"></i></a>
-      <a href="https://www.youtube.com/channel/UCqjwF8rxRsotnojGl4gM0Zw"><i class="fa fa-youtube"></i></a>
-    </div>
-  </footer>
-
+  <%- include("includes/footer") %>
+ 
   <script src="/static/js/background.js"></script>
   <script src="/static/js/users_actions/<%= filename %>.js"></script>
 </body>
-
-
-
-
-
 
 </html>
