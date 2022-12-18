@@ -5,6 +5,8 @@ const io = require('socket.io')();
 let active_users = [];
 let players = [];
 
+let globalCount = 0;
+
 function remove_player(id) {
     for (let i = 0; i < active_users.length; i++) {
         if (active_users[i] == undefined) {
@@ -43,7 +45,9 @@ function init(server) {
     io.attach(server);
 
     io.on('connection', function (socket) {
+        globalCount++;
         console.log('client connected');
+        io.emit("noPlayers", globalCount);
 
         socket.on('connect-online', (name) => {
             remove_player(socket.id)
@@ -156,7 +160,9 @@ function init(server) {
                     players[0].ref.emit('stop-game', "white", new_players);
                 }
             }
+            globalCount--;
             remove_player(socket.id);
+            io.emit('noPlayers', globalCount);
         })
     })
 }

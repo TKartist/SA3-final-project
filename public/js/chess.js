@@ -58,6 +58,10 @@ function initBoard() {
     }
 }
 
+socket.on("noPlayers", (pCount) => {
+    document.querySelector(".sidebar0 span").innerHTML = pCount;
+})
+
 socket.on("updateEaten", (newEaten) => {
     eaten = Array.from(newEaten);
     show(eaten);
