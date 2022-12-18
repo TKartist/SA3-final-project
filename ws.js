@@ -11,9 +11,9 @@ function remove_player(id) {
             active_users.splice(i, 1);
         }
         else if (active_users[i].ref.id == id) {
-            console.log("before :"+ active_users)
+            // console.log("before :"+ active_users)
             active_users.splice(i, 1);
-            console.log("after :"+ active_users)
+            // console.log("after :"+ active_users)
             break;
         } else if (i < players.length && players[i].ref.id == id) {
             console.log("removed player");
@@ -21,18 +21,18 @@ function remove_player(id) {
             break;
         }
     }
-    console.log(active_users);
+    // console.log(active_users);
 }
 
 function stop_game(id, new_players) {
     let color;
-    console.log(players)
+    // console.log(players)
     if (id == players[0].ref.id) {
         color = "black";
     } else {
         color = "white";
     }
-    console.log(new_players)
+    // console.log(new_players)
     players[0].ref.emit('stop-game', color, new_players);
     players[1].ref.emit('stop-game', color, new_players);
 }
@@ -47,14 +47,11 @@ function init(server) {
 
         socket.on('connect-online', (name) => {
             remove_player(socket.id)
-            console.log("added :") 
-            console.log(active_users);
             data = {
                 ref: socket,
                 name: name
             }
             active_users.push(data);
-            console.log(active_users);
         });
 
         socket.on('send-chat-message', (message, name) => {
@@ -84,14 +81,14 @@ function init(server) {
                     players[0].ref.emit('start-match', "white", players[1].name);
                     players[1].ref.emit('start-match', "black", players[0].name)
                 }
-                console.log("added player")
+                // console.log("added player")
             } else {
-                console.log("too many players");
+                // console.log("too many players");
             }
-            console.log("players: ")
-            console.log(players);
-            console.log("active : ")
-            console.log(active_users);
+            // console.log("players: ")
+            // console.log(players);
+            // console.log("active : ")
+            // console.log(active_users);
         })
 
         socket.on('stop-play-button', () => {
@@ -107,8 +104,6 @@ function init(server) {
         })
 
         socket.on('move', (board, atk, opp, active) => {
-            console.log(players);
-            console.log(board);
             players[0].ref.emit('moved', board, atk, opp, active);
             players[1].ref.emit('moved', board, atk, opp, active);
         });
@@ -126,8 +121,6 @@ function init(server) {
             let new_players = []
             new_players.push({ name: players[0].name, color: "white" })
             new_players.push({ name: players[1].name, color: "black" })
-            console.log("new_players")
-            console.log(new_players)
             stop_game(socket.id, new_players)
         })
 
@@ -140,10 +133,14 @@ function init(server) {
                 let new_players = []
                 new_players.push({ name: players[0].name, color: "white" })
                 new_players.push({ name: players[1].name, color: "black" })
-                console.log(new_players)
                 stop_game(socket.id, new_players);
             }
             remove_player(socket.id);
+        })
+
+        socket.on('eaten', (eaten) => {
+            console.log(eaten);
+            io.emit('updateEaten', eaten);
         })
 
         socket.on('disconnect', () => {
@@ -151,7 +148,6 @@ function init(server) {
                 let new_players = []
                 new_players.push({ name: players[0].name, color: "white" })
                 new_players.push({ name: players[1].name, color: "black" })
-                console.log(new_players)
                 if (socket.id == players[0].ref.id) {
                     color = "black";
                     players[1].ref.emit('stop-game', "black", new_players);

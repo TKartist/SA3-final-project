@@ -58,6 +58,11 @@ function initBoard() {
     }
 }
 
+socket.on("updateEaten", (newEaten) => {
+    eaten = Array.from(newEaten);
+    show(eaten);
+})
+
 function board() {
     backward = 1;
     playing = true;
@@ -150,6 +155,7 @@ function board() {
     });
     document.querySelector(".playing span").innerHTML = "Playing: " + atk.toUpperCase();
     document.querySelector(".check span").innerHTML = check.toUpperCase() + " is checked";
+    show(eaten);
 }
 
 document.getElementById("backward").addEventListener("click", () => {
@@ -199,7 +205,6 @@ async function backwards() {
     if (result.status === 'ok') {
         if (result.details.length >= backward) {
             past = new Map(Object.entries(JSON.parse(result.details[result.details.length - backward].map)));
-            console.log(past);
             displayPast();
         }
     } else {
@@ -219,7 +224,6 @@ function displayPast() {
             let tile = document.createElement("button");
             tile.setAttribute('id', tileID);
             if (past.get(tileID) !== em) {
-                console.log(past.get(tileID));
                 styleAttribute += "background: url(static/images/chesspieces/" + past.get(tileID) + ".png) no-repeat 10px center;";
             }
             if ((i + j) % 2 === 1) {
@@ -262,7 +266,6 @@ async function storeDatabase() {
     }
     var array = [start, end];
     var object = tileInfo.get(end);
-    //var map = JSON.stringify(array);
     var obj = Object.fromEntries(tileInfo);
     var map = JSON.stringify(obj);
     const result = await fetch('/play', {
@@ -403,7 +406,9 @@ function executeMove() {
             }
             if (tmp.get(end) !== em) {
                 eaten.push(tmp.get(end));
-                show(eaten)
+                if (you !== "") {
+                    socket.emit('eaten', eaten);
+                }
             }
             castleEffect();
             board();
@@ -415,7 +420,9 @@ function executeMove() {
             switchTeam();
             if (tmp.get(end) !== em) {
                 eaten.push(tmp.get(end));
-                show(eaten);
+                if (you !== "") {
+                    socket.emit('eaten', eaten);
+                }
             }
             castleEffect();
             board();
@@ -959,7 +966,6 @@ document.getElementById("start").addEventListener("click", e => {
         document.getElementById("start").querySelector('h1').innerHTML = "Start";
         socket.emit("stop-play-button")
     } else {
-        console.log("Hey 2")
         board();
         startClock();
     }
@@ -968,12 +974,10 @@ document.getElementById("start").addEventListener("click", e => {
 socket.on('start-match', (color, opponent) => {
     playing = true;
     document.getElementById("start").style.display="none";
-    console.log("hey"); 
     you = color;
     document.querySelector(".player-2-timer-container h2").innerHTML = opponent
     board();
     startClock();
-    console.log()
 })
 
 socket.on('moved', (tile, atk1, opp1, newActive) => {
@@ -985,9 +989,7 @@ socket.on('moved', (tile, atk1, opp1, newActive) => {
         isPlayer1Turn = true;
         isPlayer2Turn = false;
     }
-    console.log("got till here");
     tileInfo = new Map(JSON.parse(tile));
-    console.log(tileInfo);
     storeInfo();
     atk = atk1;
     opp = opp1;
@@ -1023,7 +1025,6 @@ socket.on('stop-game', (color, new_players) => {
         let win, loser;
         let score_win = 30;
         let score_l = 10;
-        console.log(new_players)
         if(color == new_players[0].color){
             win = new_players[0].name;
             loser = new_players[1].name;
@@ -1033,8 +1034,6 @@ socket.on('stop-game', (color, new_players) => {
         }
         updateScore(win, score_win);
         updateScore(loser, score_l);
-        console.log("win" + win)
-        console.log('loser' + loser)
         playing = false;
         document.getElementById("start").style.display = "block";
         location.reload();
