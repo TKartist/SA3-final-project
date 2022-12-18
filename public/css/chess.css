@@ -42,9 +42,13 @@ body {
 }
 footer{
   zoom:0.9;
+  
 }
+#chess-grid{
+  zoom: 0.8;
 }
 
+}
 @media all and (max-width: 950px) {
  
   .section-two, .section-one, .section-three{
@@ -55,7 +59,12 @@ footer{
   footer{
     zoom:0.8;
   }
+  
+  #chess-grid{
+    zoom: 0.7;
   }
+  
+}
 
   
   .pentahedron {
