@@ -2,15 +2,15 @@ class Particle {
 
   constructor(svg, coordinates, friction) {
     this.svg = svg;
-    this.steps = $(window).height() / 2;
+    this.steps = $(window).height();
     this.item = null;
     this.friction = friction;
     this.coordinates = coordinates;
     this.position = this.coordinates.y;
     this.dimensions = this.render();
-    this.rotation = Math.random() > 0.5 ? "-" : "+";
-    this.scale = 0.5 + Math.random();
-    this.siner = 200 * Math.random();
+    this.rotation = Math.random() > 0.1 ? "-" : "+";
+    this.scale = 0.3 + Math.random();
+    this.siner =  Math.random();
   }
 
   destroy() {

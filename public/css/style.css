@@ -53,6 +53,8 @@ body {
 } */
 
 /*--The follwing header belongs to the browser page--*/
+
+
 .website-header {
   display: inline-flex;
   position: relative;
@@ -191,7 +193,10 @@ width: 80%;
   text-align: center;
 }
 
+@media all and (max-width: 1168px) {
 
+
+  }
 
 .row {
   display: flex;
@@ -200,7 +205,7 @@ width: 80%;
 
 
 .programs-k {
-  flex-basis: 100%;
+
   border-radius: 10px;
   padding: 20px 12px;
   transition: 1s;
@@ -210,8 +215,10 @@ width: 80%;
   background-position: center;
   background-size: cover;
   position: relative;
-  overflow: hidden;
+
 }
+
+
 
 .w-sidebar {
   flex: 0 0 auto;
@@ -234,7 +241,7 @@ width: 80%;
 
 }
 
-.website-content .width {
+.website-content {
 
   display: block;
   margin-left: auto;
@@ -244,8 +251,35 @@ width: 80%;
 
 }
 
+.width {
+
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
+  width: 100%;
+
+}
+.board-setup {
+
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
+  width: 50%;
+
+}
 
 
+.fool {
+
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
+  width: 40%;
+
+}
 
 
 /*-------------------------------------------------------*/
@@ -279,6 +313,7 @@ width: 80%;
 }
 
 ul li {
+  style:none;
   background-image:linear-gradient(rgba(160, 164, 176, 0.5),
   rgba(160, 164, 176, 0.5)), url(/static/images/website/banner.jpg) ;
   width: 120px;
@@ -543,6 +578,7 @@ color: #3a3d51;
 }
 
 .chessboard {
+resize: both;
   width: 640px;
   height: 640px;
   border: 20px solid var(--blunderBlack);
@@ -793,7 +829,7 @@ color: #3a3d51;
   margin-bottom: auto;
   align-items: center;
   width: 100%;
-  height: 300px;
+  height: 350px;
   justify-content: center;
   align-items: center;
   border: 1mm ridge var(--blunderBlack);
@@ -886,7 +922,7 @@ figure#spinner2 img:nth-child(8) { transform: rotateY(-45deg); }
 .level-button{ 
   margin-top: -50px;
   flex: row;
-  width: 200px;
+  width: 100px;
   padding: 10px 15px;
   letter-spacing: 3px;
 

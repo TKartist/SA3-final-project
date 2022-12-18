@@ -2,11 +2,11 @@
 
 <head>
   <title>Index</title>
-  <link rel="icon" href="./static/images/website/logo.png" >
+  <link rel="icon" href="./static/images/website/logo.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="./static/css/style.css" />
   <link href="https://fonts.cdnfonts.com/css/gotham" rel="stylesheet">
- 
+
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
@@ -45,23 +45,23 @@
                   <h4>Play</h4>
                 </button>
               </div>
-
-              <div class="programs-k">
-                <a href="./index.html"><img class="top" src="static/images/website/puzzle.png" /></a>
-                <a href="./index.html"><img class="width" src="static/images/website/puzzle_banner.png" /></a>
-                <button class="start">
-                  <h4>Solve puzzle</h4>
-                </button>
+                <div class="programs-k">
+                  <a href="./index.html"><img class="top" src="static/images/website/puzzle.png" /></a>
+                  <a href="./index.html"><img class="width" src="static/images/website/puzzle_banner.png" /></a>
+                  <button class="start">
+                    <h4>Solve puzzle</h4>
+                  </button>
+                </div>
+                <div class="row">
+                  <div class="programs-k">
+                    <a href="./learn"><img class="top" src="static/images/website/learn.png" /></a>
+                    <a href="./learn"><img class="width" src="static/images/website/learn_banner.png" /></a>
+                    <a href="./learn"> <button class="start">
+                        <h4>Start a lesson</h4>
+                      </button></a>
+                  </div>
+                </div>
               </div>
-
-              <div class="programs-k">
-                <a href="./learn"><img class="top" src="static/images/website/learn.png" /></a>
-                <a href="./learn"><img class="width" src="static/images/website/learn_banner.png" /></a>
-                <a href="./learn"> <button class="start">
-                  <h4>Start a lesson</h4>
-                </button></a>
-              </div>
-            </div>
           </section>
         </div>
 
@@ -73,41 +73,44 @@
 
     <%- include("includes/navbar") %>
 
-    <sidebar class="sidebar-2 w-sidebar">
-      <section class="inner_board_section">
-        <h3> Leaderboard </h3>
-        <% for (let [key, value] of leaderboard) { %>
-          <div class="board_content">
-            <div class="img">
-              <img src="/static/images/website/profile1.png" alt="picture_1">
-            </div>
-            <div class="player">
-              <p><span>
-                  <h3></h3>
-                </span>
-              <h3><%- key %></h3>
-              </p>
-              <div class="score_bar_wrap">
-                <div class="score_bar"></div>
+      <sidebar class="sidebar-2 w-sidebar">
+        <section class="inner_board_section">
+          <h3> Leaderboard </h3>
+          <% for (let [key, value] of leaderboard) { %>
+            <div class="board_content">
+              <div class="img">
+                <img src="/static/images/website/profile1.png" alt="picture_1">
+              </div>
+              <div class="player">
+                <p><span>
+                    <h3></h3>
+                  </span>
+                <h3>
+                  <%- key %>
+                </h3>
+                </p>
+                <div class="score_bar_wrap">
+                  <div class="score_bar"></div>
+                </div>
+              </div>
+              <div class="points">
+                <p><span>
+                    <h3></h3>
+                  </span>
+                <h3>
+                  <%- value %>
+                </h3>
+                </p>
               </div>
             </div>
-            <div class="points">
-              <p><span>
-                  <h3></h3>
-                </span>
-              <h3><%- value %></h3>
-              </p>
-            </div>
-          </div>
-          <% } %>
-      </section>
-    </sidebar>
+            <% } %>
+        </section>
+      </sidebar>
   </section>
 
   <%- include("includes/footer") %>
-
-  <script src="/static/js/background.js"></script>
-  <script src="/static/js/users_actions/<%= filename %>.js"></script>
-</body>
+    <script src="/static/js/background.js"></script>
+    <script src="/static/js/users_actions/<%= filename %>.js"></script>
+    </body>
 
 </html>
