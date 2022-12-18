@@ -85,9 +85,9 @@ function makeBoard() {
                 styleAttribute += "background: url(static/images/chesspieces/" + board.get(tileID) + ".png) no-repeat 10px center;";
             }
             if ((i + j) % 2 === 1) {
-                styleAttribute += "background-color: #dae9f2";
+                styleAttribute += "background-color: #dae9f2; margin: 0.01px;";
             } else {
-                styleAttribute += "background-color: #6e99c0";
+                styleAttribute += "background-color: #6e99c0; margin: 0.01px;";
             }
             tile.setAttribute('style', styleAttribute);
             main.appendChild(tile);
@@ -104,7 +104,7 @@ function makeBoard() {
     main.appendChild(respond);
     main.setAttribute(
         "style",
-        "display: grid; grid-template-columns: repeat(8, 90px); grid-template-rows: repeat(8, 90px); border: 20px solid var(--blunderBlack);"
+        "display: grid; grid-template-columns: repeat(8, 90px); grid-template-rows: repeat(8, 90px);"
     );
     if (movePointer < moves.length) {
         main.querySelectorAll("button").forEach(tile => {

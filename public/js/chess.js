@@ -59,7 +59,8 @@ function initBoard() {
 }
 
 socket.on("noPlayers", (pCount) => {
-    document.querySelector(".sidebar0 span").innerHTML = pCount;
+    document.querySelector(".sidebar0 span").style = "font-size: 35px;";
+    document.querySelector(".sidebar0 span").innerHTML = "<b>" + pCount + "</b>";
 })
 
 socket.on("updateEaten", (newEaten) => {
