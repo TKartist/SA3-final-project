@@ -155,9 +155,15 @@ function board() {
         }
     }
     section = document.querySelector("#chess-grid");
-    section.querySelectorAll("button").forEach(tile => {
-        tile.addEventListener("click", choose);
-    });
+    if (you !== "spectator") {
+        section.querySelectorAll("button").forEach(tile => {
+            tile.addEventListener("click", choose);
+        });
+    } else {
+        document.querySelectorAll("button").forEach(tile => {
+            tile.disabled = true;
+        })
+    }
     document.querySelector(".playing span").innerHTML = "Playing: " + atk.toUpperCase();
     document.querySelector(".check span").innerHTML = check.toUpperCase() + " is checked";
     show(eaten);
@@ -965,8 +971,9 @@ function gameover() {
 
 document.getElementById("start").addEventListener("click", e => {
     if (document.getElementById("myConnect").style.display == "block" && document.getElementById("start").querySelector('h1').textContent != "Searching") {
+        initBoard();
         document.getElementById("start").querySelector('h1').innerHTML = "Searching";
-        socket.emit("play-button")
+        socket.emit("play-button",  JSON.stringify(Array.from(tileInfo)))
     } else if (document.getElementById("myConnect").style.display == "block") {
         document.getElementById("start").querySelector('h1').innerHTML = "Start";
         socket.emit("stop-play-button")
@@ -981,6 +988,18 @@ socket.on('start-match', (color, opponent) => {
     document.getElementById("start").style.display="none";
     you = color;
     document.querySelector(".player-2-timer-container h2").innerHTML = opponent
+    board();
+    startClock();
+    document.getElementById("myOffer").style.display = "block";
+})
+
+socket.on('started-match', (color, opponent1, opponent2, active_board) => {
+    tileInfo = new Map(JSON.parse(active_board));
+    playing = true;
+    document.getElementById("start").style.display="none";
+    you = color;
+    document.querySelector(".player-1-timer-container h2").innerHTML = opponent1;
+    document.querySelector(".player-2-timer-container h2").innerHTML = opponent2;
     board();
     startClock();
     document.getElementById("myOffer").style.display = "block";
@@ -1042,7 +1061,11 @@ socket.on('stop-game', (color, new_players) => {
         updateScore(loser, score_l);
         playing = false;
         document.getElementById("start").style.display = "block";
-        location.reload();
+        document.getElementById("start").innerHTML = "<h1>Reload</h1>";
+        document.getElementById("start").disabled = false;
+        document.getElementById("start").addEventListener("click", e => {
+            window.location.reload(true);
+        })
     }
 })
 

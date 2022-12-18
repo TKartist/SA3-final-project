@@ -4,6 +4,7 @@ const io = require('socket.io')();
 
 let active_users = [];
 let players = [];
+var active_board;
 
 let globalCount = 0;
 
@@ -72,8 +73,9 @@ function init(server) {
             }
         })
 
-        socket.on('play-button', () => {
+        socket.on('play-button', (new_board) => {
             if (players.length < 2) {
+                active_board = new_board; 
                 for (let i = 0; i < active_users.length; i++) {
                     if (active_users[i].ref.id == socket.id) {
                         players.push(active_users[i]);
@@ -87,6 +89,7 @@ function init(server) {
                 }
                 // console.log("added player")
             } else {
+                socket.emit('started-match', "spectator", players[0].name, players[1].name, active_board);
                 // console.log("too many players");
             }
             // console.log("players: ")
@@ -108,8 +111,12 @@ function init(server) {
         })
 
         socket.on('move', (board, atk, opp, active) => {
+            active_board = board;
             players[0].ref.emit('moved', board, atk, opp, active);
             players[1].ref.emit('moved', board, atk, opp, active);
+            active_users.forEach(el => {
+                el.ref.emit('moved', board, atk, opp, active);
+            })
         });
 
         socket.on('stop-game', () => {
