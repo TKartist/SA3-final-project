@@ -102,9 +102,9 @@ router.post('/new', async(req, res)=> {
   res.json({status: 'ok'});
 })
 
-router.get('/browse', function(req, res, next) {
-  res.render('browse', {});
-})
+// router.get('/browse', function(req, res, next) {
+//   res.render('browse', {});
+// })
 
 
 router.get('/logout', function(req, res) {

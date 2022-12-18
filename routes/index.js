@@ -36,12 +36,12 @@ router.get('/', function (req, res, next) {
 
 
 
-router.get('/test',function(req, res, next) {
+router.get('/test', verify.auth, function(req, res, next) {
   id = mongoose.Types.ObjectId();
   res.render('test', {username: verify.check(req).name});
 })
 
-router.get('/createChallenge',function(req, res, next) {
+router.get('/createChallenge', verify.auth, function(req, res, next) {
   id = mongoose.Types.ObjectId();
   res.render('create_challenge', {});
 })
@@ -145,7 +145,7 @@ router.post('/store-score', async(req,res,next) => {
 
 
 
-router.get('/browse-puzzles', function (req, res, next) {
+router.get('/browse-puzzles', verify.auth, function (req, res, next) {
   res.render('browse_puzzles', {});
 
 })
