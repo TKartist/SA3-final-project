@@ -983,6 +983,7 @@ socket.on('start-match', (color, opponent) => {
     document.querySelector(".player-2-timer-container h2").innerHTML = opponent
     board();
     startClock();
+    document.getElementById("myOffer").style.display = "block";
 })
 
 socket.on('moved', (tile, atk1, opp1, newActive) => {
