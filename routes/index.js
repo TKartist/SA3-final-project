@@ -36,9 +36,9 @@ router.get('/', function (req, res, next) {
 
 
 
-router.get('/test', verify.auth, function(req, res, next) {
+router.get('/chess-game', verify.auth, function(req, res, next) {
   id = mongoose.Types.ObjectId();
-  res.render('test', {username: verify.check(req).name});
+  res.render('play', {username: verify.check(req).name});
 })
 
 router.get('/createChallenge', verify.auth, function(req, res, next) {
