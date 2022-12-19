@@ -165,7 +165,7 @@ function board() {
         })
     }
     document.querySelector(".playing span").innerHTML = "Playing: " + atk.toUpperCase();
-    document.querySelector(".check span").innerHTML = check.toUpperCase() + " is checked";
+    document.querySelector(".check span").innerHTML = checked("check") + " is checked";
     show(eaten);
 }
 
@@ -890,6 +890,10 @@ function checked(p) {
     }
 }
 
+socket.on("calledDraw", (pName) => {
+    document.querySelector(".draw span").innerHTML = pName + " has called Draw";
+})
+
 function checkmate() {
     let tmpblack = Array.from(black);
     let tmpwhite = Array.from(white);
@@ -964,7 +968,7 @@ function gameover() {
     })
     document.querySelector(".check").innerHTML = opp + " has won.";
     if (you !== "") {
-        socket.emit("stop-game");
+        socket.emit("stop-game", opp);
     }
     stopClock();
 }
@@ -974,9 +978,9 @@ document.getElementById("draw").addEventListener("click", ()=> {
 })
 
 function gamedraw() {
-    document.querySelector(".draw span").innerHTML = you + " has requested for a draw."
+    pName = document.querySelector(".sidebar0 h1").innerHTML;
+    document.querySelector(".draw span").innerHTML = pName  + " has requested for a draw."
     if (you !== "") {
-        pName = document.querySelector(".sidebar0 h1").innerHTML;
         socket.emit("draw", pName);
     }
 }
