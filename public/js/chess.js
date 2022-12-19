@@ -969,6 +969,26 @@ function gameover() {
     stopClock();
 }
 
+document.getElementById("draw").addEventListener("click", ()=> {
+    gamedraw();
+})
+
+function gamedraw() {
+    document.querySelector(".draw span").innerHTML = you + " has requested for a draw."
+    if (you !== "") {
+        pName = document.querySelector(".sidebar0 h1").innerHTML;
+        socket.emit("draw", pName);
+    }
+}
+
+socket.on("drawGame", () => {
+    let main = document.querySelector("main");
+    main.querySelectorAll("button").forEach(e => {
+        e.disabled = true;
+    });
+    document.querySelector(".draw span").innerHTML = "Game has ended with a draw upon agreement."
+})
+
 document.getElementById("start").addEventListener("click", e => {
     if (document.getElementById("myConnect").style.display == "block" && document.getElementById("start").querySelector('h1').textContent != "Searching") {
         initBoard();

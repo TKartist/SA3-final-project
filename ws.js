@@ -54,7 +54,8 @@ function init(server) {
             remove_player(socket.id)
             data = {
                 ref: socket,
-                name: name
+                name: name,
+                draw: false
             }
             active_users.push(data);
         });
@@ -118,6 +119,18 @@ function init(server) {
                 el.ref.emit('moved', board, atk, opp, active);
             })
         });
+
+        socket.on('draw', (pName) => {
+            if (pName === players[0].name) {
+                players[0].draw = true;
+            } 
+            if (pName === players[1].name) {
+                players[1].draw = true;
+            }
+            if (players[0].draw && players[1].draw) {
+                io.emit("drawGame");
+            }
+        })
 
         socket.on('stop-game', () => {
             active_users.push(players[0]);
