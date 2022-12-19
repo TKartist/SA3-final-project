@@ -42,11 +42,6 @@ body {
 
 }
 
-/* @media screen and (max-width: 1255px) {
- #chess-grid{
-  zoom: 0.4;
- }
-} */
 
 /*--The follwing header belongs to the browser page--*/
 
@@ -293,11 +288,13 @@ margin-top: -20px;
 .start {
   display: inline-block;
   flex: row;
-  width: 300px;
+  width: 30%;
   padding: 10px 15px;
   position: relative;
   letter-spacing: 3px;
-
+margin-left: auto;
+margin-right: auto;
+align-items: center;
   font-size: 15px;
   text-align: center;
   background-color: #101820ff;
@@ -405,7 +402,7 @@ footer {
 	text-align: center;
 	position: relative;
 	width: 100%;
-	height: 1800px;
+	height: 1900px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -864,12 +861,15 @@ div#carousel {
   perspective: 400px; 
   background: transparent; 
   font-size:0; 
-
+  width: 80%;
+margin-left: auto;
+margin-right: auto;
+align-items: center;
   overflow: hidden; 
 }
 figure#spinner, #spinner1, #spinner2 { 
   transform-style: preserve-3d; 
-  height: 535px; 
+  height: 450px; 
   transform-origin: 50% 50% -500px; 
   transition: 1s; 
 } 
@@ -877,6 +877,7 @@ figure#spinner, #spinner1, #spinner2 {
   width: 40%;
   position: absolute; 
   left: 30%;
+  border: solid 1 px #101820ff;
  
   align-items: center;
   transform-origin: 50% 50% -500px;
@@ -959,4 +960,10 @@ border: 1mm ridge var(--blunderBiege);
   color: var(--blunderBlack);
 }
 
-
+.team{
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+  opacity: 0.6;
+}
