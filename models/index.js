@@ -18,9 +18,9 @@ client
   .then(async client => {
     console.log("Connected to mongodb server" + mongodb_uri);
     model.db = client.db(db_name);
-    collection_name.forEach(c=> {
-      model[c] =  model.db.collection(c);
-    }) 
+    collection_name.forEach(c => {
+      model[c] = model.db.collection(c);
+    })
   })
   .catch(err => console.error(err));
 
