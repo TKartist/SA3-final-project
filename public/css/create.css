@@ -1,127 +1,123 @@
-
-
 /* Inner box */
 .inner-box {
-    display: flex;
-    flex-direction: column;
-    margin: 5% auto 15% auto; /* 5% top, 15% bottom, auto for centering */
-    margin: auto auto auto auto; /* 5% top, 15% bottom, auto for centering */
-    width: 100%; /* Could be more or less, depending on screen size */
-    height: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 5% auto 15% auto; /* 5% top, 15% bottom, auto for centering */
+  margin: auto auto auto auto; /* 5% top, 15% bottom, auto for centering */
+  width: 100%; /* Could be more or less, depending on screen size */
+  height: 100%;
 }
 input {
-    height: 50px;
+  height: 50px;
 }
 h1 {
-    color: black;
+  color: black;
 }
 h3 {
-    /* background-color: rgba(0, 0, 0, 0.8); */
-    text-align: center;
-    color: black;
-    padding: 10px;
-    backdrop-filter: blur(1px);
+  /* background-color: rgba(0, 0, 0, 0.8); */
+  text-align: center;
+  color: black;
+  padding: 10px;
+  backdrop-filter: blur(1px);
 }
 label {
-    padding-top: 10px;
-    padding-bottom: 5px;
+  padding-top: 10px;
+  padding-bottom: 5px;
 }
 label img {
-    width: 25px;
-    height: 25px;
-    margin-bottom: -5px;
+  width: 25px;
+  height: 25px;
+  margin-bottom: -5px;
 }
 /* Container for labels and buttons */
 .container {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 /* WHITE */
 .white-pieces {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    padding: 5px 25px 25px 25px; /* top, right, bottom, left */
-    margin-left: 15px;
-    border: 10px ridge var(--blunderBiege);
-    background-image: url("/static/images/website/white_chess_back.avif");
-	background-repeat: no-repeat;
-	background-position: center;    /* Set it to the center */
-	background-size: cover;        /* Make it resizable */
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 5px 25px 25px 25px; /* top, right, bottom, left */
+  margin-left: 15px;
+  border: 10px ridge var(--blunderBiege);
+  background-image: url("/static/images/website/white_chess_back.avif");
+  background-repeat: no-repeat;
+  background-position: center; /* Set it to the center */
+  background-size: cover; /* Make it resizable */
 }
-.white-pieces input[type=text] {
-    background-color: rgba(255, 255, 255, 0.8);
-    color: black;
+.white-pieces input[type="text"] {
+  background-color: rgba(255, 255, 255, 0.8);
+  color: black;
 }
-.white-pieces label  b {
-    color: white;
+.white-pieces label b {
+  color: white;
 }
 /* BLACK */
 .black-pieces {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    padding: 5px 25px 25px 25px; /* top, right, bottom, left */
-    border: 10px ridge var(--blunderBlack);
-    background-image: url("/static/images/website/black_horse_back.jpg");
-	background-repeat: no-repeat;
-    background-position: center;    /* Set it to the center */
-	background-size: cover;        /* Make it resizable */
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 5px 25px 25px 25px; /* top, right, bottom, left */
+  border: 10px ridge var(--blunderBlack);
+  background-image: url("/static/images/website/black_horse_back.jpg");
+  background-repeat: no-repeat;
+  background-position: center; /* Set it to the center */
+  background-size: cover; /* Make it resizable */
 }
-.black-pieces input[type=text] {
-    background-color: rgba(0, 0, 0, 0.8);
-    color: white;
+.black-pieces input[type="text"] {
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
 }
-.black-pieces label  b {
-    color: black;
+.black-pieces label b {
+  color: black;
 }
 /* Create btn */
 .btn-container {
-   margin-left: 35%;
+  margin-left: 35%;
 }
-#createChallegebtn{
-    height: 40px;
-    width: 50%;
-    margin-top: 20px;
+#createChallegebtn {
+  height: 40px;
+  width: 50%;
+  margin-top: 20px;
 }
 #createChallegebtn b {
-    color: black;
+  color: black;
 }
 .moves-container {
-    margin-top: 10px;
-    margin-left: 15px;
-    display: flex;
-    flex-direction: column;
-    border: 10px ridge var(--blunderBiege);
-    padding: 3px 25px 5px 10px; /* top, right, bottom, left */
-    background-image: linear-gradient( var(--blunderBiege), var(--blunderBlack));
+  margin-top: 10px;
+  margin-left: 15px;
+  display: flex;
+  flex-direction: column;
+  border: 10px ridge var(--blunderBiege);
+  padding: 3px 25px 5px 10px; /* top, right, bottom, left */
+  background-image: linear-gradient(var(--blunderBiege), var(--blunderBlack));
 }
 .moves-container label b {
-    color: black;
+  color: black;
 }
-.moves-container input[type=text]  {
-    border: 5px ridge var(--blunderBlack);
-    width: 60%;
+.moves-container input[type="text"] {
+  border: 5px ridge var(--blunderBlack);
+  width: 60%;
 }
-
-
 
 .create-chess-board {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 .try {
-    height: 100px;
-    width: 100px;
-    margin-left: 10%;
+  height: 100px;
+  width: 100px;
+  margin-left: 10%;
 }
 .create-buttons-chess button {
-    margin: 15px ;
+  margin: 15px;
 }
 .create-buttons-chess-white button {
-    background-color: var(--blunderBlack);
+  background-color: var(--blunderBlack);
 }
 .create-buttons-chess-black button {
-    background-color: var(--blunderBiege);
+  background-color: var(--blunderBiege);
 }

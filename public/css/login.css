@@ -8,15 +8,18 @@
 
 /* main, */
 /* input { */
-  /* font-family: "Poppins", sans-serif; */
+/* font-family: "Poppins", sans-serif; */
 /* } */
 
 main {
   width: 100%;
   min-height: 100vh;
   overflow: hidden;
-  background-image:linear-gradient(rgba(160, 164, 176, 0.5),
-  rgba(160, 164, 176, 0.5)), url(/static/images/website/banner.jpg);
+  background-image: linear-gradient(
+      rgba(160, 164, 176, 0.5),
+      rgba(160, 164, 176, 0.5)
+    ),
+    url(/static/images/website/banner.jpg);
   padding: 2rem;
   display: flex;
   align-items: center;
@@ -226,8 +229,11 @@ main.sign-up-mode .carousel {
   width: 55%;
   left: 45%;
   top: 0;
-  background-image:linear-gradient(rgba(160, 164, 176, 0.5),
-  rgba(160, 164, 176, 0.5)), url(/static/images/website/banner.jpg);
+  background-image: linear-gradient(
+      rgba(160, 164, 176, 0.5),
+      rgba(160, 164, 176, 0.5)
+    ),
+    url(/static/images/website/banner.jpg);
   border-radius: 2rem;
   display: grid;
   grid-template-rows: auto 1fr;
@@ -319,8 +325,7 @@ main.sign-up-mode .carousel {
 }
 
 @media (max-width: 850px) {
-
-/* WHITE BACKGROUND BOX*/
+  /* WHITE BACKGROUND BOX*/
   .box {
     height: auto;
     max-width: 550px;
@@ -387,7 +392,7 @@ main.sign-up-mode .carousel {
     padding: 1rem;
   }
 
-/* WHITE BACKGROUND BOX*/
+  /* WHITE BACKGROUND BOX*/
   .box {
     border-radius: 2rem;
   }

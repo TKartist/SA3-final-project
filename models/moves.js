@@ -8,13 +8,13 @@ const MovesSchema = new mongoose.Schema({
     atk: {
         type: String
     },
-    object : {
+    object: {
         type: String
     },
-    id : {
+    id: {
         type: ObjectId
     }
-}, {collection: 'moves'})
+}, { collection: 'moves' })
 
 
 const model = mongoose.model('MovesSchema', MovesSchema)

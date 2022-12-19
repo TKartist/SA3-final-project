@@ -1,11 +1,3 @@
-<!-- <head>
-    <title>Index</title>
-    <link rel="icon" href="./static/images/website/logo.png" >
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./static/css/style.css" />
-    <link href="https://fonts.cdnfonts.com/css/gotham" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  </head> -->
 <head>
     <link rel="stylesheet" href="./static/css/chess.css">
     <link rel="stylesheet" href="./static/css/create.css">
@@ -13,113 +5,127 @@
 
 <body>
 
-<main class="website-content">
-    <h1>Create New Challenge</h1>
+    <main class="website-content">
+        <h1>Create New Challenge</h1>
 
-    <div class="create-chess-board">
-        <section id="chess-grid"></section>
+        <div class="create-chess-board">
+            <section id="chess-grid"></section>
 
-        <section class="create-buttons-chess">
+            <section class="create-buttons-chess">
 
-            <!-- white buttons -->
-            <div class="create-buttons-chess-black">
-                <button class="try" id="bB"><img src="/static/images/chesspieces/blackBishop.png" alt=""></button>
-                <button class="try" id="bH"><img src="/static/images/chesspieces/blackHorse.png" alt=""></button>
-                <button class="try" id="bK"><img src="/static/images/chesspieces/blackKing.png" alt=""></button>
-                <button class="try" id="bP"><img src="/static/images/chesspieces/blackPawn.png" alt=""></button>
-                <button class="try" id="bQ"><img src="/static/images/chesspieces/blackQueen.png" alt=""></button>
-                <button class="try" id="bR"><img src="/static/images/chesspieces/blackRook.png" alt=""></button>
+                <!-- white buttons -->
+                <div class="create-buttons-chess-black">
+                    <button class="try" id="bB"><img src="/static/images/chesspieces/blackBishop.png" alt=""></button>
+                    <button class="try" id="bH"><img src="/static/images/chesspieces/blackHorse.png" alt=""></button>
+                    <button class="try" id="bK"><img src="/static/images/chesspieces/blackKing.png" alt=""></button>
+                    <button class="try" id="bP"><img src="/static/images/chesspieces/blackPawn.png" alt=""></button>
+                    <button class="try" id="bQ"><img src="/static/images/chesspieces/blackQueen.png" alt=""></button>
+                    <button class="try" id="bR"><img src="/static/images/chesspieces/blackRook.png" alt=""></button>
+                </div>
+
+                <!-- black buttons -->
+                <div class="create-buttons-chess-white">
+                    <button class="try" id="wB"><img src="/static/images/chesspieces/whiteBishop.png" alt=""></button>
+                    <button class="try" id="wH"><img src="/static/images/chesspieces/whiteHorse.png" alt=""></button>
+                    <button class="try" id="wK"><img src="/static/images/chesspieces/whiteKing.png" alt=""></button>
+                    <button class="try" id="wP"><img src="/static/images/chesspieces/whitePawn.png" alt=""></button>
+                    <button class="try" id="wQ"><img src="/static/images/chesspieces/whiteQueen.png" alt=""></button>
+                    <button class="try" id="wQ"><img src="/static/images/chesspieces/whiteRook.png" alt=""></button>
+                </div>
+            </section>
+        </div>
+
+        <main class="website-content">
+            <div class="inner-box">
+                <form action="/createChallenge" method="POST" name="userCreateForm">
+                    <h3>The below is a form to add a new challenge. <br>
+                        You can choose what piece to add where by entering coordinates (11 - 18, 21- 28 ... 81 - 88).
+                        <br>
+                        Although all fields in the piece section can be empty, if the move section is empty the
+                        challenge won't be created.
+                        <br><br>
+                        *** Remember to add spaces between every coordinates for it to be understood ***
+                    </h3>
+                    <div class="container">
+                        <!-- BLACK PIECES -->
+                        <section class="black-pieces">
+                            <label for="blackBishop"><b>Black Bishop</b> <img
+                                    src="/static/images/chesspieces/blackBishop.png" alt=""> </label>
+                            <input name="blackBishop" type="text" placeholder="blackBishop" id="blackBishop">
+
+                            <label for="blackHorse"><b>Black Horse</b><img
+                                    src="/static/images/chesspieces/blackHorse.png" alt=""></label>
+                            <input name="blackHorse" type="text" placeholder="blackHorse" id="blackHorse">
+
+                            <label for="blackKing"><b>Black King</b><img src="/static/images/chesspieces/blackKing.png"
+                                    alt=""></label>
+                            <input name="blackKing" type="text" placeholder="blackKing" id="blackKing">
+
+                            <label for="blackPawn"><b>Black Pawn</b><img src="/static/images/chesspieces/blackPawn.png"
+                                    alt=""></label>
+                            <input name="blackPawn" type="text" placeholder="blackPawn" id="blackPawn">
+
+                            <label for="blackQueen"><b>Black Queen</b><img
+                                    src="/static/images/chesspieces/blackQueen.png" alt=""></label>
+                            <input name="blackQueen" type="text" placeholder="blackQueen" id="blackQueen">
+
+                            <label for="blackRook"><b>Black Rook</b><img src="/static/images/chesspieces/blackRook.png"
+                                    alt=""></label>
+                            <input name="blackRook" type="text" placeholder="blackRook" id="blackRook">
+
+                        </section>
+
+                        <!-- WHITE PIECES  -->
+                        <section class="white-pieces">
+                            <label for="whiteBishop"><b>White Bishop</b><img
+                                    src="/static/images/chesspieces/whiteBishop.png" alt=""></label>
+                            <input name="whiteBishop" type="text" placeholder="whiteBishop" id="whiteBishop">
+
+                            <label for="whiteHorse"><b>White Horse</b><img
+                                    src="/static/images/chesspieces/whiteHorse.png" alt=""></label>
+                            <input name="whiteHorse" type="text" placeholder="whiteHorse" id="whiteHorse">
+
+                            <label for="whiteKing"><b>White King</b><img src="/static/images/chesspieces/whiteKing.png"
+                                    alt=""></label>
+                            <input name="whiteKing" type="text" placeholder="whiteKing" id="whiteKing">
+
+                            <label for="whitePawn"><b>White Pawn</b><img src="/static/images/chesspieces/whitePawn.png"
+                                    alt=""></label>
+                            <input name="whitePawn" type="text" placeholder="whitePawn" id="whitePawn">
+
+                            <label for="whiteQueen"><b>White Queen</b><img
+                                    src="/static/images/chesspieces/whiteQueen.png" alt=""></label>
+                            <input name="whiteQueen" type="text" placeholder="whiteQueen" id="whiteQueen">
+
+                            <label for="whiteRook"><b>White Rook</b><img src="/static/images/chesspieces/whiteRook.png"
+                                    alt=""></label>
+                            <input name="whiteRook" type="text" placeholder="whiteRook" id="whiteRook">
+
+                        </section>
+                    </div>
+
+                    <div class="moves-container">
+                        <label for="moves"><b>Moves</b></label>
+                        <input name="moves" type="text" placeholder="moves" id="moves" required>
+                    </div>
+
+                    <div class="moves-container">
+                        <label for="response"><b>Responses</b></label>
+                        <input name="response" type="text" placeholder="response" id="response" required>
+                    </div>
+
+                    <div class="moves-container">
+                        <label for="side"><b>Player Side</b></label>
+                        <input name="side" type="text" placeholder="Player Side" id="side" required>
+                    </div>
+
+                    <div class="btn-container">
+                        <button id="createChallegebtn" type="submit"><b>Create Challenge</b></button>
+                    </div>
+                </form>
             </div>
+        </main>
 
-            <!-- black buttons -->
-            <div class="create-buttons-chess-white">
-                <button class="try" id="wB"><img src="/static/images/chesspieces/whiteBishop.png" alt=""></button>
-                <button class="try" id="wH"><img src="/static/images/chesspieces/whiteHorse.png" alt=""></button>
-                <button class="try" id="wK"><img src="/static/images/chesspieces/whiteKing.png" alt=""></button>
-                <button class="try" id="wP"><img src="/static/images/chesspieces/whitePawn.png" alt=""></button>
-                <button class="try" id="wQ"><img src="/static/images/chesspieces/whiteQueen.png" alt=""></button>
-                <button class="try" id="wQ"><img src="/static/images/chesspieces/whiteRook.png" alt=""></button>
-            </div>
-        </section>
-    </div>
-
-<main class="website-content">
-    <div class="inner-box">
-        <form action="/createChallenge" method="POST" name="userCreateForm">
-            <h3>The below is a form to add a new challenge. <br>
-                You can choose what piece to add where by entering coordinates (11 - 18, 21- 28 ... 81 - 88). <br>
-                Although all fields in the piece section can be empty, if the move section is empty the challenge won't be created.
-                <br><br>
-                *** Remember to add spaces between every coordinates for it to be understood ***
-            </h3>
-            <div class="container">
-                <!-- BLACK PIECES -->
-                <section class="black-pieces">
-                    <label for="blackBishop"><b>Black Bishop</b> <img src="/static/images/chesspieces/blackBishop.png" alt=""> </label>
-                    <input name="blackBishop" type="text" placeholder="blackBishop" id="blackBishop">
-
-                    <label for="blackHorse"><b>Black Horse</b><img src="/static/images/chesspieces/blackHorse.png" alt=""></label>
-                    <input name="blackHorse" type="text" placeholder="blackHorse" id="blackHorse">
-
-                    <label for="blackKing"><b>Black King</b><img src="/static/images/chesspieces/blackKing.png" alt=""></label>
-                    <input name="blackKing" type="text" placeholder="blackKing" id="blackKing">
-
-                    <label for="blackPawn"><b>Black Pawn</b><img src="/static/images/chesspieces/blackPawn.png" alt=""></label>
-                    <input name="blackPawn" type="text" placeholder="blackPawn" id="blackPawn">
-
-                    <label for="blackQueen"><b>Black Queen</b><img src="/static/images/chesspieces/blackQueen.png" alt=""></label>
-                    <input name="blackQueen" type="text" placeholder="blackQueen" id="blackQueen">
-
-                    <label for="blackRook"><b>Black Rook</b><img src="/static/images/chesspieces/blackRook.png" alt=""></label>
-                    <input name="blackRook" type="text" placeholder="blackRook" id="blackRook">
-                    
-                </section>
-
-                <!-- WHITE PIECES  -->
-                <section class="white-pieces">
-                    <label for="whiteBishop"><b>White Bishop</b><img src="/static/images/chesspieces/whiteBishop.png" alt=""></label>
-                    <input name="whiteBishop" type="text" placeholder="whiteBishop" id="whiteBishop">
-
-                    <label for="whiteHorse"><b>White Horse</b><img src="/static/images/chesspieces/whiteHorse.png" alt=""></label>
-                    <input name="whiteHorse" type="text" placeholder="whiteHorse" id="whiteHorse">
-
-                    <label for="whiteKing"><b>White King</b><img src="/static/images/chesspieces/whiteKing.png" alt=""></label>
-                    <input name="whiteKing" type="text" placeholder="whiteKing" id="whiteKing">
-
-                    <label for="whitePawn"><b>White Pawn</b><img src="/static/images/chesspieces/whitePawn.png" alt=""></label>
-                    <input name="whitePawn" type="text" placeholder="whitePawn" id="whitePawn">
-
-                    <label for="whiteQueen"><b>White Queen</b><img src="/static/images/chesspieces/whiteQueen.png" alt=""></label>
-                    <input name="whiteQueen" type="text" placeholder="whiteQueen" id="whiteQueen">
-
-                    <label for="whiteRook"><b>White Rook</b><img src="/static/images/chesspieces/whiteRook.png" alt=""></label>
-                    <input name="whiteRook" type="text" placeholder="whiteRook" id="whiteRook">
-
-                </section>
-            </div>
-            
-            <div class="moves-container">
-                <label for="moves"><b>Moves</b></label>
-                <input name="moves" type="text" placeholder="moves" id="moves" required>
-            </div>
-
-            <div class="moves-container">
-                <label for="response"><b>Responses</b></label>
-                <input name="response" type="text" placeholder="response" id="response" required>
-            </div>
-
-            <div class="moves-container">
-                <label for="side"><b>Player Side</b></label>
-                <input name="side" type="text" placeholder="Player Side" id="side" required>
-            </div>
-
-            <div class="btn-container">
-                <button id="createChallegebtn" type="submit"><b>Create Challenge</b></button>
-            </div>
-        </form>
-    </div>
-</main>
-
-<script src="./static/js/create.js"></script>
+        <script src="./static/js/create.js"></script>
 
 </body>

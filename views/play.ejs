@@ -1,176 +1,201 @@
 <html>
+  <head>
+    <link rel="icon" href="./static/images/website/logo.png" />
+    <title>Play</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./static/css/chess.css" />
 
-<head>
-  <link rel="icon" href="./static/images/website/logo.png">
-  <title>Play</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="./static/css/chess.css">
+    <link href="https://fonts.cdnfonts.com/css/gotham" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
 
-  <link href="https://fonts.cdnfonts.com/css/gotham" rel="stylesheet">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
-
-<body class="website-container" onload="initPos()">
-
-  <main class="website-content">
-
-    <section class="section-one">
-      <div class="website-header">
-        <div class="logo-container">
-          <a href="./index"> <img class="logo" src="static/images/website/logo.png" /></a>
+  <body class="website-container" onload="initPos()">
+    <main class="website-content">
+      <section class="section-one">
+        <div class="website-header">
+          <div class="logo-container">
+            <a href="./index">
+              <img class="logo" src="static/images/website/logo.png"
+            /></a>
+          </div>
         </div>
-      </div>
 
-      <div class="clock-container">
-        <div class="player-1-timer-container">
-          <h2>Player 1</h2>
-          <p class="player-1-timer">5 min</p>
+        <div class="clock-container">
+          <div class="player-1-timer-container">
+            <h2>Player 1</h2>
+            <p class="player-1-timer">5 min</p>
+          </div>
+          <div class="buttons-container">
+            <img
+              class="clock"
+              src="/static/images/website/sidebar2.png"
+              alt=""
+            />
+          </div>
+          <div class="player-2-timer-container">
+            <h2>Player 2</h2>
+            <p class="player-2-timer">5 min</p>
+          </div>
         </div>
-        <div class="buttons-container">
-          <img class="clock" src="/static/images/website/sidebar2.png" alt="">
-        </div>
-        <div class="player-2-timer-container">
-          <h2>Player 2</h2>
-          <p class="player-2-timer">5 min</p>
-        </div>
-      </div>
 
-      <section class="sidebar0">
-        <h1><%= username %></h1>
-        <section class="connect-buttons-section">
-          <button id="connect">
-            <h1>Connect</h1>
-          </button>
-        </section>
-        <div class="connect-pop" id="myConnect">
+        <section class="sidebar0">
+          <h1><%= username %></h1>
           <section class="connect-buttons-section">
-            <button id="disconnect">
-              <h1>Disconnect</h1>
+            <button id="connect">
+              <h1>Connect</h1>
             </button>
           </section>
-        </div>
+          <div class="connect-pop" id="myConnect">
+            <section class="connect-buttons-section">
+              <button id="disconnect">
+                <h1>Disconnect</h1>
+              </button>
+            </section>
+          </div>
+        </section>
       </section>
-    </section>
 
-
-    <section class="section-two">
-      <section class="sidebar1">
-        <div class="playing">
-          <p class="player"> <span> </span></p>
-        </div>
-
-        <div class="playing">
-          <p class="check"> <span></span></p>
-        </div>
-
-        <div class = "playing">
-          <p class = "draw" style="margin-right: auto; margin-left: auto; align-items: center;"><span></span></p>
-        </div>
-
-        <img class="eat" src="/static/images/website/eat.png" alt="">
-
-        <section id="black-pieces" class="eatenPieces-section">
-        </section>
-
-        <section id="white-pieces" class="eatenPieces-section">
-        </section>
-
-        <section class="connect-buttons-section">
-          <div class="chat-popup" id="myForm">
-            <form id="send-container">
-              <input class="input-field" type="text" id="message-input" placeholder="Start writing:">
-              <section class="default-buttons-section">
-                <button type="submit" id="send-button" class="send">
-                  <h2>Send</h2>
-                </button>
-                <button type="button" class="btn" onclick="closeForm()">
-                  <h2>Close</h2>
-                </button>
-              </section>
-            </form>
+      <section class="section-two">
+        <section class="sidebar1">
+          <div class="playing">
+            <p class="player"><span> </span></p>
           </div>
 
-          <button class="open-button" id="open-button" onclick="openForm()"> <img class="eat" src="/static/images/website/chat.png" alt=""></button>
-        </section>
-
-        <script>
-          function openForm() {
-            document.getElementById("myForm").style.display = "block";
-            document.getElementById("open-button").style.display = "none";
-          }
-
-          function closeForm() {
-            document.getElementById("myForm").style.display = "none"
-            document.getElementById("open-button").style.display = "block";
-          }
-        </script>
-
-      </section>
-
-
-
-
-
-      <section id="chess-grid"></section>
-
-      <section class="sidebar">
-        <div class="moves">
-          <table class = "mlist">
-          </table>
-        </div>
-
-        <section class="default-buttons-section">
-          <button class="default-buttons" id="backward">
-            <h3> < </h3>
-          </button>
-          <button class="default-buttons" id="forward">
-            <h3> > </h3>
-          </button>
-        </section>
-
-        <section class="start-buttons-section">
-          <button id="start">
-            <h1>Start</h1>
-          </button>
-        </section>
-
-        <div id="myOffer" style="display:none;">
-          <div class="offer-buttons-section">
-            <button class="offer-buttons" id="draw"> <img class="offer" src="/static/images/website/draw.png" alt=""></button>
-            <button class="offer-buttons" id="forfeit"><img class="offer" src="/static/images/website/give_up.png" alt=""></button>
+          <div class="playing">
+            <p class="check"><span></span></p>
           </div>
-        </div>
-      </section> 
-    </section>
 
+          <div class="playing">
+            <p
+              class="draw"
+              style="margin-right: auto; margin-left: auto; align-items: center"
+            >
+              <span></span>
+            </p>
+          </div>
 
-    <section class="section-three">
-      <section class="sidebar0">
-        <section class="connect-buttons-section">
-          <button id="back-to-index">
-            <a href="./index"><h1>To Main Page</h1></a>
-          </button>
+          <img class="eat" src="/static/images/website/eat.png" alt="" />
+
+          <section id="black-pieces" class="eatenPieces-section"></section>
+
+          <section id="white-pieces" class="eatenPieces-section"></section>
+
+          <section class="connect-buttons-section">
+            <div class="chat-popup" id="myForm">
+              <form id="send-container">
+                <input
+                  class="input-field"
+                  type="text"
+                  id="message-input"
+                  placeholder="Start writing:"
+                />
+                <section class="default-buttons-section">
+                  <button type="submit" id="send-button" class="send">
+                    <h2>Send</h2>
+                  </button>
+                  <button type="button" class="btn" onclick="closeForm()">
+                    <h2>Close</h2>
+                  </button>
+                </section>
+              </form>
+            </div>
+
+            <button class="open-button" id="open-button" onclick="openForm()">
+              <img class="eat" src="/static/images/website/chat.png" alt="" />
+            </button>
+          </section>
+
+          <script>
+            function openForm() {
+              document.getElementById("myForm").style.display = "block";
+              document.getElementById("open-button").style.display = "none";
+            }
+
+            function closeForm() {
+              document.getElementById("myForm").style.display = "none";
+              document.getElementById("open-button").style.display = "block";
+            }
+          </script>
+        </section>
+
+        <section id="chess-grid"></section>
+
+        <section class="sidebar">
+          <div class="moves">
+            <table class="mlist"></table>
+          </div>
+
+          <section class="default-buttons-section">
+            <button class="default-buttons" id="backward">
+              <h3><</h3>
+            </button>
+            <button class="default-buttons" id="forward">
+              <h3>></h3>
+            </button>
+          </section>
+
+          <section class="start-buttons-section">
+            <button id="start">
+              <h1>Start</h1>
+            </button>
+          </section>
+
+          <div id="myOffer" style="display: none">
+            <div class="offer-buttons-section">
+              <button class="offer-buttons" id="draw">
+                <img
+                  class="offer"
+                  src="/static/images/website/draw.png"
+                  alt=""
+                />
+              </button>
+              <button class="offer-buttons" id="forfeit">
+                <img
+                  class="offer"
+                  src="/static/images/website/give_up.png"
+                  alt=""
+                />
+              </button>
+            </div>
+          </div>
         </section>
       </section>
 
+      <section class="section-three">
+        <section class="sidebar0">
+          <section class="connect-buttons-section">
+            <button id="back-to-index">
+              <a href="./index"><h1>To Main Page</h1></a>
+            </button>
+          </section>
+        </section>
 
-      <section class="sidebar0">
-        <h2 style="margin-left: auto; margin-right: auto; align-items: center;"> Players Online:</h2>
-        <span></span>
+        <section class="sidebar0">
+          <h2
+            style="margin-left: auto; margin-right: auto; align-items: center"
+          >
+            Players Online:
+          </h2>
+          <span></span>
+        </section>
       </section>
-    </section>
-  </main>
+    </main>
 
-  <script  src="/static/js/script.js"></script>
-  <script src="socket.io/socket.io.js"></script>
-  <script src="/static/js/live.js"></script>
-  <script src="/static/js/chess.js"></script>
+    <script src="/static/js/script.js"></script>
+    <script src="socket.io/socket.io.js"></script>
+    <script src="/static/js/live.js"></script>
+    <script src="/static/js/chess.js"></script>
 
-  <script src="/static/js/timer.js"></script>
-  <script src="/static/js/eatenpieces.js"></script>
-</body>
-<%- include("includes/footer") %>
-
+    <script src="/static/js/timer.js"></script>
+    <script src="/static/js/eatenpieces.js"></script>
+  </body>
+  <%- include("includes/footer") %>
 </html>
